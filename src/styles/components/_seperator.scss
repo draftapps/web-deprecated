@@ -1,0 +1,14 @@
+.seperator {
+  margin-top: 2em;
+  margin-bottom: 2em;
+  height: 1px;
+  line-height: 1px;
+  color: $grey-light;
+  background-color: currentColor;
+}
+
+.seperator__text {
+  padding-left: 10px;
+  padding-right: 10px;
+  background-color: $white;
+}

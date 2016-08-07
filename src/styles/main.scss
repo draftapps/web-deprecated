@@ -1,0 +1,22 @@
+@import 'settings/variables';
+@import 'settings/framework';
+
+// bower:sass
+@import "../../bower_components/bulma/bulma.sass";
+// endbower
+
+@import 'tools/mixins';
+
+@import 'general/font';
+@import 'general/input';
+
+@import 'objects/logo';
+
+@import 'components/card';
+@import 'components/seperator';
+@import 'components/form';
+@import 'components/buttons';
+
+@import 'trumps/space';
+
+@import 'fold_custom';
