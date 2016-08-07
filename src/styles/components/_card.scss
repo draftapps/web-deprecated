@@ -1,9 +1,16 @@
 .card {
+  margin-bottom: $global-margin;
+  background-color: $white;
+}
+
+.card__body {
   padding: 1em;
-  margin-bottom: 2em;
-  background-color: white;
 }
 
 .card--shadowed {
   box-shadow: 0 5px 20px rgba(#000, 0.08);
+
+  .card__body {
+    padding: 2em;
+  }
 }

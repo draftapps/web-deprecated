@@ -8,8 +8,8 @@ function routesConfig($stateProvider, $urlRouterProvider, $locationProvider) {
   $urlRouterProvider.otherwise('/');
 
   $stateProvider
-    .state('app', {
-      url: '/',
-      template: '<app></app>'
+    .state('login', {
+      url: '/login',
+      templateUrl: 'app/login.html'
     });
 }

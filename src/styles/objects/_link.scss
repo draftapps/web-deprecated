@@ -1,0 +1,12 @@
+.link {
+  color: $primary;
+
+  &:hover {
+    color: darken($primary, 10%);
+  }
+}
+
+.link--underline,
+.link--underline-hover:hover {
+  text-decoration: underline;
+}

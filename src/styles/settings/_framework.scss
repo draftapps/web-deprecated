@@ -1,15 +1,39 @@
-$brand-default: #1f8ceb;
-$brand-primary: #00aeef;
-$brand-success: #00e093;
-$brand-warning: #f0ad4e;
-$brand-danger: #ff0000;
-$brand-info: #5bc0de;
+$global-lineheight: 1.3;
 
-$font-family-sans-serif: 'Open Sans', Helvetica, Arial, sans-serif;
-$font-family-base: $font-family-sans-serif;
+$body-background: $silver;
+$body-font-family: $font-family-sans;
+$body-font-color: $grey;
 
-$headings-font-weight: 600;
+$foundation-palette: (
+  default: $grey-light,
+  primary: $primary,
+  success: $success,
+  warning: $warning,
+  alert: $alert,
+  info: $info
+);
 
-$border-radius-small: 2px;
-$border-radius-base: 3px;
-$border-radius-large: 4px;
+$anchor-color: inherit;
+$anchor-color-hover: inherit;
+
+$button-sizes: (
+  small: 0.85rem,
+  default: 1.1rem,
+  large: 1.3rem
+);
+$button-radius: 2em;
+$button-padding: 0.75em 1em;
+$button-margin: 0;
+
+$form-label-color: inherit;
+$form-label-line-height: 1;
+
+$input-radius: 2px;
+$input-font-size: 1.1rem;
+$input-border: 1px solid lighten($grey-light, 12%);
+$input-border-focus: 1px solid $primary;
+$input-shadow: none;
+$input-shadow-focus: none;
+
+$header-color: $black;
+$header-font-weight: 600;
