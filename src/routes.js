@@ -15,5 +15,9 @@ function routesConfig($stateProvider, $urlRouterProvider, $locationProvider) {
     .state('register', {
       url: '/register',
       templateUrl: 'app/register.html'
+    })
+    .state('dashboard', {
+      url: '/dashboard',
+      templateUrl: 'app/dashboard.html'
     });
 }

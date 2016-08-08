@@ -22,10 +22,26 @@
   <body ng-app="app">
     <div class="row">
       <div class="column">
-        <nav class="top-bar">
+        <style>
+          #test-nav {
+            position: fixed;
+            top: -40px;
+            right: 0;
+            left: 0;
+            opacity: 0;
+            transition: 0.3s;
+          }
+
+          #test-nav:hover {
+            top: 0;
+            opacity: 0.8;
+          }
+        </style>
+        <nav class="top-bar" id="test-nav">
           <ul class="menu">
             <li><a class="link" ui-sref="login">Login</a></li>
             <li><a class="link" ui-sref="register">Register</a></li>
+            <li><a class="link" ui-sref="dashboard">Dashboard</a></li>
           </ul>
         </nav>
       </div>
