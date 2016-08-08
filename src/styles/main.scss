@@ -1,5 +1,6 @@
-@import 'settings/variables';
-@import 'settings/framework';
+@import
+  'settings/variables',
+  'settings/framework';
 
 // bower:scss
 @import "../../bower_components/foundation-sites/scss/foundation.scss";
@@ -7,19 +8,27 @@
 
 @include foundation-everything(true);
 
-@import 'tools/mixins';
+@import
+  'tools/mixins';
 
-@import 'general/grid';
+@import
+  'general/grid';
 
-@import 'base/font';
-@import 'base/forms';
+@import
+  'base/font',
+  'base/forms';
 
-@import 'objects/link';
-@import 'objects/button';
+@import
+  'objects/link',
+  'objects/button';
 
-@import 'components/card';
-@import 'components/seperator';
+@import
+  'components/card',
+  'components/seperator';
 
-@import 'trumps/space';
+@import
+  'trumps/text',
+  'trumps/space';
 
-@import 'fold_custom';
+@import
+  'fold_custom';
