@@ -1,10 +1,10 @@
 .header {
   background-color: $white;
-  border-bottom: 1px solid darken($white, 5%);
+  border-bottom: 1px solid $silver-dark;
 }
 
 .header__element {
-  margin: 0.7em;
+  margin: rem-calc(12);
   display: inline-block;
 }
 

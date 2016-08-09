@@ -1,0 +1,23 @@
+.page-head {
+  background-color: $white;
+  border-bottom: 1px solid $silver-dark;
+}
+
+.page-head__menu {
+  > li > a {
+    font-size: rem-calc(24);
+
+    border: solid $silver-dark;
+    border-width: 0 1px;
+  }
+
+  > li:last-child > a {
+    border-left-width: 0;
+  }
+
+  > .active > a {
+    background-color: $silver;
+    color: $primary;
+    border-bottom-color: currentColor;
+  }
+}
