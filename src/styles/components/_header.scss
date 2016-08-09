@@ -3,6 +3,26 @@
   border-bottom: 1px solid darken($white, 5%);
 }
 
-.header__logo {
-  margin: $global-margin;
+.header__element {
+  margin: 0.7em;
+  display: inline-block;
+}
+
+.header__menu {
+  > li > a {
+    font-weight: 600;
+    font-size: 14px;
+
+    margin-right: 1rem;
+    margin-left: 1rem;
+
+    padding-bottom: 0.4rem;
+    border-bottom: 3px solid transparent;
+  }
+
+  > .active > a {
+    background-color: transparent;
+    color: $primary;
+    border-bottom-color: currentColor;
+  }
 }

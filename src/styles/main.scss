@@ -19,14 +19,20 @@
   'base/forms';
 
 @import
+  'objects/ion',
   'objects/link',
+  'objects/avatar',
+  'objects/notifier',
   'objects/button';
 
 @import
   'components/card',
   'components/header',
+  'components/search',
   'components/seperator';
 
 @import
   'trumps/text',
+  'trumps/icon',
+  'trumps/color',
   'trumps/space';

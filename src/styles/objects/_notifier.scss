@@ -1,0 +1,16 @@
+.notifier {
+  position: relative;
+}
+
+.notifier__detect {
+  position: absolute;
+  top: 0;
+  right: 0;
+
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  border: 1px solid $white;
+
+  background-color: $alert;
+}

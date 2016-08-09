@@ -1,0 +1,40 @@
+$_height: 2rem;
+
+.search {
+  position: relative;
+  display: inline-block;
+  padding-left: 10px;
+}
+
+.search__input {
+  border-radius: 30px;
+  height: $_height;
+  font-size: 0.85rem;
+  margin-bottom: 0;
+
+  position: absolute;
+  top: 0;
+  right: 100%;
+  z-index: 1;
+
+  width: 0;
+  opacity: 0;
+  cursor: default;
+
+  &:focus {
+    width: 200px;
+    opacity: 1;
+    cursor: text;
+  }
+
+  &,
+  &:focus {
+    transition: 0.3s;
+  }
+}
+
+.search__button {
+  position: relative;
+  z-index: 2;
+  line-height: $_height;
+}

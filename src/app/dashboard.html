@@ -1,20 +1,81 @@
 <header class="header">
   <div class="row expanded collapse align-middle">
-    <div class="column shrink">
+    <div class="column u-silver bordered shrink">
       <a ui-sref="dashboard">
-        <img class="header__logo" src="images/logo.png">
+        <img
+          class="header__element"
+          src="images/logo.png"
+          style="height: 32px;"
+        >
       </a>
     </div>
     <div class="columns">
-      <ul class="menu align-center">
+      <ul class="header__menu menu align-center">
         <li><a>Assets</a></li>
         <li><a>Flow</a></li>
-        <li><a>Notes</a></li>
+        <li class="active"><a>Notes</a></li>
         <li><a>Style Guide</a></li>
       </ul>
     </div>
     <div class="columns shrink">
-      ygkj
+      <div class="header__element search">
+        <input
+          id="main-search"
+          class="search__input"
+          type="text"
+          placeholder="Search"
+        >
+        <label
+          for="main-search"
+          class="search__button"
+        >
+          <i class="ion-android-search u-icon-24"></i>
+        </label>
+      </div>
+      <dropdown-toggle
+        class="header__element"
+        pane-align="right"
+        close-on-click="true"
+      >
+        <toggle>
+          <button class="notifier">
+            <span class="notifier__detect"></span>
+            <i class="ion-android-notifications u-icon-24"></i>
+          </button>
+        </toggle>
+        <pane>
+          <ul class="menu vertical">
+            <li>
+              <a>Settings</a>
+              <a>Profile</a>
+              <a>Aka.</a>
+            </li>
+          </ul>
+        </pane>
+      </dropdown-toggle>
+      <dropdown-toggle
+        class="header__element"
+        pane-align="right"
+        close-on-click="true"
+      >
+        <toggle>
+          <img
+            class="avatar"
+            src="images/demo/avatar.png"
+            width="32"
+          >
+          <i class="ion-chevron-down"></i>
+        </toggle>
+        <pane>
+          <ul class="menu vertical">
+            <li>
+              <a>Settings</a>
+              <a>Profile</a>
+              <a>Aka.</a>
+            </li>
+          </ul>
+        </pane>
+      </dropdown-toggle>
     </div>
   </div>
 </header>
