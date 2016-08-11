@@ -1,4 +1,5 @@
 $_gap: 10px;
+$_dom-head-height: 43px;
 
 .sidebar {
   height: 100%;
@@ -19,7 +20,7 @@ $_gap: 10px;
 
 .sidebar__body {
   flex: 1 1 0;
-  max-height: 100%;
+  max-height: calc(100% - #{$_dom-head-height});
   background-color: $white;
 }
 

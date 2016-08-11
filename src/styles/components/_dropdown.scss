@@ -1,0 +1,7 @@
+.dropdown-pane {
+  display: none;
+
+  &.is-open {
+    display: block;
+  }
+}

@@ -1,3 +1,5 @@
+$_dom-above-rest-height: 106px;
+
 .screen {
   height: 100vh;
   overflow-y: auto;
@@ -7,10 +9,10 @@
 
 .screen__row {
   flex: 0 0 auto;
-  max-height: 100%;
 
   &.-rest {
     flex: 1 1 0px;
+    max-height: calc(100% - #{$_dom-above-rest-height});
   }
 
   > .row {

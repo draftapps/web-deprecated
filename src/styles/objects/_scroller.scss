@@ -1,0 +1,26 @@
+.scroller {
+  position: relative;
+  overflow: auto;
+  max-height: 100%;
+}
+
+.ps-container {
+  > .ps-scrollbar-y-rail {
+    width: 10px;
+    margin-right: 2px;
+    background-color: transparent !important;
+
+    > .ps-scrollbar-y{
+      right: 1px;
+      width: 5px;
+      border-radius: 10px;
+    }
+
+    &:hover,
+    &:active {
+      > .ps-scrollbar-y{
+        width: 8px;
+      }
+    }
+  }
+}
