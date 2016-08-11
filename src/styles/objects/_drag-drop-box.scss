@@ -1,0 +1,15 @@
+.drag-drop-box {
+  padding: 36px 10px;
+
+  border: 1px dashed $grey;
+  background-color: $silver-light;
+  border-radius: 5px;
+
+  text-align: center;
+
+  transition: 0.3s;
+
+  &.dragover {
+    background-color: $silver;
+  }
+}

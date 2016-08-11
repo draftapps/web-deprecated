@@ -150,14 +150,28 @@
           </div>
           <div class="sidebar__body">
             <div class="scroller">
-              <div>
-                <br><br><br><br><br><br>s
-                <br><br><br><br><br><br>o
-                <br><br><br><br><br><br>m
-                <br><br><br><br><br><br>n
-                <br><br><br><br><br><br>g
-                <br><br><br><br><br><br>a
-              </div>
+              <ul class="items-spaced">
+                <li>
+                  <div
+                    class="drag-drop-box"
+                    ngf-select
+                    ngf-drop="uploadFiles($files)"
+                    ngf-drag-over-class="'dragover'"
+                    ngf-multiple="true"
+                    ngf-pattern="'image/*'"
+                  >
+                    <i class="u-block u-icon-36 ion-upload"></i>
+                    <span class="u-text-small">Drag files here</span>
+                  </div>
+                </li>
+              </ul>
+
+              <br><br><br><br><br><br>s
+              <br><br><br><br><br><br>o
+              <br><br><br><br><br><br>m
+              <br><br><br><br><br><br>n
+              <br><br><br><br><br><br>g
+              <br><br><br><br><br><br>a
             </div>
           </div>
         </aside>

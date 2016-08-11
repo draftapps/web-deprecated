@@ -1,3 +1,8 @@
-.u-icon-24 {
-  font-size: rem-calc(24);
+@mixin icon-size($size) {
+  .u-icon-#{$size} {
+    font-size: rem-calc($size);
+  }
 }
+
+@include icon-size(24);
+@include icon-size(36);

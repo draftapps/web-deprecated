@@ -1,0 +1,7 @@
+@mixin display($display) {
+  .u-#{$display} {
+    display: $display;
+  }
+}
+
+@include display(block);

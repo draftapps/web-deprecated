@@ -21,9 +21,11 @@
 @import
   'objects/ion',
   'objects/link',
+  'objects/items',
   'objects/avatar',
   'objects/notifier',
   'objects/scroller',
+  'objects/drag-drop-box',
   'objects/button';
 
 @import
@@ -38,6 +40,7 @@
   'components/seperator';
 
 @import
+  'trumps/display',
   'trumps/text',
   'trumps/icon',
   'trumps/color',
