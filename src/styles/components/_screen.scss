@@ -1,0 +1,19 @@
+.screen {
+  height: 100vh;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+}
+
+.screen__row {
+  flex: 0 0 auto;
+  max-height: 100%;
+
+  &.-rest {
+    flex: 1 1 0px;
+  }
+
+  > .row {
+    height: 100%;
+  }
+}

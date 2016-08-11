@@ -1,131 +1,153 @@
-<header class="header">
-  <div class="row expanded collapse align-middle">
-    <div class="column u-silver bordered shrink">
-      <a ui-sref="dashboard">
-        <img
-          class="header__element"
-          src="images/logo.png"
-          style="height: 32px;"
-        >
-      </a>
-    </div>
-    <div class="columns">
-      <ul class="header__menu menu align-center">
-        <li><a>Assets</a></li>
-        <li><a>Flow</a></li>
-        <li class="active"><a>Notes</a></li>
-        <li><a>Style Guide</a></li>
-      </ul>
-    </div>
-    <div class="columns shrink">
-      <div class="header__element search">
-        <input
-          id="main-search"
-          class="search__input"
-          type="text"
-          placeholder="Search"
-        >
-        <label
-          for="main-search"
-          class="search__button"
-        >
-          <i class="ion-android-search u-icon-24"></i>
-        </label>
-      </div>
-      <dropdown-toggle
-        class="header__element"
-        pane-align="right"
-        close-on-click="true"
-      >
-        <toggle>
-          <button class="notifier">
-            <span class="notifier__detect"></span>
-            <i class="ion-android-notifications u-icon-24"></i>
-          </button>
-        </toggle>
-        <pane>
-          <ul class="menu vertical">
-            <li>
-              <a>Settings</a>
-              <a>Profile</a>
-              <a>Aka.</a>
-            </li>
+<div class="screen">
+  <div class="screen__row">
+    <header class="header">
+      <div class="row expanded collapse align-middle">
+        <div class="column u-silver bordered shrink">
+          <a ui-sref="dashboard">
+            <img
+              class="header__element"
+              src="images/logo.png"
+              style="height: 32px;"
+            >
+          </a>
+        </div>
+        <div class="columns">
+          <ul class="header__menu menu align-center">
+            <li><a>Assets</a></li>
+            <li><a>Flow</a></li>
+            <li class="active"><a>Notes</a></li>
+            <li><a>Style Guide</a></li>
           </ul>
-        </pane>
-      </dropdown-toggle>
-      <dropdown-toggle
-        class="header__element"
-        pane-align="right"
-        close-on-click="true"
-      >
-        <toggle>
-          <img
-            class="avatar"
-            src="images/demo/avatar.png"
-            width="32"
+        </div>
+        <div class="columns shrink">
+          <div class="header__element search">
+            <input
+              id="main-search"
+              class="search__input"
+              type="text"
+              placeholder="Search"
+            >
+            <label
+              for="main-search"
+              class="search__button"
+            >
+              <i class="ion-android-search u-icon-24"></i>
+            </label>
+          </div>
+          <dropdown-toggle
+            class="header__element"
+            pane-align="right"
+            close-on-click="true"
           >
-          <i class="ion-chevron-down"></i>
-        </toggle>
-        <pane>
-          <ul class="menu vertical">
-            <li>
-              <a>Settings</a>
-              <a>Profile</a>
-              <a>Aka.</a>
-            </li>
-          </ul>
-        </pane>
-      </dropdown-toggle>
-    </div>
-  </div>
-</header>
-<div class="page-head">
-  <div class="row expanded align-middle">
-    <div class="column shrink">
-      <button class="u-text-small">
-        <i class="ion-arrow-left-c u-icon-24"></i> Back
-      </button>
-    </div>
-    <div class="columns">
-      <ul class="page-head__menu menu align-center">
-        <li class="active"><a><i class="ion-chatbox-working u-icon-24"></i></a></li>
-        <li><a><i class="ion-android-download u-icon-24"></i></a></li>
-      </ul>
-    </div>
-    <div class="columns shrink">
-      <ul class="actions menu">
-        <button class="actions__button">
-          <span
-            class="actions__status"
-            style="background-color: #ff0"
-          ></span>
-        </button>
-        <li>
-          <dropdown-toggle close-on-click="true">
             <toggle>
-              <button class="actions__button">
-                <i class="ion-pricetag"></i>
+              <button class="notifier">
+                <span class="notifier__detect"></span>
+                <i class="ion-android-notifications u-icon-24"></i>
               </button>
             </toggle>
-            <pane>Dropdown</pane>
+            <pane>
+              <ul class="menu vertical">
+                <li>
+                  <a>Settings</a>
+                  <a>Profile</a>
+                  <a>Aka.</a>
+                </li>
+              </ul>
+            </pane>
           </dropdown-toggle>
-        </li>
-        <li>
-          <button class="actions__button">
-            <i class="ion-person"></i>
+          <dropdown-toggle
+            class="header__element"
+            pane-align="right"
+            close-on-click="true"
+          >
+            <toggle>
+              <img
+                class="avatar"
+                src="images/demo/avatar.png"
+                width="32"
+              >
+              <i class="ion-chevron-down"></i>
+            </toggle>
+            <pane>
+              <ul class="menu vertical">
+                <li>
+                  <a>Settings</a>
+                  <a>Profile</a>
+                  <a>Aka.</a>
+                </li>
+              </ul>
+            </pane>
+          </dropdown-toggle>
+        </div>
+      </div>
+    </header>
+  </div>
+  <div class="screen__row">
+    <div class="page-head">
+      <div class="row expanded align-middle">
+        <div class="column shrink">
+          <button class="u-text-small">
+            <i class="ion-arrow-left-c u-icon-24"></i> Back
           </button>
-        </li>
-        <li>
-          <button class="actions__button">
-            <i class="ion-forward"></i>
-          </button>
-        </li>
-        <li>
-          <button class="actions__button">
-            <i class="ion-more"></i>
-          </button>
-        </li>
-      </ul>
+        </div>
+        <div class="columns">
+          <ul class="page-head__menu menu align-center">
+            <li class="active"><a><i class="ion-chatbox-working u-icon-24"></i></a></li>
+            <li><a><i class="ion-android-download u-icon-24"></i></a></li>
+          </ul>
+        </div>
+        <div class="columns shrink">
+          <ul class="actions menu">
+            <button class="actions__button">
+              <span
+                class="actions__status"
+                style="background-color: #ff0"
+              ></span>
+            </button>
+            <li>
+              <dropdown-toggle close-on-click="true">
+                <toggle>
+                  <button class="actions__button">
+                    <i class="ion-pricetag"></i>
+                  </button>
+                </toggle>
+                <pane>Dropdown</pane>
+              </dropdown-toggle>
+            </li>
+            <li>
+              <button class="actions__button">
+                <i class="ion-person"></i>
+              </button>
+            </li>
+            <li>
+              <button class="actions__button">
+                <i class="ion-forward"></i>
+              </button>
+            </li>
+            <li>
+              <button class="actions__button">
+                <i class="ion-more"></i>
+              </button>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="screen__row -rest">
+    <div class="row expanded collapse">
+      <div class="columns medium-2">
+        <aside class="sidebar">
+          <div class="sidebar__head">
+            <h1 class="sidebar__title">Screens</h1>
+            <button class="sidebar__collapse-button -left">
+              <i class="sidebar__collapse-arrow ion-arrow-left-b"></i>
+              <i class="sidebar__collapse-menu ion-android-menu"></i>
+            </button>
+          </div>
+          <div class="sidebar__body"></div>
+        </aside>
+      </div>
     </div>
   </div>
 </div>
