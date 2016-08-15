@@ -1,0 +1,15 @@
+.u-padding {
+  padding: $global-margin;
+}
+
+.u-padding-large {
+  padding: $global-margin * 2;
+}
+
+.u-padding-small {
+  padding: $global-margin / 2;
+}
+
+.u-no-padding {
+  padding: 0;
+}

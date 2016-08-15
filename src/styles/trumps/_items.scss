@@ -1,0 +1,17 @@
+// Utility: align items middle
+.u-items-middle {
+  display: flex;
+  align-items: center !important;
+}
+
+// Utility: align items to edges
+.u-items-edges {
+  @include flex;
+  @include flex-align(justify, middle);
+}
+
+// Utility: align items to be spaced
+.u-items-spaced {
+  @include flex;
+  @include flex-align(spaced, middle);
+}

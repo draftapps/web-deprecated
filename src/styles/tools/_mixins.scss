@@ -1,0 +1,6 @@
+// Include inline displays
+// With option to specify the vertical alignment
+@mixin display-inline($alignment: 'middle') {
+  display: inline-block;
+  vertical-align: unquote($alignment);
+}
