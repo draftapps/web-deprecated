@@ -1,13 +1,13 @@
-.seperator {
+.c-seperator {
   margin-top: $global-margin * 1.5;
   margin-bottom: $global-margin * 1.5;
   height: 1px;
   line-height: 1px;
-  color: $grey-light;
   background-color: currentColor;
 }
 
-.seperator__text {
+.c-seperator__text {
+  color: $grey-light;
   padding-left: $global-padding;
   padding-right: $global-padding;
   background-color: $white;
