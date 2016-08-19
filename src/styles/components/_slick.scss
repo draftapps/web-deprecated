@@ -1,0 +1,24 @@
+.slick-slide {
+  &:focus {
+    outline: none;
+  }
+}
+
+.slick-arrow {
+  position: absolute;
+  top: 50%;
+  color: transparent;
+  background-repeat: no-repeat;
+  height: 25px;
+  width: 15px;
+}
+
+.slick-next {
+  right: -25px;
+  background-image: url("../images/next-arrow.png");
+}
+
+.slick-prev {
+  left: -25px;
+  background-image: url("../images/prev-arrow.png");
+}

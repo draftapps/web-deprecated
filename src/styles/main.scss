@@ -4,6 +4,7 @@
 
 // bower:scss
 @import "../../bower_components/foundation-sites/scss/foundation.scss";
+@import "../../bower_components/slick-carousel/slick/slick.scss";
 // endbower
 
 @include foundation-everything(true);
@@ -28,6 +29,7 @@
   'objects/drag-drop-box',
   'objects/thumbnail',
   'objects/list',
+  'objects/box',
   'objects/button';
 
 @import
@@ -42,6 +44,7 @@
   'components/input-group',
   'components/section',
   'components/footer',
+  'components/slick',
   'components/seperator';
 
 @import

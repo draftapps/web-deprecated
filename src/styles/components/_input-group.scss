@@ -4,14 +4,14 @@
 
 .c-input-group__field {
   border-radius: $button-radius;
-  height: 3.5rem;
+  height: 2.8rem;
   padding-left: $global-margin * 2;
 }
 
 .c-input-group__button {
   position: absolute;
-  top: 6px;
-  right: 6px;
+  top: 5px;
+  right: 5px;
 }
 
 .c-input-group--small {
@@ -24,14 +24,8 @@
   }
 
   .c-input-group__button {
-    background-color: #6aaab4;
     padding: 9px 7px;
     top: 5px;
     right: 5px;
-
-    &:hover,
-    &:focus {
-      background-color: #6aaab4;
-    }
   }
 }

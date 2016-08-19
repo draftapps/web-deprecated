@@ -22,6 +22,10 @@
   margin-bottom: $global-margin * 2;
 }
 
+.u-space-v-xlarge {
+  margin-bottom: $global-margin * 3;
+}
+
 .u-space-v-small {
   margin-bottom: $global-margin / 2;
 }
@@ -32,4 +36,9 @@
 
 .u-space-h-large {
   margin-right: $global-margin * 2;
+}
+
+.u-space-v-center {
+  margin-left: auto;
+  margin-right: auto;
 }

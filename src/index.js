@@ -1,2 +1,2 @@
 angular
-  .module('app', ['ui.router', 'mm.foundation', 'ngFileUpload']);
+  .module('app', ['ui.router', 'mm.foundation', 'ngFileUpload', 'slickCarousel']);
