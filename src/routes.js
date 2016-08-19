@@ -19,5 +19,9 @@ function routesConfig($stateProvider, $urlRouterProvider, $locationProvider) {
     .state('dashboard', {
       url: '/dashboard',
       templateUrl: 'app/dashboard.html'
+    })
+    .state('ui-components', {
+      url: '/ui-components',
+      templateUrl: 'app/ui-components.html'
     });
 }
