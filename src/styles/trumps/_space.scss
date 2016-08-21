@@ -9,3 +9,36 @@
 .u-space-ver-large {
   margin-bottom: $global-margin * 2;
 }
+
+.u-no-space-v {
+  margin-bottom: 0;
+}
+
+.u-space-v {
+  margin-bottom: $global-margin;
+}
+
+.u-space-v-large {
+  margin-bottom: $global-margin * 2;
+}
+
+.u-space-v-xlarge {
+  margin-bottom: $global-margin * 3;
+}
+
+.u-space-v-small {
+  margin-bottom: $global-margin / 2;
+}
+
+.u-space-h {
+  margin-right: $global-margin;
+}
+
+.u-space-h-large {
+  margin-right: $global-margin * 2;
+}
+
+.u-space-v-center {
+  margin-left: auto;
+  margin-right: auto;
+}

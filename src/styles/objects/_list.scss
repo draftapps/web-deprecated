@@ -1,0 +1,18 @@
+// /* ul, ol */ .list {}
+li {
+  .o-list--inline > & {
+    @include display-inline();
+  }
+}
+
+// #LIST--UNSTYLED
+.o-list--unstyled {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+// #LIST--STYLE-NONE
+.o-list--style-none {
+  list-style: none;
+}

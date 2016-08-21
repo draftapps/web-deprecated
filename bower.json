@@ -8,7 +8,8 @@
     "foundation-sites": "~6.2.3",
     "angular-foundation-6": "~0.10.4",
     "ng-file-upload": "~12.0.4",
-    "perfect-scrollbar": "^0.6.12"
+    "perfect-scrollbar": "^0.6.12",
+    "angular-slick-carousel": "^3.1.7"
   },
   "overrides": {
     "foundation-sites": {

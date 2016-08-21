@@ -1,3 +1,19 @@
-.u-text-small {
+.u-text-xs {
+  font-size: rem-calc(8);
+}
+
+.u-text-s {
   font-size: rem-calc(14);
+}
+
+.u-text-l {
+  font-size: rem-calc(18);
+}
+
+.u-text-xl {
+  font-size: rem-calc(24);
+}
+
+.u-text-bold {
+  font-weight: bold;
 }

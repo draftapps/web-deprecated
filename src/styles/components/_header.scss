@@ -1,14 +1,14 @@
-.header {
+.c-header {
   background-color: $white;
   border-bottom: 1px solid $silver-dark;
 }
 
-.header__element {
+.c-header__element {
   margin: rem-calc(12);
   display: inline-block;
 }
 
-.header__menu {
+.c-header__menu {
   > li > a {
     font-weight: 600;
     font-size: 14px;
@@ -25,4 +25,10 @@
     color: $primary;
     border-bottom-color: currentColor;
   }
+}
+
+.c-header__wrapper {
+  background-image: url("../images/lp-bg1.png");
+  background-repeat: no-repeat;
+  background-size: contain;
 }

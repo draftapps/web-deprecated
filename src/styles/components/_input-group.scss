@@ -1,0 +1,31 @@
+.c-input-group {
+  position: relative;
+}
+
+.c-input-group__field {
+  border-radius: $button-radius;
+  height: 2.8rem;
+  padding-left: $global-margin * 2;
+}
+
+.c-input-group__button {
+  position: absolute;
+  top: 5px;
+  right: 5px;
+}
+
+.c-input-group--small {
+  .c-input-group__field {
+    height: 2.9rem;
+    padding-left: $global-margin;
+    background-color: #45474d;
+    color: #8a8b8e;
+    border-color: currentColor;
+  }
+
+  .c-input-group__button {
+    padding: 9px 7px;
+    top: 5px;
+    right: 5px;
+  }
+}
