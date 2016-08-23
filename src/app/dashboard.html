@@ -164,40 +164,69 @@
                     <span class="u-text-small">Drag files here</span>
                   </div>
                 </li>
-                <li>
-                  <a>
-                    <img class="thumbnail is-active" src="https://placekitten.com/180/120">
-                    <span class="u-text-small">crap.png</span>
-                  </a>
-                </li>
-                <li>
-                  <a>
-                    <img class="thumbnail" src="https://placekitten.com/180/120">
-                    <span class="u-text-small">moon.png</span>
-                  </a>
-                </li>
-                <li>
-                  <a>
-                    <img class="thumbnail" src="https://placekitten.com/180/120">
-                    <span class="u-text-small">chat.png</span>
-                  </a>
-                </li>
-                <li>
-                  <a>
-                    <img class="thumbnail" src="https://placekitten.com/180/120">
-                    <span class="u-text-small">albums.png</span>
-                  </a>
-                </li>
-                <li>
-                  <a>
-                    <img class="thumbnail" src="https://placekitten.com/180/120">
-                    <span class="u-text-small">Holy.png</span>
+                <li ng-repeat="artBoard in dashboardVm.project.artboards">
+                  <a ng-click="dashboardVm.project.selectArtBoard(artBoard)">
+                    <img class="thumbnail is-active" ng-src="{{::(artBoard.imageBase64 || artBoard.imagePath)}}">
+                    <span class="u-text-small" ng-bind="::artBoard.pageName"></span>
                   </a>
                 </li>
               </ul>
             </div>
           </div>
         </aside>
+      </div>
+
+      <div class="columns meduim-8">
+        <button
+          class="button zoom-in"
+          ng-disabled="dashboardVm.project.configs.zoom <= .25"
+          ng-click="dashboardVm.selectedArtBoard.zoomIn()">-
+        </button>
+        <label class="zoom-text">
+          {{dashboardVm.project.configs.zoom}} %
+        </label>
+        <button
+          class="button zoom-out"
+          ng-click="dashboardVm.selectedArtBoard.zoomOut()"
+          ng-disabled="dashboardVm.project.configs.zoom >= 2">+
+        </button>
+
+        <section class="">
+            <div class="screen-viewer-inner" ng-style="dashboardVm.selectedArtBoard.screenParentStyle()">
+                <div id="screen" class="screen" ng-style="dashboardVm.selectedArtBoard.screenStyle()">
+                    <div id="rulers" ng-hide="dashboardVm.selectedArtBoard.ruler.isHidden">
+                        <div id="rv" class="ruler v" ng-style="dashboardVm.selectedArtBoard.vRulersStyle()"></div>
+                        <div id="rh" class="ruler h" ng-style="dashboardVm.selectedArtBoard.hRulersStyle()"></div>
+                    </div>
+                    <div id="layers">
+                      <div
+                        ng-repeat="layer in dashboardVm.selectedArtBoard.obj.layers"
+                        id="layer-{{$index}}"
+                        class="layer" data-index="{{$index}}"
+                        ng-class="{'long': dashboardVm.selectedArtBoard.zoomSize(layer.height)>= 32,
+                        'wide': dashboardVm.selectedArtBoard.zoomSize(layer.width)>= 32, 'hover': layer.hover}"
+                        data-width="self.unitSize(layer.rect.width)"
+                        data-height="self.unitSize(layer.rect.height)"
+                        ng-style="dashboardVm.selectedArtBoard.layerStyle(layer)"
+                        ng-mouseenter="dashboardVm.selectedArtBoard.layerMouseEnter(layer)"
+                        ng-mouseleave="dashboardVm.selectedArtBoard.layerMouseLeave(layer)">
+                          <i class="tl"></i><i class="tr"></i><i class="bl"></i><i class="br"></i>
+                          <b class="et h"></b><b class="er v"></b><b class="eb h"></b><b class="el v"></b>
+                      </div>
+                    </div>
+                    <div id="notes"></div>
+                    <div id="td" class="distance v" style="display:none;"><div data-height="3"></div></div>
+                    <div id="rd" class="distance h" style="display:none;"><div data-width=""></div></div>
+                    <div id="bd" class="distance v" style="display:none;"><div data-height=""></div></div>
+                    <div id="ld" class="distance h" style="display:none;"><div data-width=""></div></div>
+                </div>
+            </div>
+        </section>
+
+      </div>
+
+      <div class="columns meduim-8">
+
       </div>
     </div>
   </div>
