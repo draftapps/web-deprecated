@@ -282,7 +282,6 @@ main {
   height: calc(100vh - 60px);
 }
 
-.inspector,
 .navbar {
   position: absolute;
   top: 0;
@@ -365,23 +364,21 @@ main {
   background-position-y: -100px;
 }
 
-.screen-viewer {
-  position: absolute;
-  width: 100vw;
-  height: calc(100vh - 60px);
-  background: #191919 url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgAQMAAABJtOi3AAAABlBMVEUAAAAAAAClZ7nPAAAAAnRSTlMAUvP2/eAAAAARSURBVAjXY6ASYD6ATlAHAADy5gMN0fCqFwAAAABJRU5ErkJggg==);
-  background-size: 16px 16px;
+.canvas-screen-viewer {
+  position: relative;
+  width: 100%;
+  height: 100%;
   overflow: auto;
 }
 
-.screen-viewer-inner {
+.canvas-screen-viewer-inner {
   margin: 0 auto;
-  padding: 32px 282px;
+  padding: 32px 0;
   box-sizing: content-box;
   transition: all 0.15s ease;
 }
 
-.screen {
+.canvas-screen {
   margin: 0 auto;
   position: relative;
   background: #fff;
@@ -692,6 +689,7 @@ main {
 
 .inspector {
   overflow: auto;
+  height: 100%;
 }
 
 .inspector h2,

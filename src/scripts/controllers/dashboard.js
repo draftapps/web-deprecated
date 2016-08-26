@@ -922,14 +922,19 @@
       screenStyle: getBoardScreenStyle,
       screenParentStyle: getBoardParentScreenStyle,
       layerStyle: getLayerStyle,
-      layerMouseEnter: layerMouseEnter,
-      layerMouseLeave: layerMouseLeave,
       vRulersStyle: getVRulersStyle,
       hRulersStyle: getHRulersStyle,
-      zoomSize: zoomSize,
+
+      layerMouseEnter: layerMouseEnter,
+      layerMouseLeave: layerMouseLeave,
+      selectLayer: selectLayer,
       zoomIn: zoomIn,
       zoomOut: zoomOut,
 
+      zoomSize: zoomSize,
+      unitSize: unitSize,
+      isNumber: isNumber,
+      round: round
     }
 
     activate();
@@ -965,6 +970,26 @@
       return (size * vm.project.configs.zoom);
     }
 
+    function unitSize(length, isText){
+      var length = Math.round( length / vm.project.configs.scale * 10 ) / 10,
+        units = vm.project.configs.unit.split("/"),
+        unit = units[0];
+
+      if( units.length > 1 && isText){
+        unit = units[1];
+      }
+
+      return length + unit;
+    }
+
+    function isNumber(input) {
+      return angular.isNumber(input);
+    }
+
+    function round(input) {
+      return Math.round(input);
+    }
+
     function getBoardScreenStyle() {
       if (!vm.selectedArtBoard.obj) return;
       return {
@@ -995,14 +1020,26 @@
     }
 
     function layerMouseEnter(layer) {
-      layer.hover = true;
-      setRuler(layer);
-      vm.selectedArtBoard.ruler.isHidden = false;
+      if (!layer.selected) {
+        layer.hover = true;
+        setRuler(layer);
+        vm.selectedArtBoard.ruler.isHidden = false;
+      }
     }
 
     function layerMouseLeave(layer) {
       layer.hover = false;
       vm.selectedArtBoard.ruler.isHidden = true;
+    }
+
+    function selectLayer(layer) {
+      _.each(vm.selectedArtBoard.obj.layers, function (layer) {
+        layer.selected = false;
+      });
+      layer.selected = true;
+      layer.hover = false;
+      vm.selectedArtBoard.ruler.isHidden = true;
+      vm.selectedArtBoard.selectedLayer = layer;
     }
 
     function setRuler(layer) {
