@@ -177,7 +177,7 @@
       </div>
 
       <div class="columns large-8">
-        <section class="canvas-screen-viewer">
+        <section class="canvas-screen-viewer" ng-mousemove="dashboardVm.selectedArtBoard.screenMouseMove($event)">
           <div style="position:absolute;top:0;left:0;">
             <button
               class="button zoom-in"
@@ -193,8 +193,14 @@
               ng-disabled="dashboardVm.project.configs.zoom >= 2">+
             </button>
           </div>
-          <div class="canvas-screen-viewer-inner" ng-style="dashboardVm.selectedArtBoard.screenParentStyle()">
-            <div id="screen" class="canvas-screen" ng-style="dashboardVm.selectedArtBoard.screenStyle()">
+          <div
+            class="canvas-screen-viewer-inner"
+            ng-style="dashboardVm.selectedArtBoard.screenParentStyle()">
+            <div
+              id="screen"
+              class="canvas-screen"
+              ng-style="dashboardVm.selectedArtBoard.screenStyle()"
+              ng-mousemove="$event.stopPropagation()">
               <div id="rulers" ng-hide="dashboardVm.selectedArtBoard.ruler.isHidden">
                 <div id="rv" class="ruler v" ng-style="dashboardVm.selectedArtBoard.vRulersStyle()"></div>
                 <div id="rh" class="ruler h" ng-style="dashboardVm.selectedArtBoard.hRulersStyle()"></div>
@@ -214,16 +220,51 @@
                   ng-style="dashboardVm.selectedArtBoard.layerStyle(layer)"
                   ng-mouseenter="dashboardVm.selectedArtBoard.layerMouseEnter(layer)"
                   ng-mouseleave="dashboardVm.selectedArtBoard.layerMouseLeave(layer)"
+                  ng-mousemove="dashboardVm.selectedArtBoard.layerMouseMove(layer);$event.stopPropagation()"
                   ng-click="dashboardVm.selectedArtBoard.selectLayer(layer)">
                     <i class="tl"></i><i class="tr"></i><i class="bl"></i><i class="br"></i>
                     <b class="et h"></b><b class="er v"></b><b class="eb h"></b><b class="el v"></b>
                 </div>
               </div>
-              <div id="notes"></div>
-              <div id="td" class="distance v" style="display:none;"><div data-height="3"></div></div>
-              <div id="rd" class="distance h" style="display:none;"><div data-width=""></div></div>
-              <div id="bd" class="distance v" style="display:none;"><div data-height=""></div></div>
-              <div id="ld" class="distance h" style="display:none;"><div data-width=""></div></div>
+              <div id="notes">
+                <div
+                  class="note"
+                  ng-repeat="note in dashboardVm.selectedArtBoard.obj.notes"
+                  data-index="{{$index + 1}}"
+                  ng-style="dashboardVm.selectedArtBoard.notesStyle(note)"
+                  ng-mouseenter="note.show = true"
+                  ng-mouseleave="note.show = false">
+                  <div style="white-space: nowrap;" ng-show="note.show">{{note.note}}</div>
+                </div>
+              </div>
+              <div
+                id="td"
+                class="distance v"
+                ng-hide="dashboardVm.selectedArtBoard.distance.top.isHidden"
+                ng-style="dashboardVm.selectedArtBoard.distanceStyle(dashboardVm.selectedArtBoard.distance.top)">
+                <div data-height="{{dashboardVm.selectedArtBoard.distance.top.value}}"></div>
+              </div>
+              <div
+                id="rd"
+                class="distance h"
+                ng-hide="dashboardVm.selectedArtBoard.distance.right.isHidden"
+                ng-style="dashboardVm.selectedArtBoard.distanceStyle(dashboardVm.selectedArtBoard.distance.right)">
+                <div data-width="{{dashboardVm.selectedArtBoard.distance.right.value}}"></div>
+              </div>
+              <div
+                id="bd"
+                class="distance v"
+                ng-hide="dashboardVm.selectedArtBoard.distance.bottom.isHidden"
+                ng-style="dashboardVm.selectedArtBoard.distanceStyle(dashboardVm.selectedArtBoard.distance.bottom)">
+                <div data-height="{{dashboardVm.selectedArtBoard.distance.bottom.value}}"></div>
+              </div>
+              <div
+                id="ld"
+                class="distance h"
+                ng-hide="dashboardVm.selectedArtBoard.distance.left.isHidden"
+                ng-style="dashboardVm.selectedArtBoard.distanceStyle(dashboardVm.selectedArtBoard.distance.left)">
+                <div data-width="{{dashboardVm.selectedArtBoard.distance.left.value}}"></div>
+              </div>
             </div>
           </div>
         </section>
@@ -258,9 +299,9 @@
                 </label>
               </div>
 
-              <div class="item" data-label="Opacity:" ng-show="isNumber(dashboardVm.selectedArtBoard.selectedLayer.opacity)">
+              <div class="item" data-label="Opacity:" ng-show="dashboardVm.selectedArtBoard.isNumber(dashboardVm.selectedArtBoard.selectedLayer.opacity)">
                 <label>
-                  <input id="opacity" type="text" value="{{round(dashboardVm.selectedArtBoard.selectedLayer.opacity * 10000)/100}}%" readonly="readonly">
+                  <input id="opacity" type="text" value="{{dashboardVm.selectedArtBoard.round(dashboardVm.selectedArtBoard.selectedLayer.opacity * 10000)/100}}%" readonly="readonly">
                 </label>
                 <label></label>
               </div>
@@ -450,12 +491,15 @@
           </section>
 
           <section ng-if="dashboardVm.selectedArtBoard.selectedLayer.exportable.length">
-            <ul class="exportable">
-              <li ng-repeat="exportable in dashboardVm.selectedArtBoard.selectedLayer.exportable">
-                <a href="assets/{{exportable.path}}" data-format="exportable.format">
-                  <img src="assets/{{exportable.path}}" alt="assets/{{exportable.path}}">{{assets/{{exportable.path}}}}</a>
-              </li>
-            </ul>
+            <h3>EXPORTABLES</h3>
+            <div class="context">
+              <ul class="exportable">
+                <li ng-repeat="exportable in dashboardVm.selectedArtBoard.selectedLayer.exportable">
+                  <a href="assets/{{exportable.path}}" data-format="exportable.format">
+                    <img src="assets/{{exportable.path}}" alt="assets/{{exportable.path}}">assets/{{exportable.path}}</a>
+                  </li>
+                </ul>
+            </div>
           </section>
         </aside>
       </div>
