@@ -163,11 +163,30 @@
                     <i class="u-block u-icon-36 ion-upload"></i>
                     <span class="u-text-small">Drag files here</span>
                   </div>
+                  <a ng-click="activetab = 'boards'" ng-init="activetab = 'boards'">boards</a>|
+                  <a ng-click="activetab = 'slices'">slices</a>|
+                  <a ng-click="activetab = 'colors'">colors</a>
                 </li>
-                <li ng-repeat="artBoard in dashboardVm.project.artboards">
+                <li ng-repeat="artBoard in dashboardVm.project.artboards" ng-show="activetab === 'boards'">
                   <a ng-click="dashboardVm.project.selectArtBoard(artBoard)">
                     <img class="thumbnail is-active" ng-src="{{::(artBoard.imageBase64 || artBoard.imagePath)}}">
                     <span class="u-text-small" ng-bind="::artBoard.pageName"></span>
+                  </a>
+                </li>
+                <li ng-repeat="sliceLayer in dashboardVm.project.slices" ng-show="activetab === 'slices'"
+                  class="slice-layer" data-objectId="{{sliceLayer.objectID}}"
+                  ng-mouseenter="dashboardVm.project.sliceMouseEnter(sliceLayer)"
+                  ng-mouseleave="dashboardVm.project.sliceMouseLeave(sliceLayer)">
+                  <a ng-click="dashboardVm.project.selectSlice(sliceLayer)" class="text-center">
+                    <img class="thumbnail is-active" src="assets/{{sliceLayer.exportable[0].path}}" alt="{{sliceLayer.exportable[0].path}}">
+                    <div class="u-text-small" ng-bind="::sliceLayer.name"></div>
+                    <div>{{dashboardVm.selectedArtBoard.unitSize(sliceLayer.rect.width)}} × {{dashboardVm.selectedArtBoard.unitSize(sliceLayer.rect.height)}}</div>
+                  </a>
+                </li>
+                <li ng-repeat="color in dashboardVm.project.colors" ng-show="activetab === 'colors'">
+                  <a ng-click="dashboardVm.project.selectArtBoard(artBoard)">
+                    <img class="thumbnail is-active" ng-src="{{::(artBoard.imageBase64 || artBoard.imagePath)}}">
+                    <span class="u-text-small" ng-bind="::artBoard.pageName"></span>{{color}}
                   </a>
                 </li>
               </ul>
@@ -207,13 +226,14 @@
               </div>
               <div id="layers">
                 <div
-                  class="layer"
+                  class="layer layer-{{layer.objectID}}"
                   ng-repeat="layer in dashboardVm.selectedArtBoard.obj.layers"
                   ng-class="{
                     'long': dashboardVm.selectedArtBoard.zoomSize(layer.height)>= 32,
                     'wide': dashboardVm.selectedArtBoard.zoomSize(layer.width)>= 32,
                     'hover': layer.hover,
-                    'selected': layer.selected
+                    'selected': layer.selected,
+                    'has-slice': layer.hasSlice
                   }"
                   data-width="{{dashboardVm.selectedArtBoard.unitSize(layer.rect.width)}}"
                   data-height="{{dashboardVm.selectedArtBoard.unitSize(layer.rect.height)}}"

@@ -3,7 +3,7 @@
     .module('app')
     .controller('DasboardCtrl', DasboardCtrl);
 
-  function DasboardCtrl() {
+  function DasboardCtrl($scope) {
     var vm = this;
 
     vm.project = {
@@ -4487,6 +4487,9 @@
     };
 
     vm.project.selectArtBoard = selectArtBoard;
+    vm.project.selectSlice = selectSlice;
+    vm.project.sliceMouseEnter = sliceMouseEnter;
+    vm.project.sliceMouseLeave = sliceMouseLeave;
     vm.selectedArtBoard = {
       obj: null,
       ruler: {
@@ -4960,6 +4963,25 @@
       vm.selectedArtBoard.obj = artBoard;
     }
 
+    function selectSlice(layer) {
+      var slice = _.findWhere(vm.selectedArtBoard.obj.layers, {objectID: layer.objectID});
+      if (slice) {
+        vm.selectedArtBoard.selectLayer(slice);
+      }
+      else {
+          alert(_('The slice not in current artboard.'));
+      }
+    }
+
+    function sliceMouseEnter(layer) {
+      var slice = _.findWhere(vm.selectedArtBoard.obj.layers, {objectID: layer.objectID});
+      slice.hasSlice = true;
+    }
+
+    function sliceMouseLeave(layer) {
+      var slice = _.findWhere(vm.selectedArtBoard.obj.layers, {objectID: layer.objectID});
+      slice.hasSlice = false;
+    }
 
   }
 })();
