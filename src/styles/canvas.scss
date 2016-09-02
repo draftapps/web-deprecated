@@ -823,6 +823,7 @@ main {
 
 .inspector .color {
   display: block;
+  position: relative;
 }
 
 .inspector .color[data-name]::after {

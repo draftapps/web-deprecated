@@ -4541,6 +4541,7 @@
       distanceStyle: getDistanceStyle,
       notesStyle: getNotesStyle,
 
+      unselectLayer: unselectLayer,
       screenMouseMove: screenMouseMove,
       layerMouseMove: layerMouseMove,
       layerMouseEnter: layerMouseEnter,
@@ -4655,13 +4656,11 @@
       if( x <= 0 && y <= 0 ){
           x = -10;
           y = -10;
-          console.log('lt');
       }
       // right and top
       else if( x >= vm.selectedArtBoard.obj.width && y <= 0 ){
           x = vm.selectedArtBoard.obj.width;
           y = -10;
-          console.log('rt');
       }
 
       // right and bottom
@@ -4894,6 +4893,56 @@
         'top':  zoomSize(note.rect.y) + 'px'
       };
     }
+
+    function unselectLayer() {
+      vm.selectedArtBoard.ruler = {
+        isHidden: true,
+        vertical: {
+          width: 0,
+          left: 0
+        },
+        horizontal: {
+          height: 0,
+          top: 0
+        }
+      };
+      vm.selectedArtBoard.distance = {
+        top: {
+          value: 0,
+          isHidden: true,
+          x: 0,
+          y: 0,
+          h: 0
+        },
+        right: {
+          value: 0,
+          isHidden: true,
+          x: 0,
+          y: 0,
+          w: 0
+        },
+        bottom: {
+          value: 0,
+          isHidden: true,
+          x: 0,
+          y: 0,
+          h: 0
+        },
+        left: {
+          value: 0,
+          isHidden: true,
+          x: 0,
+          y: 0,
+          w: 0
+        }
+      };
+      vm.selectedArtBoard.selectedLayer = null;
+
+      _.each(vm.selectedArtBoard.obj.layers, function (layer) {
+        layer.selected = false;
+      });
+    }
+
     function screenMouseMove(event) {
       if (!vm.selectedArtBoard.selectedLayer) return;
       console.log('from edge');
@@ -4971,6 +5020,7 @@
     }
 
     function selectArtBoard(artBoard) {
+      unselectLayer();
       vm.selectedArtBoard.obj = artBoard;
     }
 

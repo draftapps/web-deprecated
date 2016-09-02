@@ -196,15 +196,18 @@
       </div>
 
       <div class="columns large-8">
-        <section class="canvas-screen-viewer" ng-mousemove="dashboardVm.selectedArtBoard.screenMouseMove($event)">
-          <div style="position:absolute;top:0;left:0;">
+        <section
+          class="canvas-screen-viewer"
+          ng-mousemove="dashboardVm.selectedArtBoard.screenMouseMove($event)"
+          ng-click="dashboardVm.selectedArtBoard.unselectLayer()">
+          <div style="position:absolute;top:0;left:0;" ng-click="$event.stopPropagation()">
             <button
               class="button zoom-in"
               ng-disabled="dashboardVm.project.configs.zoom <= .25"
               ng-click="dashboardVm.selectedArtBoard.zoomIn()">-
             </button>
             <label class="zoom-text">
-              {{dashboardVm.project.configs.zoom}} %
+              {{dashboardVm.project.configs.zoom * 100}} %
             </label>
             <button
               class="button zoom-out"
@@ -214,7 +217,8 @@
           </div>
           <div
             class="canvas-screen-viewer-inner"
-            ng-style="dashboardVm.selectedArtBoard.screenParentStyle()">
+            ng-style="dashboardVm.selectedArtBoard.screenParentStyle()"
+             ng-click="$event.stopPropagation()">
             <div
               id="screen"
               class="canvas-screen"
