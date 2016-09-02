@@ -24,7 +24,12 @@ function routesConfig($stateProvider, $urlRouterProvider, $locationProvider) {
       url: '/dashboard',
       templateUrl: 'app/dashboard.html',
       controller: 'DasboardCtrl',
-      controllerAs: 'dashboardVm'
+      controllerAs: 'dashboardVm',
+      resolve: {
+        project: function ($http) {
+          return $http.get('project.json');
+        }
+      }
     })
     .state('ui-components', {
       url: '/ui-components',
