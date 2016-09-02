@@ -4648,65 +4648,73 @@
           y = (event.pageY - offset.top) / vm.project.configs.zoom,
           width = 10,
           height = 10,
-          xScope = ( x >= 0 && x <= vm.selectedArtBoard.width ),
-          yScope = ( y >= 0 && y <= vm.selectedArtBoard.height );
+          xScope = ( x >= 0 && x <= vm.selectedArtBoard.obj.width ),
+          yScope = ( y >= 0 && y <= vm.selectedArtBoard.obj.height );
 
       // left and top
       if( x <= 0 && y <= 0 ){
           x = -10;
           y = -10;
+          console.log('lt');
       }
       // right and top
-      else if( x >= vm.selectedArtBoard.width && y <= 0 ){
-          x = vm.selectedArtBoard.width;
+      else if( x >= vm.selectedArtBoard.obj.width && y <= 0 ){
+          x = vm.selectedArtBoard.obj.width;
           y = -10;
+          console.log('rt');
       }
 
       // right and bottom
-      else if( x >= vm.selectedArtBoard.width && y >= vm.selectedArtBoard.height ){
-          x = vm.selectedArtBoard.width;
-          y = vm.selectedArtBoard.height;
+      else if( x >= vm.selectedArtBoard.obj.width && y >= vm.selectedArtBoard.obj.height ){
+          x = vm.selectedArtBoard.obj.width;
+          y = vm.selectedArtBoard.obj.height;
+          console.log('rb');
       }
 
       // left and bottom
-      else if( x <= 0 && y >= vm.selectedArtBoard.height ){
+      else if( x <= 0 && y >= vm.selectedArtBoard.obj.height ){
           x = -10;
-          y = vm.selectedArtBoard.height;
+          y = vm.selectedArtBoard.obj.height;
+          console.log('lb');
       }
 
       // top
       else if( y <= 0 && xScope ){
           x = 0;
           y = -10;
-          width = vm.selectedArtBoard.width;
+          width = vm.selectedArtBoard.obj.width;
+          console.log('t');
       }
 
       // right
-      else if( x >= vm.selectedArtBoard.width && yScope ){
-          x = vm.selectedArtBoard.width;
+      else if( x >= vm.selectedArtBoard.obj.width && yScope ){
+          x = vm.selectedArtBoard.obj.width;
           y = 0;
-          height = vm.selectedArtBoard.height;
+          height = vm.selectedArtBoard.obj.height;
+          console.log('r');
       }
 
       // bottom
-      else if( y >= vm.selectedArtBoard.height && xScope ){
+      else if( y >= vm.selectedArtBoard.obj.height && xScope ){
           x = 0;
-          y = vm.selectedArtBoard.height;
-          width = vm.selectedArtBoard.width;
+          y = vm.selectedArtBoard.obj.height;
+          width = vm.selectedArtBoard.obj.width;
+          console.log('b');
       }
 
       // left
       else if( x <= 0 && yScope ){
           x = -10;
           y = 0;
-          height = vm.selectedArtBoard.height;
+          height = vm.selectedArtBoard.obj.height;
+          console.log('l');
       }
 
       if( xScope && yScope ){
           x = 0;
           y = 0;
-          width = vm.selectedArtBoard.width;
-          height = vm.selectedArtBoard.height;
+          width = vm.selectedArtBoard.obj.width;
+          height = vm.selectedArtBoard.obj.height;
       }
 
       return {
@@ -4888,11 +4896,14 @@
     }
     function screenMouseMove(event) {
       if (!vm.selectedArtBoard.selectedLayer) return;
+      console.log('from edge');
+      console.log(getEdgeRect(event));
       distance(getEdgeRect(event), getRect(vm.selectedArtBoard.selectedLayer));
     }
 
     function layerMouseMove(layer) {
       if (!vm.selectedArtBoard.selectedLayer) return;
+      console.log(getRect(layer));
       distance(getRect(layer), getRect(vm.selectedArtBoard.selectedLayer));
     }
 
@@ -4975,12 +4986,12 @@
 
     function sliceMouseEnter(layer) {
       var slice = _.findWhere(vm.selectedArtBoard.obj.layers, {objectID: layer.objectID});
-      slice.hasSlice = true;
+      if (slice) slice.hasSlice = true;
     }
 
     function sliceMouseLeave(layer) {
       var slice = _.findWhere(vm.selectedArtBoard.obj.layers, {objectID: layer.objectID});
-      slice.hasSlice = false;
+      if (slice) slice.hasSlice = false;
     }
 
   }
