@@ -11,6 +11,88 @@
     vm.project.selectSlice = selectSlice;
     vm.project.sliceMouseEnter = sliceMouseEnter;
     vm.project.sliceMouseLeave = sliceMouseLeave;
+    vm.project.unitsData = [
+      {
+        units: [
+          {
+            name: 'Standard',
+            unit: 'px',
+            scale: 1
+          }
+        ]
+      },
+      {
+        name: 'iOS Devices',
+        units: [
+          {
+            name: 'Points @1x',
+            unit: 'pt',
+            scale: 1
+          },
+          {
+            name: 'Retina @2x',
+            unit: 'pt',
+            scale: 2
+          },
+          {
+            name: 'Retina HD @3x',
+            unit: 'pt',
+            scale: 3
+          }
+        ]
+      },
+      {
+        name: 'Android Devices',
+        units: [
+          {
+            name: 'LDPI @0.75x',
+            unit: 'dp/sp',
+            scale: .75
+          },
+          {
+            name: 'MDPI @1x',
+            unit: 'dp/sp',
+            scale: 1
+          },
+          {
+            name: 'HDPI @1.5x',
+            unit: 'dp/sp',
+            scale: 1.5
+          },
+          {
+            name: 'XHDPI @2x',
+            unit: 'dp/sp',
+            scale: 2
+          },
+          {
+            name: 'XXHDPI @3x',
+            unit: 'dp/sp',
+            scale: 3
+          },
+          {
+            name: 'XXXHDPI @4x',
+            unit: 'dp/sp',
+            scale: 4
+          }
+        ]
+      },
+      {
+        name: 'Web View',
+        units: [
+          {
+            name: 'CSS Rem 12px',
+            unit: 'rem',
+            scale: 12
+          },
+          {
+            name: 'CSS Rem 14px',
+            unit: 'rem',
+            scale: 14
+          }
+        ]
+      }
+    ];
+    vm.project.selectedResolution = vm.project.unitsData[0].units[0].name;
     vm.selectedArtBoard = {
       obj: null,
       ruler: {
@@ -76,7 +158,6 @@
       isNumber: isNumber,
       round: round
     }
-
     activate();
 
     function activate() {
@@ -98,11 +179,11 @@
     function getZoomPercentage(height) {
       var proportion = $(document).height() / height;
       if (proportion >= .8) {
-          return 1;
+        return 1;
       } else if (proportion >= .7) {
-          return 0.75;
+        return 0.75;
       } else {
-          return 0.5;
+        return 0.5;
       }
     }
 
@@ -131,113 +212,106 @@
     }
 
     function positive(number) {
-        return number < 0 ? -number :number;
+      return number < 0 ? -number :number;
     }
 
     function isIntersect(selectedRect, targetRect){
-        return !(
-            selectedRect.maxX <= targetRect.x ||
-            selectedRect.x >= targetRect.maxX ||
-            selectedRect.y >= targetRect.maxY ||
-            selectedRect.maxY <= targetRect.y
-        );
+      return !(
+        selectedRect.maxX <= targetRect.x ||
+        selectedRect.x >= targetRect.maxX ||
+        selectedRect.y >= targetRect.maxY ||
+        selectedRect.maxY <= targetRect.y
+      );
     }
 
     function getRect(layer){
-        return {
-            x: layer.rect.x,
-            y: layer.rect.y,
-            width: layer.rect.width,
-            height: layer.rect.height,
-            maxX: layer.rect.x + layer.rect.width,
-            maxY: layer.rect.y + layer.rect.height
-        }
+      return {
+        x: layer.rect.x,
+        y: layer.rect.y,
+        width: layer.rect.width,
+        height: layer.rect.height,
+        maxX: layer.rect.x + layer.rect.width,
+        maxY: layer.rect.y + layer.rect.height
+      }
     }
 
     function getDistance(selected, target){
-        return {
-            top: (selected.y - target.y),
-            right: (target.maxX - selected.maxX),
-            bottom: (target.maxY - selected.maxY),
-            left: (selected.x - target.x)
-        }
+      return {
+        top: (selected.y - target.y),
+        right: (target.maxX - selected.maxX),
+        bottom: (target.maxY - selected.maxY),
+        left: (selected.x - target.x)
+      }
     }
 
     function getEdgeRect(event) {
       var offset = $('#screen').offset();
-
-      var x = (event.pageX - offset.left) / vm.project.configs.zoom,
-          y = (event.pageY - offset.top) / vm.project.configs.zoom,
-          width = 10,
-          height = 10,
-          xScope = ( x >= 0 && x <= vm.selectedArtBoard.obj.width ),
-          yScope = ( y >= 0 && y <= vm.selectedArtBoard.obj.height );
+      var x = (event.pageX - offset.left) / vm.project.configs.zoom;
+      var y = (event.pageY - offset.top) / vm.project.configs.zoom;
+      var width = 10;
+      var height = 10;
+      var xScope = ( x >= 0 && x <= vm.selectedArtBoard.obj.width );
+      var yScope = ( y >= 0 && y <= vm.selectedArtBoard.obj.height );
 
       // left and top
       if( x <= 0 && y <= 0 ){
-          x = -10;
-          y = -10;
+        x = -10;
+        y = -10;
       }
       // right and top
       else if( x >= vm.selectedArtBoard.obj.width && y <= 0 ){
-          x = vm.selectedArtBoard.obj.width;
-          y = -10;
+        x = vm.selectedArtBoard.obj.width;
+        y = -10;
       }
-
       // right and bottom
       else if( x >= vm.selectedArtBoard.obj.width && y >= vm.selectedArtBoard.obj.height ){
-          x = vm.selectedArtBoard.obj.width;
-          y = vm.selectedArtBoard.obj.height;
+        x = vm.selectedArtBoard.obj.width;
+        y = vm.selectedArtBoard.obj.height;
       }
-
       // left and bottom
       else if( x <= 0 && y >= vm.selectedArtBoard.obj.height ){
-          x = -10;
-          y = vm.selectedArtBoard.obj.height;
+        x = -10;
+        y = vm.selectedArtBoard.obj.height;
       }
-
       // top
       else if( y <= 0 && xScope ){
-          x = 0;
-          y = -10;
-          width = vm.selectedArtBoard.obj.width;
+        x = 0;
+        y = -10;
+        width = vm.selectedArtBoard.obj.width;
       }
-
       // right
       else if( x >= vm.selectedArtBoard.obj.width && yScope ){
-          x = vm.selectedArtBoard.obj.width;
-          y = 0;
-          height = vm.selectedArtBoard.obj.height;
+        x = vm.selectedArtBoard.obj.width;
+        y = 0;
+        height = vm.selectedArtBoard.obj.height;
       }
-
       // bottom
       else if( y >= vm.selectedArtBoard.obj.height && xScope ){
-          x = 0;
-          y = vm.selectedArtBoard.obj.height;
-          width = vm.selectedArtBoard.obj.width;
+        x = 0;
+        y = vm.selectedArtBoard.obj.height;
+        width = vm.selectedArtBoard.obj.width;
       }
-
       // left
       else if( x <= 0 && yScope ){
-          x = -10;
-          y = 0;
-          height = vm.selectedArtBoard.obj.height;
+        x = -10;
+        y = 0;
+        height = vm.selectedArtBoard.obj.height;
       }
 
       if( xScope && yScope ){
-          x = 0;
-          y = 0;
-          width = vm.selectedArtBoard.obj.width;
-          height = vm.selectedArtBoard.obj.height;
+        x = 0;
+        y = 0;
+        width = vm.selectedArtBoard.obj.width;
+        height = vm.selectedArtBoard.obj.height;
       }
 
       return {
-          x: x,
-          y: y,
-          width: width,
-          height: height,
-          maxX: x + width,
-          maxY: y + height
+        x: x,
+        y: y,
+        width: width,
+        height: height,
+        maxX: x + width,
+        maxY: y + height
       }
     }
 
@@ -316,60 +390,60 @@
           };
         }
 
-          if (distance.right > 0) { //right
-              vm.selectedArtBoard.distance.right = {
-                  x: zoomSize(selectedRect.maxX),
-                  y: y,
-                  w: zoomSize(positive(distance.right)),
-                  value: unitSize(positive(distance.right)),
-                  isHidden: false
-              };
-          } else if (distance.right < 0) {
-              vm.selectedArtBoard.distance.right = {
-                  x: zoomSize(targetRect.maxX),
-                  y: y,
-                  w: zoomSize(positive(distance.right)),
-                  value: unitSize(positive(distance.right)),
-                  isHidden: false
-              };
-          }
+        if (distance.right > 0) { //right
+          vm.selectedArtBoard.distance.right = {
+            x: zoomSize(selectedRect.maxX),
+            y: y,
+            w: zoomSize(positive(distance.right)),
+            value: unitSize(positive(distance.right)),
+            isHidden: false
+          };
+        } else if (distance.right < 0) {
+          vm.selectedArtBoard.distance.right = {
+            x: zoomSize(targetRect.maxX),
+            y: y,
+            w: zoomSize(positive(distance.right)),
+            value: unitSize(positive(distance.right)),
+            isHidden: false
+          };
+        }
 
 
-          if (distance.bottom > 0) { //bottom
-              vm.selectedArtBoard.distance.right = {
-                  x: x,
-                  y: zoomSize(selectedRect.maxY),
-                  h: zoomSize(positive(distance.bottom)),
-                  value: unitSize(positive(distance.bottom)),
-                  isHidden: false
-              };
-          } else if (distance.bottom < 0) {
-              vm.selectedArtBoard.distance.right = {
-                  x: x,
-                  y: zoomSize(targetRect.maxY),
-                  h: zoomSize(positive(distance.bottom)),
-                  value: unitSize(positive(distance.bottom)),
-                  isHidden: false
-              };
-          }
+        if (distance.bottom > 0) { //bottom
+          vm.selectedArtBoard.distance.right = {
+            x: x,
+            y: zoomSize(selectedRect.maxY),
+            h: zoomSize(positive(distance.bottom)),
+            value: unitSize(positive(distance.bottom)),
+            isHidden: false
+          };
+        } else if (distance.bottom < 0) {
+          vm.selectedArtBoard.distance.right = {
+            x: x,
+            y: zoomSize(targetRect.maxY),
+            h: zoomSize(positive(distance.bottom)),
+            value: unitSize(positive(distance.bottom)),
+            isHidden: false
+          };
+        }
 
-          if (distance.left > 0) { //left
-              vm.selectedArtBoard.distance.left = {
-                  x: zoomSize(targetRect.x),
-                  y: y,
-                  w: zoomSize(positive(distance.left)),
-                  value: unitSize(positive(distance.left)),
-                  isHidden: false
-              };
-          } else if (distance.left < 0) {
-              vm.selectedArtBoard.distance.left = {
-                  x: zoomSize(selectedRect.x),
-                  y: y,
-                  w: zoomSize(positive(distance.left)),
-                  value: unitSize(positive(distance.left)),
-                  isHidden: false
-              };
-          }
+        if (distance.left > 0) { //left
+          vm.selectedArtBoard.distance.left = {
+            x: zoomSize(targetRect.x),
+            y: y,
+            w: zoomSize(positive(distance.left)),
+            value: unitSize(positive(distance.left)),
+              isHidden: false
+          };
+        } else if (distance.left < 0) {
+          vm.selectedArtBoard.distance.left = {
+            x: zoomSize(selectedRect.x),
+            y: y,
+            w: zoomSize(positive(distance.left)),
+            value: unitSize(positive(distance.left)),
+            isHidden: false
+          };
+        }
       }
     }
 
@@ -541,7 +615,7 @@
         vm.selectedArtBoard.selectLayer(slice);
       }
       else {
-          alert(_('The slice not in current artboard.'));
+          alert('The slice not in current artboard.');
       }
     }
 
