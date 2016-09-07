@@ -54,7 +54,8 @@
     "serve:dist": "gulp serve:dist",
     "test": "gulp test",
     "test:auto": "gulp test:auto",
-    "bower": "bower"
+    "bower": "bower",
+    "start": "npm run serve"
   },
   "eslintConfig": {
     "globals": {
