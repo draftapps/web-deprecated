@@ -9,7 +9,6 @@ RUN apt-get update && \
 
 RUN gem install sass && mkdir -p /home/draft-app-markup
 
-
 COPY package.json /home/draft-app-markup
 COPY bower.json /home/draft-app-markup
 
@@ -30,9 +29,6 @@ ADD . /home/draft-app-markup
 RUN gulp build
 COPY nginx.conf /home/
 RUN mv /etc/nginx/nginx.conf /etc/nginx/nginx.conf.default && cp /home/nginx.conf /etc/nginx/ && cp -r /home/draft-app-markup/dist/* /var/www/html/
-# Port 3000 for server
-# Port 35729 for livereload
+
 EXPOSE 80
 CMD service nginx start
-# Set the default command to execute
-# when creating a new container

@@ -187,7 +187,7 @@
                       class="thumbnail"
                       ng-class="{'is-active': artBoard.objectID === dashboardVm.selectedArtBoard.obj.objectID}"
                       ng-src="{{::(artBoard.imageBase64 || artBoard.imagePath)}}">
-                    <span class="u-text-small" ng-bind="::artBoard.pageName"></span>
+                    <span class="u-text-small" ng-bind="::artBoard.name"></span>
                   </a>
                 </li>
                 <li ng-repeat="sliceLayer in dashboardVm.project.slices" ng-show="activetab === 'slices'"
