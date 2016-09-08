@@ -1,0 +1,330 @@
+<div class="u-padding-xlarge">
+  <div class="switch large">
+    <input class="switch-input" id="yes-no" type="checkbox" name="exampleSwitch">
+    <label class="switch-paddle" for="yes-no">
+      <span class="show-for-sr">Do you like me?</span>
+      <span class="switch-active" aria-hidden="true">Yes</span>
+      <span class="switch-inactive" aria-hidden="true">No</span>
+    </label>
+  </div>
+
+  <br>
+
+  <div class="alert callout">
+    ddddddddddddddddddddddddddddddddddddddddddd
+  </div>
+
+  <div class="success callout">
+    ddddddddddddddddddddddddddddddddddddddddddd
+  </div>
+
+  <div class="warning callout">
+    ddddddddddddddddddddddddddddddddddddddddddd
+  </div>
+
+  <div class="primary callout">
+    ddddddddddddddddddddddddddddddddddddddddddd
+  </div>
+
+  <br>
+
+  <a href="#" class="has-tip"  tooltip="hhhhhhhhhhhhhhh">laugh</a>
+
+  <br>
+
+  <dropdown-toggle>
+    <toggle><p><a>Click me for a dropdown-toggle, yo!</a></p></toggle>
+    <pane>
+      <ul class="menu vertical">
+        <li ng-repeat="choice in [1,2,3,4,5,7,8,9]">
+          <a>{{choice}}</a>
+        </li>
+      </ul>
+    </pane>
+  </dropdown-toggle>
+
+  <br>
+
+  <ul class="tabs" data-tabs id="example-tabs">
+    <li class="tabs-title is-active"><a href="#panel1" aria-selected="true">Tab 1</a></li>
+    <li class="tabs-title"><a href="#panel2">Tab 2</a></li>
+  </ul>
+
+  <br>
+
+  <style>
+    .progress .progress-meter {
+      -webkit-transition: width 1s ease-out;
+      transition: width 1s ease-out;
+    }
+  </style>
+
+  <div class="row">
+    <div class="columns small-4"><progressbar value="55"></progressbar></div>
+    <div class="columns small-4"><progressbar value="22" type="warning">22%</progressbar></div>
+    <div class="columns small-4"><progressbar max="200" value="166" type="alert">166 / 200</progressbar></div>
+  </div>
+
+  <br>
+
+<style>
+  .container1 ul{
+    list-style: none;
+    height: 100%;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+  }
+
+
+  .container1 ul li{
+    color: #AAAAAA;
+    display: block;
+    position: relative;
+    float: left;
+    width: 100%;
+    height: 100px;
+  }
+
+  .container1 ul li input[type=radio]{
+    position: absolute;
+    visibility: hidden;
+  }
+
+  .container1 ul li label{
+    display: block;
+    position: relative;
+    font-weight: 300;
+    font-size: 1.35em;
+    padding: 25px 25px 25px 80px;
+    margin: 10px auto;
+    height: 30px;
+    z-index: 9;
+    cursor: pointer;
+    -webkit-transition: all 0.25s linear;
+  }
+
+  .container1 ul li:hover label{
+    color: #FFFFFF;
+  }
+
+  .container1 ul li .check{
+    display: block;
+    position: absolute;
+    border: 5px solid #AAAAAA;
+    border-radius: 100%;
+    height: 25px;
+    width: 25px;
+    top: 30px;
+    left: 20px;
+    z-index: 5;
+    transition: border .25s linear;
+    -webkit-transition: border .25s linear;
+  }
+
+  .container1 ul li:hover .check {
+    border: 5px solid #FFFFFF;
+  }
+
+  .container1 ul li .check::before {
+    display: block;
+    position: absolute;
+    content: '';
+    border-radius: 100%;
+    height: 15px;
+    width: 15px;
+    top: 5px;
+    left: 5px;
+    margin: auto;
+    transition: background 0.25s linear;
+    -webkit-transition: background 0.25s linear;
+  }
+
+  input[type=radio]:checked ~ .check {
+    border: 5px solid #0DFF92;
+  }
+
+  input[type=radio]:checked ~ .check::before{
+    background: #0DFF92;
+  }
+
+  input[type=radio]:checked ~ label{
+    color: #0DFF92;
+  }
+</style>
+
+
+  <div class="container1">
+    <ul>
+      <li>
+        <input type="radio" id="f-option" name="selector">
+        <label for="f-option">Pizza</label>
+
+        <div class="check"></div>
+      </li>
+
+      <li>
+        <input type="radio" id="s-option" name="selector">
+        <label for="s-option">Boyfriend</label>
+
+        <div class="check"><div class="inside"></div></div>
+      </li>
+
+      <li>
+        <input type="radio" id="t-option" name="selector">
+        <label for="t-option">Cats</label>
+
+        <div class="check"><div class="inside"></div></div>
+      </li>
+    </ul>
+  </div>
+
+  <br>
+
+  <style>
+    /* Base for label styling */
+    [type="checkbox"]:not(:checked),
+    [type="checkbox"]:checked {
+    position: absolute;
+    left: -9999px;
+    }
+    [type="checkbox"]:not(:checked) + label,
+    [type="checkbox"]:checked + label {
+    position: relative;
+    padding-left: 25px;
+    cursor: pointer;
+    }
+
+    /* checkbox aspect */
+    [type="checkbox"]:not(:checked) + label:before,
+    [type="checkbox"]:checked + label:before {
+    content: '';
+    position: absolute;
+    left:0; top: 2px;
+    width: 17px; height: 17px;
+    border: 1px solid #aaa;
+    background: #f8f8f8;
+    border-radius: 3px;
+    box-shadow: inset 0 1px 3px rgba(0,0,0,.3)
+    }
+    /* checked mark aspect */
+    [type="checkbox"]:not(:checked) + label:after,
+    [type="checkbox"]:checked + label:after {
+    content: '✔';
+    position: absolute;
+    top: 3px; left: 4px;
+    font-size: 18px;
+    line-height: 0.8;
+    color: #09ad7e;
+    transition: all .2s;
+    }
+    /* checked mark aspect changes */
+    [type="checkbox"]:not(:checked) + label:after {
+    opacity: 0;
+    transform: scale(0);
+    }
+    [type="checkbox"]:checked + label:after {
+    opacity: 1;
+    transform: scale(1);
+    }
+    /* disabled checkbox */
+    [type="checkbox"]:disabled:not(:checked) + label:before,
+    [type="checkbox"]:disabled:checked + label:before {
+    box-shadow: none;
+    border-color: #bbb;
+    background-color: #ddd;
+    }
+    [type="checkbox"]:disabled:checked + label:after {
+    color: #999;
+    }
+    [type="checkbox"]:disabled + label {
+    color: #aaa;
+    }
+    /* accessibility */
+    [type="checkbox"]:checked:focus + label:before,
+    [type="checkbox"]:not(:checked):focus + label:before {
+    border: 1px dotted blue;
+    }
+
+    /* hover style just for information */
+    label:hover:before {
+    border: 1px solid #4778d9!important;
+    }
+  </style>
+
+
+  <form action="#">
+    <p>
+      <input type="checkbox" id="test1" />
+      <label for="test1">Red</label>
+    </p>
+    <p>
+      <input type="checkbox" id="test2" checked="checked" />
+      <label for="test2">Yellow</label>
+    </p>
+    <p>
+      <input type="checkbox" id="test3" checked="checked" disabled="disabled" />
+      <label for="test3">Green</label>
+    </p>
+      <p>
+        <input type="checkbox" id="test4" disabled="disabled" />
+        <label for="test4">Brown</label>
+    </p>
+  </form>
+
+  <br>
+
+  <span class="secondary badge">2</span>
+  <span class="success badge">3</span>
+  <span class="alert badge">A</span>
+  <span class="warning badge">B</span>
+
+  <br>
+  <br>
+  <br>
+  <br>
+
+  <span class="secondary label">Secondary Label</span>
+  <span class="success label">Success Label</span>
+  <span class="alert label">Alert Label</span>
+  <span class="warning label">Warning Label</span>
+
+
+  <br>
+  <br>
+  <br>
+  <br>
+
+  <form >
+    <!-- Add "display: none" right away -->
+    <div data-abide-error class="alert callout" style="display: none;">
+      <p><i class="fi-alert"></i> There are some errors in your form.</p>
+    </div>
+    <label>
+      Name
+      <input type="text" required>
+      <span class="form-error">This field is required.</span>
+    </label>
+  </form>
+
+  <br>
+  <br>
+
+
+  <form data-abide>
+    <!-- Add role="alert" -->
+    <!-- Add "display: block" -->
+    <div data-abide-error role="alert" class="alert callout" style="display: block;">
+      <p><i class="fi-alert"></i> There are some errors in your form.</p>
+    </div>
+    <!-- Add "is-invalid-label" -->
+    <label class="is-invalid-label">
+      Name
+      <!-- Add "is-invalid-input" -->
+      <input type="text" class="is-invalid-input" required aria-invalid aria-describedby="uuid">
+      <!-- Add "is-visible" -->
+      <span class="form-error is-visible" id="uuid">This field is required.</span>
+    </label>
+  </form>
+
+</div>
