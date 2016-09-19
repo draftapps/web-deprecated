@@ -88,8 +88,8 @@
         <div class="columns large-2"></div>
         <div class="columns large-8">
           <ul class="page-head__menu menu align-center">
-            <li><a><i class="ion-android-download u-icon-24"></i></a></li>
-            <li class="active"><a><i class="ion-chatbox-working u-icon-24"></i></a></li>
+            <li class="active"><a><i class="ion-android-download u-icon-24"></i></a></li>
+            <li><a><i class="ion-chatbox-working u-icon-24"></i></a></li>
             <li><a><i class="ion-android-download u-icon-24"></i></a></li>
             <li><a><i class="ion-android-download u-icon-24"></i></a></li>
           </ul>
@@ -135,29 +135,35 @@
       </div>
     </div>
   </div>
+
   <div class="screen__row -rest">
     <div class="row expanded collapse">
       <div class="columns large-2">
         <aside class="sidebar">
           <div class="sidebar__head">
-            <span class="sidebar__title">
-              <a
-                ng-click="activetab = 'boards'"
-                ng-init="activetab = 'boards'"
-                ng-class="{'active': activetab === 'boards'}">
-                boards
-              </a> |
-              <a
-                ng-click="activetab = 'slices'"
-                ng-class="{'active': activetab === 'slices'}">
-                slices
-              </a> |
-              <a
-                ng-click="activetab = 'colors'"
-                ng-class="{'active': activetab === 'slices'}">
-                colors
-              </a>
-            </span>
+            <ul class="sidebar__menu sidebar__menu--left sidebar__menu--items-2 menu">
+              <li ng-class="{'active': activetab === 'boards'}">
+                <a
+                  ng-click="activetab = 'boards'"
+                  ng-init="activetab = 'boards'">
+                  <i class="ion-images u-space-v-center"></i>
+                </a>
+              </li>
+              <li
+              ng-class="{'active': activetab === 'slices'}">
+                <a
+                  ng-click="activetab = 'slices'">
+                  <i class="ion-social-buffer u-space-v-center"></i>
+                </a>
+              </li>
+              <!-- <li ng-class="{'active': activetab === 'colors'}">
+                <a
+                  ng-click="activetab = 'colors'">
+                  <i class="fi-list u-space-v-center"></i>
+                  <span>colors</span>
+                </a>
+              </li> -->
+            </ul>
             <button class="sidebar__collapse-button -left">
               <i class="sidebar__collapse-arrow ion-arrow-left-b"></i>
               <i class="sidebar__collapse-menu ion-android-menu"></i>
@@ -209,7 +215,24 @@
         </aside>
       </div>
 
-      <div class="columns large-10">
+      <div class="columns large-8">
+        <div style="position: absolute;bottom: 0;left: 50%;padding: 15px;transform: translateX(-50%);z-index: 10;" class="zoom-widget" ng-click="$event.stopPropagation()">
+          <button
+            class="zoom-in"
+            ng-disabled="dashboardVm.project.configs.zoom <= .25"
+            ng-click="dashboardVm.selectedArtBoard.zoomIn()">
+          </button>
+
+          <label class="zoom-text" style="margin: 0 5px;">
+            {{dashboardVm.project.configs.zoom * 100}}%
+          </label>
+
+          <button
+            class="zoom-out"
+            ng-click="dashboardVm.selectedArtBoard.zoomOut()"
+            ng-disabled="dashboardVm.project.configs.zoom >= 2">
+          </button>
+        </div>
         <section
           class="canvas-screen-viewer"
           ng-mousemove="dashboardVm.selectedArtBoard.screenMouseMove($event)"
@@ -293,23 +316,53 @@
         </section>
       </div>
 
-      <div style="position: absolute;top: 105px;left: 17%;padding: 15px;" class="zoom-widget" ng-click="$event.stopPropagation()">
-        <button
-          class="zoom-in"
-          ng-disabled="dashboardVm.project.configs.zoom <= .25"
-          ng-click="dashboardVm.selectedArtBoard.zoomIn()">
-        </button>
+      <div class="columns large-2">
+        <aside class="sidebar">
+          <div class="sidebar__head">
+            <ul class="sidebar__menu sidebar__menu--right sidebar__menu--items-4 menu">
+              <li ng-class="{'active': activetab === 'boards'}">
+                <a
+                  ng-click="activetab = 'boards'"
+                  ng-init="activetab = 'boards'">
+                  <i class="ion-images u-space-v-center"></i>
+                </a>
+              </li>
+              <li
+              ng-class="{'active': activetab === 'slices'}">
+                <a
+                  ng-click="activetab = 'slices'">
+                  <i class="ion-social-buffer u-space-v-center"></i>
+                </a>
+              </li>
+              <li
+              ng-class="{'active': activetab === 'slices'}">
+                <a
+                  ng-click="activetab = 'slices'">
+                  <i class="ion-social-buffer u-space-v-center"></i>
+                </a>
+              </li>
+              <li
+              ng-class="{'active': activetab === 'slices'}">
+                <a
+                  ng-click="activetab = 'slices'">
+                  <i class="ion-social-buffer u-space-v-center"></i>
+                </a>
+              </li>
+            </ul>
+            <button class="sidebar__collapse-button -right">
+              <i class="sidebar__collapse-menu ion-android-menu"></i>
+              <i class="sidebar__collapse-arrow ion-arrow-right-b"></i>
+            </button>
+          </div>
+          <div class="sidebar__body">
+            <div class="scroller">
 
-        <label class="zoom-text" style="margin: 0 5px;">
-          {{dashboardVm.project.configs.zoom * 100}}%
-        </label>
-
-        <button
-          class="zoom-out"
-          ng-click="dashboardVm.selectedArtBoard.zoomOut()"
-          ng-disabled="dashboardVm.project.configs.zoom >= 2">
-        </button>
+            </div>
+          </div>
+        </aside>
       </div>
+
+
 
       <aside id="inspector" class="inspector active" ng-show="dashboardVm.selectedArtBoard.selectedLayer">
         <h2>{{dashboardVm.selectedArtBoard.selectedLayer.name}}</h2>
@@ -544,7 +597,7 @@
 
       <aside
         style="position: absolute;top: 105px;bottom: 0;right: 0;height: calc(100vh - 105px);width: 240px;overflow: auto;z-index: 4;"
-        class="unit-box">
+        class="unit-box ng-hide">
         <div
           style="padding:15px;border-bottom: 1px solid;background: white;cursor: pointer;"
           ng-click="dashboardVm.project.isShownReolution = !dashboardVm.project.isShownReolution">{{dashboardVm.project.selectedResolution}}</div>

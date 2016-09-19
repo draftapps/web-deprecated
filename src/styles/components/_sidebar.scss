@@ -13,9 +13,53 @@ $_dom-head-height: 43px;
   flex: 0 0 auto;
   color: $grey-dark;
   background-color: $silver;
-  border-bottom: 1px solid $silver-dark;
   position: relative;
-  padding: $_gap;
+}
+
+.sidebar__menu {
+  > li > a {
+    font-size: rem-calc(24);
+
+    border: solid $silver-dark;
+    border-width: 0 1px;
+    border-bottom: 1px solid $silver-dark;
+    padding-left: 0;
+    padding-right: 0;
+
+    i {
+      margin: auto;
+    }
+  }
+
+  > li:last-child > a {
+    border-left-width: 0;
+  }
+
+  > .active > a {
+    background-color: $white;
+    color: $primary;
+    border-bottom-color: $white;
+  }
+}
+
+.sidebar__menu--left {
+  padding-right: 45px;
+}
+
+.sidebar__menu--right {
+  padding-left: 45px;
+}
+
+.sidebar__menu--items-2 {
+  > li {
+    width: 50%;
+  }
+}
+
+.sidebar__menu--items-4 {
+  > li {
+    width: 25%;
+  }
 }
 
 .sidebar__body {
