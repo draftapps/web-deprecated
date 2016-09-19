@@ -1,25 +1,25 @@
 <div class="screen">
   <div class="screen__row">
     <header class="c-header">
-      <div class="row expanded collapse align-middle">
-        <div class="column u-silver bordered shrink">
-          <a ui-sref="dashboard">
-            <img
+      <div class="row expanded align-middle">
+        <div class="column large-2">
+          <button class="u-text-small">
+            <i class="ion-arrow-left-c u-icon-24"></i> Back
+          </button>
+        </div>
+
+        <div class="column large-8">
+          <div class="row align-center">
+            <a ui-sref="dashboard">
+              <img
               class="c-header__element"
               src="images/logo.png"
-              style="height: 32px;"
-            >
-          </a>
+              style="height: 32px;">
+            </a>
+          </div>
         </div>
-        <div class="columns">
-          <ul class="c-header__menu menu align-center">
-            <li><a>Assets</a></li>
-            <li><a>Flow</a></li>
-            <li class="active"><a>Notes</a></li>
-            <li><a>Style Guide</a></li>
-          </ul>
-        </div>
-        <div class="columns shrink">
+
+        <div class="columns large-2 text-right">
           <div class="c-header__element search">
             <input
               id="main-search"
@@ -56,7 +56,7 @@
             </pane>
           </dropdown-toggle>
           <dropdown-toggle
-            class="c-header__element"
+            class="c-header__element u-no-space-h"
             pane-align="right"
             close-on-click="true"
           >
@@ -66,7 +66,6 @@
                 src="images/demo/avatar.png"
                 width="32"
               >
-              <i class="ion-chevron-down"></i>
             </toggle>
             <pane>
               <ul class="menu vertical">
@@ -82,22 +81,21 @@
       </div>
     </header>
   </div>
+
   <div class="screen__row">
     <div class="page-head">
       <div class="row expanded align-middle">
-        <div class="column shrink">
-          <button class="u-text-small">
-            <i class="ion-arrow-left-c u-icon-24"></i> Back
-          </button>
-        </div>
-        <div class="columns">
+        <div class="columns large-2"></div>
+        <div class="columns large-8">
           <ul class="page-head__menu menu align-center">
+            <li><a><i class="ion-android-download u-icon-24"></i></a></li>
             <li class="active"><a><i class="ion-chatbox-working u-icon-24"></i></a></li>
+            <li><a><i class="ion-android-download u-icon-24"></i></a></li>
             <li><a><i class="ion-android-download u-icon-24"></i></a></li>
           </ul>
         </div>
-        <div class="columns shrink">
-          <ul class="actions menu">
+        <div class="columns large-2 text-right">
+          <ul class="actions menu align-right">
             <button class="actions__button">
               <span
                 class="actions__status"
@@ -128,7 +126,7 @@
               </button>
             </li>
             <li>
-              <button class="actions__button">
+              <button class="actions__button u-no-space-h">
                 <i class="ion-more"></i>
               </button>
             </li>
