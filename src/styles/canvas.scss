@@ -687,17 +687,6 @@ main {
   left: 22px;
 }
 
-.inspector {
-  position: absolute;
-  top: 105px;
-  bottom: 0;
-  height: calc(100vh - 105px);
-  width: 240px;
-  overflow: auto;
-  background: white;
-  z-index: 5;
-}
-
 .inspector h2,
 .inspector h3 {
   margin: 0;
