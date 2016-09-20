@@ -138,7 +138,7 @@
 
   <div class="screen__row -rest">
     <div class="row expanded collapse">
-      <div class="columns large-2">
+      <div class="columns large-2" ng-hide="leftSideBarIsHidden">
         <aside class="sidebar">
           <div class="sidebar__head">
             <ul class="sidebar__menu sidebar__menu--left sidebar__menu--items-2 menu">
@@ -164,7 +164,9 @@
                 </a>
               </li> -->
             </ul>
-            <button class="sidebar__collapse-button -left">
+            <button
+              class="sidebar__collapse-button -left"
+              ng-click="leftSideBarIsHidden = !leftSideBarIsHidden">
               <i class="sidebar__collapse-arrow ion-arrow-left-b"></i>
               <i class="sidebar__collapse-menu ion-android-menu"></i>
             </button>
@@ -215,7 +217,33 @@
         </aside>
       </div>
 
-      <div class="columns large-8">
+      <div class="sidebar__fixed-container" ng-show="leftSideBarIsHidden">
+        <aside class="sidebar -closed">
+          <div class="sidebar__head">
+            <ul class="sidebar__menu menu">
+              <li>
+                <a></a>
+              </li>
+            </ul>
+            <button
+              class="sidebar__collapse-button -right"
+              ng-click="leftSideBarIsHidden = !leftSideBarIsHidden">
+              <i class="sidebar__collapse-arrow ion-arrow-left-b"></i>
+              <i class="sidebar__collapse-menu ion-android-menu"></i>
+            </button>
+          </div>
+          <div class="sidebar__body"></div>
+        </aside>
+      </div>
+
+      <div
+        class="columns"
+        ng-class="{'large-8': !leftSideBarIsHidden && !rightSideBarIsHidden,
+          'large-10': leftSideBarIsHidden || rightSideBarIsHidden,
+          'large-12': leftSideBarIsHidden && rightSideBarIsHidden,
+          'canvas--padded-left': leftSideBarIsHidden,
+          'canvas--padded-right': rightSideBarIsHidden}"
+      >
         <div style="position: absolute;bottom: 0;left: 50%;padding: 15px;transform: translateX(-50%);z-index: 10;" class="zoom-widget" ng-click="$event.stopPropagation()">
           <button
             class="zoom-in"
@@ -316,7 +344,7 @@
         </section>
       </div>
 
-      <div class="columns large-2">
+      <div class="columns large-2" ng-hide="rightSideBarIsHidden">
         <aside class="sidebar">
           <div class="sidebar__head">
             <ul class="sidebar__menu sidebar__menu--right sidebar__menu--items-4 menu">
@@ -349,7 +377,9 @@
                 </a>
               </li>
             </ul>
-            <button class="sidebar__collapse-button -right">
+            <button
+              class="sidebar__collapse-button -right"
+              ng-click="rightSideBarIsHidden = !rightSideBarIsHidden">
               <i class="sidebar__collapse-menu ion-android-menu"></i>
               <i class="sidebar__collapse-arrow ion-arrow-right-b"></i>
             </button>
@@ -362,7 +392,24 @@
         </aside>
       </div>
 
-
+      <div class="sidebar__fixed-container" ng-show="rightSideBarIsHidden">
+        <aside class="sidebar -closed  -closed-right">
+          <div class="sidebar__head">
+            <ul class="sidebar__menu menu">
+              <li>
+                <a></a>
+              </li>
+            </ul>
+            <button
+              class="sidebar__collapse-button -left"
+              ng-click="rightSideBarIsHidden = !rightSideBarIsHidden">
+              <i class="sidebar__collapse-arrow ion-arrow-left-b"></i>
+              <i class="sidebar__collapse-menu ion-android-menu"></i>
+            </button>
+          </div>
+          <div class="sidebar__body"></div>
+        </aside>
+      </div>
 
       <aside id="inspector" class="inspector active" ng-show="dashboardVm.selectedArtBoard.selectedLayer">
         <h2>{{dashboardVm.selectedArtBoard.selectedLayer.name}}</h2>
