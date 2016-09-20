@@ -1,4 +1,4 @@
-$_gap: 10px;
+$_gap: 0;
 $_dom-head-height: 43px;
 
 .sidebar {
@@ -7,6 +7,24 @@ $_dom-head-height: 43px;
   flex-direction: column;
 
   border-right: 1px solid $silver-dark;
+
+  &.-closed {
+    position: absolute;
+    width: 45px;
+    z-index: 10;
+
+    .sidebar__head {
+      height: 47px;
+    }
+  }
+
+  &.-closed-right {
+    right: -13.1%;
+  }
+}
+
+.sidebar__fixed-container {
+  position: relative;
 }
 
 .sidebar__head {
@@ -78,6 +96,8 @@ $_dom-head-height: 43px;
 .sidebar__collapse-button {
   position: absolute;
   top: $_gap;
+  width: 45px;
+  height: 100%;
 
   &.-left {
     right: $_gap;
@@ -100,4 +120,16 @@ $_dom-head-height: 43px;
   .sidebar__collapse-button.-right & {
     transform: rotate(180deg);
   }
+}
+
+// .canvas {
+//
+// }
+
+.canvas--padded-left {
+  padding-left: 45px !important;
+}
+
+.canvas--padded-right {
+  padding-right: 45px !important;
 }
