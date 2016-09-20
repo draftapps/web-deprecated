@@ -149,14 +149,19 @@
                   <i class="ion-images u-space-v-center"></i>
                 </a>
               </li>
-              <li
-              ng-class="{'active': activetab === 'slices'}">
+              <li ng-class="{'active': activetab === 'layers'}">
+                <a
+                  ng-click="activetab = 'layers'">
+                  <i class="ion-social-buffer u-space-v-center"></i>
+                </a>
+              </li>
+              <!-- <li ng-class="{'active': activetab === 'slices'}">
                 <a
                   ng-click="activetab = 'slices'">
                   <i class="ion-social-buffer u-space-v-center"></i>
                 </a>
               </li>
-              <!-- <li ng-class="{'active': activetab === 'colors'}">
+              <li ng-class="{'active': activetab === 'colors'}">
                 <a
                   ng-click="activetab = 'colors'">
                   <i class="fi-list u-space-v-center"></i>
@@ -195,6 +200,17 @@
                       ng-src="{{::(artBoard.imageBase64 || artBoard.imagePath)}}">
                     <span class="u-text-small" ng-bind="::artBoard.name"></span>
                   </a>
+                </li>
+                <li
+                  class="o-list--stripped"
+                  ng-class="{'selected': layer.selected}"
+                  ng-repeat="layer in dashboardVm.selectedArtBoard.obj.layers"
+                  ng-show="activetab === 'layers'"
+                  ng-mouseenter="dashboardVm.selectedArtBoard.layerMouseEnter(layer)"
+                  ng-mouseleave="dashboardVm.selectedArtBoard.layerMouseLeave(layer)"
+                  ng-mousemove="dashboardVm.selectedArtBoard.layerMouseMove(layer);$event.stopPropagation()"
+                  ng-click="dashboardVm.selectedArtBoard.selectLayer(layer)">
+                  {{layer.type}} - {{layer.name}}
                 </li>
                 <li ng-repeat="sliceLayer in dashboardVm.project.slices" ng-show="activetab === 'slices'"
                   class="slice-layer" data-objectId="{{sliceLayer.objectID}}"
