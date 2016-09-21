@@ -1,14 +1,22 @@
 .card {
-  margin-bottom: $global-margin;
   background-color: $white;
+  border-radius: 3px;
+  margin-bottom: $global-margin;
 }
 
 .card__body {
   padding: 1em;
 }
 
+.card__logo {
+  margin-top: -90px;
+  border-radius: 50%;
+  padding: 10px;
+  background-color: $white;
+}
+
 .card--shadowed {
-  box-shadow: 0 5px 20px rgba(#000, 0.08);
+  box-shadow: 0 1px 18px rgba(#000, 0.06);
 
   .card__body {
     padding: 2em;
