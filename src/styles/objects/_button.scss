@@ -1,7 +1,12 @@
 .button {
   font-weight: 600;
 
-  &.default {
-    color: $black;
+
+  &.primary {
+    &,
+    &:hover,
+    &:focus {
+      color: $white;
+    }
   }
 }

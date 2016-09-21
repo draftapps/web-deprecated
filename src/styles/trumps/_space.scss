@@ -1,17 +1,10 @@
-.u-space-ver-undo {
-  margin-bottom: 0;
-}
-
-.u-space-ver {
-  margin-bottom: $global-margin;
-}
-
-.u-space-ver-large {
-  margin-bottom: $global-margin * 2;
-}
-
+// #SPACE-V
 .u-no-space-v {
   margin-bottom: 0;
+}
+
+.u-space-v-small {
+  margin-bottom: $global-margin / 2;
 }
 
 .u-space-v {
@@ -26,10 +19,11 @@
   margin-bottom: $global-margin * 3;
 }
 
-.u-space-v-small {
-  margin-bottom: $global-margin / 2;
+.u-space-v-xxlarge {
+  margin-bottom: $global-margin * 6;
 }
 
+// #SPACE-H
 .u-no-space-h {
   margin-right: 0;
 }
@@ -42,7 +36,7 @@
   margin-right: $global-margin * 2;
 }
 
-.u-space-v-center {
+.u-space-h-center {
   margin-left: auto;
   margin-right: auto;
 }

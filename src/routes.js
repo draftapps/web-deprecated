@@ -26,7 +26,7 @@ function routesConfig($stateProvider, $urlRouterProvider, $locationProvider) {
       controller: 'DasboardCtrl',
       controllerAs: 'dashboardVm',
       resolve: {
-        project: function ($http) {
+        project: $http => {
           return $http.get('project.json');
         }
       }

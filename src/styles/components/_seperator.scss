@@ -3,11 +3,10 @@
   margin-bottom: $global-margin * 1.5;
   height: 1px;
   line-height: 1px;
-  background-color: currentColor;
+  background-color: $silver2;
 }
 
 .c-seperator__text {
-  color: $grey-light;
   padding-left: $global-padding;
   padding-right: $global-padding;
   background-color: $white;
