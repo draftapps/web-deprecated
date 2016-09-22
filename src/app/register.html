@@ -12,51 +12,76 @@
                 <h3>Get Started Free</h3>
                 <p class="u-text-small u-space-v-large">Free 30 days. No Credit Card needed</p>
 
-                <form>
-                  <div class="form-group">
-                    <input
-                      autofocus
-                      type="email"
-                      placeholder="Your Email"
+                <form ng-submit="registerVM.submit()" class="text-left">
+                  <fieldset ng-disabled="registerVM.loading">
+                    <div class="form-group">
+                      <input
+                        autofocus
+                        type="email"
+                        placeholder="Your Email"
+                        ng-model="registerVM.form.email"
+                        required
+                        ng-class="{'is-invalid-input': registerVM.errors.email[0]}"
+                      >
+                      <span
+                        class="form-error"
+                        ng-class="{'is-visible': registerVM.errors.email[0]}"
+                      >Email {{registerVM.errors.email[0]}}</span>
+                    </div>
+
+                    <div class="form-group">
+                      <input
+                        type="text"
+                        placeholder="Your Name"
+                        ng-model="registerVM.form.name"
+                        required
+                        ng-class="{'is-invalid-input': registerVM.errors.name[0]}"
+                      >
+                      <span
+                        class="form-error"
+                        ng-class="{'is-visible': registerVM.errors.name[0]}"
+                      >Name {{registerVM.errors.name[0]}}</span>
+                    </div>
+
+                    <div class="form-group u-space-v-large">
+                      <input
+                        type="password"
+                        placeholder="Create Password"
+                        ng-model="registerVM.form.password"
+                        required
+                        ng-class="{'is-invalid-input': registerVM.errors.password[0]}"
+                      >
+                      <span
+                        class="form-error"
+                        ng-class="{'is-visible': registerVM.errors.password[0]}"
+                      >Password {{registerVM.errors.password[0]}}</span>
+                    </div>
+
+                    <button
+                      type="submit"
+                      class="button expanded success"
+                      ng-disabled="registerVM.loading"
+                    >Sign up free</button>
+
+                    <div class="c-seperator text-center">
+                      <span class="c-seperator__text">Or</span>
+                    </div>
+
+                    <button
+                      type="button"
+                      class="button expanded primary u-space-v"
+                      ng-click="registerVM.github()"
+                      ng-disabled="registerVM.loading"
                     >
-                  </div>
+                      <i class="ion-social-octocat"></i> Sign up via Github
+                    </button>
 
-                  <div class="form-group">
-                    <input
-                      type="text"
-                      placeholder="Your Name"
-                    >
-                  </div>
-
-                  <div class="form-group">
-                    <input
-                      class="u-space-v-large"
-                      type="password"
-                      placeholder="Create Password"
-                    >
-                  </div>
-
-                  <button
-                    type="submit"
-                    class="button expanded success"
-                  >Sign up free</button>
-
-                  <div class="c-seperator">
-                    <span class="c-seperator__text">Or</span>
-                  </div>
-
-                  <a
-                    href="#omniauth_authorize_path(resource_name, provider)"
-                    class="button expanded primary u-space-v"
-                  >
-                    <i class="ion-social-octocat"></i> Sign up via Github
-                  </a>
-
-                  <p class="u-text-small u-space-v-undo">
-                    By signing up you are agreeing to Draft's
-                    <a class="link link--underline" href="">Terms of Use</a>
-                    and we will add you to our mailing list.
-                  </p>
+                    <p class="u-text-small u-space-v-undo">
+                      By signing up you are agreeing to Draft's
+                      <a class="link link--underline" ui-sref="terms">Terms of Use</a>
+                      and we will add you to our mailing list.
+                    </p>
+                  </fieldset>
                 </form>
               </div>
             </div>

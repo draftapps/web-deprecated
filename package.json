@@ -60,7 +60,8 @@
   "eslintConfig": {
     "globals": {
       "expect": true,
-      "angular": true
+      "angular": true,
+      "_": true
     },
     "root": true,
     "env": {
@@ -69,6 +70,9 @@
     },
     "extends": [
       "xo-space/esnext"
-    ]
+    ],
+    "rules": {
+      "curly": ["error", "multi"]
+    }
   }
 }
