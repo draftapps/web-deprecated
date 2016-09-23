@@ -13,45 +13,64 @@
                   Welcome back,<br>log in to your account
                 </h4>
 
-                <form>
-                  <div class="form-group">
-                    <input
-                      autofocus
-                      type="email"
-                      placeholder="Email"
+                <div
+                  class="callout alert text-left"
+                  ng-if="loginVM.errors.length"
+                >
+                  <ul>
+                    <li ng-repeat="error in loginVM.errors">{{error}}</li>
+                  </ul>
+                </div>
+
+                <form ng-submit="loginVM.submit()">
+                  <fieldset ng-disabled="loginVM.loading">
+                    <div class="form-group">
+                      <input
+                        autofocus
+                        type="email"
+                        placeholder="Email",
+                        ng-model="loginVM.form.email"
+                        required
+                      >
+                    </div>
+
+                    <div class="form-group">
+                      <input
+                        type="password"
+                        placeholder="Password"
+                        ng-model="loginVM.form.password"
+                        required
+                      >
+                    </div>
+
+                    <div class="form-group text-left">
+                      <input
+                        id="rememberMe"
+                        type="checkbox"
+                        ng-model="loginVM.form.remember"
+                      >
+                      <label for="rememberMe">Remember Me</label>
+                    </div>
+
+                    <button
+                      type="submit"
+                      class="button expanded success"
+                      ng-disabled="loginVM.loading"
+                    >Sign in</button>
+
+                    <div class="c-seperator">
+                      <span class="c-seperator__text">Or</span>
+                    </div>
+
+                    <button
+                      type="button"
+                      class="button expanded primary"
+                      ng-click="loginVM.github()"
+                      ng-disabled="loginVM.loading"
                     >
-                  </div>
-
-                  <div class="form-group">
-                    <input
-                      type="password"
-                      placeholder="Password"
-                    >
-                  </div>
-
-                  <div class="form-group text-left">
-                    <input
-                      id="rememberMe"
-                      type="checkbox"
-                    >
-                    <label for="rememberMe">Remember Me</label>
-                  </div>
-
-                  <button
-                    type="submit"
-                    class="button expanded success"
-                  >Sign in</button>
-
-                  <div class="c-seperator">
-                    <span class="c-seperator__text">Or</span>
-                  </div>
-
-                  <a
-                    href="#omniauth_authorize_path(resource_name, provider)"
-                    class="button expanded default"
-                  >
-                    <i class="ion-social-octocat"></i> Sign in via Github
-                  </a>
+                      <i class="ion-social-octocat"></i> Sign in via Github
+                    </button>
+                  </fieldset>
                 </form>
               </div>
             </div>
@@ -62,12 +81,12 @@
     <div class="row collapse u-text-small u-space-v-large">
       <div class="column">
         <a
-          href="#"
+          ui-sref="forgot-password"
           class="link--underline-hover float-left"
         >Forgot your password?</a>
 
         <p class="float-right u-space-v-undo">
-          Don't have an account? <a class="link link--underline" href="">Get started</a>
+          Don't have an account? <a class="link link--underline" ui-sref="register">Get started</a>
         </p>
       </div>
     </div>

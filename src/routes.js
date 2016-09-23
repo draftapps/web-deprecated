@@ -12,13 +12,43 @@ function routesConfig($stateProvider, $urlRouterProvider, $locationProvider) {
       url: '/',
       templateUrl: 'front/index.html'
     })
+    .state('not-authed', {
+      abstract: true,
+      template: '<ui-view/>',
+      resolve: {
+        auth: authService => authService.redirectAuthed('dashboard')
+      }
+    })
     .state('login', {
       url: '/login',
-      templateUrl: 'app/login.html'
+      templateUrl: 'app/login.html',
+      controller: 'LoginCtrl',
+      controllerAs: 'loginVM',
+      parent: 'not-authed'
     })
     .state('register', {
       url: '/register',
-      templateUrl: 'app/register.html'
+      templateUrl: 'app/register.html',
+      controller: 'RegisterCtrl',
+      controllerAs: 'registerVM',
+      parent: 'not-authed'
+    })
+    .state('forgot-password', {
+      url: '/forgot-password?reset_password_token',
+      templateUrl: 'app/forgot-password.html',
+      controller: 'ForgotPasswordCtrl',
+      controllerAs: 'forgotPasswordVM'
+    })
+    .state('terms', {
+      url: '/terms',
+      templateUrl: 'app/terms.html'
+    })
+    .state('authed', {
+      abstract: true,
+      template: '<ui-view/>',
+      resolve: {
+        user: authService => authService.redirectNotAuthed('login')
+      }
     })
     .state('dashboard', {
       url: '/dashboard',
@@ -26,10 +56,20 @@ function routesConfig($stateProvider, $urlRouterProvider, $locationProvider) {
       controller: 'DasboardCtrl',
       controllerAs: 'dashboardVm',
       resolve: {
-        project: $http => {
-          return $http.get('project.json');
+        project: $http => $http.get('project.json')
+      },
+      parent: 'authed'
+    })
+    .state('logout', {
+      url: '/logout',
+      resolve: {
+        signout: ($auth, $state) => {
+          $auth
+            .signOut()
+              .then($state.go.bind($state, 'front'));
         }
-      }
+      },
+      parent: 'authed'
     })
     .state('notes', {
       url: '/notes',
