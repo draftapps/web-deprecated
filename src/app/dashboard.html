@@ -269,17 +269,6 @@
                     <b class="et h"></b><b class="er v"></b><b class="eb h"></b><b class="el v"></b>
                 </div>
               </div>
-              <div id="notes">
-                <div
-                  class="note"
-                  ng-repeat="note in dashboardVm.selectedArtBoard.obj.notes"
-                  data-index="{{$index + 1}}"
-                  ng-style="dashboardVm.selectedArtBoard.notesStyle(note)"
-                  ng-mouseenter="note.show = true"
-                  ng-mouseleave="note.show = false">
-                  <div style="white-space: nowrap;" ng-show="note.show">{{note.note}}</div>
-                </div>
-              </div>
               <div
                 id="td"
                 class="distance v"
@@ -376,9 +365,9 @@
               </ul>
 
               <div ng-show="rightActivetab === 'props'">
-                <div ng-show="!dashboardVm.selectedArtBoard.selectedLayer">
-                  Please select a layer to see its properities
-                </div>
+                <ul class="items-spaced" ng-show="!dashboardVm.selectedArtBoard.selectedLayer">
+                  <li class="text-center">Please select a layer to see its properities</li>
+                </ul>
                 <aside class="inspector active" ng-show="dashboardVm.selectedArtBoard.selectedLayer">
                   <!-- dashboardVm.selectedArtBoard.selectedLayer -->
                   <h2>{{dashboardVm.selectedArtBoard.selectedLayer.name}}</h2>
