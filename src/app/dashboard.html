@@ -3,37 +3,20 @@
     <header class="c-header">
       <div class="row expanded align-middle">
         <div class="column large-2">
-          <button class="u-text-small">
-            <i class="ion-arrow-left-c u-icon-24"></i> Back
+          <button class="u-text-small u-items-middle">
+            <i class="ion-arrow-left-c u-icon-24 u-space-h-small"></i> Back
           </button>
         </div>
 
         <div class="column large-8">
           <div class="row align-center">
             <a ui-sref="dashboard">
-              <img
-              class="c-header__element"
-              src="images/logo.png"
-              style="height: 32px;">
+              <img class="c-header__element" src="images/logo2.png">
             </a>
           </div>
         </div>
 
         <div class="columns large-2 text-right">
-          <div class="c-header__element search">
-            <input
-              id="main-search"
-              class="search__input"
-              type="text"
-              placeholder="Search"
-            >
-            <label
-              for="main-search"
-              class="search__button"
-            >
-              <i class="ion-android-search u-icon-24"></i>
-            </label>
-          </div>
           <dropdown-toggle
             class="c-header__element"
             pane-align="right"
@@ -70,9 +53,7 @@
             <pane>
               <ul class="menu vertical">
                 <li>
-                  <a>Settings</a>
-                  <a>Profile</a>
-                  <a>Aka.</a>
+                  <a ui-sref="logout">Logout</a>
                 </li>
               </ul>
             </pane>
