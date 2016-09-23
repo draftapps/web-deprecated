@@ -142,7 +142,6 @@
       vRulersStyle: getVRulersStyle,
       hRulersStyle: getHRulersStyle,
       distanceStyle: getDistanceStyle,
-      notesStyle: getNotesStyle,
 
       unselectLayer: unselectLayer,
       screenMouseMove: screenMouseMove,
@@ -474,13 +473,6 @@
         'width': zoomSize(layer.rect.width) + 'px',
         'height': zoomSize(layer.rect.height) + 'px'
       }
-    }
-
-    function getNotesStyle(note) {
-      return {
-        'left': zoomSize(note.rect.x) + 'px',
-        'top':  zoomSize(note.rect.y) + 'px'
-      };
     }
 
     function unselectLayer() {
