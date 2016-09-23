@@ -1,0 +1,272 @@
+<div class="screen">
+  <div class="screen__row">
+    <header class="c-header">
+      <div class="row expanded align-middle">
+        <div class="column large-2">
+          <button class="u-text-small u-items-middle">
+            <i class="ion-arrow-left-c u-icon-24 u-space-h-small"></i> Back
+          </button>
+        </div>
+
+        <div class="column large-8">
+          <div class="row align-center">
+            <a ui-sref="dashboard">
+              <img class="c-header__element" src="images/logo2.png">
+            </a>
+          </div>
+        </div>
+
+        <div class="columns large-2 text-right">
+          <dropdown-toggle
+            class="c-header__element"
+            pane-align="right"
+            close-on-click="true"
+          >
+            <toggle>
+              <button class="notifier">
+                <span class="notifier__detect"></span>
+                <i class="ion-android-notifications u-icon-24"></i>
+              </button>
+            </toggle>
+            <pane>
+              <ul class="menu vertical">
+                <li>
+                  <a>Settings</a>
+                  <a>Profile</a>
+                  <a>Aka.</a>
+                </li>
+              </ul>
+            </pane>
+          </dropdown-toggle>
+          <dropdown-toggle
+            class="c-header__element u-space-h-undo"
+            pane-align="right"
+            close-on-click="true"
+          >
+            <toggle>
+              <img
+                class="avatar"
+                src="images/demo/avatar.png"
+                width="32"
+              >
+            </toggle>
+            <pane>
+              <ul class="menu vertical">
+                <li>
+                  <a ui-sref="logout">Logout</a>
+                </li>
+              </ul>
+            </pane>
+          </dropdown-toggle>
+        </div>
+      </div>
+    </header>
+  </div>
+
+  <div class="screen__row">
+    <div class="page-head">
+      <div class="row expanded align-middle">
+        <div class="columns large-2"></div>
+        <div class="columns large-8">
+          <ul class="page-head__menu menu align-center">
+            <li><a ui-sref="dashboard"><i class="ion-android-download u-icon-24"></i></a></li>
+            <li class="active"><a ui-sref="notes"><i class="ion-chatbox-working u-icon-24"></i></a></li>
+            <li><a><i class="ion-android-download u-icon-24"></i></a></li>
+            <li><a><i class="ion-android-download u-icon-24"></i></a></li>
+          </ul>
+        </div>
+        <div class="columns large-2 text-right">
+          <ul class="actions menu align-right">
+            <button class="actions__button">
+              <span
+                class="actions__status"
+                style="background-color: #ff0"
+              ></span>
+            </button>
+            <li>
+              <dropdown-toggle
+                pane-align="right"
+                close-on-click="true"
+              >
+                <toggle>
+                  <button class="actions__button">
+                    <i class="ion-pricetag"></i>
+                  </button>
+                </toggle>
+                <pane>Dropdown</pane>
+              </dropdown-toggle>
+            </li>
+            <li>
+              <button class="actions__button">
+                <i class="ion-person"></i>
+              </button>
+            </li>
+            <li>
+              <button class="actions__button">
+                <i class="ion-forward"></i>
+              </button>
+            </li>
+            <li>
+              <button class="actions__button u-space-h-undo">
+                <i class="ion-more"></i>
+              </button>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="screen__row -rest">
+    <div class="row expanded collapse">
+      <div class="columns large-2" ng-hide="leftSideBarIsHidden">
+        <aside class="sidebar">
+          <div class="sidebar__head">
+            <div class="sidebar__title">screens</div>
+            <button
+              class="sidebar__collapse-button -left"
+              ng-click="leftSideBarIsHidden = !leftSideBarIsHidden">
+              <i class="sidebar__collapse-arrow ion-arrow-left-b"></i>
+              <i class="sidebar__collapse-menu ion-android-menu"></i>
+            </button>
+          </div>
+          <div class="sidebar__body">
+            <div class="scroller">
+              <ul class="items-spaced">
+                <li ng-repeat="artBoard in notesVm.project.artboards">
+                  <a ng-click="notesVm.project.selectArtBoard(artBoard)">
+                    <img
+                      class="thumbnail"
+                      ng-class="{'is-active': artBoard.objectID === notesVm.selectedArtBoard.obj.objectID}"
+                      ng-src="{{::(artBoard.imageBase64 || artBoard.imagePath)}}">
+                    <span class="u-text-small" ng-bind="::artBoard.name"></span>
+                  </a>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </aside>
+      </div>
+
+      <div class="sidebar__fixed-container" ng-show="leftSideBarIsHidden">
+        <aside class="sidebar -closed">
+          <div class="sidebar__head">
+            <ul class="sidebar__menu menu">
+              <li>
+                <a></a>
+              </li>
+            </ul>
+            <button
+              class="sidebar__collapse-button -right"
+              ng-click="leftSideBarIsHidden = !leftSideBarIsHidden">
+              <i class="sidebar__collapse-arrow ion-arrow-left-b"></i>
+              <i class="sidebar__collapse-menu ion-android-menu"></i>
+            </button>
+          </div>
+          <div class="sidebar__body"></div>
+        </aside>
+      </div>
+
+      <div
+        class="columns"
+        ng-class="{'large-8': !leftSideBarIsHidden && !rightSideBarIsHidden,
+          'large-10': leftSideBarIsHidden || rightSideBarIsHidden,
+          'large-12': leftSideBarIsHidden && rightSideBarIsHidden,
+          'canvas--padded-left': leftSideBarIsHidden,
+          'canvas--padded-right': rightSideBarIsHidden}"
+      >
+        <div
+          style="position: absolute;bottom: 0;left: 50%;padding: 15px;transform: translateX(-50%);z-index: 10;"
+          class="zoom-widget">
+          <button
+            class="zoom-in"
+            ng-disabled="notesVm.project.configs.zoom <= .25"
+            ng-click="notesVm.selectedArtBoard.zoomIn()">
+          </button>
+
+          <label class="zoom-text" style="margin: 0 5px;">
+            {{notesVm.project.configs.zoom * 100}}%
+          </label>
+
+          <button
+            class="zoom-out"
+            ng-click="notesVm.selectedArtBoard.zoomOut()"
+            ng-disabled="notesVm.project.configs.zoom >= 2">
+          </button>
+        </div>
+        <section class="canvas-screen-viewer">
+          <div
+            class="canvas-screen-viewer-inner"
+            ng-style="notesVm.selectedArtBoard.screenParentStyle()">
+            <div
+              id="screen"
+              class="canvas-screen"
+              ng-style="notesVm.selectedArtBoard.screenStyle()">
+              <div id="notes">
+                <div
+                  class="note"
+                  ng-repeat="note in notesVm.selectedArtBoard.obj.notes"
+                  data-index="{{$index + 1}}"
+                  ng-style="notesVm.selectedArtBoard.notesStyle(note)"
+                  ng-mouseenter="note.show = true"
+                  ng-mouseleave="note.show = false">
+                  <div style="white-space: nowrap;" ng-show="note.show">{{note.note}}</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+      </div>
+
+      <div class="columns large-2" ng-hide="rightSideBarIsHidden">
+        <aside class="sidebar">
+          <div class="sidebar__head">
+            <div class="sidebar__title">
+              notes
+            </div>
+            <button
+              class="sidebar__collapse-button -right"
+              ng-click="rightSideBarIsHidden = !rightSideBarIsHidden">
+              <i class="sidebar__collapse-arrow ion-arrow-left-b"></i>
+              <i class="sidebar__collapse-menu ion-android-menu"></i>
+            </button>
+          </div>
+          <div class="sidebar__body">
+            <div class="scroller">
+              <ul class="items-spaced">
+                <li class="text-cener" ng-if="!notesVm.selectedArtBoard.obj.notes.length">No notes in this screen</li>
+                <li
+                  class="o-list--stripped"
+                  ng-repeat="note in notesVm.selectedArtBoard.obj.notes"
+                  ng-click=""
+                  ng-class="{'selected' : note.show === true}">
+                  {{note.note}}
+                </li>
+              </ul>
+            </div>
+          </div>
+        </aside>
+      </div>
+
+      <div class="sidebar__fixed-container" ng-show="rightSideBarIsHidden">
+        <aside class="sidebar -closed  -closed-right">
+          <div class="sidebar__head">
+            <ul class="sidebar__menu menu">
+              <li>
+                <a></a>
+              </li>
+            </ul>
+            <button
+              class="sidebar__collapse-button -left"
+              ng-click="rightSideBarIsHidden = !rightSideBarIsHidden">
+              <i class="sidebar__collapse-arrow ion-arrow-left-b"></i>
+              <i class="sidebar__collapse-menu ion-android-menu"></i>
+            </button>
+          </div>
+          <div class="sidebar__body"></div>
+        </aside>
+      </div>
+
+    </div>
+  </div>
+</div>

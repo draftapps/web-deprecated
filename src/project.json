@@ -2427,7 +2427,33 @@
         }
       ],
       "notes":[
-
+        {
+          "rect":{
+            "x":72,
+            "y":348,
+            "width":113,
+            "height":14
+          },
+          "note":"Product Meeting #45"
+        },
+        {
+          "rect":{
+            "x":172,
+            "y":348,
+            "width":113,
+            "height":14
+          },
+          "note":"Product Meeting #45"
+        },
+        {
+          "rect":{
+            "x":72,
+            "y":148,
+            "width":113,
+            "height":14
+          },
+          "note":"Product Meeting #45"
+        }
       ],
       "pageName":"Page 1",
       "pageObjectID":"A0C448E6-AE5D-4824-AA12-1687E6F5F85A",
@@ -7112,7 +7138,33 @@
         }
       ],
       "notes":[
-
+        {
+          "rect":{
+            "x":72,
+            "y":348,
+            "width":113,
+            "height":14
+          },
+          "note":"Product Meeting #45"
+        },
+        {
+          "rect":{
+            "x":172,
+            "y":348,
+            "width":113,
+            "height":14
+          },
+          "note":"Product Meeting #45"
+        },
+        {
+          "rect":{
+            "x":72,
+            "y":148,
+            "width":113,
+            "height":14
+          },
+          "note":"Product Meeting #45"
+        }
       ],
       "pageName":"Page 1",
       "pageObjectID":"A0C448E6-AE5D-4824-AA12-1687E6F5F85A",

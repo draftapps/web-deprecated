@@ -69,8 +69,8 @@
         <div class="columns large-2"></div>
         <div class="columns large-8">
           <ul class="page-head__menu menu align-center">
-            <li class="active"><a><i class="ion-android-download u-icon-24"></i></a></li>
-            <li><a><i class="ion-chatbox-working u-icon-24"></i></a></li>
+            <li class="active"><a ui-sref="dashboard"><i class="ion-android-download u-icon-24"></i></a></li>
+            <li><a ui-sref="notes"><i class="ion-chatbox-working u-icon-24"></i></a></li>
             <li><a><i class="ion-android-download u-icon-24"></i></a></li>
             <li><a><i class="ion-android-download u-icon-24"></i></a></li>
           </ul>
@@ -179,11 +179,6 @@
                   ng-mousemove="dashboardVm.selectedArtBoard.layerMouseMove(layer);$event.stopPropagation()"
                   ng-click="dashboardVm.selectedArtBoard.selectLayer(layer)">
                   {{layer.type}} - {{layer.name}}
-                </li>
-                <li ng-repeat="color in dashboardVm.project.colors" ng-show="activetab === 'colors'">
-                  <span style="width: 10px;height: 10px;border-radius: 50%;display: inline-block;background-color: {{color.color['css-rgba']}}"></span>
-                  <span>{{color.name}}</span><br>
-                  <span>{{color.color['color-hex']}}</span>
                 </li>
               </ul>
             </div>
@@ -349,8 +344,8 @@
             <button
               class="sidebar__collapse-button -right"
               ng-click="rightSideBarIsHidden = !rightSideBarIsHidden">
+              <i class="sidebar__collapse-arrow ion-arrow-left-b"></i>
               <i class="sidebar__collapse-menu ion-android-menu"></i>
-              <i class="sidebar__collapse-arrow ion-arrow-right-b"></i>
             </button>
           </div>
           <div class="sidebar__body">

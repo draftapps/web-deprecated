@@ -31,6 +31,17 @@ function routesConfig($stateProvider, $urlRouterProvider, $locationProvider) {
         }
       }
     })
+    .state('notes', {
+      url: '/notes',
+      templateUrl: 'app/notes.html',
+      controller: 'NotesCtrl',
+      controllerAs: 'notesVm',
+      resolve: {
+        project: $http => {
+          return $http.get('project.json');
+        }
+      }
+    })
     .state('ui-components', {
       url: '/ui-components',
       templateUrl: 'app/ui-components.html'
