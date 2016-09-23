@@ -1,42 +1,30 @@
+$margins: (
+  undo: 0,
+  small: $global-margin / 2,
+  default: $global-margin,
+  large: $global-margin * 2,
+  xlarge: $global-margin * 3,
+  xxlarge: $global-margin * 6,
+);
+
+
 // #SPACE-V
-.u-no-space-v {
-  margin-bottom: 0;
+@mixin space-v($name) {
+  .u-space-v#{if($name != 'default', '-' + $name, '')} {
+    margin-bottom: map-get($margins, $name);
+  }
 }
 
-.u-space-v-small {
-  margin-bottom: $global-margin / 2;
-}
-
-.u-space-v {
-  margin-bottom: $global-margin;
-}
-
-.u-space-v-large {
-  margin-bottom: $global-margin * 2;
-}
-
-.u-space-v-xlarge {
-  margin-bottom: $global-margin * 3;
-}
-
-.u-space-v-xxlarge {
-  margin-bottom: $global-margin * 6;
-}
 
 // #SPACE-H
-.u-no-space-h {
-  margin-right: 0;
+@mixin space-h($name) {
+  .u-space-h#{if($name != 'default', '-' + $name, '')} {
+    margin-right: map-get($margins, $name);
+  }
 }
 
-.u-space-h {
-  margin-right: $global-margin;
-}
-
-.u-space-h-large {
-  margin-right: $global-margin * 2;
-}
-
-.u-space-h-center {
-  margin-left: auto;
-  margin-right: auto;
+// Loop over $margins to produce both
+@each $name, $size in $margins {
+  @include space-h($name);
+  @include space-v($name);
 }

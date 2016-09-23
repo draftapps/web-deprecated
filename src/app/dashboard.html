@@ -56,7 +56,7 @@
             </pane>
           </dropdown-toggle>
           <dropdown-toggle
-            class="c-header__element u-no-space-h"
+            class="c-header__element u-space-h-undo"
             pane-align="right"
             close-on-click="true"
           >
@@ -126,7 +126,7 @@
               </button>
             </li>
             <li>
-              <button class="actions__button u-no-space-h">
+              <button class="actions__button u-space-h-undo">
                 <i class="ion-more"></i>
               </button>
             </li>
@@ -146,13 +146,13 @@
                 <a
                   ng-click="activetab = 'boards'"
                   ng-init="activetab = 'boards'">
-                  <i class="ion-images u-space-h-center"></i>
+                  <i class="ion-images u-align-block-center"></i>
                 </a>
               </li>
               <li ng-class="{'active': activetab === 'layers'}">
                 <a
                   ng-click="activetab = 'layers'">
-                  <i class="ion-social-buffer u-space-h-center"></i>
+                  <i class="ion-social-buffer u-align-block-center"></i>
                 </a>
               </li>
             </ul>
@@ -345,23 +345,23 @@
                 <a
                   ng-click="rightActivetab = 'code'"
                   ng-init="rightActivetab = 'props'">
-                  <i class="ion-code u-space-h-center"></i>
+                  <i class="ion-code u-align-block-center"></i>
                 </a>
               </li>
               <li ng-class="{'active': rightActivetab === 'colors'}">
                 <a
                   ng-click="rightActivetab = 'colors'">
-                  <i class="ion-android-color-palette u-space-h-center"></i>
+                  <i class="ion-android-color-palette u-align-block-center"></i>
                 </a>
               </li>
               <li ng-class="{'active': rightActivetab === 'props'}">
                 <a ng-click="rightActivetab = 'props'">
-                  <i class="ion-hammer u-space-h-center"></i>
+                  <i class="ion-hammer u-align-block-center"></i>
                 </a>
               </li>
               <li   ng-class="{'active': rightActivetab === 'slices'}">
                 <a ng-click="rightActivetab = 'slices'">
-                  <i class="ion-image u-space-h-center"></i>
+                  <i class="ion-image u-align-block-center"></i>
                 </a>
               </li>
             </ul>
