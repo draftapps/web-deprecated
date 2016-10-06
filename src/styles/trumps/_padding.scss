@@ -6,8 +6,23 @@
   padding: $global-margin * 2;
 }
 
+.u-padding-v-large {
+  padding-top: $global-margin * 2;
+  padding-bottom: $global-margin * 2;
+}
+
 .u-padding-xlarge {
   padding: $global-margin * 3;
+}
+
+.u-padding-v-xlarge {
+  padding-top: $global-margin * 3;
+  padding-bottom: $global-margin * 3;
+}
+
+.u-padding-v-xxxxlarge {
+  padding-top: $global-margin * 6;
+  padding-bottom: $global-margin * 6;
 }
 
 .u-padding-small {

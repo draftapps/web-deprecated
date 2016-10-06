@@ -10,10 +10,6 @@
   background-color: transparent;
 }
 
-.c-section--head__img {
-  margin-bottom: -205px;
-}
-
 .c-section--head__tail {
   padding-top: 205px;
   background-color: $white;
@@ -25,8 +21,12 @@
 }
 
 .c-section--light {
-  background-color: #6aaab4;
+  background-color: #43d29e;
   color: $white;
+}
+
+.c-section--pale {
+  background-color: #f7f8fb;
 }
 
 .c-section--light__head {

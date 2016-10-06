@@ -9,4 +9,15 @@
       color: $white;
     }
   }
+  &--success {
+    background: #4fd696;
+    color: #fff;
+    &:hover,
+    &:focus {
+      background: #37ac74;
+    }
+  }
+  &--block {
+    width: 100%;
+  }
 }

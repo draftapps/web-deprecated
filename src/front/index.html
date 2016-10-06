@@ -1,405 +1,111 @@
 <div class="front">
   <div class="c-header__wrapper">
-    <header class="u-padding">
-      <div class="row align-middle">
-        <div class="column large-2">
-          <a href>
-            <img src="images/front-logo.png" alt="" />
-          </a>
-        </div>
-
-        <div class="column large-8">
-          <nav class="text-center">
-            <ul class="o-list--unstyled o-list--inline">
-              <li class="u-space-h">
-                <a href>
-                  Features
-                </a>
-              </li>
-              <li class="u-space-h">
-                <a href>
-                  Integrations
-                </a>
-              </li>
-              <li class="u-space-h">
-                <a href>
-                  Pricing
-                </a>
-              </li>
-              <li class="u-space-h">
-                <a href>
-                  Blog
-                </a>
-              </li>
-            </ul>
-          </nav>
-        </div>
-
-        <div class="column large-2">
-          <ul class="o-list--unstyled o-list--inline text-right">
-            <li class="u-space-h">
-              <a ui-sref="login">sign in</a>
-            </li>
-            <li>
-              <a ui-sref="register" class="button alert">signup</a>
-            </li>
-          </ul>
-        </div>
-      </div>
-    </header>
-
+    <ng-include src="'partials/header.html'"></ng-include>
     <section class="c-section--head u-padding-large">
       <div class="row align-center text-center">
-        <div class="column large-8 u-space-v-large">
-          <h3 class="u-space-v-undo">The easiest collaporative</h3>
-          <h3 class="u-space-v">tool for designers and developers</h3>
-          <span class="u-text-s">create Sketch or Photoshop design files and generate instantly exportable assets and styleguides.</span>
+        <div class="column large-12 u-space-v-large">
+          <h3 class="home-title u-space-v-undo">Simple collaborative tool for designers and developers</h3>
+          <span class="u-text-s">Draft helps you to collaborate faster, generate instantly exportable assets and real code, manage your project statuses, assign tasks, share and discuss feedback on your designs..</span>
         </div>
-
-        <div class="column large-6 u-space-v-large">
+        <div class="column large-8 u-space-v-large">
           <div class="c-input-group">
-            <input class="c-input-group__field" type="text" name="name" value="" placeholder="Email Address">
-            <a class="button small alert c-input-group__button">Get Started for Free</a>
+            <form action="">
+              <input class="c-input-group__field" type="text" name="name" value="" placeholder="Email Address">
+              <button class="button small success c-input-group__button">Join our Private Beta</button>
+            </form>
           </div>
-          <span class="u-text-s u-text-bold">Free 30 days trial. No Credit Card required</span>
+          <span class="u-text-s">We’re launching soon in private beta — sign up to get an invite!</span>
         </div>
 
         <img src="images/lp-bg.png" class="c-section--head__img" />
       </div>
     </section>
-    <div class="c-section--head__tail"></div>
   </div>
 
   <div class="c-section__wrapper">
     <section class="c-section u-padding-large">
       <div class="row align-center text-center">
-        <div class="column large-9 u-space-v-large">
-          <h5>Export Sketch and Photoshop design assets to HTML/CSS, Xcode and Android Studio</h3>
-          <span class="u-text-s">Work is well underway and we will be launching very soon. Enter your</span>
-          <br>
-          <span class="u-text-s">email address below for an account</span>
+        <div class="column large-12 u-space-v-large">
+          <img src="images/preview.png" alt="">
         </div>
       </div>
-
-      <div class="row align-center">
-        <div class="column large-8">
-          <div class="row align-center large-up-3 text-center">
-            <div class="column">
-              <div class="box u-padding-xlarge">
-                <img src="images/app-design.png" class="u-space-v"/>
-                <div>App Design</div>
-              </div>
-            </div>
-
-            <div class="column">
-              <div class="box box--warning u-padding-xlarge">
-                <img src="images/web-design.png" class="u-space-v"/>
-                <div>Web Design</div>
-              </div>
-            </div>
-
-            <div class="column">
-              <div class="box u-padding-xlarge">
-                <img src="images/Branding.png" class="u-space-v"/>
-                <div>Branding</div>
-              </div>
-            </div>
+      <div class="for-boxes">
+        <div class="row align-spaced">
+          <div class="column large-5 box">
+            <img src="images/designers.png" alt="">
+            <p><strong>For Designers</strong></p>
+            <p>With Draft’s Sketch and Photoshop plugins, you will be able to export your designs to Draft with a single click. Also if you want to update them, you will do that straight from Sketch or Photoshop, just hit the sync button.</p>
+            <a ui-sref="features" class="button info">Explore Features</a>
+          </div>
+          <div class="column large-5 box">
+            <img src="images/developers.png" alt="">
+            <p><strong>For Developers</strong></p>
+            <p>With Draft’s Sketch and Photoshop plugins, you will be able to export your designs to Draft with a single click. Also if you want to update them, you will do that straight from Sketch or Photoshop, just hit the sync button.</p>
+            <a ui-sref="features" class="button info">Explore Features</a>
           </div>
         </div>
       </div>
     </section>
 
-    <section class="c-section u-padding-large u-space-v">
+    <section class="c-section u-padding-large u-space-v more-features">
       <div class="text-center u-space-v-large">
-        <h4 class="u-text-bold">Our Awsome Features</h4>
+        <h4 class="u-text-bold">Also More Features</h4>
+      </div>
+      <div class="row large-up-3">
+        <div class="column">
+          <img src="images/features/1.png" alt="">
+          <p><strong>Project and Team Activity</strong></p>
+          <p>Bird Home Automation’s $349 DoorBird Video Doorbell, preorderable now for $299 and due to ship in March</p>
+        </div>
+        <div class="column">
+          <img src="images/features/2.png" alt="">
+          <p><strong>Project Status</strong></p>
+          <p>Bird Home Automation’s $349 DoorBird Video Doorbell, preorderable now for $299 and due to ship in March.</p>
+        </div>
+        <div class="column">
+          <img src="images/features/3.png" alt="">
+          <p><strong>Assign tasks</strong></p>
+          <p>Bird Home Automation’s $349 DoorBird Video Doorbell, preorderable now for $299 and due to ship in March.</p>
+        </div>
+        <div class="column">
+          <img src="images/features/4.png" alt="">
+          <p><strong>Project Due Date</strong></p>
+          <p>Bird Home Automation’s $349 DoorBird Video Doorbell, preorderable now for $299 and due to ship in March.</p>
+        </div>
+        <div class="column">
+          <img src="images/features/5.png" alt="">
+          <p><strong>Add More Members</strong></p>
+          <p>Bird Home Automation’s $349 DoorBird Video Doorbell, preorderable now for $299 and due to ship in March.</p>
+        </div>
+        <div class="column">
+          <img src="images/features/6.png" alt="">
+          <p><strong>Forward To Your Favorite Tool</strong></p>
+          <p>Bird Home Automation’s $349 DoorBird Video Doorbell, preorderable now for $299 and due to ship in March.</p>
+        </div>
+      </div>
+      <div class="text-center u-space-v-large">
+        <h4 class="u-text-bold">Integrations</h4>
       </div>
 
-      <div class="row align-center">
-        <div class="column large-10">
-          <div class="row large-up-3">
-            <div class="column">
-              <div class="media-object">
-                <div class="media-object-section">
-                  <img src="images/license.png">
-                </div>
-                <div class="media-object-section main-section">
-                  <h6>Our License</h6>
-                  <p class="u-text-s">
-                    Bird Home Automation's $349 DoorBird Video Doorbell, preorderable now for $299 and due to ship in March
-                  </p>
-                </div>
-              </div>
-            </div>
-
-            <div class="column">
-              <div class="media-object">
-                <div class="media-object-section">
-                  <img src="images/cloud.png">
-                </div>
-                <div class="media-object-section main-section">
-                  <h6>File Cloud</h6>
-                  <p class="u-text-s">
-                    Bird Home Automation's $349 DoorBird Video Doorbell, preorderable now for $299 and due to ship in March
-                  </p>
-                </div>
-              </div>
-            </div>
-            <div class="column">
-              <div class="media-object">
-                <div class="media-object-section">
-                  <img src="images/security.png">
-                </div>
-                <div class="media-object-section main-section">
-                  <h6>Base Security</h6>
-                  <p class="u-text-s">
-                    Bird Home Automation's $349 DoorBird Video Doorbell, preorderable now for $299 and due to ship in March
-                  </p>
-                </div>
-              </div>
-            </div>
-            <div class="column">
-              <div class="media-object">
-                <div class="media-object-section">
-                  <img src="images/payment-cards.png">
-                </div>
-                <div class="media-object-section main-section">
-                  <h6>Online Payments</h6>
-                  <p class="u-text-s">
-                    Bird Home Automation's $349 DoorBird Video Doorbell, preorderable now for $299 and due to ship in March
-                  </p>
-                </div>
-              </div>
-            </div>
-            <div class="column">
-              <div class="media-object">
-                <div class="media-object-section">
-                  <img src="images/cloud.png">
-                </div>
-                <div class="media-object-section main-section">
-                  <h6>File Cloud</h6>
-                  <p class="u-text-s">
-                    Bird Home Automation's $349 DoorBird Video Doorbell, preorderable now for $299 and due to ship in March
-                  </p>
-                </div>
-              </div>
-            </div>
-            <div class="column">
-              <div class="media-object">
-                <div class="media-object-section">
-                  <img src="images/security.png">
-                </div>
-                <div class="media-object-section main-section">
-                  <h6>Base Security</h6>
-                  <p class="u-text-s">
-                    Bird Home Automation's $349 DoorBird Video Doorbell, preorderable now for $299 and due to ship in March
-                  </p>
-                </div>
-              </div>
-            </div>
-          </div>
+      <div class="row large-up-3">
+        <div class="column">
+          <img src="images/integrations/dropbox.png" alt="">
+          <p><strong>Dropbox</strong></p>
+          <p>Bird Home Automation’s $349 DoorBird Video Doorbell, preorderable now for $299 and due to ship in March.</p>
+        </div>
+        <div class="column">
+          <img src="images/integrations/slack.png" alt="">
+          <p><strong>Slack</strong></p>
+          <p>Bird Home Automation’s $349 DoorBird Video Doorbell, preorderable now for $299 and due to ship in March.</p>
+        </div>
+        <div class="column">
+          <img src="images/integrations/trello.png" alt="">
+          <p><strong>Trello</strong></p>
+          <p>Bird Home Automation’s $349 DoorBird Video Doorbell, preorderable now for $299 and due to ship in March.</p>
         </div>
       </div>
     </section>
-
-    <section class="c-section--dark u-padding-xlarge">
-      <div class="row align-center text-center">
-        <div class="column large-10">
-          <img src="images/quote.png" class="u-space-v-large" />
-          <slick>
-            <div>
-              <p class="u-space-v-xlarge u-text-l u-text-bold">
-                This an absolute game changer and time saver <br />
-                Thanks for building this solution to an often overlooked, <br />
-                but important problem is the design and build process!
-              </p>
-
-              <img src="images/demo/avatar.png" class="u-align-block-center u-space-v-small avatar u-icon-15" />
-              <p class="u-space-v-undo u-text-l">Ben Maclaren</p>
-              <p class="u-text-s u-space-v-undo">Product Designer</p>
-            </div>
-
-            <div>
-              <p class="u-space-v-xlarge u-text-l u-text-bold">
-                2 This an absolute game changer and time saver <br />
-                Thanks for building this solution to an often overlooked, <br />
-                but important problem is the design and build process!
-              </p>
-
-              <img src="images/demo/avatar.png" class="u-align-block-center u-space-v-small avatar u-icon-15" />
-              <p class="u-space-v-undo u-text-l">Ben Maclaren</p>
-              <p class="u-text-s u-space-v-undo">Product Designer</p>
-            </div>
-
-            <div>
-              <p class="u-space-v-xlarge u-text-l u-text-bold">
-                3 This an absolute game changer and time saver <br />
-                Thanks for building this solution to an often overlooked, <br />
-                but important problem is the design and build process!
-              </p>
-
-              <img src="images/demo/avatar.png" class="u-align-block-center u-space-v-small avatar u-icon-15" />
-              <p class="u-space-v-undo u-text-l">Ben Maclaren</p>
-              <p class="u-text-s u-space-v-undo">Product Designer</p>
-            </div>
-
-            <div>
-              <p class="u-space-v-xlarge u-text-l u-text-bold">
-                4 This an absolute game changer and time saver <br />
-                Thanks for building this solution to an often overlooked, <br />
-                but important problem is the design and build process!
-              </p>
-
-              <img src="images/demo/avatar.png" class="u-align-block-center u-space-v-small avatar u-icon-15" />
-              <p class="u-space-v-undo u-text-l">Ben Maclaren</p>
-              <p class="u-text-s u-space-v-undo">Product Designer</p>
-            </div>
-          </slick>
-        </div>
-      </div>
-    </section>
-
-    <section class="c-section--light u-padding-xlarge">
-      <div class="row align-center text-center">
-        <div class="column large-7 u-space-v-large">
-          <h5 class="c-section--light__head">Start getting design and build process done faster</h3>
-          <span class="u-text-s">Try every feature, no credit card required</span>
-        </div>
-
-        <div class="column large-6">
-          <div class="c-input-group">
-            <input class="c-input-group__field" type="text" name="name" value="" placeholder="Email address">
-            <a class="button small alert c-input-group__button">Get Started for Free</a>
-          </div>
-        </div>
-      </div>
-    </section>
+    <ng-include src="'partials/join.html'"></ng-include>
   </div>
-
-  <footer class="c-footer u-padding-large">
-    <div class="row align-center">
-      <div class="column large-11">
-        <div class="row collapse">
-          <div class="columns large-7">
-            <div class="row large-up-3">
-              <div class="column">
-                <p class="c-footer__head u-space-v-small">Product</p>
-                <ul class="o-list--unstyled">
-                  <li>
-                    <a href class="u-text-s">Business</a>
-                  </li>
-                  <li>
-                    <a href class="u-text-s">Compare</a>
-                  </li>
-                  <li>
-                    <a href class="u-text-s">Features</a>
-                  </li>
-                  <li>
-                    <a href class="u-text-s">Pricing</a>
-                  </li>
-                </ul>
-              </div>
-
-              <div class="column">
-                <p class="c-footer__head u-space-v-small">About Us</p>
-                <ul class="o-list--unstyled">
-                  <li>
-                    <a href class="u-text-s">Blogs</a>
-                  </li>
-                  <li>
-                    <a href class="u-text-s">News</a>
-                  </li>
-                  <li>
-                    <a href class="u-text-s">press Releases</a>
-                  </li>
-                  <li>
-                    <a href class="u-text-s">News</a>
-                  </li>
-                </ul>
-              </div>
-
-              <div class="column">
-                <p class="c-footer__head u-space-v-small">Learn More</p>
-                <ul class="o-list--unstyled">
-                  <li>
-                    <a href class="u-text-s">Support</a>
-                  </li>
-                  <li>
-                    <a href class="u-text-s">Developers</a>
-                  </li>
-                  <li>
-                    <a href class="u-text-s">Customer Services</a>
-                  </li>
-                  <li>
-                    <a href class="u-text-s">Get Started Guide</a>
-                  </li>
-                </ul>
-              </div>
-            </div>
-          </div>
-
-          <div class="column large-5">
-            <div class="row align-right">
-              <div class="column large-8">
-                <p class="c-footer__head u-space-v-small">Subscribe to news letter</p>
-                <div class="c-input-group c-input-group--small">
-                  <input class="c-input-group__field u-text-s" type="text" name="name" value="" placeholder="Email address">
-                  <a class="button warning small c-input-group__button"><img src="images/mail.png"/></a>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div class="column large-12">
-            <div class="c-footer__separator c-seperator"></div>
-          </div>
-        </div>
-
-        <div class="row collapse align-middle u-text-s">
-          <div class="column large-5">
-            2018 Draft. All rights reserved.
-          </div>
-
-          <div class="column large-5">
-            <ul class="o-list--unstyled o-list--inline u-text-bold">
-              <li class="u-space-h-large">
-                <a href>
-                  Privacy Policy
-                </a>
-              </li>
-              <li class="u-space-h">
-                <a href>
-                  Terms & Conditions
-                </a>
-              </li>
-            </ul>
-          </div>
-
-          <div class="column large-2 text-right">
-            <ul class="o-list--unstyled o-list--inline">
-              <li class="u-space-h">
-                <a href>
-                  <img src="images/facebook.png"/>
-                </a>
-              </li>
-              <li class="u-space-h">
-                <a href>
-                  <img src="images/twitter.png"/>
-                </a>
-              </li>
-              <li class="u-space-h">
-                <a href>
-                  <img src="images/linkedin.png"/>
-                </a>
-              </li>
-              <li>
-                <a href>
-                  <img src="images/pinterest.png"/>
-                </a>
-              </li>
-            </ul>
-          </div>
-        </div>
-      </div>
-    </div>
-  </footer>
+  <ng-include src="'partials/footer.html'"></ng-include>
 </div>
