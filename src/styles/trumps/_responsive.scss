@@ -1,0 +1,134 @@
+@media (max-width: 767px) {
+  .c-features .tabs-title:first-child a,
+  .c-features .tabs-title:last-child a {
+    padding: 0.75rem;
+    font-size: 14px;
+  }
+  .c-contact {
+    padding: 20px;
+    h1 {
+      font-size: 20px;
+    }
+    form {
+      margin: 0;
+    }
+  }
+  .u-padding-v-xxxxlarge {
+    padding: 20px;
+  }
+  .c-features__title {
+    font-size: 18px;
+  }
+  .c-features p {
+    font-size: 14px;
+  }
+  .tabs-panel {
+    .u-padding-v-large {
+      padding: 20px;
+      order: 1;
+    }
+  }
+  section.u-padding-large {
+    padding: 15px;
+  }
+  nav {
+    .u-space-h {
+      margin: 0;
+    }
+  }
+  .home-title {
+    font-size: 20px;
+    margin: 15px 0;
+  }
+  .c-section--head {
+    .u-text-s {
+      font-size: 14px;
+      margin: 15px 0;
+      max-width: 100%;
+    }
+    .u-space-v-large {
+      margin: 0;
+    }
+    .row {
+      display: block;
+    }
+  }
+  .join .row {
+    display: block;
+    input {
+      margin: 0;
+    }
+  }
+  .join .c-input-group__button {
+    padding: 0;
+  }
+  .join .c-input-group__button,
+  .c-section--head .c-input-group__field {
+    height: 40px;
+  }
+  .for-boxes .box {
+    padding: 15px;
+  }
+  .for-boxes .box strong {
+    font-size: 20px;
+  }
+  .for-boxes .row {
+    display: block;
+  }
+  .for-boxes .box a {
+    margin: 0;
+  }
+  .for-boxes .box + .box {
+    margin-top: 15px;
+  }
+  .more-features.u-padding-large {
+    padding-top: 30px;
+    .u-space-v-large {
+      margin-bottom: 15px;
+    }
+    .row {
+      display: block;
+    }
+  }
+  .more-features.integration-details .large-up-3 .column,
+  .more-features.integration-details .large-up-3 .columns {
+    margin-bottom: 30px;
+  }
+  footer {
+    .text-right {
+      text-align: center;
+    }
+    &.c-footer {
+      padding: 15px;
+      text-align: center;
+    }
+    .u-space-h {
+      margin: 0;
+    }
+    div, p {
+      line-height: 2;
+      font-size: 12px;
+    }
+    .row {
+      display: block;
+    }
+    .c-seperator {
+      margin: 10px 0;
+    }
+  }
+  .join-block {
+    .join input {
+      height: 40px;
+    }
+    .u-space-v-large {
+      margin: 0;
+    }
+    padding: 15px;
+    .row {
+      .c-section--light__head {
+        line-height: 1.4;
+      }
+      display: block;
+    }
+  }
+}

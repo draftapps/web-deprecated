@@ -29,6 +29,9 @@
 
 .c-header__wrapper {
   background: #e1e8ee;
+  .c-input-group {
+    margin-bottom: 10px;
+  }
 }
 
 .c-section--light__head {
@@ -45,4 +48,8 @@ header {
       margin-left: 30px;
     }
   }
+}
+.logo {
+  width: 124px;
+  min-height: 73px;
 }

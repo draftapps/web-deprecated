@@ -18,7 +18,7 @@
     top: 0;
     right: 0;
     bottom: 0;
-    border-radius: 0 5px 5px 0;
+    border-radius: 5px;
     font-size: 18px;
     font-weight: 600;
   }
@@ -30,7 +30,6 @@
   padding-bottom: 1px;
 }
 .for-boxes {
-  margin-bottom: 100px;
   .box {
     padding: 35px;
     text-align: center;
@@ -59,6 +58,18 @@
   }
 }
 .more-features {
+  &.u-padding-large {
+    padding-top: 60px;
+  }
+  &.integration-details {
+    background: #fff;
+    .large-up-3 {
+      .column {
+        margin-bottom: 10px;
+      }
+    }
+  }
+  background: #f7f8fb;
   text-align: center;
   h4 {
     font-weight: 600;
@@ -88,6 +99,9 @@
   }
   input {
     height: 58px;
+    @media (min-width: 768px) {
+      margin-bottom: 0;
+    }
   }
   button {
     font-weight: 600;
@@ -101,5 +115,17 @@
   img {
     margin-bottom: 15px;
     width: 50px;
+  }
+}
+.join-block {
+  .button {
+    font-size: 18px;
+    font-weight: 600;
+  }
+  h5 {
+    margin: 0;
+  }
+  .u-space-v-large {
+    margin-bottom: 25px;
   }
 }
