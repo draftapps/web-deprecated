@@ -2,7 +2,7 @@
   font-family: 'Poppins', sans-serif;
   font-weight: 600;
   font-size: 38px;
-  margin-top: 30px;
+  margin-top: 40px;
 }
 .c-section--head {
   .u-text-s {
@@ -38,7 +38,6 @@
     border: 1px solid #f0f2f7;
     img {
       vertical-align: top;
-      margin-bottom: 35px;
     }
     strong {
       font-size: 24px;
@@ -65,9 +64,6 @@
     font-weight: 600;
     color: #424955;
     font-size: 24px;
-  }
-  img {
-    margin-bottom: 15px;
   }
   p {
     font-size: 14px;
@@ -99,5 +95,11 @@
   }
   .column {
     padding: 0.4687rem
+  }
+}
+.integrations {
+  img {
+    margin-bottom: 15px;
+    width: 50px;
   }
 }
