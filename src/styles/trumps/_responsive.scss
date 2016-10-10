@@ -1,4 +1,45 @@
+.internal {
+  background: #fff;
+  border-bottom: 1px solid #dbdde7;
+}
+.menu-trigger {
+  display: none;
+}
+@media (min-width: 768px) {
+  .img-plugin {
+    max-width: 268px;
+  }
+  .img-export {
+    max-width: 308px;
+  }
+  .img-style {
+    max-width: 589px;
+  }
+  .img-feedback {
+    max-width: 407px;
+  }
+  .img-screens {
+    max-width: 555px;
+  }
+  .img-slack {
+    max-width: 314px;
+  }
+  .img-code {
+    max-width: 365px;
+  }
+  .img-measuring {
+    max-width: 228px;
+  }
+}
 @media (max-width: 767px) {
+  .c-overlay {
+    display: block;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+  }
   .c-features .tabs-title:first-child a,
   .c-features .tabs-title:last-child a {
     padding: 0.75rem;
@@ -10,7 +51,7 @@
       font-size: 20px;
     }
     form {
-      margin: 0;
+      margin: 0 auto;
     }
   }
   .u-padding-v-xxxxlarge {
@@ -129,6 +170,38 @@
         line-height: 1.4;
       }
       display: block;
+    }
+  }
+  .menu-trigger {
+    display: inline-block;
+    width: 32px;
+    height: 32px;
+  }
+  nav ul {
+    display: none;
+  }
+  nav {
+    position: relative;
+  }
+  nav ul.opened {
+    display: block;
+    position: absolute;
+    right: 0;
+    top: 40px;
+    padding: 5px 15px;
+    background: #3a405b;
+    z-index: 1;
+    li {
+      display: block;
+      a {
+        line-height: 30px;
+        display: block;
+        margin: 0;
+      }
+    }
+    a {
+      color:#fff;
+      text-align: center;
     }
   }
 }
