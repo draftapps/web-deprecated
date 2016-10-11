@@ -1,0 +1,131 @@
+.home-title {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 600;
+  font-size: 38px;
+  margin-top: 40px;
+}
+.c-section--head {
+  .u-text-s {
+    font-size: 17px;
+    color: #68768c;
+    line-height: 1.4;
+    max-width: 90%;
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+  }
+  .c-input-group__button {
+    top: 0;
+    right: 0;
+    bottom: 0;
+    border-radius: 5px;
+    font-size: 18px;
+    font-weight: 600;
+  }
+  .c-input-group__field {
+    height: 58px;
+  }
+}
+.c-section--head.u-padding-large {
+  padding-bottom: 1px;
+}
+.for-boxes {
+  .box {
+    padding: 35px;
+    text-align: center;
+    background: #f7f8fb;
+    border: 1px solid #f0f2f7;
+    img {
+      vertical-align: top;
+    }
+    strong {
+      font-size: 24px;
+      font-weight: 600;
+      color: #424955;
+      text-align: center;
+      display: block;
+    }
+    p {
+      font-size: 14px;
+      color: #68768c;
+      text-align: justify;
+    }
+    a {
+      font-size: 16px;
+      font-weight: normal;
+      margin-top: 15px;
+    }
+  }
+}
+.more-features {
+  &.u-padding-large {
+    padding-top: 60px;
+  }
+  &.integration-details {
+    background: #fff;
+    .large-up-3 {
+      .column {
+        margin-bottom: 10px;
+      }
+    }
+  }
+  background: #f7f8fb;
+  text-align: center;
+  h4 {
+    font-weight: 600;
+    color: #424955;
+    font-size: 24px;
+  }
+  p {
+    font-size: 14px;
+    color: #818791;
+  }
+  strong {
+    font-size: 18px;
+    color: #424955;
+  }
+  .large-up-3 {
+    .column {
+      margin-bottom: 30px;
+    }
+  }
+}
+.join {
+  .c-input-group__button {
+    position: static;
+    font-weight: 600;
+    height: 58px;
+    width: 100%
+  }
+  input {
+    height: 58px;
+    @media (min-width: 768px) {
+      margin-bottom: 0;
+    }
+  }
+  button {
+    font-weight: 600;
+    font-family: 'Poppin', sans-serif;
+  }
+  .column {
+    padding: 0.4687rem
+  }
+}
+.integrations {
+  img {
+    margin-bottom: 15px;
+    width: 50px;
+  }
+}
+.join-block {
+  .button {
+    font-size: 18px;
+    font-weight: 600;
+  }
+  h5 {
+    margin: 0;
+  }
+  .u-space-v-large {
+    margin-bottom: 25px;
+  }
+}

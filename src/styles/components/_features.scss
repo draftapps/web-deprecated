@@ -1,0 +1,48 @@
+.c-features {
+  &__title {
+    font-size: 1.5rem;
+  }
+  p {
+    margin: 0;
+    color: #68768c;
+  }
+  .tabs {
+    text-align: center;
+    border: 0;
+    padding-top: 40px;
+  }
+  .tabs-panel {
+    padding: 0;
+  }
+  .tabs-title {
+    float: none;
+    display: inline-block;
+    &:first-child {
+      a {
+        border-radius: 50px 0 0 50px;
+      }
+    }
+    &:last-child {
+      a {
+        border-radius: 0 50px 50px 0;
+      }
+    }
+    & > a {
+      font-size: 1rem;
+      color: #68768c;
+      background-color: #f3f6f8;
+      border: 1px solid #ebebeb;
+      padding: 0.75rem 1.5rem;
+    }
+    & + .tabs-title {
+      margin-left: -5px;
+    }
+    &.is-active {
+      & > a {
+        color: #fff;
+        background: #4e8ef7;
+        border-color: #4e8ef7;
+      }
+    }
+  }
+}

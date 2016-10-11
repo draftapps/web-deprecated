@@ -36,8 +36,11 @@
             top: 0;
             opacity: 0.8;
           }
+          #test-nav {
+            display: none !important;
+          }
         </style>
-        <nav class="top-bar" id="test-nav">
+        <div class="top-bar" id="test-nav">
           <ul class="menu">
             <li><a class="link" ui-sref="front">Landing Page</a></li>
             <li><a class="link" ui-sref="login">Login</a></li>
@@ -45,7 +48,7 @@
             <li><a class="link" ui-sref="logout">Logout</a></li>
             <li><a class="link" ui-sref="dashboard">Dashboard</a></li>
           </ul>
-        </nav>
+        </div>
       </div>
     </div>
 
@@ -66,4 +69,15 @@
   <!-- angular templates will be automatically converted in js and inserted here -->
   <!-- endinject -->
   <!-- endbuild -->
+  <script>
+    $(document).on('click', '.menu-trigger', function(ev){
+      ev.preventDefault();
+      $('nav ul').toggleClass('opened');
+      $('nav').append('<div class="c-overlay"></div>')
+    });
+    $(document).on('touchstart', '.c-overlay', function(){
+      $('nav ul').toggleClass('opened');
+      $(this).remove();
+    });
+  </script>
 </html>
