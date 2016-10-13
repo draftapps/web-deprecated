@@ -1,4 +1,3 @@
-# File Author / Maintainer
 FROM ubuntu:16.04
 MAINTAINER Islam Wazery <wazery@ubuntu.com>
 
@@ -14,13 +13,13 @@ COPY bower.json /home/draft-app-markup
 
 WORKDIR /home/draft-app-markup
 
-# RUN cd $(npm root -g)/npm \
-RUN ln -s /usr/bin/nodejs /usr/bin/node && npm install fs-extra && mv /home/draft-app-markup/node_modules/fs-extra /home/draft-app-markup/node_modules/.fs-extra-DELETE
-#sed -i -e s/graceful-fs/fs-extra/ -e s/fs.rename/fs.move/ /home/draft-app-markup/node_modules/lib/utils/rename.js
+RUN ln -s /usr/bin/nodejs /usr/bin/node && \
+    npm install fs-extra && \
+    mv /home/draft-app-markup/node_modules/fs-extra /home/draft-app-markup/node_modules/.fs-extra-DELETE
 
 # Install Prerequisites
 RUN npm install
-RUN sudo  npm install -g bower gulp-cli
+RUN sudo npm install -g bower gulp-cli
 
 RUN bower install --allow-root --force-latest
 
@@ -28,8 +27,10 @@ ADD . /home/draft-app-markup
 
 RUN gulp
 
+COPY src/front/ dist/front
+COPY src/partials/ dist/partials
+
 COPY nginx.conf /etc/nginx/nginx.conf
-# COPY default /etc/nginx/sites-enabled
 
 RUN cp -r /home/draft-app-markup/dist/* /var/www/html/
 
