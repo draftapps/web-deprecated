@@ -22,13 +22,17 @@ RUN ln -s /usr/bin/nodejs /usr/bin/node && npm install fs-extra && mv /home/draf
 RUN npm install
 RUN sudo  npm install -g bower gulp-cli
 
-RUN bower install --allow-root
+RUN bower install --allow-root --force-latest
 
 ADD . /home/draft-app-markup
 
-RUN gulp build
-COPY nginx.conf /home/
-RUN mv /etc/nginx/nginx.conf /etc/nginx/nginx.conf.default && cp /home/nginx.conf /etc/nginx/ && cp -r /home/draft-app-markup/dist/* /var/www/html/
+RUN gulp
+
+COPY nginx.conf /etc/nginx/nginx.conf
+# COPY default /etc/nginx/sites-enabled
+
+RUN cp -r /home/draft-app-markup/dist/* /var/www/html/
 
 EXPOSE 80
+
 CMD service nginx start
