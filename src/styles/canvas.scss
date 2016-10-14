@@ -1,3 +1,19 @@
+#test-nav {
+  position: fixed;
+  top: -40px;
+  right: 0;
+  left: 0;
+  opacity: 0;
+  transition: 0.3s;
+}
+#test-nav:hover {
+  top: 0;
+  opacity: 0.8;
+}
+#test-nav {
+  display: none !important;
+}
+
 .zoom-widget {
   display: flex;
 }
