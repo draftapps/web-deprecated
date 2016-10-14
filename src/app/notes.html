@@ -1,13 +1,11 @@
-<div class="screen">
+<div class="svg-icons"><ng-include src="'images/svg-defs.svg'"></ng-include></div>
+<div class="screen canvas">
   <div class="screen__row">
     <header class="c-header">
       <div class="row expanded align-middle">
         <div class="column large-2">
-          <button class="u-text-small u-items-middle">
-            <i class="ion-arrow-left-c u-icon-24 u-space-h-small"></i> Back
-          </button>
+          <button class="u-text-small u-items-middle"><svg class="icon-back"><use xlink:href="#shape-arrow" /></svg> Back</button>
         </div>
-
         <div class="column large-8">
           <div class="row align-center">
             <a ui-sref="dashboard">
@@ -15,7 +13,6 @@
             </a>
           </div>
         </div>
-
         <div class="columns large-2 text-right">
           <dropdown-toggle
             class="c-header__element"
@@ -30,11 +27,7 @@
             </toggle>
             <pane>
               <ul class="menu vertical">
-                <li>
-                  <a>Settings</a>
-                  <a>Profile</a>
-                  <a>Aka.</a>
-                </li>
+                <li><a ui-sref="logout">Logout</a></li>
               </ul>
             </pane>
           </dropdown-toggle>
@@ -69,25 +62,25 @@
         <div class="columns large-2"></div>
         <div class="columns large-8">
           <ul class="page-head__menu menu align-center">
-            <li><a ui-sref="dashboard"><i class="ion-android-download u-icon-24"></i></a></li>
+            <li><a ui-sref="dashboard"><svg><use xlink:href="#shape-dashboard" /></svg></a></li>
             <li class="active"><a ui-sref="notes"><i class="ion-chatbox-working u-icon-24"></i></a></li>
-            <li><a><i class="ion-android-download u-icon-24"></i></a></li>
-            <li><a><i class="ion-android-download u-icon-24"></i></a></li>
+            <li><a><svg><use xlink:href="#shape-more" /></svg></a></li>
+            <li><a><svg><use xlink:href="#shape-layers" /></svg></a></li>
           </ul>
         </div>
         <div class="columns large-2 text-right">
           <ul class="actions menu align-right">
-            <button class="actions__button">
-              <span
-                class="actions__status"
-                style="background-color: #ff0"
-              ></span>
-            </button>
             <li>
-              <dropdown-toggle
-                pane-align="right"
-                close-on-click="true"
-              >
+              <button class="actions__button"><span class="actions__status" style="background-color: #ff0"></span></button>
+            </li>
+            <li>
+              <button class="actions__button"><i class="ion-calendar"></i></button>
+            </li>
+            <li>
+              <button class="actions__button"><i class="ion-person"></i></button>
+            </li>
+            <li>
+              <dropdown-toggle pane-align="right" close-on-click="true">
                 <toggle>
                   <button class="actions__button">
                     <i class="ion-pricetag"></i>
@@ -98,13 +91,11 @@
             </li>
             <li>
               <button class="actions__button">
-                <i class="ion-person"></i>
+                <i class="ion-forward"></i>
               </button>
             </li>
             <li>
-              <button class="actions__button">
-                <i class="ion-forward"></i>
-              </button>
+              <button class="actions__button"><svg><use xlink:href="#shape-attachment" /></svg></button>
             </li>
             <li>
               <button class="actions__button u-space-h-undo">
@@ -194,7 +185,7 @@
             ng-disabled="notesVm.project.configs.zoom >= 2">
           </button>
         </div>
-        <section class="canvas-screen-viewer">
+        <section class="canvas-screen-viewer scroller">
           <div
             class="canvas-screen-viewer-inner"
             ng-style="notesVm.selectedArtBoard.screenParentStyle()">
