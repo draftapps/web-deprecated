@@ -1,7 +1,7 @@
 (function () {
   angular
-    .module('app')
-    .controller('RegisterCtrl', RegisterCtrl);
+    .module("app")
+    .controller("RegisterCtrl", RegisterCtrl);
 
   function RegisterCtrl($auth, $state) {
     const vm = this;
@@ -20,11 +20,11 @@
     }
 
     function submit() {
-      auth('submitRegistration', vm.form);
+      auth("submitRegistration", vm.form);
     }
 
     function github() {
-      auth('authenticate', 'github');
+      auth("authenticate", "github");
     }
 
     function start() {
@@ -36,7 +36,7 @@
     }
 
     function success() {
-      $state.go('dashboard');
+      $state.go("dashboard");
     }
 
     function fail(err) {

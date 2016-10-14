@@ -1,8 +1,8 @@
 (function () {
   angular
-    .module('app')
-    .directive('scroller', () => ({
-      restrict: 'C',
+    .module("app")
+    .directive("scroller", () => ({
+      restrict: "C",
       link: scroller
     }));
 

@@ -1,7 +1,7 @@
 (function () {
   angular
-    .module('app')
-    .controller('DasboardCtrl', DasboardCtrl);
+    .module("app")
+    .controller("DasboardCtrl", DasboardCtrl);
 
   function DasboardCtrl(project) {
     var vm = this;
@@ -15,78 +15,78 @@
       {
         units: [
           {
-            name: 'Standard',
-            unit: 'px',
+            name: "Standard",
+            unit: "px",
             scale: 1
           }
         ]
       },
       {
-        name: 'iOS Devices',
+        name: "iOS Devices",
         units: [
           {
-            name: 'Points @1x',
-            unit: 'pt',
+            name: "Points @1x",
+            unit: "pt",
             scale: 1
           },
           {
-            name: 'Retina @2x',
-            unit: 'pt',
+            name: "Retina @2x",
+            unit: "pt",
             scale: 2
           },
           {
-            name: 'Retina HD @3x',
-            unit: 'pt',
+            name: "Retina HD @3x",
+            unit: "pt",
             scale: 3
           }
         ]
       },
       {
-        name: 'Android Devices',
+        name: "Android Devices",
         units: [
           {
-            name: 'LDPI @0.75x',
-            unit: 'dp/sp',
+            name: "LDPI @0.75x",
+            unit: "dp/sp",
             scale: .75
           },
           {
-            name: 'MDPI @1x',
-            unit: 'dp/sp',
+            name: "MDPI @1x",
+            unit: "dp/sp",
             scale: 1
           },
           {
-            name: 'HDPI @1.5x',
-            unit: 'dp/sp',
+            name: "HDPI @1.5x",
+            unit: "dp/sp",
             scale: 1.5
           },
           {
-            name: 'XHDPI @2x',
-            unit: 'dp/sp',
+            name: "XHDPI @2x",
+            unit: "dp/sp",
             scale: 2
           },
           {
-            name: 'XXHDPI @3x',
-            unit: 'dp/sp',
+            name: "XXHDPI @3x",
+            unit: "dp/sp",
             scale: 3
           },
           {
-            name: 'XXXHDPI @4x',
-            unit: 'dp/sp',
+            name: "XXXHDPI @4x",
+            unit: "dp/sp",
             scale: 4
           }
         ]
       },
       {
-        name: 'Web View',
+        name: "Web View",
         units: [
           {
-            name: 'CSS Rem 12px',
-            unit: 'rem',
+            name: "CSS Rem 12px",
+            unit: "rem",
             scale: 12
           },
           {
-            name: 'CSS Rem 14px',
-            unit: 'rem',
+            name: "CSS Rem 14px",
+            unit: "rem",
             scale: 14
           }
         ]
@@ -156,7 +156,7 @@
       unitSize: unitSize,
       isNumber: isNumber,
       round: round
-    }
+    };
     activate();
 
     function activate() {
@@ -231,7 +231,7 @@
         height: layer.rect.height,
         maxX: layer.rect.x + layer.rect.width,
         maxY: layer.rect.y + layer.rect.height
-      }
+      };
     }
 
     function getDistance(selected, target){
@@ -240,11 +240,11 @@
         right: (target.maxX - selected.maxX),
         bottom: (target.maxY - selected.maxY),
         left: (selected.x - target.x)
-      }
+      };
     }
 
     function getEdgeRect(event) {
-      var offset = $('#screen').offset();
+      var offset = $("#screen").offset();
       var x = (event.pageX - offset.left) / vm.project.configs.zoom;
       var y = (event.pageY - offset.top) / vm.project.configs.zoom;
       var width = 10;
@@ -311,7 +311,7 @@
         height: height,
         maxX: x + width,
         maxY: y + height
-      }
+      };
     }
 
     function hideDistance() {
@@ -344,7 +344,7 @@
             w: zoomSize(targetRect.x - selectedRect.maxX),
             value: unitSize(targetRect.x - selectedRect.maxX),
             isHidden: false
-          }
+          };
         }
 
         if (selectedRect.maxY < targetRect.y) { //bottom
@@ -354,7 +354,7 @@
             h: zoomSize(targetRect.y - selectedRect.maxY),
             value: unitSize(targetRect.y - selectedRect.maxY),
             isHidden: false
-          }
+          };
         }
 
         if (selectedRect.x > targetRect.maxX) { //left
@@ -364,7 +364,7 @@
             w: zoomSize(selectedRect.x - targetRect.maxX),
             value: unitSize(selectedRect.x - targetRect.maxX),
             isHidden: false
-          }
+          };
         }
 
       }
@@ -432,7 +432,7 @@
             y: y,
             w: zoomSize(positive(distance.left)),
             value: unitSize(positive(distance.left)),
-              isHidden: false
+            isHidden: false
           };
         } else if (distance.left < 0) {
           vm.selectedArtBoard.distance.left = {
@@ -449,30 +449,30 @@
     function getBoardScreenStyle() {
       if (!vm.selectedArtBoard.obj) return;
       return {
-        'width': zoomSize(vm.selectedArtBoard.obj.width),
-        'height': zoomSize(vm.selectedArtBoard.obj.height),
-        'background': '#FFF url(' +
+        "width": zoomSize(vm.selectedArtBoard.obj.width),
+        "height": zoomSize(vm.selectedArtBoard.obj.height),
+        "background": "#FFF url(" +
         (vm.selectedArtBoard.obj.imageBase64 || vm.selectedArtBoard.obj.imagePath) +
-        ') no-repeat',
-        'backgroundSize': zoomSize(vm.selectedArtBoard.obj.width) + 'px ' + zoomSize(vm.selectedArtBoard.obj.height) + 'px',
+        ") no-repeat",
+        "backgroundSize": zoomSize(vm.selectedArtBoard.obj.width) + "px " + zoomSize(vm.selectedArtBoard.obj.height) + "px"
       };
     }
 
     function getBoardParentScreenStyle() {
       if (!vm.selectedArtBoard.obj) return;
       return {
-        'width': zoomSize(vm.selectedArtBoard.obj.width),
-        'height': zoomSize(vm.selectedArtBoard.obj.height)
+        "width": zoomSize(vm.selectedArtBoard.obj.width),
+        "height": zoomSize(vm.selectedArtBoard.obj.height)
       };
     }
 
     function getLayerStyle(layer) {
       return {
-        'left': zoomSize(layer.rect.x) + 'px',
-        'top': zoomSize(layer.rect.y) + 'px',
-        'width': zoomSize(layer.rect.width) + 'px',
-        'height': zoomSize(layer.rect.height) + 'px'
-      }
+        "left": zoomSize(layer.rect.x) + "px",
+        "top": zoomSize(layer.rect.y) + "px",
+        "width": zoomSize(layer.rect.width) + "px",
+        "height": zoomSize(layer.rect.height) + "px"
+      };
     }
 
     function unselectLayer() {
@@ -567,25 +567,25 @@
 
     function getVRulersStyle(layer) {
       return {
-        'width': vm.selectedArtBoard.ruler.vertical.width + 'px',
-        'left': vm.selectedArtBoard.ruler.vertical.left + 'px'
-      }
+        "width": vm.selectedArtBoard.ruler.vertical.width + "px",
+        "left": vm.selectedArtBoard.ruler.vertical.left + "px"
+      };
     }
 
     function getHRulersStyle(layer) {
       return {
-        'height': vm.selectedArtBoard.ruler.horizontal.height + 'px',
-        'top': vm.selectedArtBoard.ruler.horizontal.top + 'px'
-      }
+        "height": vm.selectedArtBoard.ruler.horizontal.height + "px",
+        "top": vm.selectedArtBoard.ruler.horizontal.top + "px"
+      };
     }
 
     function getDistanceStyle(distance) {
       return  {
-        'left': distance.x + 'px',
-        'top': distance.y + 'px',
-        'height': (distance.h) ?  distance.h : 'initial',
-        'width': (distance.w) ?  distance.w : 'initial',
-      }
+        "left": distance.x + "px",
+        "top": distance.y + "px",
+        "height": (distance.h) ?  distance.h : "initial",
+        "width": (distance.w) ?  distance.w : "initial"
+      };
     }
 
     function zoomIn() {
@@ -607,7 +607,7 @@
         vm.selectedArtBoard.selectLayer(slice);
       }
       else {
-          alert('The slice not in current artboard.');
+        alert("The slice not in current artboard.");
       }
     }
 
