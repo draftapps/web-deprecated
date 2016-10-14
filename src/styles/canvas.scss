@@ -1121,6 +1121,11 @@ main {
   h1, h2, h3, h4, h5, h6 {
     font-family: 'Montserrat', sans-serif;
   }
+  .actions__status{
+    &--warning {
+      background: #f7941d;
+    }
+  }
   header {
     .c-header__element {
       margin: 0.2rem;
@@ -1147,6 +1152,8 @@ main {
         width: 36px;
         height: 36px;
         color: #c3c7d7;
+        border-color: #c3c7d7;
+        border-width: 2px;
         svg {
           fill: #c3c7d7;
           width: 16px;
