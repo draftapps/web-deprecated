@@ -1,7 +1,7 @@
 (function () {
   angular
-    .module('app')
-    .service('authService', authService);
+    .module("app")
+    .service("authService", authService);
 
   function authService($q, $auth, $state) {
     return {

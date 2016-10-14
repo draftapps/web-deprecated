@@ -1,7 +1,7 @@
 (function () {
   angular
-    .module('app')
-    .controller('LoginCtrl', LoginCtrl);
+    .module("app")
+    .controller("LoginCtrl", LoginCtrl);
 
   function LoginCtrl($auth, $state) {
     const vm = this;
@@ -20,11 +20,11 @@
     }
 
     function submit() {
-      auth('submitLogin', vm.form);
+      auth("submitLogin", vm.form);
     }
 
     function github() {
-      auth('authenticate', 'github');
+      auth("authenticate", "github");
     }
 
     function start() {
@@ -36,7 +36,7 @@
     }
 
     function success() {
-      $state.go('dashboard');
+      $state.go("dashboard");
     }
 
     function fail(err) {

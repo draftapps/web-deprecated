@@ -1,7 +1,7 @@
 (function () {
   angular
-    .module('app')
-    .controller('ForgotPasswordCtrl', ForgotPasswordCtrl);
+    .module("app")
+    .controller("ForgotPasswordCtrl", ForgotPasswordCtrl);
 
   function ForgotPasswordCtrl($auth, $stateParams) {
     const vm = this;
@@ -21,7 +21,7 @@
     }
 
     function submit() {
-      const methodName = isReset ? 'updatePassword' : 'requestPasswordReset';
+      const methodName = isReset ? "updatePassword" : "requestPasswordReset";
       auth(methodName, vm.form);
     }
 

@@ -1,22 +1,22 @@
 angular
-  .module('app')
+  .module("app")
   .config(routesConfig);
 
 /** @ngInject */
 function routesConfig($stateProvider, $urlRouterProvider, $locationProvider) {
-  $locationProvider.html5Mode(true).hashPrefix('!');
-  $urlRouterProvider.otherwise('/');
+  $locationProvider.html5Mode(true).hashPrefix("!");
+  $urlRouterProvider.otherwise("/");
 
   $stateProvider
-    .state('front', {
-      url: '/',
-      templateUrl: 'front/index.html'
+    .state("front", {
+      url: "/",
+      templateUrl: "front/index.html"
     })
-    .state('not-authed', {
+    .state("not-authed", {
       abstract: true,
-      template: '<ui-view/>',
+      template: "<ui-view/>",
       resolve: {
-        auth: authService => authService.redirectAuthed('dashboard')
+        auth: authService => authService.redirectAuthed("dashboard")
       }
     })
     .state('features', {
@@ -38,64 +38,64 @@ function routesConfig($stateProvider, $urlRouterProvider, $locationProvider) {
       controllerAs: 'loginVM',
       parent: 'not-authed'
     })
-    .state('register', {
-      url: '/register',
-      templateUrl: 'app/register.html',
-      controller: 'RegisterCtrl',
-      controllerAs: 'registerVM',
-      parent: 'not-authed'
+    .state("register", {
+      url: "/register",
+      templateUrl: "app/register.html",
+      controller: "RegisterCtrl",
+      controllerAs: "registerVM",
+      parent: "not-authed"
     })
-    .state('forgot-password', {
-      url: '/forgot-password?reset_password_token',
-      templateUrl: 'app/forgot-password.html',
-      controller: 'ForgotPasswordCtrl',
-      controllerAs: 'forgotPasswordVM'
+    .state("forgot-password", {
+      url: "/forgot-password?reset_password_token",
+      templateUrl: "app/forgot-password.html",
+      controller: "ForgotPasswordCtrl",
+      controllerAs: "forgotPasswordVM"
     })
-    .state('terms', {
-      url: '/terms',
-      templateUrl: 'app/terms.html'
+    .state("terms", {
+      url: "/terms",
+      templateUrl: "app/terms.html"
     })
-    .state('authed', {
+    .state("authed", {
       abstract: true,
-      template: '<ui-view/>',
+      template: "<ui-view/>",
       resolve: {
-        user: authService => authService.redirectNotAuthed('login')
+        user: authService => authService.redirectNotAuthed("login")
       }
     })
-    .state('dashboard', {
-      url: '/dashboard',
-      templateUrl: 'app/dashboard.html',
-      controller: 'DasboardCtrl',
-      controllerAs: 'dashboardVm',
+    .state("dashboard", {
+      url: "/dashboard",
+      templateUrl: "app/dashboard.html",
+      controller: "DasboardCtrl",
+      controllerAs: "dashboardVm",
       resolve: {
-        project: $http => $http.get('project.json')
+        project: $http => $http.get("project.json")
       },
-      parent: 'authed'
+      parent: "authed"
     })
-    .state('logout', {
-      url: '/logout',
+    .state("logout", {
+      url: "/logout",
       resolve: {
         signout: ($auth, $state) => {
           $auth
             .signOut()
-              .then($state.go.bind($state, 'front'));
+              .then($state.go.bind($state, "front"));
         }
       },
-      parent: 'authed'
+      parent: "authed"
     })
-    .state('notes', {
-      url: '/notes',
-      templateUrl: 'app/notes.html',
-      controller: 'NotesCtrl',
-      controllerAs: 'notesVm',
+    .state("notes", {
+      url: "/notes",
+      templateUrl: "app/notes.html",
+      controller: "NotesCtrl",
+      controllerAs: "notesVm",
       resolve: {
         project: $http => {
-          return $http.get('project.json');
+          return $http.get("project.json");
         }
       }
     })
-    .state('ui-components', {
-      url: '/ui-components',
-      templateUrl: 'app/ui-components.html'
+    .state("ui-components", {
+      url: "/ui-components",
+      templateUrl: "app/ui-components.html"
     });
 }
