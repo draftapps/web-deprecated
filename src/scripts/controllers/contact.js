@@ -1,7 +1,7 @@
 (function () {
   angular
-    .module('app')
-    .controller('ContactCtrl', ContactCtrl);
+    .module("app")
+    .controller("ContactCtrl", ContactCtrl);
 
   function ContactCtrl() {
     const vm = this;
