@@ -1,7 +1,7 @@
 (function () {
   angular
-    .module('app')
-    .controller('FeaturesCtrl', FeaturesCtrl);
+    .module("app")
+    .controller("FeaturesCtrl", FeaturesCtrl);
 
   function FeaturesCtrl() {
     const vm = this;
