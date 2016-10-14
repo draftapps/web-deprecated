@@ -47,7 +47,10 @@
   'components/section',
   'components/footer',
   'components/slick',
-  'components/seperator';
+  'components/seperator',
+  'components/features',
+  'components/contact',
+  'components/home';
 
 @import
   'trumps/display',
@@ -57,4 +60,5 @@
   'trumps/space',
   'trumps/padding',
   'trumps/align',
-  'trumps/items';
+  'trumps/items',
+  'trumps/responsive';

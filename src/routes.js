@@ -19,12 +19,24 @@ function routesConfig($stateProvider, $urlRouterProvider, $locationProvider) {
         auth: authService => authService.redirectAuthed("dashboard")
       }
     })
-    .state("login", {
-      url: "/login",
-      templateUrl: "app/login.html",
-      controller: "LoginCtrl",
-      controllerAs: "loginVM",
-      parent: "not-authed"
+    .state('features', {
+      url: '/features',
+      templateUrl: 'app/features.html',
+      controller: 'FeaturesCtrl',
+      controllerAs: 'FeaturesVM'
+    })
+    .state('contact', {
+      url: '/contact',
+      templateUrl: 'app/contact.html',
+      controller: 'FeaturesCtrl',
+      controllerAs: 'FeaturesVM'
+    })
+    .state('login', {
+      url: '/login',
+      templateUrl: 'app/login.html',
+      controller: 'LoginCtrl',
+      controllerAs: 'loginVM',
+      parent: 'not-authed'
     })
     .state("register", {
       url: "/register",

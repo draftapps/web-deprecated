@@ -28,7 +28,28 @@
 }
 
 .c-header__wrapper {
-  background-image: url("../images/lp-bg1.png");
-  background-repeat: no-repeat;
-  background-size: contain;
+  background: #e1e8ee;
+  .c-input-group {
+    margin-bottom: 10px;
+  }
+}
+
+.c-section--light__head {
+  font-weight: 500;
+}
+
+header {
+  nav {
+    a {
+      color: #68768c;
+      font-size: 14px;
+      font-weight: 500px;
+      display: block;
+      margin-left: 30px;
+    }
+  }
+}
+.logo {
+  width: 124px;
+  min-height: 73px;
 }
