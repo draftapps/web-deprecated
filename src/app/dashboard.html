@@ -1,13 +1,11 @@
-<div class="screen">
+<div class="svg-icons"><ng-include src="'images/svg-defs.svg'"></ng-include></div>
+<div class="screen canvas">
   <div class="screen__row">
     <header class="c-header">
       <div class="row expanded align-middle">
         <div class="column large-2">
-          <button class="u-text-small u-items-middle">
-            <i class="ion-arrow-left-c u-icon-24 u-space-h-small"></i> Back
-          </button>
+          <button class="u-text-small u-items-middle"><svg class="icon-back"><use xlink:href="#shape-arrow" /></svg> Back</button>
         </div>
-
         <div class="column large-8">
           <div class="row align-center">
             <a ui-sref="dashboard">
@@ -15,7 +13,6 @@
             </a>
           </div>
         </div>
-
         <div class="columns large-2 text-right">
           <dropdown-toggle
             class="c-header__element"
@@ -30,9 +27,7 @@
             </toggle>
             <pane>
               <ul class="menu vertical">
-                <li>
-                  <a ui-sref="logout">Logout</a>
-                </li>
+                <li><a ui-sref="logout">Logout</a></li>
               </ul>
             </pane>
           </dropdown-toggle>
@@ -67,37 +62,30 @@
         <div class="columns large-2"></div>
         <div class="columns large-8">
           <ul class="page-head__menu menu align-center">
-            <li class="active"><a ui-sref="dashboard"><i class="ion-android-download u-icon-24"></i></a></li>
+            <li class="active"><a ui-sref="dashboard"><svg><use xlink:href="#shape-dashboard" /></svg></a></li>
             <li><a ui-sref="notes"><i class="ion-chatbox-working u-icon-24"></i></a></li>
-            <li><a><i class="ion-android-download u-icon-24"></i></a></li>
-            <li><a><i class="ion-android-download u-icon-24"></i></a></li>
+            <li><a><svg><use xlink:href="#shape-more" /></svg></a></li>
+            <li><a><svg><use xlink:href="#shape-layers" /></svg></a></li>
           </ul>
         </div>
         <div class="columns large-2 text-right">
           <ul class="actions menu align-right">
-            <button class="actions__button">
-              <span
-                class="actions__status"
-                style="background-color: #ff0"
-              ></span>
-            </button>
             <li>
-              <dropdown-toggle
-                pane-align="right"
-                close-on-click="true"
-              >
+              <button class="actions__button"><span class="actions__status" style="background-color: #ff0"></span></button>
+            </li>
+            <li>
+              <button class="actions__button"><i class="ion-calendar"></i></button>
+            </li>
+            <li>
+              <button class="actions__button"><i class="ion-person"></i></button>
+            </li>
+            <li>
+              <dropdown-toggle pane-align="right" close-on-click="true">
                 <toggle>
-                  <button class="actions__button">
-                    <i class="ion-pricetag"></i>
-                  </button>
+                  <button class="actions__button"><i class="ion-pricetag"></i></button>
                 </toggle>
                 <pane>Dropdown</pane>
               </dropdown-toggle>
-            </li>
-            <li>
-              <button class="actions__button">
-                <i class="ion-person"></i>
-              </button>
             </li>
             <li>
               <button class="actions__button">
@@ -105,9 +93,10 @@
               </button>
             </li>
             <li>
-              <button class="actions__button u-space-h-undo">
-                <i class="ion-more"></i>
-              </button>
+              <button class="actions__button"><svg><use xlink:href="#shape-attachment" /></svg></button>
+            </li>
+            <li>
+              <button class="actions__button u-space-h-undo"><i class="ion-more"></i></button>
             </li>
           </ul>
         </div>
@@ -122,16 +111,13 @@
           <div class="sidebar__head">
             <ul class="sidebar__menu sidebar__menu--left sidebar__menu--items-2 menu">
               <li ng-class="{'active': activetab === 'boards'}">
-                <a
-                  ng-click="activetab = 'boards'"
-                  ng-init="activetab = 'boards'">
-                  <i class="ion-images u-align-block-center"></i>
+                <a ng-click="activetab = 'boards'" ng-init="activetab = 'boards'">
+                  <svg><use xlink:href="#shape-images" /></svg>
                 </a>
               </li>
               <li ng-class="{'active': activetab === 'layers'}">
-                <a
-                  ng-click="activetab = 'layers'">
-                  <i class="ion-social-buffer u-align-block-center"></i>
+                <a ng-click="activetab = 'layers'">
+                  <svg><use xlink:href="#shape-layers" /></svg>
                 </a>
               </li>
             </ul>
@@ -145,19 +131,6 @@
           <div class="sidebar__body">
             <div class="scroller">
               <ul class="items-spaced">
-                <!-- <li>
-                  <div
-                    class="drag-drop-box"
-                    ngf-select
-                    ngf-drop="uploadFiles($files)"
-                    ngf-drag-over-class="'dragover'"
-                    ngf-multiple="true"
-                    ngf-pattern="'image/*'"
-                  >
-                    <i class="u-block u-icon-36 ion-upload"></i>
-                    <span class="u-text-small">Drag files here</span>
-                  </div>
-                </li> -->
                 <li ng-repeat="artBoard in dashboardVm.project.artboards" ng-show="activetab === 'boards'">
                   <a ng-click="dashboardVm.project.selectArtBoard(artBoard)">
                     <img
@@ -176,7 +149,7 @@
                   ng-mouseleave="dashboardVm.selectedArtBoard.layerMouseLeave(layer)"
                   ng-mousemove="dashboardVm.selectedArtBoard.layerMouseMove(layer);$event.stopPropagation()"
                   ng-click="dashboardVm.selectedArtBoard.selectLayer(layer)">
-                  {{layer.type}} - {{layer.name}}
+                  <span class="layer-type-{{layer.type}}"></span> {{layer.name}}
                 </li>
               </ul>
             </div>
@@ -229,7 +202,7 @@
           </button>
         </div>
         <section
-          class="canvas-screen-viewer"
+          class="canvas-screen-viewer scroller"
           ng-mousemove="dashboardVm.selectedArtBoard.screenMouseMove($event)"
           ng-click="dashboardVm.selectedArtBoard.unselectLayer()">
           <div
@@ -319,7 +292,7 @@
               </li>
               <li ng-class="{'active': rightActivetab === 'props'}">
                 <a ng-click="rightActivetab = 'props'">
-                  <i class="ion-hammer u-align-block-center"></i>
+                  <svg class="icon-text"><use xlink:href="#shape-t" /></svg>
                 </a>
               </li>
               <li   ng-class="{'active': rightActivetab === 'slices'}">
@@ -341,11 +314,11 @@
                 code
               </div>
 
-              <ul class="items-spaced" ng-show="rightActivetab === 'colors'">
+              <ul class="items-spaced color-wrapper" ng-show="rightActivetab === 'colors'">
                 <li ng-repeat="color in dashboardVm.project.colors">
-                  <span style="width: 10px;height: 10px;border-radius: 50%;display: inline-block;background-color: {{color.color['css-rgba']}}"></span>
-                  <span>{{color.name}}</span><br>
-                  <span>{{color.color['color-hex']}}</span>
+                  <span class="color-sample" style="background-color: {{color.color['css-rgba']}}"></span>
+                  <span class="color-name">{{color.name}}</span><br>
+                  <span class="color-code">{{color.color['color-hex']}}</span>
                 </li>
               </ul>
 
@@ -372,67 +345,61 @@
 
                   <!-- properities -->
                   <section>
-                    <h3>PROPERTIES</h3>
+                    <h3>Properties</h3>
                     <div class="context">
-                      <div class="item" data-label="Position:">
-                        <label data-label="X">
-                          <input
-                            id="position-x" type="text"
-                            value="{{dashboardVm.selectedArtBoard.unitSize(dashboardVm.selectedArtBoard.selectedLayer.rect.x)}}" readonly="readonly">
-                        </label>
-                        <label data-label="Y">
-                          <input id="position-y" type="text" value="{{dashboardVm.selectedArtBoard.unitSize(dashboardVm.selectedArtBoard.selectedLayer.rect.y)}}" readonly="readonly">
-                        </label>
+                      <div class="row">
+                        <div class="columns small-6">
+                          x:<span class="value">{{dashboardVm.selectedArtBoard.unitSize(dashboardVm.selectedArtBoard.selectedLayer.rect.x)}}</span>
+                        </div>
+                        <div class="columns small-6">
+                          y:<span class="value">{{dashboardVm.selectedArtBoard.unitSize(dashboardVm.selectedArtBoard.selectedLayer.rect.y)}}</span>
+                        </div>
                       </div>
-
-                      <div class="item" data-label="Size:">
-                        <label data-label="Width">
-                          <input id="size-width" type="text" value="{{dashboardVm.selectedArtBoard.unitSize(dashboardVm.selectedArtBoard.selectedLayer.rect.width)}}" readonly="readonly">
-                        </label>
-                        <label data-label="Height">
-                          <input id="size-height" type="text" value="{{dashboardVm.selectedArtBoard.unitSize(dashboardVm.selectedArtBoard.selectedLayer.rect.height)}}" readonly="readonly">
-                        </label>
+                      <div class="row">
+                        <div class="columns small-6">
+                          Width:<span class="value">{{dashboardVm.selectedArtBoard.unitSize(dashboardVm.selectedArtBoard.selectedLayer.rect.width)}}</span>
+                        </div>
+                        <div class="columns small-6">
+                          Height:<span class="value">{{dashboardVm.selectedArtBoard.unitSize(dashboardVm.selectedArtBoard.selectedLayer.rect.height)}}</span>
+                        </div>
                       </div>
-
-                      <div class="item" data-label="Opacity:" ng-show="dashboardVm.selectedArtBoard.isNumber(dashboardVm.selectedArtBoard.selectedLayer.opacity)">
-                        <label>
-                          <input id="opacity" type="text" value="{{dashboardVm.selectedArtBoard.round(dashboardVm.selectedArtBoard.selectedLayer.opacity * 10000)/100}}%" readonly="readonly">
-                        </label>
-                        <label></label>
+                      <div class="row" ng-show="dashboardVm.selectedArtBoard.isNumber(dashboardVm.selectedArtBoard.selectedLayer.opacity)">
+                        <div class="columns small-12">
+                          Opacity: <span class="value">{{dashboardVm.selectedArtBoard.round(dashboardVm.selectedArtBoard.selectedLayer.opacity * 10000)/100}}%</span>
+                        </div>
                       </div>
-
-                      <div class="item" data-label="Radius:" ng-if="dashboardVm.selectedArtBoard.selectedLayer.radius">
-                        <label>
-                          <input id="radius" type="text" value="{{dashboardVm.selectedArtBoard.unitSize(dashboardVm.selectedArtBoard.selectedLayer.radius)}}" readonly="readonly">
-                        </label>
-                        <label></label>
+                      <div class="row" ng-if="dashboardVm.selectedArtBoard.selectedLayer.radius">
+                        <div class="columns small-12">
+                          Radius: <span class="value">{{dashboardVm.selectedArtBoard.unitSize(dashboardVm.selectedArtBoard.selectedLayer.radius)}}</span>
+                        </div>
                       </div>
-
-                      <div class="item" data-label="Style:">
-                        <label><input id="styleName" type="text" value="{{dashboardVm.selectedArtBoard.selectedLayer.styleName}}" readonly="readonly"></label>
+                      <div class="row">
+                        <div class="columns small-12">
+                          Style: <span class="value">{{dashboardVm.selectedArtBoard.selectedLayer.styleName}}</span>
+                        </div>
                       </div>
                     </div>
                   </section>
 
                   <!-- fills -->
                   <section ng-if="dashboardVm.selectedArtBoard.selectedLayer.fills.length">
-                    <h3>FILLS</h3>
-                    <div class="context">
-                      <div class="item items-group" ng-repeat="fill in dashboardVm.selectedArtBoard.selectedLayer.fills" data-label="{{fill.fillType}}:">
-                        <!-- todo: make a color item directive -->
-                        <div class="color" data-name="{{dashboardVm.project.colorNames[fill.color['argb-hex']]}}" ng-if="fill.fillType === 'color'">
-                          <label><em><i style="background-color:{{fill.color['css-rgba']}};"></i></em></label>
-                          <input
-                            data-color="todo"
-                            type="text" value="{{fill.color[dashboardVm.project.configs.colorFormat]}}" readonly="readonly">
-                        </div>
-
-                        <div class="gradient" ng-if="fill.fillType !== 'color'">
-                          <div ng-repeat="color in fill.gradient.colorStops" class="color" data-name="{{dashboardVm.project.colorNames[color['argb-hex']]}}">
-                            <label><em><i style="background-color:{{color['css-rgba']}};"></i></em></label>
+                    <h3>Filling</h3>
+                    <div class="context contain-colors">
+                      <div class="row" ng-repeat="fill in dashboardVm.selectedArtBoard.selectedLayer.fills">
+                        <div class="columns small-12">
+                          <div class="color" data-name="{{dashboardVm.project.colorNames[fill.color['argb-hex']]}}" ng-if="fill.fillType === 'color'">
+                            <label><em><i style="background-color:{{fill.color['css-rgba']}};"></i></em></label>
                             <input
                               data-color="todo"
-                              type="text" value="{{color[dashboardVm.project.configs.colorFormat]}}" readonly="readonly">
+                              type="text" value="{{fill.color[dashboardVm.project.configs.colorFormat]}}" readonly="readonly">
+                          </div>
+                          <div class="gradient" ng-if="fill.fillType !== 'color'">
+                            <div ng-repeat="color in fill.gradient.colorStops" class="color" data-name="{{dashboardVm.project.colorNames[color['argb-hex']]}}">
+                              <label><em><i style="background-color:{{color['css-rgba']}};"></i></em></label>
+                              <input
+                                data-color="todo"
+                                type="text" value="{{color[dashboardVm.project.configs.colorFormat]}}" readonly="readonly">
+                            </div>
                           </div>
                         </div>
                       </div>
@@ -440,18 +407,32 @@
                   </section>
 
                   <section ng-if="dashboardVm.selectedArtBoard.selectedLayer.type === 'text'">
-                    <h3>TYPEFACE</h3>
+                    <h3>Typeface</h3>
                     <div class="context">
-                      <div class="item" data-label="Family:">
-                        <label><input id="font-family" type="text" value="{{dashboardVm.selectedArtBoard.selectedLayer.fontFace}}" readonly="readonly"></label>
+                      <div class="row">
+                        <div class="columns small-12">
+                          Font: <span class="value">{{dashboardVm.selectedArtBoard.selectedLayer.fontFace}}</span>
+                        </div>
                       </div>
-
-                      <div class="item" data-label="Color:">
-                        <div class="color">
-                          <div
-                            class="color"
-                            data-name="{{dashboardVm.project.colorNames[dashboardVm.selectedArtBoard.selectedLayer['argb-hex']]}}"
-                            ng-if="fill.fillType === 'color'">
+                      <div class="row">
+                        <div class="columns small-12">
+                          Letter spacing: <span class="value">{{dashboardVm.selectedArtBoard.unitSize(dashboardVm.selectedArtBoard.selectedLayer.letterSpacing, true)}}</span>
+                        </div>
+                      </div>
+                      <div class="row">
+                        <div class="columns small-12">
+                          Line height: <span class="value">{{dashboardVm.selectedArtBoard.unitSize(dashboardVm.selectedArtBoard.selectedLayer.lineHeight, true)}}</span>
+                        </div>
+                      </div>
+                      <div class="row">
+                        <div class="columns small-12">
+                          Size: <span class="value">{{dashboardVm.selectedArtBoard.unitSize(dashboardVm.selectedArtBoard.selectedLayer.fontSize, true)}}</span>
+                        </div>
+                      </div>
+                      <div class="row" ng-if="fill.fillType === 'color'">
+                        <div class="columns small-12">
+                          <div class="color"
+                            data-name="{{dashboardVm.project.colorNames[dashboardVm.selectedArtBoard.selectedLayer['argb-hex']]}}">
                             <label>
                               <em>
                                 <i style="background-color:{{dashboardVm.selectedArtBoard.selectedLayer['css-rgba']}};"></i>
@@ -461,41 +442,14 @@
                               data-color="todo"
                               type="text" value="{{dashboardVm.selectedArtBoard.selectedLayer[dashboardVm.project.configs.colorFormat]}}" readonly="readonly">
                           </div>
+
                         </div>
                       </div>
-
-                      <div class="item" data-label="Size:">
-                        <label>
-                          <input
-                            id="opacity"
-                            type="text"
-                            value="{{dashboardVm.selectedArtBoard.unitSize(dashboardVm.selectedArtBoard.selectedLayer.fontSize, true)}}"
-                            readonly="readonly">
-                        </label>
-                        <label></label>
-                      </div>
-
-                      <div class="item" data-label="Spacing:">
-                        <label data-label="Character">
-                          <input
-                            id="letter-spacing"
-                            type="text"
-                            value="{{dashboardVm.selectedArtBoard.unitSize(dashboardVm.selectedArtBoard.selectedLayer.letterSpacing, true)}}" readonly="readonly">
-                        </label>
-                        <label data-label="Line">
-                          <input
-                            id="line-height"
-                            type="text"
-                            value="{{dashboardVm.selectedArtBoard.unitSize(dashboardVm.selectedArtBoard.selectedLayer.lineHeight, true)}}"
-                            readonly="readonly"></label>
-                      </div>
-
-                      <div class="item">
-                        <label data-label="Content">
-                          <textarea id="content" rows="2" readonly="readonly">
-                            {{dashboardVm.selectedArtBoard.selectedLayer.content}}
-                          </textarea>
-                        </label>
+                      <div class="row">
+                        <div class="columns small-12">
+                          Content:
+                          <textarea id="content" rows="2" readonly="readonly">{{dashboardVm.selectedArtBoard.selectedLayer.content}}</textarea>
+                        </div>
                       </div>
                     </div>
                   </section>
@@ -572,14 +526,11 @@
                   </section>
 
                   <section ng-if="dashboardVm.selectedArtBoard.selectedLayer.css.length">
-                    <h3>CSS STYLE</h3>
-
+                    <h3>CSS Style</h3>
                     <div class="context">
                       <div class="item">
                         <label>
-                          <textarea id="css" rows="{{dashboardVm.selectedArtBoard.selectedLayer.css.length + 1}}" readonly="readonly">
-                            {{dashboardVm.selectedArtBoard.selectedLayer.css}}
-                          </textarea>
+                          <textarea id="css" rows="{{dashboardVm.selectedArtBoard.selectedLayer.css.length + 1}}" readonly="readonly">{{dashboardVm.selectedArtBoard.selectedLayer.css}}</textarea>
                         </label>
                       </div>
                     </div>
