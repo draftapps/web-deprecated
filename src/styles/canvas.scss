@@ -1226,7 +1226,12 @@ main {
       }
     }
     & > li {
-      > a {
+      &.active {
+        & > a {
+          border-bottom-color: #fff;
+        }
+      }
+      & > a {
         display: block;
         text-align: center;
         height: 49px;
