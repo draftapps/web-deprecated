@@ -1126,6 +1126,9 @@ main {
       background: #f7941d;
     }
   }
+  .sidebar {
+    border-left: 1px solid #e4e7ef;
+  }
   .thumbnail {
     height: 200px;
     width: 100%;
@@ -1346,6 +1349,7 @@ main {
       line-height: 38px;
       padding: 0 15px;
       font-size: 13px;
+      color: #8493a8;
     }
   }
   aside {
