@@ -10,7 +10,7 @@ function routesConfig($stateProvider, $urlRouterProvider, $locationProvider) {
   $stateProvider
     .state("front", {
       url: "/",
-      templateUrl: "front/index.html"
+      templateUrl: "app/index.html"
     })
     .state("not-authed", {
       abstract: true,
