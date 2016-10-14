@@ -1117,6 +1117,10 @@ main {
   display: none;
 }
 .canvas {
+  font-family: 'Montserrat', sans-serif;
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Montserrat', sans-serif;
+  }
   header {
     .c-header__element {
       margin: 0.2rem;
@@ -1257,6 +1261,10 @@ main {
     font-size: 13px;
     .items-spaced > li {
       padding: 7px 15px;
+      font-weight: 300;
+      &.selected {
+        font-weight: 400;
+      }
     }
     .color-wrapper > li {
       padding: 12px 15px;
@@ -1312,6 +1320,7 @@ main {
     }
     h3 {
       background: #f7f8fa;
+      font-weight: 300;
       border-top: 1px solid #e4e7ef;
       border-bottom: 1px solid #e4e7ef;
       height: 38px;
@@ -1322,6 +1331,7 @@ main {
   }
   aside {
     .context {
+      font-weight: 300;
       .columns {
         padding-top: 6px;
         padding-bottom: 6px;
