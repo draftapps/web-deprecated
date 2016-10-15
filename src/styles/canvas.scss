@@ -1416,6 +1416,7 @@ main {
         font-size: 13px;
         color: #a1a6bb;
         .value {
+          font-weight: 400;
           color: #3a405b;
           margin-left: 5px;
         }
@@ -1423,8 +1424,10 @@ main {
       textarea {
         min-height: 100px;
         margin-bottom: 0;
+        background: #f7f8fa;
         &#content {
           min-height: 0;
+          margin-top: 5px;
         }
       }
     }
