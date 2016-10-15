@@ -1189,7 +1189,7 @@ main {
   }
   header {
     .c-header__element {
-      margin: 0.2rem;
+      margin: 0.2rem 0.5rem;
     }
     .avatar {
       border: 2px solid #babfd2;
@@ -1208,7 +1208,8 @@ main {
         margin-left: 5px;
         margin-right: 5px;
         i {
-          vertical-align: middle;
+          vertical-align: text-bottom;
+          font-size: 20px;
         }
         width: 36px;
         height: 36px;
@@ -1219,6 +1220,8 @@ main {
           fill: #c3c7d7;
           width: 16px;
           height: 16px;
+          position: relative;
+          top: -2px;
         }
       }
       li {
@@ -1418,7 +1421,11 @@ main {
         }
       }
       textarea {
+        min-height: 100px;
         margin-bottom: 0;
+        &#content {
+          min-height: 0;
+        }
       }
     }
   }
@@ -1486,6 +1493,29 @@ main {
     pre {
       white-space: pre-wrap;
     }
+  }
+  .add-style-guide {
+    margin-top: auto;
+    a {
+      color: #fff;
+      text-align: center;
+      display: block;
+      font-size: 14px;
+      background: #4f8ff7;
+      line-height: 48px;
+      border-radius: 5px;
+    }
+  }
+  .ps-container {
+    height: 100%;
+  }
+  .items-spaced.color-wrapper {
+    display: flex;
+    flex-direction: column;
+    min-height: 100%;
+  }
+  .sidebar__collapse-button {
+    color: #c3c7d7;
   }
 }
 .screen__row.-rest {
