@@ -320,7 +320,7 @@
               <div ng-show="rightActivetab === 'code'">
                 <div class="code-wrapper" ng-if="dashboardVm.selectedArtBoard.selectedLayer.css.length">
 <pre>.layer {
-  {{dashboardVm.selectedArtBoard.selectedLayer.css}}
+  {{dashboardVm.selectedArtBoard.selectedLayer.formattedStyle}}
 }</pre>
                 </div>
               </div>
@@ -541,7 +541,7 @@
                     <div class="context">
                       <div class="item">
                         <label>
-                          <textarea id="css" rows="{{dashboardVm.selectedArtBoard.selectedLayer.css.length + 1}}" readonly="readonly">{{dashboardVm.selectedArtBoard.selectedLayer.css}}</textarea>
+                          <textarea id="css" rows="{{dashboardVm.selectedArtBoard.selectedLayer.css.length + 1}}" readonly="readonly">{{dashboardVm.selectedArtBoard.selectedLayer.styleList}}</textarea>
                         </label>
                       </div>
                     </div>
