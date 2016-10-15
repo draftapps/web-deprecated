@@ -1445,6 +1445,14 @@ main {
       background: transparent;
     }
   }
+  [pane-align="right"] {
+    .dropdown-pane {
+      &::after,
+      &::before {
+        left: 90%;
+      }
+    }
+  }
   .dropdown-pane {
     width: 180px;
     text-align: left;
@@ -1476,6 +1484,12 @@ main {
       border-width: 8px;
       margin-left: -8px;
     }
+    .ion-ios-copy-outline,
+    .ion-ios-trash-outline {
+      font-size: 22px;
+      margin-right: 10px;
+      color: #c2c6d6;
+    }
     ul {
       list-style: none;
       padding: 0;
@@ -1500,7 +1514,7 @@ main {
       a {
         display: block;
         padding: 0 10px;
-        line-height: 40px;
+        line-height: 50px;
         color: #3a405b;
         font-weight: 400;
       }
