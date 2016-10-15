@@ -1453,6 +1453,57 @@ main {
       }
     }
   }
+  .tags-dropdown {
+    .dropdown-pane {
+      width: 230px;
+    }
+    li > .add-tag {
+      background: #42d79e;
+      display: block;
+      text-align: center;
+      border-radius: 5px;
+      line-height: 42px;
+      width: auto;
+      color: #fff;
+      margin: 0 13px 13px;
+    }
+  }
+  .input-wrapper {
+    padding: 13px;
+    position: relative;
+    &::before {
+      content: "";
+      display: block;
+      position: absolute;
+      right: 20px;
+      top: 20px;
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      background: #6dcff6;
+    }
+    input {
+      &[type="text"] {
+        height: 42px;
+        font-weight: 400;
+        font-size: 16px;
+        background: #f9f9fb;
+        border-radius: 5px;
+      }
+      &[type="color"] {
+        position: absolute;
+        right: 20px;
+        cursor: pointer;
+        z-index: 1;
+        top: 20px;
+        opacity: 0;
+        padding: 0;
+        width: 28px;
+        height: 28px;
+        border-radius: 50%;
+      }
+    }
+  }
   .dropdown-pane {
     width: 180px;
     text-align: left;
@@ -1517,6 +1568,21 @@ main {
         line-height: 50px;
         color: #3a405b;
         font-weight: 400;
+      }
+      .tags {
+        padding: 13px;
+        a {
+          white-space: nowrap;
+          display: inline-block;
+          line-height: 24px;
+          color: #fff;
+          padding: 0 8px;
+          font-size: 10px;
+          border-radius: 3px;
+          & + a {
+            margin-left: 10px;
+          }
+        }
       }
       .forward-to {
         width: 24px;

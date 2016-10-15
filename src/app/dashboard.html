@@ -103,16 +103,25 @@
               </dropdown-toggle>
             </li>
             <li>
-              <dropdown-toggle pane-align="right" close-on-click="true">
+              <dropdown-toggle pane-align="center" close-on-click="true" class="tags-dropdown">
                 <toggle>
                   <button class="actions__button"><i class="ion-pricetag"></i></button>
                 </toggle>
                 <pane>
                   <ul class="dd-menu">
-                    <li><a href="#">Item 1</a></li>
-                    <li><a href="#">Item 2</a></li>
-                    <li><a href="#">Item 3</a></li>
-                    <li><a href="#">Item 4</a></li>
+                    <li><span class="title">Tags</span></li>
+                    <li>
+                      <div class="tags">
+                        <a href="#" style="background: #4be1ab">screen</a>
+                        <a href="#" style="background: #fe5339">iOS</a>
+                        <a href="#" style="background: #f3d351">Product</a>
+                      </div>
+                      <div class="input-wrapper">
+                        <input type="text" placeholder="# Add Tag">
+                        <input type="color">
+                      </div>
+                      <a class="add-tag">Add Tag</a>
+                    </li>
                   </ul>
                 </pane>
               </dropdown-toggle>
