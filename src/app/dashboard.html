@@ -71,7 +71,19 @@
         <div class="columns large-2 text-right">
           <ul class="actions menu align-right">
             <li>
-              <button class="actions__button"><span class="actions__status actions__status--warning"></span></button>
+              <dropdown-toggle pane-align="center" close-on-click="true">
+                <toggle>
+                  <button class="actions__button"><span class="actions__status actions__status--warning"></span></button>
+                </toggle>
+                <pane>
+                  <ul class="dd-menu">
+                    <li class="title">Status</span></li>
+                    <li><a href="#" class="status-danger">New</a></li>
+                    <li><a href="#" class="status-warning">In Progress</a></li>
+                    <li><a href="#" class="status-success">Approved</a></li>
+                  </ul>
+                </pane>
+              </dropdown-toggle>
             </li>
             <li>
               <button class="actions__button"><i class="ion-calendar"></i></button>

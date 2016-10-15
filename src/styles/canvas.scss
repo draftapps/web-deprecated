@@ -1456,7 +1456,7 @@ main {
     &::after,
     &::before {
       bottom: 100%;
-      left: 90%;
+      left: 50%;
       border: solid transparent;
       content: " ";
       height: 0;
@@ -1484,10 +1484,37 @@ main {
       li + li {
         border-top: 1px solid #f0f2f7;
       }
+      .title {
+        display: block;
+        font-size: 14px;
+        color: #7f8fa4;
+        padding: 0 10px;
+        line-height: 40px;
+      }
       a {
         display: block;
         padding: 0 10px;
         line-height: 40px;
+      }
+      .status {
+        &-danger,
+        &-warning,
+        &-success {
+          color: #3a405b;
+          &::before {
+            content: "";
+            display: inline-block;
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            border-width: 2px;
+            border-style: solid;
+            margin-right: 10px;
+          }
+        }
+        &-danger::before { border-color: #fe5a42; }
+        &-warning::before { border-color: #fba529; }
+        &-success::before { border-color: #4be1ab; }
       }
     }
   }
