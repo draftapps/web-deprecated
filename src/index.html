@@ -5,43 +5,21 @@
     <meta charset="utf-8">
     <title>Draft - Simple collaborative tool for designers and developers</title>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-    <meta name="description" content="Simple collaborative tool for designers and developers. Join our private beta.">
+    <meta name="" content=""><meta name="description" content="Draft helps you to collaborate faster, generate instantly exportable assets, automated code snippets, manage your projects, assign tasks, share and discuss feedback on your designs.">
     <meta name="viewport" content="width=device-width">
-
     <!-- build:css({.tmp,src}) styles/vendor.css -->
     <!-- bower:css -->
     <!-- run `gulp inject` to automatically populate bower styles dependencies -->
     <!-- endbower -->
     <!-- endbuild -->
-
-    <!-- build:css({.tmp,src}) styles/app.css -->
     <link rel="shortcut icon" type="image/png" href="images/favicon.png"/>
+    <!-- build:css({.tmp,src}) styles/app.css -->
     <link rel="stylesheet" href="styles/main.css">
     <!-- endbuild -->
   </head>
-
-
   <body ng-app="app">
     <div class="row">
       <div class="column">
-        <style>
-          #test-nav {
-            position: fixed;
-            top: -40px;
-            right: 0;
-            left: 0;
-            opacity: 0;
-            transition: 0.3s;
-          }
-
-          #test-nav:hover {
-            top: 0;
-            opacity: 0.8;
-          }
-          #test-nav {
-            display: none !important;
-          }
-        </style>
         <div class="top-bar" id="test-nav">
           <ul class="menu">
             <li><a class="link" ui-sref="front">Landing Page</a></li>
@@ -53,33 +31,39 @@
         </div>
       </div>
     </div>
-
     <ui-view></ui-view>
+    <!-- build:js({.tmp,src}) scripts/vendor.js -->
+    <!-- bower:js -->
+    <!-- run `gulp inject` to automatically populate bower script dependencies -->
+    <!-- endbower -->
+    <!-- endbuild -->
+
+    <!-- build:js({.tmp,src}) scripts/app.js -->
+    <!-- inject:js -->
+    <!-- js files will be automatically insert here -->
+    <!-- endinject -->
+    <!-- inject:partials -->
+    <!-- angular templates will be automatically converted in js and inserted here -->
+    <!-- endinject -->
+    <!-- endbuild -->
+    <script>
+      $(document).on('click', '.menu-trigger', function(ev){
+        ev.preventDefault();
+        $('nav ul').toggleClass('opened');
+        $('nav').append('<div class="c-overlay"></div>')
+      });
+      $(document).on('touchstart', '.c-overlay', function(){
+        $('nav ul').toggleClass('opened');
+        $(this).remove();
+      });
+    </script>
+    <script>
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+      ga('create', 'UA-85209070-1', 'auto');
+      ga('send', 'pageview');
+    </script>
   </body>
-
-  <!-- build:js({.tmp,src}) scripts/vendor.js -->
-  <!-- bower:js -->
-  <!-- run `gulp inject` to automatically populate bower script dependencies -->
-  <!-- endbower -->
-  <!-- endbuild -->
-
-  <!-- build:js({.tmp,src}) scripts/app.js -->
-  <!-- inject:js -->
-  <!-- js files will be automatically insert here -->
-  <!-- endinject -->
-  <!-- inject:partials -->
-  <!-- angular templates will be automatically converted in js and inserted here -->
-  <!-- endinject -->
-  <!-- endbuild -->
-  <script>
-    $(document).on('click', '.menu-trigger', function(ev){
-      ev.preventDefault();
-      $('nav ul').toggleClass('opened');
-      $('nav').append('<div class="c-overlay"></div>')
-    });
-    $(document).on('touchstart', '.c-overlay', function(){
-      $('nav ul').toggleClass('opened');
-      $(this).remove();
-    });
-  </script>
 </html>
