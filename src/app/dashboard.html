@@ -318,7 +318,11 @@
           <div class="sidebar__body">
             <div class="scroller">
               <div ng-show="rightActivetab === 'code'">
-                code
+                <div class="code-wrapper" ng-if="dashboardVm.selectedArtBoard.selectedLayer.css.length">
+<pre>.layer {
+  {{dashboardVm.selectedArtBoard.selectedLayer.css}}
+}</pre>
+                </div>
               </div>
 
               <ul class="items-spaced color-wrapper" ng-show="rightActivetab === 'colors'">

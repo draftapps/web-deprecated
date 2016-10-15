@@ -1429,6 +1429,12 @@ main {
       }
     }
   }
+  .code-wrapper {
+    padding: 10px;
+    pre {
+      white-space: pre-wrap;
+    }
+  }
 }
 .screen__row.-rest {
   background: #eff3f6;
