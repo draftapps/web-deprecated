@@ -1521,6 +1521,73 @@ main {
   .sidebar__collapse-button {
     color: #c3c7d7;
   }
+  .sidebar__body .images-layers {
+    padding: 10px;
+    &::before,
+    &::after {
+      content: "";
+      display: table;
+      clear: both;
+    }
+    & > li {
+      width: 50%;
+      float: left;
+      padding: 5px;
+      img {
+        box-shadow: 0 0 1px rgba(0, 0, 0, 0.3);
+        border: 0;
+        width: 100%;
+        height: 120px;
+        object-fit: cover;
+      }
+      div {
+        display: none;
+      }
+    }
+  }
+  .export-options {
+    span {
+      display: block;
+      color: #7f8fa4;
+      font-size: 14px;
+      line-height: 48px;
+      border: 2px solid #e4e7ef;
+      border-radius: 5px;
+      padding: 0 10px;
+      background: #fff url(../images/arrow-down.png) 90% 50% no-repeat;
+      cursor: pointer;
+    }
+    .dropdown-pane {
+      width: 113px;
+      margin-left: -12px;
+      margin-top: -35px;
+      &::before,
+      &::after {
+        content: none;
+      }
+      li {
+        &:first-child {
+          background: #fff url(../images/arrow-up.png) 90% 50% no-repeat;
+        }
+        a {
+          line-height: 46px;
+          color: #3a405b;
+          font-weight: 400;
+        }
+      }
+    }
+  }
+  .export-button {
+    font-size: 14px;
+    color: #3a405b;
+    font-weight: 400;
+    line-height: 48px;
+    text-align: center;
+    display: block;
+    background: #e4e7ef;
+    border-radius: 5px;
+    margin-top: 10px;
+  }
 }
 .screen__row.-rest {
   background: #eff3f6;

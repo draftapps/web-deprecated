@@ -308,7 +308,7 @@
                   <svg class="icon-text"><use xlink:href="#shape-t" /></svg>
                 </a>
               </li>
-              <li   ng-class="{'active': rightActivetab === 'slices'}">
+              <li ng-class="{'active': rightActivetab === 'slices'}">
                 <a ng-click="rightActivetab = 'slices'">
                   <i class="ion-image u-align-block-center"></i>
                 </a>
@@ -341,19 +341,63 @@
                   <a href="#">+ Add Style Guide</a>
                 </li>
               </ul>
-
-              <ul class="items-spaced" ng-show="rightActivetab === 'slices'">
-                <li ng-repeat="sliceLayer in dashboardVm.project.slices"
-                  class="slice-layer" data-objectId="{{sliceLayer.objectID}}"
-                  ng-mouseenter="dashboardVm.project.sliceMouseEnter(sliceLayer)"
-                  ng-mouseleave="dashboardVm.project.sliceMouseLeave(sliceLayer)">
-                  <a ng-click="dashboardVm.project.selectSlice(sliceLayer)" class="text-center">
-                    <img class="thumbnail" src="assets/{{sliceLayer.exportable[0].path}}" alt="{{sliceLayer.exportable[0].path}}">
-                    <div class="u-text-small" ng-bind="::sliceLayer.name"></div>
-                    <div>{{dashboardVm.selectedArtBoard.unitSize(sliceLayer.rect.width)}} × {{dashboardVm.selectedArtBoard.unitSize(sliceLayer.rect.height)}}</div>
-                  </a>
-                </li>
-              </ul>
+              <aside class="inspector" ng-show="rightActivetab === 'slices'">
+                <ul class="items-spaced images-layers">
+                  <li ng-repeat="sliceLayer in dashboardVm.project.slices"
+                    class="slice-layer" data-objectId="{{sliceLayer.objectID}}"
+                    ng-mouseenter="dashboardVm.project.sliceMouseEnter(sliceLayer)"
+                    ng-mouseleave="dashboardVm.project.sliceMouseLeave(sliceLayer)">
+                    <a ng-click="dashboardVm.project.selectSlice(sliceLayer)" class="text-center">
+                      <img class="thumbnail" src="assets/{{sliceLayer.exportable[0].path}}" alt="{{sliceLayer.exportable[0].path}}">
+                      <div class="u-text-small" ng-bind="::sliceLayer.name"></div>
+                      <div>{{dashboardVm.selectedArtBoard.unitSize(sliceLayer.rect.width)}} × {{dashboardVm.selectedArtBoard.unitSize(sliceLayer.rect.height)}}</div>
+                    </a>
+                  </li>
+                </ul>
+                <section>
+                  <h3>Export</h3>
+                  <div class="context export-options">
+                    <div class="row">
+                      <div class="columns small-6">
+                        <dropdown-toggle pane-align="left" close-on-click="true">
+                          <toggle>
+                            <button class="select">1x</button>
+                          </toggle>
+                          <pane>
+                            <ul class="menu vertical">
+                              <li><a href="#">1x</a></li>
+                              <li><a href="#">2x</a></li>
+                              <li><a href="#">3x</a></li>
+                              <li><a href="#">0.5x</a></li>
+                              <li><a href="#">512W</a></li>
+                              <li><a href="#">512H</a></li>
+                            </ul>
+                          </pane>
+                        </dropdown-toggle>
+                      </div>
+                      <div class="columns small-6">
+                        <dropdown-toggle pane-align="left" close-on-click="true">
+                          <toggle>
+                            <button class="select">PNG</button>
+                          </toggle>
+                          <pane>
+                            <ul class="menu vertical">
+                              <li><a href="#">PNG</a></li>
+                              <li><a href="#">SVG</a></li>
+                              <li><a href="#">JPG</a></li>
+                            </ul>
+                          </pane>
+                        </dropdown-toggle>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="columns small-12">
+                        <a class="export-button" href="#">Export</a>
+                      </div>
+                    </div>
+                  </div>
+                </section>
+              </aside>
 
               <div ng-show="rightActivetab === 'props'">
                 <ul class="items-spaced" ng-show="!dashboardVm.selectedArtBoard.selectedLayer">
