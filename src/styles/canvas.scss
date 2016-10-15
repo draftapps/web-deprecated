@@ -1491,7 +1491,8 @@ main {
         padding: 0 10px;
         line-height: 40px;
       }
-      &.forward-dd {
+      &.forward-dd,
+      &.assign-dd {
         a {
           line-height: 60px;
         }
@@ -1508,6 +1509,14 @@ main {
         height: 24px;
         margin-right: 12px;
         vertical-align: middle;
+      }
+      .avatar {
+        width: 40px;
+        height: 40px;
+        object-fit: cover;
+        border-radius: 50%;
+        vertical-align: middle;
+        margin-right: 10px;
       }
       .status {
         &-danger,

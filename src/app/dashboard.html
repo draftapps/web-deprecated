@@ -89,7 +89,18 @@
               <button class="actions__button"><i class="ion-calendar"></i></button>
             </li>
             <li>
-              <button class="actions__button"><i class="ion-person"></i></button>
+              <dropdown-toggle pane-align="center" close-on-click="true">
+                <toggle>
+                <button class="actions__button"><i class="ion-person"></i></button>
+                </toggle>
+                <pane>
+                  <ul class="dd-menu assign-dd">
+                    <li class="title">Assign to</span></li>
+                    <li><a href="#"><img src="images/demo/avatar.png" class="avatar">John Doe</a></li>
+                    <li><a href="#"><img src="images/demo/avatar.png" class="avatar">Marry Keith</a></li>
+                  </ul>
+                </pane>
+              </dropdown-toggle>
             </li>
             <li>
               <dropdown-toggle pane-align="right" close-on-click="true">
