@@ -191,7 +191,10 @@
           'canvas--padded-left': leftSideBarIsHidden,
           'canvas--padded-right': rightSideBarIsHidden}"
       >
-        <div style="position: absolute;bottom: 0;left: 50%;padding: 15px;transform: translateX(-50%);z-index: 10;" class="zoom-widget" ng-click="$event.stopPropagation()">
+        <div class="nav-widget nav-widget--prev">
+          <a href="#"><svg><use xlink:href="#shape-prev" /></svg></a>
+        </div>
+        <div class="zoom-widget" ng-click="$event.stopPropagation()">
           <button
             class="zoom-in"
             ng-disabled="dashboardVm.project.configs.zoom <= .25"
@@ -207,6 +210,9 @@
             ng-click="dashboardVm.selectedArtBoard.zoomOut()"
             ng-disabled="dashboardVm.project.configs.zoom >= 2">
           </button>
+        </div>
+        <div class="nav-widget nav-widget--next">
+          <a href="#"><svg><use xlink:href="#shape-next" /></svg></a>
         </div>
         <section
           class="canvas-screen-viewer scroller"
