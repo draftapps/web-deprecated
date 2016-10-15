@@ -553,8 +553,8 @@
       });
       layer.selected = true;
       layer.hover = false;
-      layer.formattedStyle = layer.css.join('\n  ');
-      layer.styleList = layer.css.join('\n');
+      layer.formattedStyle = layer.css.join("\n  ");
+      layer.styleList = layer.css.join("\n");
       vm.selectedArtBoard.ruler.isHidden = true;
       vm.selectedArtBoard.selectedLayer = layer;
     }
