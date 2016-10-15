@@ -173,6 +173,9 @@
           'canvas--padded-left': leftSideBarIsHidden,
           'canvas--padded-right': rightSideBarIsHidden}"
       >
+        <div class="nav-widget nav-widget--prev">
+          <a href="#"><svg><use xlink:href="#shape-prev" /></svg></a>
+        </div>
         <div class="zoom-widget">
           <button
             class="zoom-in"
@@ -189,6 +192,9 @@
             ng-click="notesVm.selectedArtBoard.zoomOut()"
             ng-disabled="notesVm.project.configs.zoom >= 2">
           </button>
+        </div>
+        <div class="nav-widget nav-widget--next">
+          <a href="#"><svg><use xlink:href="#shape-next" /></svg></a>
         </div>
         <section class="canvas-screen-viewer scroller">
           <div
