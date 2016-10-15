@@ -1491,16 +1491,28 @@ main {
         padding: 0 10px;
         line-height: 40px;
       }
+      &.forward-dd {
+        a {
+          line-height: 60px;
+        }
+      }
       a {
         display: block;
         padding: 0 10px;
         line-height: 40px;
+        color: #3a405b;
+        font-weight: 400;
+      }
+      .forward-to {
+        width: 24px;
+        height: 24px;
+        margin-right: 12px;
+        vertical-align: middle;
       }
       .status {
         &-danger,
         &-warning,
         &-success {
-          color: #3a405b;
           &::before {
             content: "";
             display: inline-block;
