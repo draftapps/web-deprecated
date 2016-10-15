@@ -107,9 +107,18 @@
               </dropdown-toggle>
             </li>
             <li>
-              <button class="actions__button">
-                <i class="ion-forward"></i>
-              </button>
+              <dropdown-toggle pane-align="center" close-on-click="true">
+                <toggle>
+                  <button class="actions__button"><i class="ion-forward"></i></button>
+                </toggle>
+                <pane>
+                  <ul class="dd-menu forward-dd">
+                    <li class="title">Forward to</span></li>
+                    <li><a href="#"><img src="images/slack.svg" class="forward-to" alt="Trello">Slack</a></li>
+                    <li><a href="#"><img src="images/trello.svg" class="forward-to" alt="Trello"> Trello</a></li>
+                  </ul>
+                </pane>
+              </dropdown-toggle>
             </li>
             <li>
               <button class="actions__button"><svg><use xlink:href="#shape-attachment" /></svg></button>
