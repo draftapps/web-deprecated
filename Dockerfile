@@ -27,9 +27,6 @@ ADD . /home/draft-app-markup
 
 RUN gulp
 
-COPY src/front/ dist/front
-COPY src/partials/ dist/partials
-
 COPY nginx.conf /etc/nginx/nginx.conf
 
 RUN cp -r /home/draft-app-markup/dist/* /var/www/html/
