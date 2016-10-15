@@ -135,7 +135,18 @@
               <button class="actions__button"><svg><use xlink:href="#shape-attachment" /></svg></button>
             </li>
             <li>
-              <button class="actions__button u-space-h-undo"><i class="ion-more"></i></button>
+              <dropdown-toggle pane-align="right" close-on-click="true">
+                <toggle>
+                  <button class="actions__button u-space-h-undo"><i class="ion-more"></i></button>
+                </toggle>
+                <pane>
+                  <ul class="dd-menu">
+                    <li><a href="#"><i class="ion-ios-copy-outline"></i>Duplicate</a></li>
+                    <li><a href="#"><i class="ion-ios-trash-outline"></i> Delete</a></li>
+                  </ul>
+                </pane>
+              </dropdown-toggle>
+
             </li>
           </ul>
         </div>
