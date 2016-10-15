@@ -117,7 +117,7 @@
 
   <div class="screen__row -rest">
     <div class="row expanded collapse">
-      <div class="columns large-2" ng-hide="leftSideBarIsHidden">
+      <div class="columns large-2 left-sidebar" ng-hide="leftSideBarIsHidden">
         <aside class="sidebar">
           <div class="sidebar__head">
             <div class="sidebar__title">screens</div>
@@ -166,7 +166,7 @@
       </div>
 
       <div
-        class="columns"
+        class="columns main-content"
         ng-class="{'large-8': !leftSideBarIsHidden && !rightSideBarIsHidden,
           'large-10': leftSideBarIsHidden || rightSideBarIsHidden,
           'large-12': leftSideBarIsHidden && rightSideBarIsHidden,
@@ -220,7 +220,7 @@
         </section>
       </div>
 
-      <div class="columns large-2" ng-hide="rightSideBarIsHidden">
+      <div class="columns large-2 right-sidebar" ng-hide="rightSideBarIsHidden">
         <aside class="sidebar">
           <div class="sidebar__head">
             <div class="sidebar__title">
