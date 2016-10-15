@@ -10,7 +10,7 @@
     $element.perfectScrollbar();
   }
 
-  $(document).on('click', '.sidebar__menu a', function() {
-    $('.scroller').perfectScrollbar('update');
+  $(document).on("click", ".sidebar__menu a", function() {
+    $(".scroller").perfectScrollbar("update");
   });
 })();
