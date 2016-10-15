@@ -16,6 +16,51 @@
 
 .zoom-widget {
   display: flex;
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  padding: 15px;
+  transform: translateX(-50%);
+  z-index: 10;
+}
+
+.nav-widget {
+  position: absolute;
+  bottom: 11px;
+  z-index: 10;
+  &--prev {
+    left: 16.66667%;
+    left: calc(16.66667% + 11px);
+  }
+  &--next {
+    right: 11px;
+    right: calc(16.66667% + 11px);
+  }
+  a {
+    display: block;
+    width: 43px;
+    height: 43px;
+    line-height: 43px;
+    background: #fff;
+    border: 1px solid #e4e7ef;
+    text-align: center;
+  }
+  svg {
+    fill: #b9bed1;
+    width: 14px;
+    height: 11px;
+  }
+}
+
+.canvas--padded-left {
+  .nav-widget--prev {
+    left: 55px;
+  }
+}
+.canvas--padded-right {
+  .nav-widget--next {
+    right: 55px;
+  }
 }
 
 .zoom-widget button {
