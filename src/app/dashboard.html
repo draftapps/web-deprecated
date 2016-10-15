@@ -192,7 +192,7 @@
           'canvas--padded-right': rightSideBarIsHidden}"
       >
         <div class="nav-widget nav-widget--prev">
-          <a href="#"><svg><use xlink:href="#shape-prev" /></svg></a>
+          <a ng-click="dashboardVm.project.selectArtBoard()"><svg><use xlink:href="#shape-prev" /></svg></a>
         </div>
         <div class="zoom-widget" ng-click="$event.stopPropagation()">
           <button
@@ -212,7 +212,7 @@
           </button>
         </div>
         <div class="nav-widget nav-widget--next">
-          <a href="#"><svg><use xlink:href="#shape-next" /></svg></a>
+          <a ng-click="dashboardVm.project.selectArtBoard()"><svg><use xlink:href="#shape-next" /></svg></a>
         </div>
         <section
           class="canvas-screen-viewer scroller"
