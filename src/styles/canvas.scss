@@ -1721,3 +1721,13 @@ main {
 .screen__row.-rest {
   background: #eff3f6;
 }
+.menu.vertical > li > a {
+  &:hover {
+    background: #f7f8fb;
+  }
+  i {
+    color: #b9bed1;
+    font-size: 20px;
+    margin-right: 17px;
+  }
+}
