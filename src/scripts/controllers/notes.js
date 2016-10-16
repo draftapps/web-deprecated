@@ -92,6 +92,15 @@
     vm.project.selectedResolution = vm.project.unitsData[0].units[0].name;
     vm.selectedArtBoard = {
       obj: null,
+      currentopenedNote: {
+        obj: null,
+        isOpened: false,
+        newMessgae: ""
+      },
+      openNote: openNote,
+      createNote: createNote,
+      closeNote: closeNote,
+      addNewReply: addNewReply,
       screenStyle: getBoardScreenStyle,
       screenParentStyle: getBoardParentScreenStyle,
       notesStyle: getNotesStyle,
@@ -106,6 +115,51 @@
       vm.project.configs = getConfigs(
         vm.project.scale, vm.project.unit, vm.project.colorFormat, vm.selectedArtBoard.obj.height
       );
+    }
+
+    function openNote(note, $index) {
+      vm.selectedArtBoard.currentopenedNote.obj = note;
+      vm.selectedArtBoard.currentopenedNote.index = $index;
+      vm.selectedArtBoard.currentopenedNote.isOpened = true;
+    }
+
+    function createNote(event) {
+      var offset = $("#screen").offset();
+      var x = (event.pageX - offset.left) / vm.project.configs.zoom;
+      var y = (event.pageY - offset.top) / vm.project.configs.zoom;
+      vm.selectedArtBoard.currentopenedNote.obj = {
+        rect:{
+          x: x,
+          y: y,
+          width: vm.selectedArtBoard.obj.width,
+          height: vm.selectedArtBoard.obj.height
+        },
+        note: []
+      };
+      vm.selectedArtBoard.currentopenedNote.index = vm.selectedArtBoard.obj.notes.length + 1;
+      vm.selectedArtBoard.currentopenedNote.isOpened = true;
+    }
+
+    function closeNote() {
+      vm.selectedArtBoard.currentopenedNote.obj = null;
+      vm.selectedArtBoard.currentopenedNote.isOpened = false;
+      vm.selectedArtBoard.currentopenedNote.index = null;
+    }
+
+    function addNewReply() {
+      if (vm.selectedArtBoard.currentopenedNote.index > vm.selectedArtBoard.obj.notes.length) {
+        vm.selectedArtBoard.obj.notes.push(vm.selectedArtBoard.currentopenedNote.obj);
+        vm.selectedArtBoard.currentopenedNote.obj =
+          vm.selectedArtBoard.obj.notes[vm.selectedArtBoard.obj.notes.length - 1];
+      }
+
+      vm.selectedArtBoard.currentopenedNote.obj.note.push({
+        text: vm.selectedArtBoard.currentopenedNote.newMessage,
+        date: "2min ago",
+        userName: "Abo El Naga",
+        userImg: "images/demo/avatar.png"
+      });
+      vm.selectedArtBoard.currentopenedNote.newMessage = "";
     }
 
     function getConfigs(scale, unit, colorFormat, height) {
