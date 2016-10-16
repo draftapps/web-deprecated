@@ -6,7 +6,8 @@
 
 # Installation
 
-1. $ npm install
+```
+1. $ yarn install
 2. $ bower install
-3. $ npm install -g gulp-cli
-4. $ gulp serve
+3. $ gulp serve
+```
