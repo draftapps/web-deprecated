@@ -1447,6 +1447,14 @@ main {
     }
   }
   [pane-align="right"] {
+    &.share-dropdown {
+      .dropdown-pane {
+        &::after,
+        &::before {
+          left: 95%;
+        }
+      }
+    }
     .dropdown-pane {
       &::after,
       &::before {
@@ -1457,16 +1465,6 @@ main {
   .tags-dropdown {
     .dropdown-pane {
       width: 230px;
-    }
-    li > .add-tag {
-      background: #42d79e;
-      display: block;
-      text-align: center;
-      border-radius: 5px;
-      line-height: 42px;
-      width: auto;
-      color: #fff;
-      margin: 0 13px 13px;
     }
   }
   .input-wrapper {
@@ -1502,6 +1500,46 @@ main {
         width: 28px;
         height: 28px;
         border-radius: 50%;
+      }
+    }
+  }
+  .share-dropdown {
+    .dropdown-pane {
+      width: 330px;
+      ul a.action-button {
+        margin: 0;
+      }
+    }
+    li {
+      padding: 13px;
+    }
+    .link-wrapper {
+      position: relative;
+      button {
+        position: absolute;
+        height: 32px;
+        padding: 0 15px;
+        color: #fff;
+        right: 5px;
+        top: 5px;
+        border-radius: 4px;
+        background: #4f8ff7;
+      }
+    }
+    input {
+      border: 1px solid #e6e9ee;
+      border-radius: 4px;
+      color: #8493a8;
+      font-size: 14px;
+      height: 42px;
+      cursor: text;
+      background: #fff;
+      &[disabled] {
+        margin-bottom: 13px;
+        background: #f9f9fb;
+      }
+      &[type="email"] {
+        margin-bottom: 13px;
       }
     }
   }
@@ -1569,6 +1607,16 @@ main {
         line-height: 50px;
         color: #3a405b;
         font-weight: 400;
+        &.action-button {
+          background: #42d79e;
+          display: block;
+          text-align: center;
+          border-radius: 5px;
+          line-height: 42px;
+          width: auto;
+          color: #fff;
+          margin: 0 13px 13px;
+        }
       }
       .tags {
         padding: 13px;

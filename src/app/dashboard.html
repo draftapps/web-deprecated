@@ -123,7 +123,7 @@
                         <input type="text" placeholder="# Add Tag">
                         <input type="color">
                       </div>
-                      <a class="add-tag">Add Tag</a>
+                      <a class="action-button">Add Tag</a>
                     </li>
                   </ul>
                 </pane>
@@ -144,7 +144,25 @@
               </dropdown-toggle>
             </li>
             <li>
-              <button class="actions__button"><svg><use xlink:href="#shape-attachment" /></svg></button>
+              <dropdown-toggle pane-align="right" close-on-click="true" class="share-dropdown">
+                <toggle>
+                  <button class="actions__button"><svg><use xlink:href="#shape-attachment" /></svg></button>
+                </toggle>
+                <pane>
+                  <ul class="dd-menu">
+                    <li class="title">Share</span></li>
+                    <li>
+                      <div class="link-wrapper">
+                        <input type="text" value="http://draftapp.io/i8rm3c" disabled>
+                        <button>Copy</button>
+                      </div>
+                      <input type="email" placeholder="Enter Email Address">
+                      <a href="#" class="action-button">Send</a>
+                    </li>
+                  </ul>
+                </pane>
+              </dropdown-toggle>
+
             </li>
             <li>
               <dropdown-toggle pane-align="right" close-on-click="true">
