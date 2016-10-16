@@ -1462,10 +1462,12 @@ main {
       }
     }
   }
-  .tags-dropdown {
+  .calendar-menu {
     .dropdown-pane {
-      width: 230px;
+      width: 270px;
     }
+  }
+  .tags-dropdown {
   }
   .input-wrapper {
     padding: 13px;
@@ -1599,6 +1601,63 @@ main {
       &.assign-dd {
         a {
           line-height: 60px;
+        }
+      }
+      .pickadate {
+        .pickadate-centered-heading {
+          margin: 0;
+          line-height: 44px;
+          color: #343e5c;
+          font-weight: 400;
+        }
+        .pickadate-controls {
+          a {
+            display: inline-block;
+            width: 30px;
+            text-indent: 101%;
+            overflow: hidden;
+            margin-top: -3px;
+          }
+          .pickadate-prev {
+            background: url(../images/arrow-prev-calendar.png) 50% 50% no-repeat;
+          }
+          .pickadate-next {
+            background: url(../images/arrow-next-calendar.png) 50% 50% no-repeat;
+          }
+        }
+        .pickadate-cell {
+          padding: 10px;
+          &:first-child {
+            padding: 0 10px;
+            border-top: 1px solid #dbe0e9;
+            border-bottom: 1px solid #dbe0e9;
+            background: #f0f2f7;
+            li {
+              font-size: 12px;
+              background: transparent;
+              border-radius: 0;
+              color: #b9bed1;
+            }
+          }
+          li {
+            height: 35px;
+            line-height: 35px;
+            border-radius: 50%;
+            padding: 0;
+            border: 0;
+            color: #3a405b;
+            &.pickadate-disabled {
+              color: #e2e4eb;
+            }
+            &.pickadate-active {
+              color: #fff;
+              background: #4f8ff7;
+            }
+            &.pickadate-today {
+              background: #f0f2f7;
+              border: 1px solid #e5e9f0;
+            }
+          }
         }
       }
       a {

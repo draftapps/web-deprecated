@@ -89,7 +89,17 @@
               </dropdown-toggle>
             </li>
             <li>
-              <button class="actions__button"><i class="ion-calendar"></i></button>
+              <dropdown-toggle pane-align="center" close-on-click="true" class="calendar-menu">
+                <toggle>
+                  <button class="actions__button"><i class="ion-calendar"></i></button>
+                </toggle>
+                <pane>
+                  <ul class="dd-menu">
+                    <li class="title">Calendar</span></li>
+                    <li><div pickadate ng-model="date"></div></li>
+                  </ul>
+                </pane>
+              </dropdown-toggle>
             </li>
             <li>
               <dropdown-toggle pane-align="center" close-on-click="true">
