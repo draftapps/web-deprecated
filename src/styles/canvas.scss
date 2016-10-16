@@ -1678,7 +1678,8 @@ main {
         }
       }
       .tags {
-        padding: 13px;
+        padding: 13px 13px 0;
+        margin-bottom: -10px;
         a {
           white-space: nowrap;
           display: inline-block;
@@ -1687,8 +1688,10 @@ main {
           padding: 0 8px;
           font-size: 10px;
           border-radius: 3px;
-          & + a {
-            margin-left: 10px;
+          margin-right: 10px;
+          margin-bottom: 10px;
+          &:last-child {
+            margin-right: 0;
           }
         }
       }
