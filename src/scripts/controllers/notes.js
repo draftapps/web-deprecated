@@ -95,7 +95,7 @@
       currentopenedNote: {
         obj: null,
         isOpened: false,
-        newMessgae: ''
+        newMessgae: ""
       },
       openNote: openNote,
       createNote: createNote,
@@ -124,7 +124,7 @@
     }
 
     function createNote(event) {
-      var offset = $('#screen').offset();
+      var offset = $("#screen").offset();
       var x = (event.pageX - offset.left) / vm.project.configs.zoom;
       var y = (event.pageY - offset.top) / vm.project.configs.zoom;
       vm.selectedArtBoard.currentopenedNote.obj = {
@@ -155,11 +155,11 @@
 
       vm.selectedArtBoard.currentopenedNote.obj.note.push({
         text: vm.selectedArtBoard.currentopenedNote.newMessage,
-        date: '2min ago',
-        userName: 'fff gd',
-        userImg: 'images/demo/avatar.png'
+        date: "2min ago",
+        userName: "Abo El Naga",
+        userImg: "images/demo/avatar.png"
       });
-      vm.selectedArtBoard.currentopenedNote.newMessage = '';
+      vm.selectedArtBoard.currentopenedNote.newMessage = "";
     }
 
     function getConfigs(scale, unit, colorFormat, height) {
@@ -188,7 +188,7 @@
 
     function unitSize(length, isText){
       var length = Math.round( length / vm.project.configs.scale * 10 ) / 10,
-        units = vm.project.configs.unit.split('/'),
+        units = vm.project.configs.unit.split("/"),
         unit = units[0];
 
       if( units.length > 1 && isText){
