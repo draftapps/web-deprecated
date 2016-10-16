@@ -165,8 +165,9 @@
         </aside>
       </div>
 
+      <!-- FIXME: notes-modal__container needs fixing -->
       <div
-        class="columns main-content"
+        class="columns main-content notes-modal__container"
         ng-class="{'large-8': !leftSideBarIsHidden && !rightSideBarIsHidden,
           'large-10': leftSideBarIsHidden || rightSideBarIsHidden,
           'large-12': leftSideBarIsHidden && rightSideBarIsHidden,
@@ -177,6 +178,7 @@
           <a href="#"><svg><use xlink:href="#shape-prev" /></svg></a>
         </div>
         <div class="zoom-widget">
+
           <button
             class="zoom-in"
             ng-disabled="notesVm.project.configs.zoom <= .25"
@@ -196,6 +198,52 @@
         <div class="nav-widget nav-widget--next">
           <a href="#"><svg><use xlink:href="#shape-next" /></svg></a>
         </div>
+
+        <div
+          class="notes-modal__overlay"
+          ng-show="notesVm.selectedArtBoard.currentopenedNote.isOpened"
+          ng-click="notesVm.selectedArtBoard.closeNote()"></div>
+        <div class="notes-modal" ng-show="notesVm.selectedArtBoard.currentopenedNote.isOpened">
+          <div class="notes-modal__content">
+            <div class="notes-modal__head">
+              note {{notesVm.selectedArtBoard.currentopenedNote.index}}
+            </div>
+
+            <div class="notes-modal__body">
+              <div class="scroller">
+                <div class="media-object" ng-repeat="message in notesVm.selectedArtBoard.currentopenedNote.obj.note">
+                  <div class="media-object-section">
+                    <div>
+                      <img class="avatar" ng-src="{{message.userImg}}" width="32">
+                    </div>
+                  </div>
+                  <div class="media-object-section main-section">
+                    <h6 class="u-space-v-undo">{{message.userName}}</h6>
+                    <div class="u-space-v-small u-text-s">{{message.date}}</div>
+                    <p class="u-text-s" style="background-color: #f3f6f8;border-radius: 3px;padding: 10px;">{{message.text}}</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="notes-modal__footer">
+              <div class="notes-modal__txt-box-container">
+                <textarea
+                  class="notes-modal__txt-box"
+                  placeholder="Type your message"
+                  ng-model="notesVm.selectedArtBoard.currentopenedNote.newMessage"></textarea>
+              </div>
+            </div>
+
+            <div class="notes-modal__footer">
+              <button
+                class="button success notes-modal__button"
+                ng-click="notesVm.selectedArtBoard.addNewReply()"
+                ng-disabled="!notesVm.selectedArtBoard.currentopenedNote.newMessage">Reply</button>
+            </div>
+          </div>
+        </div>
+
         <section class="canvas-screen-viewer scroller">
           <div
             class="canvas-screen-viewer-inner"
@@ -203,7 +251,8 @@
             <div
               id="screen"
               class="canvas-screen"
-              ng-style="notesVm.selectedArtBoard.screenStyle()">
+              ng-style="notesVm.selectedArtBoard.screenStyle()"
+              ng-click="notesVm.selectedArtBoard.createNote($event)">
               <div id="notes">
                 <div
                   class="note"
@@ -211,8 +260,9 @@
                   data-index="{{$index + 1}}"
                   ng-style="notesVm.selectedArtBoard.notesStyle(note)"
                   ng-mouseenter="note.show = true"
-                  ng-mouseleave="note.show = false">
-                  <div style="white-space: nowrap;" ng-show="note.show">{{note.note}}</div>
+                  ng-mouseleave="note.show = false"
+                  ng-click="notesVm.selectedArtBoard.openNote(note, $index + 1);$event.stopPropagation()">
+                  <div ng-show="note.show">{{note.note[0]}}</div>
                 </div>
               </div>
             </div>
@@ -240,9 +290,9 @@
                 <li
                   class="o-list--stripped"
                   ng-repeat="note in notesVm.selectedArtBoard.obj.notes"
-                  ng-click=""
+                  ng-click="notesVm.selectedArtBoard.openNote(note, $index + 1)"
                   ng-class="{'selected' : note.show === true}">
-                  {{note.note}}
+                  note {{$index + 1}}
                 </li>
               </ul>
             </div>

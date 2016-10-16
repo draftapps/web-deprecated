@@ -2434,7 +2434,25 @@
             "width":113,
             "height":14
           },
-          "note":"Product Meeting #45"
+          "note": [{
+            "text":"ddddddddddd djbjhvhfgv jdhgv",
+            "date": "2min ago",
+            "userName": "fff gd",
+            "userImg": "images/demo/avatar.png"
+            },
+            {
+              "text":"ddddddddddd djbjhvhfgv jdhgv",
+              "date": "2min ago",
+              "userName": "fff gd",
+              "userImg": "images/demo/avatar.png"
+            },
+            {
+              "text":"ddddddddddd djbjhvhfgv jdhgv",
+              "date": "2min ago",
+              "userName": "fff gd",
+              "userImg": "images/demo/avatar.png"
+            }
+          ]
         },
         {
           "rect":{
@@ -2443,7 +2461,25 @@
             "width":113,
             "height":14
           },
-          "note":"Product Meeting #45"
+          "note": [{
+            "text":"ddddddddddd djbjhvhfgv jdhgv",
+            "date": "2min ago",
+            "userName": "fff gd",
+            "userImg": "images/demo/avatar.png"
+            },
+            {
+              "text":"ddddddddddd djbjhvhfgv jdhgv",
+              "date": "2min ago",
+              "userName": "fff gd",
+              "userImg": "images/demo/avatar.png"
+            },
+            {
+              "text":"ddddddddddd djbjhvhfgv jdhgv",
+              "date": "2min ago",
+              "userName": "fff gd",
+              "userImg": "images/demo/avatar.png"
+            }
+          ]
         },
         {
           "rect":{
@@ -2452,7 +2488,25 @@
             "width":113,
             "height":14
           },
-          "note":"Product Meeting #45"
+          "note": [{
+            "text":"ddddddddddd djbjhvhfgv jdhgv1",
+            "date": "2min ago",
+            "userName": "fff gd",
+            "userImg": "images/demo/avatar.png"
+            },
+            {
+              "text":"ddddddddddd djbjhvhfgv jdhgvdvs",
+              "date": "2min ago",
+              "userName": "fff gd",
+              "userImg": "images/demo/avatar.png"
+            },
+            {
+              "text":"ddddddddddd djbjhvhfgv jdhgv",
+              "date": "2min ago",
+              "userName": "fff gd",
+              "userImg": "images/demo/avatar.png"
+            }
+          ]
         }
       ],
       "pageName":"Page 1",
