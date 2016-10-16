@@ -259,7 +259,10 @@
                   ng-repeat="note in notesVm.selectedArtBoard.obj.notes"
                   data-index="{{$index + 1}}"
                   ng-style="notesVm.selectedArtBoard.notesStyle(note)"
-                  ng-click="notesVm.selectedArtBoard.openNote(note ,$index + 1);$event.stopPropagation()">
+                  ng-mouseenter="note.show = true"
+                  ng-mouseleave="note.show = false"
+                  ng-click="notesVm.selectedArtBoard.openNote(note, $index + 1);$event.stopPropagation()">
+                  <div ng-show="note.show">{{note.note[0]}}</div>
                 </div>
               </div>
             </div>
