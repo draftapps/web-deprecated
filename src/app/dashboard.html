@@ -27,7 +27,7 @@
             </toggle>
             <pane>
               <ul class="menu vertical">
-                <li><a ui-sref="logout">Logout</a></li>
+                <li><a ui-sref="logout"><i class="ion-android-exit"></i> Logout</a></li>
               </ul>
             </pane>
           </dropdown-toggle>
@@ -45,9 +45,12 @@
             </toggle>
             <pane>
               <ul class="menu vertical">
-                <li>
-                  <a ui-sref="logout">Logout</a>
-                </li>
+                <li><a href="#"><i class="ion-person"></i> Profile</a></li>
+                <li><a href="#"><i class="ion-person-add"></i> Team Members</a></li>
+                <li><a href="#"><i class="ion-android-share-alt"></i> Integrations</a></li>
+                <li><a href="#"><i class="ion-android-notifications"></i> Notifications</a></li>
+                <li><a href="#"><i class="ion-card"></i> Billing</a></li>
+                <li><a ui-sref="logout"><i class="ion-android-exit"></i> Logout</a></li>
               </ul>
             </pane>
           </dropdown-toggle>
@@ -86,7 +89,17 @@
               </dropdown-toggle>
             </li>
             <li>
-              <button class="actions__button"><i class="ion-calendar"></i></button>
+              <dropdown-toggle pane-align="center" close-on-click="true" class="calendar-menu">
+                <toggle>
+                  <button class="actions__button"><i class="ion-calendar"></i></button>
+                </toggle>
+                <pane>
+                  <ul class="dd-menu">
+                    <li class="title">Calendar</span></li>
+                    <li><div pickadate ng-model="date"></div></li>
+                  </ul>
+                </pane>
+              </dropdown-toggle>
             </li>
             <li>
               <dropdown-toggle pane-align="center" close-on-click="true">
@@ -120,7 +133,7 @@
                         <input type="text" placeholder="# Add Tag">
                         <input type="color">
                       </div>
-                      <a class="add-tag">Add Tag</a>
+                      <a class="action-button">Add Tag</a>
                     </li>
                   </ul>
                 </pane>
@@ -141,7 +154,25 @@
               </dropdown-toggle>
             </li>
             <li>
-              <button class="actions__button"><svg><use xlink:href="#shape-attachment" /></svg></button>
+              <dropdown-toggle pane-align="right" close-on-click="true" class="share-dropdown">
+                <toggle>
+                  <button class="actions__button"><svg><use xlink:href="#shape-attachment" /></svg></button>
+                </toggle>
+                <pane>
+                  <ul class="dd-menu">
+                    <li class="title">Share</span></li>
+                    <li>
+                      <div class="link-wrapper">
+                        <input type="text" value="http://draftapp.io/i8rm3c" disabled>
+                        <button>Copy</button>
+                      </div>
+                      <input type="email" placeholder="Enter Email Address">
+                      <a href="#" class="action-button">Send</a>
+                    </li>
+                  </ul>
+                </pane>
+              </dropdown-toggle>
+
             </li>
             <li>
               <dropdown-toggle pane-align="right" close-on-click="true">

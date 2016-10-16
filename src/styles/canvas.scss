@@ -1447,6 +1447,14 @@ main {
     }
   }
   [pane-align="right"] {
+    &.share-dropdown {
+      .dropdown-pane {
+        &::after,
+        &::before {
+          left: 95%;
+        }
+      }
+    }
     .dropdown-pane {
       &::after,
       &::before {
@@ -1454,20 +1462,12 @@ main {
       }
     }
   }
-  .tags-dropdown {
+  .calendar-menu {
     .dropdown-pane {
-      width: 230px;
+      width: 270px;
     }
-    li > .add-tag {
-      background: #42d79e;
-      display: block;
-      text-align: center;
-      border-radius: 5px;
-      line-height: 42px;
-      width: auto;
-      color: #fff;
-      margin: 0 13px 13px;
-    }
+  }
+  .tags-dropdown {
   }
   .input-wrapper {
     padding: 13px;
@@ -1502,6 +1502,46 @@ main {
         width: 28px;
         height: 28px;
         border-radius: 50%;
+      }
+    }
+  }
+  .share-dropdown {
+    .dropdown-pane {
+      width: 330px;
+      ul a.action-button {
+        margin: 0;
+      }
+    }
+    li {
+      padding: 13px;
+    }
+    .link-wrapper {
+      position: relative;
+      button {
+        position: absolute;
+        height: 32px;
+        padding: 0 15px;
+        color: #fff;
+        right: 5px;
+        top: 5px;
+        border-radius: 4px;
+        background: #4f8ff7;
+      }
+    }
+    input {
+      border: 1px solid #e6e9ee;
+      border-radius: 4px;
+      color: #8493a8;
+      font-size: 14px;
+      height: 42px;
+      cursor: text;
+      background: #fff;
+      &[disabled] {
+        margin-bottom: 13px;
+        background: #f9f9fb;
+      }
+      &[type="email"] {
+        margin-bottom: 13px;
       }
     }
   }
@@ -1563,15 +1603,83 @@ main {
           line-height: 60px;
         }
       }
+      .pickadate {
+        .pickadate-centered-heading {
+          margin: 0;
+          line-height: 44px;
+          color: #343e5c;
+          font-weight: 400;
+        }
+        .pickadate-controls {
+          a {
+            display: inline-block;
+            width: 30px;
+            text-indent: 101%;
+            overflow: hidden;
+            margin-top: -3px;
+          }
+          .pickadate-prev {
+            background: url(../images/arrow-prev-calendar.png) 50% 50% no-repeat;
+          }
+          .pickadate-next {
+            background: url(../images/arrow-next-calendar.png) 50% 50% no-repeat;
+          }
+        }
+        .pickadate-cell {
+          padding: 10px;
+          &:first-child {
+            padding: 0 10px;
+            border-top: 1px solid #dbe0e9;
+            border-bottom: 1px solid #dbe0e9;
+            background: #f0f2f7;
+            li {
+              font-size: 12px;
+              background: transparent;
+              border-radius: 0;
+              color: #b9bed1;
+            }
+          }
+          li {
+            height: 35px;
+            line-height: 35px;
+            border-radius: 50%;
+            padding: 0;
+            border: 0;
+            color: #3a405b;
+            &.pickadate-disabled {
+              color: #e2e4eb;
+            }
+            &.pickadate-active {
+              color: #fff;
+              background: #4f8ff7;
+            }
+            &.pickadate-today {
+              background: #f0f2f7;
+              border: 1px solid #e5e9f0;
+            }
+          }
+        }
+      }
       a {
         display: block;
         padding: 0 10px;
         line-height: 50px;
         color: #3a405b;
         font-weight: 400;
+        &.action-button {
+          background: #42d79e;
+          display: block;
+          text-align: center;
+          border-radius: 5px;
+          line-height: 42px;
+          width: auto;
+          color: #fff;
+          margin: 0 13px 13px;
+        }
       }
       .tags {
-        padding: 13px;
+        padding: 13px 13px 0;
+        margin-bottom: -10px;
         a {
           white-space: nowrap;
           display: inline-block;
@@ -1580,8 +1688,10 @@ main {
           padding: 0 8px;
           font-size: 10px;
           border-radius: 3px;
-          & + a {
-            margin-left: 10px;
+          margin-right: 10px;
+          margin-bottom: 10px;
+          &:last-child {
+            margin-right: 0;
           }
         }
       }
@@ -1720,4 +1830,14 @@ main {
 }
 .screen__row.-rest {
   background: #eff3f6;
+}
+.menu.vertical > li > a {
+  &:hover {
+    background: #f7f8fb;
+  }
+  i {
+    color: #b9bed1;
+    font-size: 20px;
+    margin-right: 17px;
+  }
 }
