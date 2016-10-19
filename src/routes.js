@@ -55,6 +55,10 @@ function routesConfig($stateProvider, $urlRouterProvider, $locationProvider) {
       url: "/terms",
       templateUrl: "app/terms.html"
     })
+    .state("privacy", {
+      url: "/privacy",
+      templateUrl: "app/privacy.html"
+    })
     .state("authed", {
       abstract: true,
       template: "<ui-view/>",
