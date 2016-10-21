@@ -66,6 +66,16 @@ function routesConfig($stateProvider, $urlRouterProvider, $locationProvider) {
         user: authService => authService.redirectNotAuthed("login")
       }
     })
+    .state("projects", {
+      url: "/projects",
+      templateUrl: "app/projects.html",
+      controller: "ProjectsCtrl",
+      controllerAs: "projectsVm",
+      resolve: {
+        projects: $http => $http.get("http://api.draftapp.io/projects")
+      },
+      parent: "authed"
+    })
     .state("dashboard", {
       url: "/dashboard",
       templateUrl: "app/dashboard.html",

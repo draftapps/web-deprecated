@@ -1,0 +1,77 @@
+<div class="svg-icons"><ng-include src="'images/svg-defs.svg'"></ng-include></div>
+<div class="screen canvas">
+  <div class="screen__row">
+    <header class="c-header">
+      <div class="row expanded align-middle">
+        <div class="column large-2">
+          <a ui-sref="projects" class="u-text-small">Projects</a>
+          <a class="u-text-small">Activity</a>
+        </div>
+        <div class="column large-8">
+          <div class="row align-center">
+            <a ui-sref="dashboard">
+              <img class="c-header__element" src="images/logo2.png">
+            </a>
+          </div>
+        </div>
+        <div class="columns large-2 text-right">
+          <dropdown-toggle
+            class="c-header__element"
+            pane-align="right"
+            close-on-click="true"
+          >
+            <toggle>
+              <button class="notifier">
+                <span class="notifier__detect"></span>
+                <i class="ion-android-notifications u-icon-24"></i>
+              </button>
+            </toggle>
+            <pane>
+              <ul class="menu vertical">
+                <li><a ui-sref="logout"><i class="ion-android-exit"></i> Logout</a></li>
+              </ul>
+            </pane>
+          </dropdown-toggle>
+          <dropdown-toggle
+            class="c-header__element u-space-h-undo"
+            pane-align="right"
+            close-on-click="true"
+          >
+            <toggle>
+              <img
+                class="avatar"
+                src="images/demo/avatar.png"
+                width="32"
+              >
+            </toggle>
+            <pane>
+              <ul class="menu vertical">
+                <li><a href="#"><i class="ion-person"></i> Profile</a></li>
+                <li><a href="#"><i class="ion-person-add"></i> Team Members</a></li>
+                <li><a href="#"><i class="ion-android-share-alt"></i> Integrations</a></li>
+                <li><a href="#"><i class="ion-android-notifications"></i> Notifications</a></li>
+                <li><a href="#"><i class="ion-card"></i> Billing</a></li>
+                <li><a ui-sref="logout"><i class="ion-android-exit"></i> Logout</a></li>
+              </ul>
+            </pane>
+          </dropdown-toggle>
+        </div>
+      </div>
+    </header>
+  </div>
+  <div class="create-project">
+    <form ng-submit="createProject()">
+      <label for="name">Title</label>
+      <input type="text" name="name" id="name" ng-model="projectData.name"/>
+      <p class="label">Platform</p>
+      <label for="platform-ios"><input id="platform-ios" ng-model="projectData.platform" name="platform" value="ios" type="radio">iOS</label>
+      <label for="platform-android"><input id="platform-android" ng-model="projectData.platform" name="platform" value="android" type="radio">Android</label>
+      <label for="platform-web"><input id="platform-web" ng-model="projectData.platform" name="platform" value="web" type="radio">Web</label>
+      <p class="label">Resolution</p>
+      <label for="resolution-1"><input ng-model="projectData.scale" id="resolution-1" name="resolution" value="1" type="radio">1</label>
+      <label for="resolution-2"><input ng-model="projectData.scale" id="resolution-2" name="resolution" value="2" type="radio">2</label>
+      <label for="resolution-3"><input ng-model="projectData.scale" id="resolution-3" name="resolution" value="3" type="radio">3</label>
+      <button>Submit</button>
+    </form>
+  </div>
+</div>
