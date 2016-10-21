@@ -60,18 +60,6 @@
     </header>
   </div>
   <div class="create-project">
-    <form ng-submit="createProject()">
-      <label for="name">Title</label>
-      <input type="text" name="name" id="name" ng-model="projectData.name"/>
-      <p class="label">Platform</p>
-      <label for="platform-ios"><input id="platform-ios" ng-model="projectData.platform" name="platform" value="ios" type="radio">iOS</label>
-      <label for="platform-android"><input id="platform-android" ng-model="projectData.platform" name="platform" value="android" type="radio">Android</label>
-      <label for="platform-web"><input id="platform-web" ng-model="projectData.platform" name="platform" value="web" type="radio">Web</label>
-      <p class="label">Resolution</p>
-      <label for="resolution-1"><input ng-model="projectData.scale" id="resolution-1" name="resolution" value="1" type="radio">1</label>
-      <label for="resolution-2"><input ng-model="projectData.scale" id="resolution-2" name="resolution" value="2" type="radio">2</label>
-      <label for="resolution-3"><input ng-model="projectData.scale" id="resolution-3" name="resolution" value="3" type="radio">3</label>
-      <button>Submit</button>
-    </form>
+    <button class="button" ng-click="openModal('app/partials/new-project.html')">Open me!</button>
   </div>
 </div>

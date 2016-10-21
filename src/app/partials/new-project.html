@@ -1,0 +1,39 @@
+<section class="modal">
+  <div class="modal-header">
+    <h1>Create Project</h1>
+    <button ng-click="cancel()" class="close-button" aria-label="Close reveal" type="button">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <form ng-submit="createProject()" name="new-project">
+      <label for="name">Title</label>
+      <input type="text" name="name" id="name" ng-model="projectData.name"/>
+      <p class="label-like">Platform</p>
+      <div class="check-buttons row">
+        <div class="column small-4">
+          <input checked="checked" id="platform-ios" ng-model="projectData.platform.ios" name="platform[]" value="ios" type="checkbox"><label for="platform-ios"><svg><use xlink:href="#shape-apple" /></svg><span>iOS</span></label>
+        </div>
+        <div class="column small-4">
+          <input id="platform-android" ng-model="projectData.platform.android" name="platform[]" value="android" type="checkbox"><label for="platform-android"><svg><use xlink:href="#shape-android" /></svg><span>Android</span></label>
+        </div>
+        <div class="column small-4">
+          <input id="platform-web" ng-model="projectData.platform.web" name="platform[]" value="web" type="checkbox"><label for="platform-web"><svg><use xlink:href="#shape-browser" /></svg><span>Web</span></label>
+        </div>
+      </div>
+      <p class="label-like">Resolution</p>
+      <div class="row">
+        <div class="column small-4">
+          <input ng-model="projectData.scale" id="resolution-1" name="resolution" value="1" type="radio" class="custom-radio" checked="checked"><label for="resolution-1">1x</label>
+        </div>
+        <div class="column small-4">
+          <input ng-model="projectData.scale" id="resolution-2" name="resolution" value="2" type="radio" class="custom-radio"><label for="resolution-2">2x</label>
+        </div>
+        <div class="column small-4">
+          <input ng-model="projectData.scale" id="resolution-3" name="resolution" value="3" type="radio" class="custom-radio"><label for="resolution-3">3x</label>
+        </div>
+      </div>
+      <button class="button button--success button--block" type="submit">Create Project</button>
+    </form>
+  </div>
+</section>

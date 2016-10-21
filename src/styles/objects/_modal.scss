@@ -1,0 +1,60 @@
+.reveal-overlay {
+  background: rgba(243, 246, 248, 0.97);
+}
+.reveal {
+  padding: 0;
+  border-radius: 5px;
+  box-shadow: 0px 10px 30px 0px rgba(28, 30, 35, 0.2);
+  top: 50px;
+}
+.modal-header {
+  height: 66px;
+  padding: 0 30px;
+  border-bottom: 1px solid #e6eaee;
+  h1 {
+    line-height: 66px;
+    color: #3a405b;
+    margin: 0;
+    font-size: 22px;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 500;
+  }
+  .close-button {
+    background: #e4e7ef;
+    border-radius: 50%;
+    width: 32px;
+    height: 32px;
+    text-align: center;
+    line-height: 32px;
+    font-size: 22px;
+    top: 14px;
+    right: 30px;
+    span {
+      position: relative;
+      bottom: -2px;
+      line-height: 32px;
+    }
+  }
+}
+.modal-body {
+  padding: 30px;
+  label,
+  .label-like {
+    font-weight: 500;
+    font-size: 16px;
+    color: #b9bed1;
+    font-family: 'Montserrat', sans-serif;
+  }
+  label {
+    & + input {
+      &[type="text"] {
+        margin-top: 16px;
+        height: 42px;
+        border-radius: 5px;
+      }
+    }
+  }
+  .button--block {
+    margin-top: 30px;
+  }
+}
