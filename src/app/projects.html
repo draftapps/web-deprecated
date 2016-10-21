@@ -60,6 +60,52 @@
     </header>
   </div>
   <div class="create-project">
-    <button class="button" ng-click="openModal('app/partials/new-project.html')">Open me!</button>
+  </div>
+  <div class="container">
+    <div class="row head-filters">
+      <div class="column medium-8">
+        <dropdown-toggle pane-align="left" close-on-click="true">
+          <toggle>
+            <button class="select">By Status</button>
+          </toggle>
+          <pane>
+            <ul class="menu vertical">
+              <li class="title">By Status</li>
+              <li><a href="#">Published</a></li>
+              <li><a href="#">Unpublished</a></li>
+              <li><a href="#">Pending</a></li>
+            </ul>
+          </pane>
+        </dropdown-toggle>
+        <dropdown-toggle pane-align="left" close-on-click="true">
+          <toggle>
+            <button class="select">By Platform</button>
+          </toggle>
+          <pane>
+            <ul class="menu vertical">
+              <li class="title">By Platform</li>
+              <li><a href="#">iOS</a></li>
+              <li><a href="#">Android</a></li>
+              <li><a href="#">Web</a></li>
+            </ul>
+          </pane>
+        </dropdown-toggle>
+        <dropdown-toggle pane-align="left" close-on-click="true">
+          <toggle>
+            <button class="select">By Assignee</button>
+          </toggle>
+          <pane>
+            <ul class="menu vertical">
+              <li class="title">By Assignee</li>
+              <li><a href="#">John Doe</a></li>
+              <li><a href="#">Megan Steve</a></li>
+            </ul>
+          </pane>
+        </dropdown-toggle>
+      </div>
+      <div class="column medium-4 text-right">
+        <button class="button button--success" ng-click="openModal('app/partials/new-project.html')">New Project</button>
+      </div>
+    </div>
   </div>
 </div>

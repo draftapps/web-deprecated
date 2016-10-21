@@ -16,7 +16,7 @@ function routesConfig($stateProvider, $urlRouterProvider, $locationProvider) {
       abstract: true,
       template: "<ui-view/>",
       resolve: {
-        auth: authService => authService.redirectAuthed("dashboard")
+        auth: authService => authService.redirectAuthed("projects")
       }
     })
     .state("features", {
