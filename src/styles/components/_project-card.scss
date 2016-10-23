@@ -131,5 +131,44 @@
         margin-right: 4px;
       }
     }
+    &__menu {
+      float: right;
+      position: relative;
+      z-index: 1;
+      button .ion-more {
+        position: relative;
+        right: 12px;
+        top: -3px;
+      }
+      .ion-more {
+        font-size: 20px;
+      }
+      .dropdown-pane {
+        border: 0;
+        transform: translate(-100%, -100%) !important;
+        &::before,
+        &::after {
+          content: none;
+        }
+        ul {
+          padding: 4px 12px;
+          background: #3a405b;
+          border-radius: 3px;
+          li {
+            & + li {
+              border-top-color: #494f69;
+            }
+          }
+          a {
+            line-height: 32px;
+            font-weight: 300;
+            color: #b9bed1;
+            i {
+              font-weight: normal;
+            }
+          }
+        }
+      }
+    }
   }
 }

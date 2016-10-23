@@ -112,6 +112,21 @@
         <div class="card">
           <div class="card__header"><a href="#"><span>View Project</span></a><img src="images/project-thumb.png" alt=""></div>
           <div class="card__content">
+            <div class="card__menu">
+              <dropdown-toggle pane-align="right" close-on-click="true">
+                <toggle>
+                  <button><i class="ion-more"></i></button>
+                </toggle>
+                <pane>
+                  <ul class="dd-menu">
+                    <li><a href="#"><i class="ion-ios-filing-outline"></i>Archive</a></li>
+                    <li><a href="#"><i class="ion-ios-copy-outline"></i>Duplicate</a></li>
+                    <li><a href="#"><i class="ion-ios-trash-outline"></i> Delete</a></li>
+                    <li class="text-right"><span><i class="ion-more"></i></span></li>
+                  </ul>
+                </pane>
+              </dropdown-toggle>
+            </div>
             <p class="card__title status--pending">Foodly Android UI</p>
             <p class="card__date">Yesterday</p>
             <p class="card__alert">Due</p>
