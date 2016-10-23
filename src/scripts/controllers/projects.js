@@ -5,6 +5,9 @@
 
   function ProjectsCtrl($scope, projects, $http, $modal) {
 
+    var vm = this;
+    vm.projects = projects.data;
+
     $scope.openModal = openModal;
     $scope.projectData = {};
     $scope.createProject = function() {

@@ -135,10 +135,13 @@
       float: right;
       position: relative;
       z-index: 1;
-      button .ion-more {
-        position: relative;
-        right: 12px;
-        top: -3px;
+      button {
+        margin-top: 7px;
+        .ion-more {
+          position: relative;
+          right: 12px;
+          top: -3px;
+        }
       }
       .ion-more {
         font-size: 20px;

@@ -108,7 +108,7 @@
       </div>
     </div>
     <div class="row projects-list">
-      <div class="column medium-3">
+      <div class="column medium-3" ng-repeat="project in projectsVm.projects">
         <div class="card">
           <div class="card__header"><a href="#"><span>View Project</span></a><img src="images/project-thumb.png" alt=""></div>
           <div class="card__content">
@@ -127,15 +127,13 @@
                 </pane>
               </dropdown-toggle>
             </div>
-            <p class="card__title status--pending">Foodly Android UI</p>
-            <p class="card__date">Yesterday</p>
+            <p class="card__title status--pending">{{project.name}}</p>
+            <p class="card__date"><time-ago from-time='{{ project.created_at }}'></time-ago></p>
             <p class="card__alert">Due</p>
             <ul class="card__users">
-              <li><img src="images/user-avatar.jpg" alt=""></li>
-              <li><img src="images/user-avatar.jpg" alt=""></li>
-              <li><img src="images/user-avatar.jpg" alt=""></li>
+              <li ng-repeat="user in project.team.users"><img alt="{{user.name}}" ng-src="{{::(user.image || 'images/user-avatar.jpg')}}" /></li>
             </ul>
-            <div class="card__images"><svg><use xlink:href="#shape-images" /></svg> 10</div>
+            <div class="card__images"><svg><use xlink:href="#shape-images" /></svg> {{project.artboards_count}}</div>
           </div>
         </div>
       </div>
