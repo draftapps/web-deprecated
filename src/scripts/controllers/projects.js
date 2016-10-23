@@ -16,7 +16,8 @@
       };
       $http.post("http://api.draftapp.io/projects", project)
         .success(function(data) {
-          $scope.projectData = {}; // clear the form so our user is ready to enter another
+          // Reset the object
+          $scope.projectData = {};
           $scope.project = data;
           // console.log(data);
         })
@@ -24,8 +25,27 @@
           // console.log('Error: ' + data);
         });
     };
+    $scope.deleteProject = function(id) {
 
-    function openModal(template) {
+      $http({
+        method: "DELETE",
+        url: "http://api.draftapp.io/projects/" + id,
+        data: {"project": id},
+        headers: {"Content-Type": "application/json;charset=utf-8"}
+      })
+        .success(function(data) {
+          $scope.projectData = {};
+          // console.log(data);
+        })
+        .error(function(data) {
+          // console.log('Error: ' + data);
+        });
+    };
+
+    function openModal(template, parameters) {
+      if(parameters !== undefined) {
+        $scope.projectData = parameters
+      }
       var params = {
         templateUrl: template,
         controller: function($scope, $modalInstance) {
@@ -45,6 +65,8 @@
       modalInstance.result.then(function(selectedItem) {
       }, function() {
         // Callback when the modal is closed.
+        // Reset the object
+        $scope.projectData = {}
       });
     }
   }
