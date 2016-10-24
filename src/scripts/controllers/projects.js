@@ -67,7 +67,7 @@
      */
     function openModal(template, parameters) {
       if(parameters !== undefined) {
-        $scope.projectData = parameters
+        $scope.projectData = parameters;
       }
       var params = {
         templateUrl: template,
@@ -88,7 +88,7 @@
       modalInstance.result.then(function() {
       }, function() {
         // Callback when the modal is dismissed.
-        $scope.projectData = {}
+        $scope.projectData = {};
       });
     }
   }
