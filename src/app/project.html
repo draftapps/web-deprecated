@@ -83,9 +83,7 @@
           <div class="project-summary__collaborators">
             <h2>Collaborators</h2>
             <ul>
-              <li><img alt="" src="images/user-avatar.png"></li>
-              <li><img alt="" src="images/user-avatar.png"></li>
-              <li><img alt="" src="images/user-avatar.png"></li>
+              <li ng-repeat="user in project.team.users"><img alt="{{user.name}}" ng-src="{{::(user.image || 'images/user-avatar.png')}}" /></li>
               <li><a href="#" class="add-more"><span>Add more</span></a></li>
             </ul>
           </div>
