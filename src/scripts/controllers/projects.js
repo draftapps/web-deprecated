@@ -10,6 +10,11 @@
     $scope.openModal = openModal;
     $scope.projectData = {};
     $scope.filter = "all";
+    /**
+     * [$scope.setFilter - Filter the list of the projects]
+     * @param  {string} filter [The string used for filtering]
+     * When done, the dropdown is closed using this.$close();
+     */
     $scope.setFilter = function(filter){
       $scope.filter = filter;
       this.$close();
@@ -47,11 +52,10 @@
      * - $scope.projectData = {};
      *    [Reset the values for the temporary object we use to clear the forms ... etc]
      */
-    $scope.deleteProject = function(id) {
+    $scope.deleteProject = function(id, slug) {
       $http({
         method: "DELETE",
-        url: "http://api.draftapp.io/projects/" + id,
-        data: {"project": id},
+        url: "http://api.draftapp.io/projects/" + id + "?project[slug]=" + slug,
         headers: {"Content-Type": "application/json;charset=utf-8"}
       })
         .success(function(data) {

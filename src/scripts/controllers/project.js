@@ -13,7 +13,7 @@
           $scope.project = data
         })
         .error(function(data) {
-          console.log('Error: ' + data);
+          // console.log('Error: ' + data);
         });
     };
     $scope.getProject($stateParams.id, $stateParams.slug);
