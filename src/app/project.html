@@ -67,12 +67,35 @@
           <p class="project-summary__notice">Comment directly on a task, to clarify exactly what needs to be done. Discuss a project’s progress to keep the momentum going.</p>
           <div class="project-summary__status">
             <h2>Status</h2>
+            <dropdown-toggle pane-align="left" close-on-click="true">
+              <toggle>
+                <button class="pick-status status--warning">In Progress</button>
+              </toggle>
+              <pane>
+                <ul class="dd-menu">
+                  <li><a href="#" class="status-danger">New</a></li>
+                  <li><a href="#" class="status-warning">In Progress</a></li>
+                  <li><a href="#" class="status-success">Approved</a></li>
+                </ul>
+              </pane>
+            </dropdown-toggle>
           </div>
           <div class="project-summary__collaborators">
             <h2>Collaborators</h2>
+            <ul>
+              <li><img alt="" src="images/user-avatar.jpg"></li>
+              <li><img alt="" src="images/user-avatar.jpg"></li>
+              <li><img alt="" src="images/user-avatar.jpg"></li>
+              <li><a href="#" class="add-more"><span>Add more</span></a></li>
+            </ul>
           </div>
           <div class="project-summary__tags">
             <h2>Tags</h2>
+            <ul>
+              <li><a style="color: #faca00" href="#">Development</a></li>
+              <li><a style="color: #81c926;" href="#">iOS UI</a></li>
+              <li><a href="#" class="add-more"><span>Add more</span></a></li>
+            </ul>
           </div>
         </aside>
       </div>
