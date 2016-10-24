@@ -20,6 +20,9 @@
         background: rgba(45, 46, 46, 0.4);
         border-radius: 3px 3px 0 0;
       }
+      &.no-thumb::before {
+        content: none;
+      }
       img {
         border-radius: 3px 3px 0 0;
         width: 100%;
