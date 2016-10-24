@@ -76,6 +76,13 @@ function routesConfig($stateProvider, $urlRouterProvider, $locationProvider) {
       },
       parent: "authed"
     })
+    .state("project", {
+      url: "/project",
+      templateUrl: "app/project.html",
+      controller: "ProjectCtrl",
+      controllerAs: "projectVm",
+      parent: "authed"
+    })
     .state("dashboard", {
       url: "/dashboard",
       templateUrl: "app/dashboard.html",
