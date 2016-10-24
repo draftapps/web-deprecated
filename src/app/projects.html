@@ -71,9 +71,10 @@
           <pane>
             <ul class="menu vertical">
               <li class="title">By Status</li>
-              <li><a href="#">Published</a></li>
-              <li><a href="#">Unpublished</a></li>
-              <li><a href="#">Pending</a></li>
+              <li><a href="#">All</a></li>
+              <li><a href="#" class="status-danger">New</a></li>
+              <li><a href="#" class="status-warning">In Progress</a></li>
+              <li><a href="#" class="status-success">Approved</a></li>
             </ul>
           </pane>
         </dropdown-toggle>
@@ -84,9 +85,10 @@
           <pane>
             <ul class="menu vertical">
               <li class="title">By Platform</li>
-              <li><a href="#">iOS</a></li>
-              <li><a href="#">Android</a></li>
-              <li><a href="#">Web</a></li>
+              <li><a ng-click="setFilter('all')">All</a></li>
+              <li><a ng-click="setFilter('ios')">iOS</a></li>
+              <li><a ng-click="setFilter('android')">Android</a></li>
+              <li><a ng-click="setFilter('web')">Web</a></li>
             </ul>
           </pane>
         </dropdown-toggle>
@@ -108,7 +110,7 @@
       </div>
     </div>
     <div class="row projects-list">
-      <div class="column medium-3" ng-repeat="project in projectsVm.projects">
+      <div class="column medium-3" ng-repeat="project in projectsVm.projects" ng-show=" filter === project.platform || filter === 'all'">
         <div class="card">
           <div ng-class="project.thumb === null ? 'no-thumb card__header' : 'card__header'"><a href="/projects/{{project.id}}/{{project.slug}}"><span>View Project</span></a><img ng-src="{{::(project.thumb || 'images/project-thumb.png')}}" alt="{{project.name}}"></div>
           <div class="card__content">

@@ -9,6 +9,11 @@
     vm.projects = projects.data;
     $scope.openModal = openModal;
     $scope.projectData = {};
+    $scope.filter = "all";
+    $scope.setFilter = function(filter){
+      $scope.filter = filter;
+      this.$close();
+    };
     /**
      * [$scope.createProject - Create new project]
      * Upon callback, the following operations take place with the following reasons
