@@ -7,7 +7,6 @@
 
     var vm = this;
     vm.projects = projects.data;
-    $scope.openModal = openModal;
     $scope.projectData = {};
     $scope.filter = "all";
     /**
@@ -38,7 +37,7 @@
           data.created_at = new Date();
           $scope.projectData = {};
           $scope.projectsVm.projects.push(data);
-          // TODO Dismiss the modal
+          $scope.modal.close();
         })
         .error(function(data) {
           // console.log('Error: ' + data);
@@ -51,6 +50,9 @@
      * Upon callback, the following operations take place with the following reasons
      * - $scope.projectData = {};
      *    [Reset the values for the temporary object we use to clear the forms ... etc]
+     * - Get the index of the removed object from the data on the client by searching using
+     *   its id. Can be done with Underscore findIndex()
+     * - Remove the element using splice and close the window.
      */
     $scope.deleteProject = function(id, slug) {
       $http({
@@ -60,7 +62,10 @@
       })
         .success(function(data) {
           $scope.projectData = {};
-          // TODO: update UI, Dismiss the modal
+          var projects = $scope.projectsVm.projects;
+          var index = _.findIndex(projects, function(project) { return project.id === id });
+          projects.splice(index, 1);
+          $scope.modal.close();
         })
         .error(function(data) {
           // console.log('Error: ' + data);
@@ -74,7 +79,7 @@
      * The additional parameters are passed to the $scope using the temp object projectData
      * Upon dissmissing the modal a call back is fired to reset the value of the temp object
      */
-    function openModal(template, parameters) {
+    $scope.openModal = function(template, parameters) {
       if(parameters !== undefined) {
         $scope.projectData = parameters;
       }
@@ -94,6 +99,7 @@
         scope: $scope
       };
       var modalInstance = $modal.open(params);
+      $scope.modal = modalInstance;
       modalInstance.result.then(function() {
       }, function() {
         // Callback when the modal is dismissed.
