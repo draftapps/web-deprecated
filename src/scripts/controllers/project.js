@@ -5,12 +5,12 @@
 
   function ProjectCtrl($scope, $http, $stateParams) {
 
-    $scope.project = {}
+    $scope.project = {};
 
     $scope.getProject = function(id, slug) {
       $http.get("http://api.draftapp.io/projects/" + id + "?project[slug]=" + slug)
         .success(function(data) {
-          $scope.project = data
+          $scope.project = data;
         })
         .error(function(data) {
           // console.log('Error: ' + data);

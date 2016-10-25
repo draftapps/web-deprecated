@@ -57,13 +57,13 @@
     $scope.deleteProject = function(id, slug) {
       $http({
         method: "DELETE",
-        url: "http://api.draftapp.io/projects/" + id + "?project[slug]=" + slug,
+        url: "http://localhost:3000/projects/" + id + "?project[slug]=" + slug,
         headers: {"Content-Type": "application/json;charset=utf-8"}
       })
         .success(function(data) {
           $scope.projectData = {};
           var projects = $scope.projectsVm.projects;
-          var index = _.findIndex(projects, function(project) { return project.id === id });
+          var index = _.findIndex(projects, function(project) { return project.id === id; });
           projects.splice(index, 1);
           $scope.modal.close();
         })
@@ -105,6 +105,6 @@
         // Callback when the modal is dismissed.
         $scope.projectData = {};
       });
-    }
+    };
   }
 })();
