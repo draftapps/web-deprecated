@@ -5,11 +5,11 @@
   flex-direction: column;
 }
 
-.screen__row {
+.screen__row, .screen_space-row {
   flex: 0 0 auto;
 
-  &.-rest {
-    flex: 1 1 0px;
+  &.-rest, &--rest {
+    flex: 1 1 0;
     overflow: hidden;
   }
 
