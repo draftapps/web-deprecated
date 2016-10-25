@@ -1,63 +1,7 @@
 <div class="svg-icons"><ng-include src="'images/svg-defs.svg'"></ng-include></div>
 <div class="screen canvas">
   <div class="screen__row">
-    <header class="c-header">
-      <div class="row expanded align-middle">
-        <div class="column large-2">
-          <a ui-sref="projects" class="u-text-small">Projects</a>
-          <a class="u-text-small">Activity</a>
-        </div>
-        <div class="column large-8">
-          <div class="row align-center">
-            <a ui-sref="dashboard">
-              <img class="c-header__element" src="images/logo2.png">
-            </a>
-          </div>
-        </div>
-        <div class="columns large-2 text-right">
-          <dropdown-toggle
-            class="c-header__element"
-            pane-align="right"
-            close-on-click="true"
-          >
-            <toggle>
-              <button class="notifier">
-                <span class="notifier__detect"></span>
-                <i class="ion-android-notifications u-icon-24"></i>
-              </button>
-            </toggle>
-            <pane>
-              <ul class="menu vertical">
-                <li><a ui-sref="logout"><i class="ion-android-exit"></i> Logout</a></li>
-              </ul>
-            </pane>
-          </dropdown-toggle>
-          <dropdown-toggle
-            class="c-header__element u-space-h-undo"
-            pane-align="right"
-            close-on-click="true"
-          >
-            <toggle>
-              <img
-                class="avatar"
-                src="images/demo/avatar.png"
-                width="32"
-              >
-            </toggle>
-            <pane>
-              <ul class="menu vertical">
-                <li><a href="#"><i class="ion-person"></i> Profile</a></li>
-                <li><a href="#"><i class="ion-person-add"></i> Team Members</a></li>
-                <li><a href="#"><i class="ion-android-share-alt"></i> Integrations</a></li>
-                <li><a href="#"><i class="ion-android-notifications"></i> Notifications</a></li>
-                <li><a href="#"><i class="ion-card"></i> Billing</a></li>
-                <li><a ui-sref="logout"><i class="ion-android-exit"></i> Logout</a></li>
-              </ul>
-            </pane>
-          </dropdown-toggle>
-        </div>
-      </div>
-    </header>
+    <ng-include src="'app/partials/app-header.html'"></ng-include>
   </div>
   <div class="create-project">
   </div>
@@ -71,10 +15,10 @@
           <pane>
             <ul class="menu vertical">
               <li class="title">By Status</li>
-              <li><a href="#">All</a></li>
-              <li><a href="#" class="status-danger">New</a></li>
-              <li><a href="#" class="status-warning">In Progress</a></li>
-              <li><a href="#" class="status-success">Approved</a></li>
+              <li><a ng-click="setFilter('all')">All</a></li>
+              <li><a ng-click="setFilter(0)" class="status-danger">New</a></li>
+              <li><a ng-click="setFilter(1)" class="status-warning">In Progress</a></li>
+              <li><a ng-click="setFilter(2)" class="status-success">Approved</a></li>
             </ul>
           </pane>
         </dropdown-toggle>
@@ -110,7 +54,7 @@
       </div>
     </div>
     <div class="row projects-list">
-      <div class="column medium-3" ng-repeat="project in projectsVm.projects" ng-show=" filter === project.platform || filter === 'all'">
+      <div class="column medium-3" ng-repeat="project in projectsVm.projects" ng-show=" filter === project.platform || filter === project.status || filter === 'all'">
         <div class="card">
           <div ng-class="project.thumb === null ? 'no-thumb card__header' : 'card__header'"><a href="/projects/{{project.id}}/{{project.slug}}"><span>View Project</span></a><img ng-src="{{::(project.thumb || 'images/project-thumb.png')}}" alt="{{project.name}}"></div>
           <div class="card__content">
@@ -129,11 +73,11 @@
                 </pane>
               </dropdown-toggle>
             </div>
-            <p class="card__title status--pending">{{project.name}}</p>
+            <p class="card__title status--{{project.status}}">{{project.name}}</p>
             <p class="card__date"><time-ago from-time='{{ project.created_at }}'></time-ago></p>
             <p class="card__alert">Due</p>
             <ul class="card__users">
-              <li ng-repeat="user in project.team.users"><img alt="{{user.name}}" ng-src="{{::(user.image || 'images/user-avatar.png')}}" /></li>
+              <li ng-repeat="user in project.team.users"><img tooltip-placement="bottom" tooltip="{{user.name}}" alt="{{user.name}}" ng-src="{{::(user.image || 'images/user-avatar.png')}}" /></li>
             </ul>
             <div class="card__images"><svg><use xlink:href="#shape-images" /></svg> {{project.artboards_count}}</div>
           </div>

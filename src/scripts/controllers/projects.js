@@ -7,6 +7,7 @@
 
     var vm = this;
     vm.projects = projects.data;
+    $scope.page = "projects";
     $scope.projectData = {};
     $scope.filter = "all";
     /**

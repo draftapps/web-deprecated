@@ -1,66 +1,10 @@
 <div class="svg-icons"><ng-include src="'images/svg-defs.svg'"></ng-include></div>
 <div class="screen canvas">
   <div class="screen__row">
-    <header class="c-header">
-      <div class="row expanded align-middle">
-        <div class="column large-2">
-          <a ui-sref="projects" class="u-text-small">Projects</a>
-          <a class="u-text-small">Activity</a>
-        </div>
-        <div class="column large-8">
-          <div class="row align-center">
-            <a ui-sref="dashboard">
-              <img class="c-header__element" src="images/logo2.png">
-            </a>
-          </div>
-        </div>
-        <div class="columns large-2 text-right">
-          <dropdown-toggle
-            class="c-header__element"
-            pane-align="right"
-            close-on-click="true"
-          >
-            <toggle>
-              <button class="notifier">
-                <span class="notifier__detect"></span>
-                <i class="ion-android-notifications u-icon-24"></i>
-              </button>
-            </toggle>
-            <pane>
-              <ul class="menu vertical">
-                <li><a ui-sref="logout"><i class="ion-android-exit"></i> Logout</a></li>
-              </ul>
-            </pane>
-          </dropdown-toggle>
-          <dropdown-toggle
-            class="c-header__element u-space-h-undo"
-            pane-align="right"
-            close-on-click="true"
-          >
-            <toggle>
-              <img
-                class="avatar"
-                src="images/demo/avatar.png"
-                width="32"
-              >
-            </toggle>
-            <pane>
-              <ul class="menu vertical">
-                <li><a href="#"><i class="ion-person"></i> Profile</a></li>
-                <li><a href="#"><i class="ion-person-add"></i> Team Members</a></li>
-                <li><a href="#"><i class="ion-android-share-alt"></i> Integrations</a></li>
-                <li><a href="#"><i class="ion-android-notifications"></i> Notifications</a></li>
-                <li><a href="#"><i class="ion-card"></i> Billing</a></li>
-                <li><a ui-sref="logout"><i class="ion-android-exit"></i> Logout</a></li>
-              </ul>
-            </pane>
-          </dropdown-toggle>
-        </div>
-      </div>
-    </header>
+    <ng-include src="'app/partials/app-header.html'"></ng-include>
   </div>
   <div class="container">
-    <div class="row artboards-list">
+    <div class="row artboards-list" ng-show="project.id !== undefined">
       <div class="column medium-3">
         <aside class="project-summary">
           <h1 class="project-summary__title">{{project.name}}</h1>
@@ -83,7 +27,7 @@
           <div class="project-summary__collaborators">
             <h2>Collaborators</h2>
             <ul>
-              <li ng-repeat="user in project.team.users"><img alt="{{user.name}}" ng-src="{{::(user.image || 'images/user-avatar.png')}}" /></li>
+              <li ng-repeat="user in project.team.users"><img tooltip-placement="bottom" tooltip="{{user.name}}" alt="{{user.name}}" ng-src="{{::(user.image || 'images/user-avatar.png')}}" /></li>
               <li><a href="#" class="add-more"><span>Add more</span></a></li>
             </ul>
           </div>
@@ -128,6 +72,9 @@
           </div>
         </div>
       </div>
+    </div>
+    <div class="row artboards-list" ng-show="project.id == undefined">
+      <div class="columns medium-12"><p>Loading ...</p></div>
     </div>
   </div>
 </div>

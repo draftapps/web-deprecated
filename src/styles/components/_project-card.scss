@@ -81,9 +81,9 @@
         top: 7px;
       }
       &.status {
-        &--published::before { border-color: #4cd9a3; }
-        &--unpublished::before { border-color: #fba933; }
-        &--pending::before { border-color: #fe5b42; }
+        &--0::before { border-color: #fe5b42; }
+        &--1::before { border-color: #fba933; }
+        &--2::before { border-color: #4cd9a3; }
       }
     }
     &__file-name {

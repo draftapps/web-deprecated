@@ -1,0 +1,9 @@
+.tooltip {
+  white-space: nowrap;
+  border-radius: 3px;
+  max-width: none !important;
+  padding: 5px 10px;
+  &::before {
+    border-width: 0.4rem;
+  }
+}
