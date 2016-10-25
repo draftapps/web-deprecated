@@ -1,0 +1,110 @@
+.settings .screen__title {
+  font-weight: 500;
+  font-size: 24px;
+  font-family: $font-family-sans;
+  color: #3a405b;
+  margin: 0;
+}
+
+.settings .page-head {
+  background: transparent;
+  padding-top: 30px;
+  padding-bottom: 30px;
+}
+
+.settings .screen__row--rest {
+  background: transparent;
+}
+
+.settings .menu.vertical {
+  width: 100%;
+  background: #fff;
+  color: #b9bed1;
+  > li {
+    &.active, &:hover, &:active {
+      background-color: #f7f8fb;
+    }
+  }
+  > li, > li.active {
+    > a, a:hover, a:active {
+      background: transparent;
+      color: inherit;
+    }
+  }
+  .icon {
+    width: 20px;
+    height: 20px;
+    fill: inherit;
+  }
+}
+
+.settings__partial {
+  background: #fff;
+  font-size: 16px;
+  .your-profile {
+    padding: 40px 15px;
+  }
+  .button.success {
+    border-radius: 40px;
+  }
+}
+
+
+.your-profile {
+  .avatar-card, .form-control {
+    border-radius: 5px;
+  }
+  .avatar-card {
+    margin-bottom: 50px;
+  }
+  label + .form-control {
+    margin-top: 10px;
+  }
+  .button.success {
+    margin-top: 40px;
+  }
+}
+
+
+.team-members {
+  legend {
+    color: #a1a6bb;
+  }
+  form {
+    padding: 30px 20px;
+  }
+}
+
+.team-members .invite-form {
+  padding-bottom: 50px;
+  border-bottom: 1px solid #f0f2f7;
+  .form-group {
+    font-size: 14px;
+  }
+  .form-control {
+    float: left;
+  }
+  .form-control + .form-control {
+    margin-left: 15px;
+  }
+  .form-group {
+    margin: 25px 0;
+    .column {
+      padding-left: 0;
+    }
+  }
+  .add-member {
+    color: #42d79e;
+  }
+  .add-member:hover {
+    text-decoration: underline;
+  }
+  .ion {
+    margin-right: 10px;
+    position: relative;
+    top: -1px;
+  }
+  .button.success {
+    margin-top: 25px;
+  }
+}

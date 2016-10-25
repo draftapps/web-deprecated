@@ -1,0 +1,37 @@
+
+<div class="team-members">
+  <form class="invite-form" ng-submit="settingsVM.submit()">
+    <fieldset ng-disabled="settingsVM.loading">
+      <legend>Invite Team Members</legend>
+      <div class="form-group row">
+        <div class="column large-4">
+          <input class="form-control" id="email" type="email" placeholder="Enter Email Address" ng-model="settingsVM.form.email" required="" ng-class="{'is-invalid-input': settingsVM.errors.email[0]}"/>
+        </div>
+        <div class="column large-3">
+          <input class="form-control" id="first_name" type="text" placeholder="First Name (optional)" ng-model="settingsVM.form.firstName" required="" ng-class="{'is-invalid-input': settingsVM.errors.firstName[0]}"/>
+        </div>
+        <div class="column large-3">
+          <input class="form-control" id="last_name" type="text" placeholder="Last Name (optional)" ng-model="settingsVM.form.lastName" required="" ng-class="{'is-invalid-input': settingsVM.errors.lastName[0]}"/>
+        </div>
+        <div class="column large-2">
+          <select class="form-control" id="role" ng-model="settingsVM.form.role" required="" ng-class="{'is-invalid-input': settingsVM.errors.role[0]}">
+            <option value="admin">Admin</option>
+            <option value="viewer">Viewer</option>
+          </select>
+        </div>
+        <div class="column large-12"><span class="form-error" ng-class="{'is-visible': settingsVM.errors.email[0]}">Email {{settingsVM.errors.email[0]}}</span><span class="form-error" ng-class="{'is-visible': settingsVM.errors.firstName[0]}">First Name {{settingsVM.errors.firstName[0]}}</span><span class="form-error" ng-class="{'is-visible': settingsVM.errors.lastName[0]}">Last Name {{settingsVM.errors.lastName[0]}}</span><span class="form-error" ng-class="{'is-visible': settingsVM.errors.role[0]}">Role {{settingsVM.errors.role[0]}}</span></div>
+      </div>
+      <div class="form-group"><a class="add-member" href="#"><i class="ion ion-plus"></i>Add Another Team Member</a></div>
+      <div class="row">
+        <div class="column large-4 large-offset-4">
+          <button class="button expanded success" type="submit" ng-disabled="settingsVM.loading">Invite Team Members</button>
+        </div>
+      </div>
+    </fieldset>
+  </form>
+  <form class="management-form" ng-submit="settingsVM.submit()">
+    <fieldset ng-disabled="settingsVM.loading">
+      <legend></legend>
+    </fieldset>
+  </form>
+</div>
