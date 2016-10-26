@@ -1,3 +1,60 @@
 
-<!--Created by MacBookAir on 10/25/16.
--->
+<div class="notifications-settings">
+  <form>
+    <fieldset class="summary-preference">
+      <legend>Notifications Summary</legend>
+      <div class="form-group column large-12">
+        <p>Receive an email summary of notifications instead of individual emails</p>
+        <input type="radio" id="summary_yes" name="notifications_summary" value="yes" required=""/>
+        <label for="summary_yes">Yes</label>
+        <input type="radio" id="summary_no" name="notifications_summary" value="no" required=""/>
+        <label for="summary_no">No</label>
+      </div>
+    </fieldset>
+    <fieldset class="email-preferences">
+      <legend>Email me immediately when someone</legend>
+      <div class="row">
+        <div class="column large-6">
+          <div class="form-group">
+            <div class="switch">
+              <input class="switch-input" id="notificatons-switch-0" type="checkbox"/>
+              <label class="switch-paddle" for="notificatons-switch-0"><span class="switch-active" aria-hidden="true"><i class="icon ion-checkmark-round"></i></span><span class="switch-inactive" aria-hidden="true"><i class="icon ion-close-round"></i></span></label>
+            </div><span>Mentions me</span>
+          </div>
+          <div class="form-group">
+            <div class="switch">
+              <input class="switch-input" id="notificatons-switch-1" type="checkbox"/>
+              <label class="switch-paddle" for="notificatons-switch-1"><span class="switch-active" aria-hidden="true"><i class="icon ion-checkmark-round"></i></span><span class="switch-inactive" aria-hidden="true"><i class="icon ion-close-round"></i></span></label>
+            </div><span>Create a new project</span>
+          </div>
+          <div class="form-group">
+            <div class="switch">
+              <input class="switch-input" id="notificatons-switch-2" type="checkbox"/>
+              <label class="switch-paddle" for="notificatons-switch-2"><span class="switch-active" aria-hidden="true"><i class="icon ion-checkmark-round"></i></span><span class="switch-inactive" aria-hidden="true"><i class="icon ion-close-round"></i></span></label>
+            </div><span>Send me weekly summary about my team</span>
+          </div>
+        </div>
+        <div class="column large-6">
+          <div class="form-group">
+            <div class="switch">
+              <input class="switch-input" id="notificatons-switch-3" type="checkbox"/>
+              <label class="switch-paddle" for="notificatons-switch-3"><span class="switch-active" aria-hidden="true"><i class="icon ion-checkmark-round"></i></span><span class="switch-inactive" aria-hidden="true"><i class="icon ion-close-round"></i></span></label>
+            </div><span>Assign me a task</span>
+          </div>
+          <div class="form-group">
+            <div class="switch">
+              <input class="switch-input" id="notificatons-switch-4" type="checkbox"/>
+              <label class="switch-paddle" for="notificatons-switch-4"><span class="switch-active" aria-hidden="true"><i class="icon ion-checkmark-round"></i></span><span class="switch-inactive" aria-hidden="true"><i class="icon ion-close-round"></i></span></label>
+            </div><span>Comment on my project</span>
+          </div>
+          <div class="form-group">
+            <div class="switch">
+              <input class="switch-input" id="notificatons-switch-5" type="checkbox"/>
+              <label class="switch-paddle" for="notificatons-switch-5"><span class="switch-active" aria-hidden="true"><i class="icon ion-checkmark-round"></i></span><span class="switch-inactive" aria-hidden="true"><i class="icon ion-close-round"></i></span></label>
+            </div><span>Send me updates about new features</span>
+          </div>
+        </div>
+      </div>
+    </fieldset>
+  </form>
+</div>
