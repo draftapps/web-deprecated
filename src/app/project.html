@@ -1,0 +1,80 @@
+<div class="svg-icons"><ng-include src="'images/svg-defs.svg'"></ng-include></div>
+<div class="screen canvas">
+  <div class="screen__row">
+    <ng-include src="'app/partials/app-header.html'"></ng-include>
+  </div>
+  <div class="container">
+    <div class="row artboards-list" ng-show="project.id !== undefined">
+      <div class="column medium-3">
+        <aside class="project-summary">
+          <h1 class="project-summary__title">{{project.name}}</h1>
+          <p class="project-summary__notice">Comment directly on a task, to clarify exactly what needs to be done. Discuss a project’s progress to keep the momentum going.</p>
+          <div class="project-summary__status">
+            <h2>Status</h2>
+            <dropdown-toggle pane-align="left" close-on-click="true">
+              <toggle>
+                <button class="pick-status status--warning">In Progress</button>
+              </toggle>
+              <pane>
+                <ul class="dd-menu">
+                  <li><a href="#" class="status-danger">New</a></li>
+                  <li><a href="#" class="status-warning">In Progress</a></li>
+                  <li><a href="#" class="status-success">Approved</a></li>
+                </ul>
+              </pane>
+            </dropdown-toggle>
+          </div>
+          <div class="project-summary__collaborators">
+            <h2>Collaborators</h2>
+            <ul>
+              <li ng-repeat="user in project.team.users"><img tooltip-placement="bottom" tooltip="{{user.name}}" alt="{{user.name}}" ng-src="{{::(user.image || 'images/user-avatar.png')}}" /></li>
+              <li><a href="#" class="add-more"><span>Add more</span></a></li>
+            </ul>
+          </div>
+          <div class="project-summary__tags">
+            <h2>Tags</h2>
+            <ul>
+              <li><a style="color: #faca00" href="#">Development</a></li>
+              <li><a style="color: #81c926;" href="#">iOS UI</a></li>
+              <li><a href="#" class="add-more"><span>Add more</span></a></li>
+            </ul>
+          </div>
+        </aside>
+      </div>
+      <div class="column medium-9">
+        <div class="row projects-list">
+          <div class="column medium-4">
+            <div class="card upload-artboard">
+              <p>Upload design files or drag’n’drop here</p>
+            </div>
+          </div>
+          <div class="column medium-4">
+            <div class="card">
+              <div class="card__header"><a href="#"><span>View</span></a><img src="images/project-thumb.png" /></div>
+              <div class="card__content">
+                <div class="card__menu">
+                  <dropdown-toggle pane-align="right" close-on-click="true">
+                    <toggle>
+                      <button><i class="ion-more"></i></button>
+                    </toggle>
+                    <pane>
+                      <ul class="dd-menu">
+                        <li><a href="#"><i class="ion-ios-copy-outline"></i>Replace</a></li>
+                        <li><a ng-click="openModal('app/partials/delete-project.html', {id: project.id, name: project.name})"><i class="ion-ios-trash-outline"></i> Delete</a></li>
+                        <li class="text-right"><span><i class="ion-more"></i></span></li>
+                      </ul>
+                    </pane>
+                  </dropdown-toggle>
+                </div>
+                <p class="card__file-name">file.png</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row artboards-list" ng-show="project.id == undefined">
+      <div class="columns medium-12"><p>Loading ...</p></div>
+    </div>
+  </div>
+</div>

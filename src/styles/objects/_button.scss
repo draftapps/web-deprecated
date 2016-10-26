@@ -17,6 +17,14 @@
       background: #37ac74;
     }
   }
+  &--danger {
+    background: #fe5339;
+    color: #fff;
+    &:hover,
+    &:focus {
+      background: #fe5339;
+    }
+  }
   &--block {
     width: 100%;
   }

@@ -1163,6 +1163,7 @@ main {
 }
 .canvas {
   font-family: 'Montserrat', sans-serif;
+  background: #eff3f6;
   h1, h2, h3, h4, h5, h6 {
     font-family: 'Montserrat', sans-serif;
   }
@@ -1576,6 +1577,7 @@ main {
       border-width: 8px;
       margin-left: -8px;
     }
+    .ion-ios-filing-outline,
     .ion-ios-copy-outline,
     .ion-ios-trash-outline {
       font-size: 22px;
@@ -1806,7 +1808,12 @@ main {
       }
       li {
         &:first-child {
-          background: #fff url(../images/arrow-up.png) 90% 50% no-repeat;
+          a {
+            background: #fff url(../images/arrow-up.png) 90% 50% no-repeat;
+            &:hover {
+              background-color: #f7f8fb;
+            }
+          }
         }
         a {
           line-height: 46px;
@@ -1833,7 +1840,7 @@ main {
 }
 .menu.vertical > li > a {
   &:hover {
-    background: #f7f8fb;
+    background-color: #f7f8fb;
   }
   i {
     color: #b9bed1;

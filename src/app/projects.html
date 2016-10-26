@@ -1,0 +1,88 @@
+<div class="svg-icons"><ng-include src="'images/svg-defs.svg'"></ng-include></div>
+<div class="screen canvas">
+  <div class="screen__row">
+    <ng-include src="'app/partials/app-header.html'"></ng-include>
+  </div>
+  <div class="create-project">
+  </div>
+  <div class="container">
+    <div class="row head-filters">
+      <div class="column medium-8">
+        <dropdown-toggle pane-align="left" close-on-click="true">
+          <toggle>
+            <button class="select">By Status</button>
+          </toggle>
+          <pane>
+            <ul class="menu vertical">
+              <li class="title">By Status</li>
+              <li><a ng-click="setFilter('all')">All</a></li>
+              <li><a ng-click="setFilter(0)" class="status-danger">New</a></li>
+              <li><a ng-click="setFilter(1)" class="status-warning">In Progress</a></li>
+              <li><a ng-click="setFilter(2)" class="status-success">Approved</a></li>
+            </ul>
+          </pane>
+        </dropdown-toggle>
+        <dropdown-toggle pane-align="left" close-on-click="true">
+          <toggle>
+            <button class="select">By Platform</button>
+          </toggle>
+          <pane>
+            <ul class="menu vertical">
+              <li class="title">By Platform</li>
+              <li><a ng-click="setFilter('all')">All</a></li>
+              <li><a ng-click="setFilter('ios')">iOS</a></li>
+              <li><a ng-click="setFilter('android')">Android</a></li>
+              <li><a ng-click="setFilter('web')">Web</a></li>
+            </ul>
+          </pane>
+        </dropdown-toggle>
+        <dropdown-toggle pane-align="left" close-on-click="true">
+          <toggle>
+            <button class="select">By Assignee</button>
+          </toggle>
+          <pane>
+            <ul class="menu vertical">
+              <li class="title">By Assignee</li>
+              <li><a href="#">John Doe</a></li>
+              <li><a href="#">Megan Steve</a></li>
+            </ul>
+          </pane>
+        </dropdown-toggle>
+      </div>
+      <div class="column medium-4 text-right">
+        <button class="button button--success" ng-click="openModal('app/partials/new-project.html')">New Project</button>
+      </div>
+    </div>
+    <div class="row projects-list">
+      <div class="column medium-3" ng-repeat="project in projectsVm.projects" ng-show=" filter === project.platform || filter === project.status || filter === 'all'">
+        <div class="card">
+          <div ng-class="project.thumb === null ? 'no-thumb card__header' : 'card__header'"><a href="/projects/{{project.id}}/{{project.slug}}"><span>View Project</span></a><img ng-src="{{::(project.thumb || 'images/project-thumb.png')}}" alt="{{project.name}}"></div>
+          <div class="card__content">
+            <div class="card__menu">
+              <dropdown-toggle pane-align="right" close-on-click="true">
+                <toggle>
+                  <button><i class="ion-more"></i></button>
+                </toggle>
+                <pane>
+                  <ul class="dd-menu">
+                    <li><a href="#"><i class="ion-ios-filing-outline"></i>Archive</a></li>
+                    <li><a href="#"><i class="ion-ios-copy-outline"></i>Duplicate</a></li>
+                    <li><a ng-click="openModal('app/partials/delete-project.html', {id: project.id, name: project.name, slug: project.slug})"><i class="ion-ios-trash-outline"></i> Delete</a></li>
+                    <li class="text-right"><span><i class="ion-more"></i></span></li>
+                  </ul>
+                </pane>
+              </dropdown-toggle>
+            </div>
+            <p class="card__title status--{{project.status}}">{{project.name}}</p>
+            <p class="card__date"><time-ago from-time='{{ project.created_at }}'></time-ago></p>
+            <p class="card__alert">Due</p>
+            <ul class="card__users">
+              <li ng-repeat="user in project.team.users"><img tooltip-placement="bottom" tooltip="{{user.name}}" alt="{{user.name}}" ng-src="{{::(user.image || 'images/user-avatar.png')}}" /></li>
+            </ul>
+            <div class="card__images"><svg><use xlink:href="#shape-images" /></svg> {{project.artboards_count}}</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
