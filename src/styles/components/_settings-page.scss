@@ -24,6 +24,7 @@
   background: #fff;
   color: #b9bed1;
   font-size: 14px;
+  border-radius: 3px;
   > li {
     padding: 20px;
     &.active, &:hover, &:active {
@@ -44,6 +45,10 @@
 
 .settings__partial {
   font-size: 16px;
+  border-radius: 3px;
+  .partial__content {
+    border-radius: 3px;
+  }
   .profile-settings {
     padding: 40px 15px;
   }
