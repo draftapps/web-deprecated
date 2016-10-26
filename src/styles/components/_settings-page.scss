@@ -1,3 +1,6 @@
+//.settings {
+//  box-sizing: border-box;
+//}
 .settings .screen__title {
   font-weight: 500;
   font-size: 24px;
@@ -39,13 +42,15 @@
 }
 
 .settings__partial {
-  background: #fff;
   font-size: 16px;
   .your-profile {
     padding: 40px 15px;
   }
   .button.success {
     border-radius: 40px;
+  }
+  form, .your-profile, .integrations {
+    background: #fff;
   }
 }
 
@@ -88,7 +93,7 @@
     margin-left: 15px;
   }
   .form-group {
-    margin: 25px 0;
+    margin: 30px 0 25px;
     .column {
       padding-left: 0;
     }
@@ -99,12 +104,122 @@
   .add-member:hover {
     text-decoration: underline;
   }
-  .ion {
+  .icon {
     margin-right: 10px;
     position: relative;
     top: -1px;
   }
   .button.success {
     margin-top: 25px;
+  }
+}
+
+.team-member {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: space-between;
+  align-items: center;
+  margin: 30px 0;
+  &__img-wrapper {
+    border: 1px solid #f0f2f7;
+    // TEST
+    border-radius: 50%;
+    width: 42px;
+    height: 42px;
+    background-color: green;
+    img {
+      vertical-align: top;
+    }
+  }
+  &__identity {
+    display: flex;
+    align-items: center;
+    flex-basis: 30%;
+    flex-grow: 0;
+  }
+  &__name {
+    margin-left: 10px;
+  }
+  &__email {
+    flex-grow: 1;
+    padding: 0 15px;
+    text-align: center;
+  }
+  &__actions {
+    flex-grow: 0;
+    flex-basis: 20%;
+    display: flex;
+
+  }
+  &__role {
+    margin-left: auto;
+    margin-right: 17px;
+    display: flex;
+    align-items: center;
+    line-height: 40px;
+    border: 1px solid #f0f2f7;
+    border-radius: 25px;
+    padding: 0 25px 0 8px;
+    .icon {
+      margin-right: 15px;
+      font-size:22px;
+      color: #4fd696;
+    }
+  }
+  &__delete {
+    font-size: 16px;
+  }
+}
+
+
+
+.integrations {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  border-top: 1px solid #e4e7ef;
+  border-right: 1px solid #e4e7ef;
+  img {
+    margin: 0;
+    width: auto;
+  }
+  .integration-service {
+    flex: 0 0 50%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 45px;
+    border-bottom: 1px solid #e4e7ef;
+    border-left: 1px solid #e4e7ef;
+    &--disabled .integration-service__logo {
+      opacity: 0.25;
+    }
+    &__switch {
+      margin: 0;
+    }
+    .switch-paddle:after {
+      border-radius: 50%;
+      width: 20px;
+      height: 20px;
+      top: 8px;
+      left: 8px;
+    }
+    input:checked ~ .switch-paddle::after {
+      left: 40px;
+    }
+    .switch-paddle {
+      border-radius: 25px;
+      width: 68px;
+      height: 36px;
+      background-color: #e4e7ef;
+    }
+    input:checked ~ .switch-paddle {
+      background-color: #42d79e;
+    }
+    .switch-active {
+      margin-left: 5px;
+      color: #35ac7e;
+    }
   }
 }
