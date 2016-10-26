@@ -57,10 +57,15 @@
 
 
 .profile-settings {
+  font-size: 16px;
+  label {
+    font-size: 16px;
+  }
   .avatar-card, .form-control {
     border-radius: 5px;
   }
   .avatar-card {
+    font-size: 14px;
     margin-bottom: 50px;
   }
   label + .form-control {
@@ -68,12 +73,16 @@
   }
   .button.success {
     margin-top: 40px;
+    font-size: 18px;
+    line-height: 50px;
+    padding: 0;
   }
 }
 
 
 .team-members-settings, .notifications-settings {
   legend {
+    font-size: 16px;
     color: #a1a6bb;
   }
   form {
@@ -81,6 +90,9 @@
   }
 }
 
+.team-members-settings {
+  font-size: 14px;
+}
 .team-members-settings .invite-form {
   padding-bottom: 50px;
   border-bottom: 1px solid #f0f2f7;
@@ -89,6 +101,7 @@
   }
   .form-control {
     float: left;
+    font-size: 14px;
   }
   .form-control + .form-control {
     margin-left: 15px;
@@ -111,7 +124,10 @@
     top: -1px;
   }
   .button.success {
+    padding: 0 38px;
     margin-top: 25px;
+    font-size: 14px;
+    line-height: 42px;
   }
 }
 
@@ -141,6 +157,8 @@
   }
   &__name {
     margin-left: 10px;
+    font-size: 16px;
+    color: #3a405b;
   }
   &__email {
     flex-grow: 1;
@@ -207,9 +225,6 @@
   font-size: 14px;
   form {
     padding: 30px 30px 40px;
-  }
-  legend {
-    font-size: 16px;
   }
   .summary-preference {
     input, label {
