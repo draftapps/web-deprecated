@@ -63,13 +63,9 @@
       </div>
       <div class="column large-9 settings__partial">
         <ng-include src="'app/partials/settings/profile.html'" ng-if="settingsVM.activePageName == 'profile'"></ng-include>
-        <p></p>
         <ng-include src="'app/partials/settings/team.html'" ng-if="settingsVM.activePageName == 'team-members'"></ng-include>
-        <p></p>
         <ng-include src="'app/partials/settings/integrations.html'" ng-if="settingsVM.activePageName == 'integrations'"></ng-include>
-        <p></p>
         <ng-include src="'app/partials/settings/notifications.html'" ng-if="settingsVM.activePageName == 'notifications'"></ng-include>
-        <p></p>
         <ng-include src="'app/partials/settings/billing.html'" ng-if="settingsVM.activePageName == 'billing'"></ng-include>
       </div>
     </div>
