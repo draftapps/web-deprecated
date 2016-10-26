@@ -50,7 +50,7 @@
       </div>
     </div>
   </div>
-  <div class="screen__row screen__row--rest">
+  <div class="screen__row">
     <div class="row">
       <div class="column large-3">
         <ul class="menu vertical">
@@ -62,8 +62,15 @@
         </ul>
       </div>
       <div class="column large-9 settings__partial">
-        <!--ng-include(src="'app/partials/settings-profile.html'")-->
-        <ng-include src="'app/partials/settings-team.html'"></ng-include>
+        <ng-include src="'app/partials/settings/profile.html'"></ng-include>
+        <p></p>
+        <ng-include src="'app/partials/settings/team.html'"></ng-include>
+        <p></p>
+        <ng-include src="'app/partials/settings/integrations.html'"></ng-include>
+        <p></p>
+        <ng-include src="'app/partials/settings/notifications.html'"></ng-include>
+        <p></p>
+        <ng-include src="'app/partials/settings/billing.html'"></ng-include>
       </div>
     </div>
   </div>
