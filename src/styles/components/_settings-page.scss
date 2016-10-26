@@ -23,7 +23,9 @@
   width: 100%;
   background: #fff;
   color: #b9bed1;
+  font-size: 14px;
   > li {
+    padding: 20px;
     &.active, &:hover, &:active {
       background-color: #f7f8fb;
     }
@@ -35,27 +37,26 @@
     }
   }
   .icon {
-    width: 20px;
-    height: 20px;
-    fill: inherit;
+    margin-right: 15px;
+    font-size: 20px;
   }
 }
 
 .settings__partial {
   font-size: 16px;
-  .your-profile {
+  .profile-settings {
     padding: 40px 15px;
   }
   .button.success {
     border-radius: 40px;
   }
-  form, .your-profile, .integrations {
+  form, .profile-settings, .integrations-settings {
     background: #fff;
   }
 }
 
 
-.your-profile {
+.profile-settings {
   .avatar-card, .form-control {
     border-radius: 5px;
   }
@@ -71,7 +72,7 @@
 }
 
 
-.team-members {
+.team-members-settings, .notifications-settings {
   legend {
     color: #a1a6bb;
   }
@@ -80,7 +81,7 @@
   }
 }
 
-.team-members .invite-form {
+.team-members-settings .invite-form {
   padding-bottom: 50px;
   border-bottom: 1px solid #f0f2f7;
   .form-group {
@@ -174,7 +175,7 @@
 
 
 
-.integrations {
+.integrations-settings {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
@@ -198,28 +199,42 @@
     &__switch {
       margin: 0;
     }
-    .switch-paddle:after {
-      border-radius: 50%;
-      width: 20px;
-      height: 20px;
-      top: 8px;
-      left: 8px;
+  }
+}
+
+.notifications-settings {
+  color: #3a405b;
+  font-size: 14px;
+  form {
+    padding: 30px 30px 40px;
+  }
+  legend {
+    font-size: 16px;
+  }
+  .summary-preference {
+    input, label {
+      margin: 0;
     }
-    input:checked ~ .switch-paddle::after {
-      left: 40px;
+    input[type="radio"] + label {
+      margin-left: 10px;
     }
-    .switch-paddle {
-      border-radius: 25px;
-      width: 68px;
-      height: 36px;
-      background-color: #e4e7ef;
+    label + input[type="radio"] {
+      margin-left: 35px;
     }
-    input:checked ~ .switch-paddle {
-      background-color: #42d79e;
+    .form-group {
+      border-radius: 3px;
+      border: 1px solid #f0f2f7;
+      padding: 25px;
     }
-    .switch-active {
-      margin-left: 5px;
-      color: #35ac7e;
+    legend {
+      margin-bottom: 25px;
     }
+  }
+  .email-preferences {
+    margin-top: 55px;
+    legend {
+      margin-bottom: 35px;
+    }
+
   }
 }
