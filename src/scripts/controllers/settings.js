@@ -5,8 +5,10 @@
 
   function SettingsCtrl() {
     var vm = this;
-
-    vm;
+    vm.activePageName = 'profile';
+    vm.switchPage = function(pageName) {
+      vm.activePageName = pageName;
+    };
 
   }
 })();

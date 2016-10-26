@@ -30,11 +30,11 @@
             <toggle><img class="avatar" src="images/demo/avatar.png" width="32"/></toggle>
             <pane>
               <ul class="menu vertical">
-                <li><a href="#"><i class="ion-person"></i> Profile</a></li>
-                <li><a href="#"><i class="ion-person-add"></i> Team Members</a></li>
-                <li><a href="#"><i class="ion-android-share-alt"></i> Integrations</a></li>
-                <li><a href="#"><i class="ion-android-notifications"></i> Notifications</a></li>
-                <li><a href="#"><i class="ion-card"></i> Billing</a></li>
+                <li><a href="#" ng-click="settingsVM.switchPage('profile')"><i class="ion-person"></i> Profile</a></li>
+                <li><a href="#" ng-click="settingsVM.switchPage('team-members')"><i class="ion-person-add"></i> Team Members</a></li>
+                <li><a href="#" ng-click="settingsVM.switchPage('integrations')"><i class="ion-android-share-alt"></i> Integrations</a></li>
+                <li><a href="#" ng-click="settingsVM.switchPage('notifications')"><i class="ion-android-notifications"></i> Notifications</a></li>
+                <li><a href="#" ng-click="settingsVM.switchPage('billing')"><i class="ion-card"></i> Billing</a></li>
                 <li><a ui-sref="logout"><i class="ion-android-exit"></i> Logout</a></li>
               </ul>
             </pane>
@@ -54,23 +54,23 @@
     <div class="row">
       <div class="column large-3">
         <ul class="menu vertical">
-          <li><a href="#"><i class="icon ion-person"></i> Your Profile</a></li>
-          <li><a href="#"><i class="icon ion-person-add"></i> Team Members</a></li>
-          <li><a href="#"><i class="icon ion-android-share-alt"></i> Integrations</a></li>
-          <li><a href="#"><i class="icon ion-android-notifications"></i> Notifications</a></li>
-          <li><a href="#"><i class="icon ion-card"></i> Billing</a></li>
+          <li ng-class="{ active: settingsVM.activePageName == 'profile' }"><a href="#" ng-click="settingsVM.switchPage('profile')"><i class="ion-person"></i> Profile</a></li>
+          <li ng-class="{ active: settingsVM.activePageName == 'team-members' }"><a href="#" ng-click="settingsVM.switchPage('team-members')"><i class="ion-person-add"></i> Team Members</a></li>
+          <li ng-class="{ active: settingsVM.activePageName == 'integrations' }"><a href="#" ng-click="settingsVM.switchPage('integrations')"><i class="ion-android-share-alt"></i> Integrations</a></li>
+          <li ng-class="{ active: settingsVM.activePageName == 'notifications' }"><a href="#" ng-click="settingsVM.switchPage('notifications')"><i class="ion-android-notifications"></i> Notifications</a></li>
+          <li ng-class="{ active: settingsVM.activePageName == 'billing' }"><a href="#" ng-click="settingsVM.switchPage('billing')"><i class="ion-card"></i> Billing</a></li>
         </ul>
       </div>
       <div class="column large-9 settings__partial">
-        <ng-include src="'app/partials/settings/profile.html'"></ng-include>
+        <ng-include src="'app/partials/settings/profile.html'" ng-if="settingsVM.activePageName == 'profile'"></ng-include>
         <p></p>
-        <ng-include src="'app/partials/settings/team.html'"></ng-include>
+        <ng-include src="'app/partials/settings/team.html'" ng-if="settingsVM.activePageName == 'team-members'"></ng-include>
         <p></p>
-        <ng-include src="'app/partials/settings/integrations.html'"></ng-include>
+        <ng-include src="'app/partials/settings/integrations.html'" ng-if="settingsVM.activePageName == 'integrations'"></ng-include>
         <p></p>
-        <ng-include src="'app/partials/settings/notifications.html'"></ng-include>
+        <ng-include src="'app/partials/settings/notifications.html'" ng-if="settingsVM.activePageName == 'notifications'"></ng-include>
         <p></p>
-        <ng-include src="'app/partials/settings/billing.html'"></ng-include>
+        <ng-include src="'app/partials/settings/billing.html'" ng-if="settingsVM.activePageName == 'billing'"></ng-include>
       </div>
     </div>
   </div>
