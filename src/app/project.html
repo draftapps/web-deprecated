@@ -13,7 +13,7 @@
             <h2>Status</h2>
             <dropdown-toggle pane-align="left" close-on-click="true">
               <toggle>
-                <button class="pick-status status--warning">In Progress</button>
+                <button ng-class="project.status === 0 ? 'pick-status status--danger' : (project.status === 1 ? 'pick-status status--warning' : 'pick-status status--success')">{{status[project.status]}}</button>
               </toggle>
               <pane>
                 <ul class="dd-menu">

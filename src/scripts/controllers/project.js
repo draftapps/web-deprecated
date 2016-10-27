@@ -7,7 +7,7 @@
 
     $scope.page = "project";
     $scope.project = {};
-
+    $scope.status = ["New", "In Progress", "Approved"];
 
     $scope.getProject = function(id, slug) {
       $http.get("http://api.draftapp.io/projects/" + id + "?project[slug]=" + slug)
