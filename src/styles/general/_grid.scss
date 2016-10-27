@@ -4,9 +4,12 @@
     margin-right: 0;
   }
 }
-
 .column {
   &.bordered {
     border-right: 1px solid currentColor;
   }
+}
+.small-centered {
+  margin-left: auto;
+  margin-right: auto;
 }

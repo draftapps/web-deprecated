@@ -1,0 +1,52 @@
+<div class="svg-icons"><ng-include src="'images/svg-defs.svg'"></ng-include></div>
+<div class="screen canvas">
+  <div class="screen__row">
+    <ng-include src="'app/partials/app-header.html'"></ng-include>
+  </div>
+  <div class="container">
+    <div class="row">
+      <div class="column medium-10 small-centered">
+        <form class="update-status">
+          <textarea placeholder="Write Something or mention @ someone in your team.."></textarea>
+          <p class="text-right">
+            <button class="button button--info">Post</button>
+          </p>
+        </form>
+        <div class="activities-list">
+          <ul>
+            <li ng-repeat="activity in activityVm.activity">
+              <p class="date">{{activity.day}}</p>
+              <ul>
+                <li ng-repeat="activity in activity.activities">
+                  <div class="new-activity" ng-if="activity.type === 0">
+                    <p><span>{{activity.user}}</span> created new project <span>{{activity.what}}</span></p>
+                    <p class="time-ago"><svg><use xlink:href="#shape-clock" /></svg><time-ago from-time='{{ activity.created_at }}'></time-ago></p>
+                  </div>
+                  <div class="add-activity" ng-if="activity.type === 1">
+                    <p><span>{{activity.user}}</span> added <span>{{activity.what}}</span> to screen {{activity.where}}</p>
+                    <blockquote>
+                      <p>{{activity.message}}</p>
+                    </blockquote>
+                    <p class="time-ago"><svg><use xlink:href="#shape-clock" /></svg><time-ago from-time='{{ activity.created_at }}'></time-ago></p>
+                  </div>
+                  <div class="forward-activity" ng-if="activity.type === 2">
+                    <p><span>{{activity.user}}</span> forwarded {{activity.what}} to <span>{{activity.where}}</span></p>
+                    <p class="time-ago"><svg><use xlink:href="#shape-clock" /></svg><time-ago from-time='{{ activity.created_at }}'></time-ago></p>
+                  </div>
+                  <div class="delete-activity" ng-if="activity.type === 3">
+                    <p><span>{{activity.user}}</span> deleted {{activity.what}}</p>
+                    <p class="time-ago"><svg><use xlink:href="#shape-clock" /></svg><time-ago from-time='{{ activity.created_at }}'></time-ago></p>
+                  </div>
+                  <div class="resolve-activity" ng-if="activity.type === 4">
+                    <p><span>{{activity.user}}</span> resolved note <span>{{activity.what}}</span></p>
+                    <p class="time-ago"><svg><use xlink:href="#shape-clock" /></svg><time-ago from-time='{{ activity.created_at }}'></time-ago></p>
+                  </div>
+                </li>
+              </ul>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
