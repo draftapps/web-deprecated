@@ -400,3 +400,17 @@
     }
   }
 }
+.no-projects {
+  background: url(../images/no-projects.png) 50% 100px no-repeat;
+  text-align: center;
+  padding-top: 300px;
+  p {
+    font-size: 18px;
+  }
+  .button {
+    font-size: 16px;
+    font-weight: 400;
+    padding: 0 65px;
+    line-height: 48px;
+  }
+}
