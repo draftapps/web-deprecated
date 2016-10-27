@@ -82,6 +82,16 @@ function routesConfig($stateProvider, $urlRouterProvider, $locationProvider) {
       controller: "ProjectCtrl",
       parent: "authed"
     })
+    .state("activity", {
+      url: "/activity",
+      templateUrl: "app/activity.html",
+      controller: "ActivityCtrl",
+      controllerAs: "activityVm",
+      resolve: {
+        activity: $http => $http.get("activity.json")
+      },
+      parent: "authed"
+    })
     .state("dashboard", {
       url: "/dashboard",
       templateUrl: "app/dashboard.html",

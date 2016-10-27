@@ -1,0 +1,101 @@
+.update-status {
+  margin: 60px 0 40px;
+  border: 1px solid #e4e7ef;
+  border-radius: 3px;
+  background-color: #fff;
+  padding: 18px 30px;
+  box-shadow: 0px 1px 1px 0px rgba(0, 0, 0, 0.01);
+  textarea {
+    background: #f3f6f8;
+    height: 70px;
+    border: 1px solid #e4e7ef;
+    border-radius: 3px;
+    font-weight: 300;
+    font-size: 12px;
+  }
+  p {
+    margin: 0;
+  }
+  button {
+    font-size: 14px;
+    padding-left: 45px;
+    padding-right: 45px;
+  }
+}
+.activities-list {
+  ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  li {
+    ul {
+      background: #fff;
+      padding: 45px 65px;
+      font-size: 14px;
+      box-shadow: 0px 1px 1px 0px rgba(0, 0, 0, 0.01);
+      border: 1px solid #e4e7ef;
+      border-radius: 3px;
+      margin-bottom: 35px;
+      position: relative;
+      &::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 45px;
+        width: 1px;
+        background: #e4e7ef;
+      }
+      li + li {
+        margin-top: 45px;
+      }
+      div {
+        position: relative;
+        &::before {
+          content: "";
+          width: 24px;
+          height: 24px;
+          position: absolute;
+          left: -32px;
+          top: 0;
+        }
+      }
+    }
+  }
+  blockquote {
+    background: #f7f8fa;
+    border: 0;
+    padding: 12px;
+    border-radius: 3px;
+    margin-top: 10px;
+  }
+  .date {
+    font-size: 15px;
+    margin-bottom: 15px;
+    color: #8493a8;
+  }
+  span {
+    color: #3a405b;
+  }
+  .time-ago {
+    color: #8493a8;
+    font-size: 11px;
+    svg {
+      width: 10px;
+      height: 10px;
+      margin-right: 6px;
+      position: relative;
+      top: 1px;
+      fill: #8493a8;
+    }
+  }
+  p {
+    margin: 0;
+  }
+  .new-activity::before { background: url(../images/activities/new.png) 0 0 no-repeat; }
+  .add-activity::before { background: url(../images/activities/add.png) 0 0 no-repeat; }
+  .forward-activity::before { background: url(../images/activities/forward.png) 0 0 no-repeat; }
+  .delete-activity::before { background: url(../images/activities/delete.png) 0 0 no-repeat; }
+  .resolve-activity::before { background: url(../images/activities/resolve.png) 0 0 no-repeat; }
+}
