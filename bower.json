@@ -12,7 +12,8 @@
     "angular-slick-carousel": "^3.1.7",
     "underscore": "^1.8.3",
     "ng-token-auth": "^0.0.29",
-    "angular-pickadate": "^1.1.0"
+    "angular-pickadate": "^1.1.0",
+    "angular-ui-select": "^0.19.6"
   },
   "overrides": {
     "foundation-sites": {
