@@ -23,7 +23,7 @@
   background: transparent;
 }
 
-.settings .menu.vertical {
+.settings .settings__side-menu {
   width: 100%;
   background: #fff;
   color: #b9bed1;
@@ -33,6 +33,7 @@
   > li {
     a {
       padding: 20px;
+      align-items: center;
     }
     &.active, &:hover, &:active {
       background-color: #f7f8fb;
@@ -224,6 +225,9 @@
     padding: 45px;
     border-bottom: 1px solid #e4e7ef;
     border-left: 1px solid #e4e7ef;
+    &__logo img {
+      max-height: 25px;
+    }
     &--disabled .integration-service__logo {
       opacity: 0.25;
     }
@@ -243,11 +247,14 @@
     input, label {
       margin: 0;
     }
-    input[type="radio"] + label {
-      margin-left: 10px;
+    .radio-wrapper {
+      display: inline-block;
     }
-    label + input[type="radio"] {
+    .radio-wrapper + .radio-wrapper {
       margin-left: 35px;
+    }
+    input[type="radio"] + label {
+      padding-left: 10px;
     }
     .form-group {
       border-radius: 3px;
@@ -258,11 +265,24 @@
       margin-bottom: 25px;
     }
   }
-  .email-preferences {
-    margin-top: 55px;
-    legend {
-      margin-bottom: 35px;
-    }
-
+}
+.email-preferences {
+  margin-top: 55px;
+  legend {
+    margin-bottom: 35px;
   }
+  display: flex;
+  flex-direction: column;
+}
+.email-preferences .form-group {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+}
+.email-preferences .form-group + .form-group {
+  margin-top: 25px;
+}
+.email-preferences .form-group .switch {
+  margin-right: 10px;
 }

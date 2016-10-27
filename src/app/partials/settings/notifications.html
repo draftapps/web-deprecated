@@ -5,10 +5,14 @@
       <legend>Notifications Summary</legend>
       <div class="form-group column large-12">
         <p>Receive an email summary of notifications instead of individual emails</p>
-        <input type="radio" id="summary_yes" name="notifications_summary" value="yes" required=""/>
-        <label for="summary_yes">Yes</label>
-        <input type="radio" id="summary_no" name="notifications_summary" value="no" required=""/>
-        <label for="summary_no">No</label>
+        <div class="radio-wrapper">
+          <input type="radio" id="summary_yes" name="notifications_summary" value="yes" required=""/>
+          <label for="summary_yes">Yes</label>
+        </div>
+        <div class="radio-wrapper">
+          <input type="radio" id="summary_no" name="notifications_summary" value="no" required=""/>
+          <label for="summary_no">No</label>
+        </div>
       </div>
     </fieldset>
     <fieldset class="email-preferences">
