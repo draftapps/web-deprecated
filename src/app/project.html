@@ -13,7 +13,7 @@
             <h2>Status</h2>
             <dropdown-toggle pane-align="left" close-on-click="true">
               <toggle>
-                <button class="pick-status status--warning">In Progress</button>
+                <button ng-class="project.status === 0 ? 'pick-status status--danger' : (project.status === 1 ? 'pick-status status--warning' : 'pick-status status--success')">{{status[project.status]}}</button>
               </toggle>
               <pane>
                 <ul class="dd-menu">
@@ -48,7 +48,7 @@
               <p>Upload design files or drag’n’drop here</p>
             </div>
           </div>
-          <div class="column medium-4">
+          <div class="column medium-4" ng-repeat="artboard in project.artboards">
             <div class="card">
               <div class="card__header"><a href="#"><span>View</span></a><img src="images/project-thumb.png" /></div>
               <div class="card__content">
@@ -60,13 +60,13 @@
                     <pane>
                       <ul class="dd-menu">
                         <li><a href="#"><i class="ion-ios-copy-outline"></i>Replace</a></li>
-                        <li><a ng-click="openModal('app/partials/delete-project.html', {id: project.id, name: project.name})"><i class="ion-ios-trash-outline"></i> Delete</a></li>
+                        <li><a href="#"><i class="ion-ios-trash-outline"></i> Delete</a></li>
                         <li class="text-right"><span><i class="ion-more"></i></span></li>
                       </ul>
                     </pane>
                   </dropdown-toggle>
                 </div>
-                <p class="card__file-name">file.png</p>
+                <p class="card__file-name">{{artboard.name}}</p>
               </div>
             </div>
           </div>
