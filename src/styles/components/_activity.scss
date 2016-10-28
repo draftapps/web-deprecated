@@ -58,6 +58,7 @@
           height: 24px;
           position: absolute;
           left: -32px;
+          border-radius: 50%;
           top: 0;
         }
       }
@@ -88,14 +89,25 @@
       position: relative;
       top: 1px;
       fill: #8493a8;
+      position: static;
     }
   }
   p {
     margin: 0;
   }
-  .new-activity::before { background: url(../images/activities/new.png) 0 0 no-repeat; }
-  .add-activity::before { background: url(../images/activities/add.png) 0 0 no-repeat; }
-  .forward-activity::before { background: url(../images/activities/forward.png) 0 0 no-repeat; }
-  .delete-activity::before { background: url(../images/activities/delete.png) 0 0 no-repeat; }
-  .resolve-activity::before { background: url(../images/activities/resolve.png) 0 0 no-repeat; }
+  .new-activity::before { background: #15cd72; }
+  .add-activity::before { background: #526acc; }
+  .forward-activity::before { background: #9777a8; }
+  .delete-activity::before { background: #ed4a4a; }
+  .resolve-activity::before { background: #26d3de; }
+  .activity {
+    position: relative;
+    .icon {
+      width: 10px;
+      height: 10px;
+      position: absolute;
+      top: 7px;
+      left: -25px;
+    }
+  }
 }
