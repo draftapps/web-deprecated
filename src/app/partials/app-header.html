@@ -14,16 +14,7 @@
       </div>
     </div>
     <div class="columns large-2 text-right">
-      <dropdown-toggle ng-show="page === 'project'" class="c-header__element" pane-align="right" close-on-click="true">
-        <toggle>
-          <a href="#" class="add-new"><span>Add</span></a>
-        </toggle>
-        <pane>
-          <ul class="menu vertical">
-            <li><a href="#">New Artboard</a></li>
-          </ul>
-        </pane>
-      </dropdown-toggle>
+      <a ng-click="openModal('app/partials/new-project.html')" class="add-new"><span>Add</span></a>
       <dropdown-toggle class="c-header__element" pane-align="right" close-on-click="true">
         <toggle>
           <button class="notifier">
