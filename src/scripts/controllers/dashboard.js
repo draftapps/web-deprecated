@@ -3,8 +3,10 @@
     .module("app")
     .controller("DasboardCtrl", DasboardCtrl);
 
-  function DasboardCtrl(project) {
+  function DasboardCtrl($scope, project) {
     var vm = this;
+
+    $scope.page = "dashboard";
 
     vm.project = project.data;
     vm.project.selectArtBoard = selectArtBoard;

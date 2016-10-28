@@ -3,66 +3,9 @@
   <div class="screen__row">
     <ng-include src="'app/partials/app-header.html'"></ng-include>
   </div>
-
   <div class="screen__row">
-    <div class="page-head">
-      <div class="row expanded align-middle">
-        <div class="columns large-2"></div>
-        <div class="columns large-8">
-          <ul class="page-head__menu menu align-center">
-            <li><a ui-sref="dashboard"><svg><use xlink:href="#shape-dashboard" /></svg></a></li>
-            <li class="active"><a ui-sref="notes"><i class="ion-chatbox-working u-icon-24"></i></a></li>
-            <li><a><svg><use xlink:href="#shape-more" /></svg></a></li>
-            <li><a><svg><use xlink:href="#shape-layers" /></svg></a></li>
-          </ul>
-        </div>
-        <div class="columns large-2 text-right">
-          <ul class="actions menu align-right">
-            <li>
-              <button class="actions__button"><span class="actions__status actions__status--warning"></span></button>
-            </li>
-            <li>
-              <button class="actions__button"><i class="ion-calendar"></i></button>
-            </li>
-            <li>
-              <button class="actions__button"><i class="ion-person"></i></button>
-            </li>
-            <li>
-              <dropdown-toggle pane-align="right" close-on-click="true">
-                <toggle>
-                  <button class="actions__button">
-                    <i class="ion-pricetag"></i>
-                  </button>
-                </toggle>
-                <pane>
-                  <ul class="dd-menu">
-                    <li><a href="#">Item 1</a></li>
-                    <li><a href="#">Item 2</a></li>
-                    <li><a href="#">Item 3</a></li>
-                    <li><a href="#">Item 4</a></li>
-                  </ul>
-                </pane>
-              </dropdown-toggle>
-            </li>
-            <li>
-              <button class="actions__button">
-                <i class="ion-forward"></i>
-              </button>
-            </li>
-            <li>
-              <button class="actions__button"><svg><use xlink:href="#shape-attachment" /></svg></button>
-            </li>
-            <li>
-              <button class="actions__button u-space-h-undo">
-                <i class="ion-more"></i>
-              </button>
-            </li>
-          </ul>
-        </div>
-      </div>
-    </div>
+    <ng-include src="'app/partials/canvas-header.html'"></ng-include>
   </div>
-
   <div class="screen__row -rest">
     <div class="row expanded collapse">
       <div class="columns large-2 left-sidebar" ng-hide="leftSideBarIsHidden">
