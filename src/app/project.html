@@ -50,7 +50,11 @@
           </div>
           <div class="column medium-4" ng-repeat="artboard in project.artboards">
             <div class="card">
+<<<<<<< 8babf21aaffc53ddcbf8452e87e7238f637a4152
               <div class="card__header"><a href="#"><span>View</span></a><img src="{{::(artboard.thumbImage || 'images/project-thumb.png')}}" /></div>
+=======
+              <div class="card__header"><a href="#"><span>View</span></a><img ng-src="{{::(artboard.thumbImage || 'images/project-thumb.png')}}" /></div>
+>>>>>>> Properly loading artboard's thumbnails
               <div class="card__content">
                 <div class="card__menu">
                   <dropdown-toggle pane-align="right" close-on-click="true">
