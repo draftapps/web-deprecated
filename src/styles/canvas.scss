@@ -565,15 +565,12 @@ main {
 
 .note {
   position: absolute;
-  margin: -12px 0 0 -12px;
-  width: 24px;
-  height: 24px;
+  margin: -14px 0 0 -14px;
+  width: 28px;
+  height: 28px;
   background: #4ed595;
   border-radius: 50%;
-  border: 2px solid #4ed595;
-  box-shadow: 0px 0px 10px 0px #4ed595;
 }
-
 .note::before {
   content: attr(data-index);
   font-size: 14px;
@@ -583,9 +580,19 @@ main {
   text-align: center;
   width: 100%;
   height: 100%;
-  line-height: 22px;
+  line-height: 28px;
+  z-index: 2;
 }
-
+.note::after {
+  width: 36px;
+  height: 36px;
+  background: rgba(79, 214, 150, 0.5);
+  display: block;
+  margin: -32px 0 0 -4px;
+  z-index: 1;
+  border-radius: 50%;
+  content: "";
+}
 .note:hover {
   box-shadow: 0 0 3px rgba(0, 0, 0, 0.64);
 }
