@@ -5,7 +5,7 @@
 
   function ProjectCtrl($scope, $http, $stateParams, $modal) {
 
-    $scope.page = "project";
+    $scope.menu = "projects-activities";
     $scope.project = {};
     $scope.status = ["New", "In Progress", "Approved"];
 
