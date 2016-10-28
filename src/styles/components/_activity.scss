@@ -12,6 +12,10 @@
     border-radius: 3px;
     font-weight: 300;
     font-size: 12px;
+    &:focus {
+      background: #fff;
+      border-color: #4e8ef7;
+    }
   }
   p {
     margin: 0;
