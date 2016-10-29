@@ -4,14 +4,14 @@
   &__img-wrapper {
     padding: 15px;
     text-align: center;
-    // TEST
-    width: 120px;
-    height: 120px;
-    border-radius: 50%;
-    margin: 0 auto;
     img {
-      background-color: green;
+      border: 1px solid #f0f2f7;
       vertical-align: top;
+    }
+    input[type="file"] {
+      position: absolute;
+      opacity: 0;
+      z-index: -1;
     }
   }
   &__actions {

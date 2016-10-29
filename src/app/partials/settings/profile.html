@@ -1,11 +1,13 @@
 
 <div class="profile-settings partial__content">
   <div class="row">
-    <form class="text-left column large-8 large-offset-2" ng-submit="settingsVM.submit()">
+    <form class="text-left column large-6 large-offset-3" ng-submit="settingsVM.submit()">
       <fieldset ng-disabled="settingsVM.loading">
         <div class="form-group text-center">
           <div class="avatar-card">
-            <div class="avatar-card__img-wrapper"><img class="avatar"/></div>
+            <div class="avatar-card__img-wrapper"><img class="avatar" src="images/avatar-archer.png"/>
+              <input type="file" name="avatar"/>
+            </div>
             <div class="avatar-card__actions clearfix">
               <button class="avatar-card__change" type="button">Change</button>
               <button class="avatar-card__delete" type="button"><i class="icon ion-close-round"></i>Delete</button>
