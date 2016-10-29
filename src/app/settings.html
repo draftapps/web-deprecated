@@ -1,47 +1,7 @@
-
 <ng-include class="svg-icons" src="'images/svg-defs.svg'"></ng-include>
 <div class="screen canvas settings">
   <div class="screen__row">
-    <header class="c-header">
-      <div class="row expanded align-middle">
-        <div class="column large-2">
-          <nav class="main-nav">
-            <ul class="nav-links">
-              <li><a href="#">Projects</a></li>
-              <li><a href="#">Activity</a></li>
-            </ul>
-          </nav>
-        </div>
-        <div class="column large-8">
-          <div class="row align-center"><a ui-sref="dashboard"><img class="c-header__element" src="images/logo2.png"/></a></div>
-        </div>
-        <div class="columns large-2 text-right">
-          <dropdown-toggle class="c-header__element" pane-align="right" close-on-click="true">
-            <toggle>
-              <button class="notifier"><span class="notifier__detect"></span><i class="ion-android-notifications u-icon-24"></i></button>
-            </toggle>
-            <pane>
-              <ul class="menu vertical">
-                <li><a ui-sref="logout"><i class="ion-android-exit"></i> Logout</a></li>
-              </ul>
-            </pane>
-          </dropdown-toggle>
-          <dropdown-toggle class="c-header__element u-space-h-undo" pane-align="right" close-on-click="true">
-            <toggle><img class="avatar" src="images/demo/avatar.png" width="32"/></toggle>
-            <pane>
-              <ul class="menu vertical">
-                <li><a href="#" ng-click="settingsVM.switchPage('profile')"><i class="ion-person"></i> Profile</a></li>
-                <li><a href="#" ng-click="settingsVM.switchPage('team-members')"><i class="ion-person-add"></i> Team Members</a></li>
-                <li><a href="#" ng-click="settingsVM.switchPage('integrations')"><i class="ion-android-share-alt"></i> Integrations</a></li>
-                <li><a href="#" ng-click="settingsVM.switchPage('notifications')"><i class="ion-android-notifications"></i> Notifications</a></li>
-                <li><a href="#" ng-click="settingsVM.switchPage('billing')"><i class="ion-card"></i> Billing</a></li>
-                <li><a ui-sref="logout"><i class="ion-android-exit"></i> Logout</a></li>
-              </ul>
-            </pane>
-          </dropdown-toggle>
-        </div>
-      </div>
-    </header>
+    <ng-include src="'app/partials/app-header.html'"></ng-include>
   </div>
   <div class="screen__row">
     <div class="row">
