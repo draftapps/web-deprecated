@@ -56,16 +56,20 @@
   border-radius: 3px;
   .partial__content {
     border-radius: 3px;
+    overflow: hidden;
     border: 1px solid #e4e7ef;
   }
   .profile-settings {
     padding: 40px 15px;
   }
   .button.success {
-    border-radius: 40px;
+    border-radius: 3px;
   }
   form, .profile-settings, .integrations-settings {
     background: #fff;
+  }
+  .form-input {
+    color: #3a405b;
   }
 }
 
@@ -76,7 +80,7 @@
     font-size: 16px;
   }
   .avatar-card, .form-control {
-    border-radius: 5px;
+    border-radius: 3px;
   }
   .avatar-card {
     font-size: 14px;
@@ -98,6 +102,7 @@
   legend {
     font-size: 16px;
     color: #a1a6bb;
+    font-weight: bold;
   }
   form {
     padding: 30px 20px;
@@ -116,6 +121,9 @@
   .form-control {
     float: left;
     font-size: 14px;
+    height: auto;
+    border-radius: 5px;
+    line-height: 50px;
   }
   .form-control + .form-control {
     margin-left: 15px;
@@ -141,7 +149,7 @@
     padding: 0 38px;
     margin-top: 25px;
     font-size: 14px;
-    line-height: 42px;
+    line-height: 48px;
   }
 }
 
@@ -153,13 +161,11 @@
   align-items: center;
   margin: 30px 0;
   &__img-wrapper {
-    border: 1px solid #f0f2f7;
     // TEST
-    border-radius: 50%;
     width: 42px;
     height: 42px;
-    background-color: green;
     img {
+      border: 1px solid #f0f2f7;
       vertical-align: top;
     }
   }
@@ -193,7 +199,10 @@
     line-height: 40px;
     border: 1px solid #f0f2f7;
     border-radius: 25px;
-    padding: 0 25px 0 8px;
+    padding: 0 26px;
+    &--admin {
+      padding: 0 25px 0 8px;
+    }
     .icon {
       margin-right: 15px;
       font-size:22px;
@@ -244,8 +253,12 @@
     padding: 30px 30px 40px;
   }
   .summary-preference {
-    input, label {
+    input, label, p {
       margin: 0;
+      font-weight: bold;
+    }
+    .summary-options-title {
+      margin-bottom: 20px;
     }
     .radio-wrapper {
       display: inline-block;
