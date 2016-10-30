@@ -16,7 +16,7 @@ function routesConfig($stateProvider, $urlRouterProvider, $locationProvider) {
       abstract: true,
       template: "<ui-view/>",
       resolve: {
-        auth: authService => authService.redirectAuthed("dashboard")
+        auth: authService => authService.redirectAuthed("projects")
       }
     })
     .state("features", {
@@ -65,6 +65,32 @@ function routesConfig($stateProvider, $urlRouterProvider, $locationProvider) {
       resolve: {
         user: authService => authService.redirectNotAuthed("login")
       }
+    })
+    .state("projects", {
+      url: "/projects",
+      templateUrl: "app/projects.html",
+      controller: "ProjectsCtrl",
+      controllerAs: "projectsVm",
+      resolve: {
+        projects: $http => $http.get("http://api.draftapp.io/projects")
+      },
+      parent: "authed"
+    })
+    .state("project", {
+      url: "/projects/:id/:slug",
+      templateUrl: "app/project.html",
+      controller: "ProjectCtrl",
+      parent: "authed"
+    })
+    .state("activity", {
+      url: "/activity",
+      templateUrl: "app/activity.html",
+      controller: "ActivityCtrl",
+      controllerAs: "activityVm",
+      resolve: {
+        activity: $http => $http.get("activity.json")
+      },
+      parent: "authed"
     })
     .state("dashboard", {
       url: "/dashboard",

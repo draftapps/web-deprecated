@@ -11,6 +11,5 @@
     vm.switchPage = function(pageName) {
       vm.activePageName = pageName;
     };
-
   }
 })();

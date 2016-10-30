@@ -49,7 +49,7 @@ header {
     a {
       color: #68768c;
       font-size: 14px;
-      font-weight: 500px;
+      font-weight: 500;
       display: block;
       margin-left: 30px;
     }
@@ -60,7 +60,6 @@ header {
   width: 124px;
   min-height: 73px;
 }
-
 
 .main-nav {
   .nav-links {
@@ -76,6 +75,64 @@ header {
     a {
       margin: 0;
       padding: 13px;
+    }
+  }
+}
+
+.canvas .screen__row {
+  .add-new {
+    width: 28px;
+    height: 28px;
+    border-radius: 3px;
+    background: #42d79e;
+    display: inline-block;
+    position: relative;
+    span {
+      display: block;
+      text-indent: 101%;
+      overflow: hidden;
+    }
+    &::before,
+    &::after {
+      position: absolute;
+      top: 13px;
+      left: 50%;
+      content: "";
+      display: block;
+      width: 10px;
+      height: 2px;
+      background: #fff;
+      margin-left: -5px;
+    }
+    &::after {
+      top: 9px;
+      margin-left: -1px;
+      width: 2px;
+      height: 10px;
+    }
+  }
+  nav {
+    a {
+      font-size: 16px;
+      font-weight: 400;
+      color: #7f8fa4;
+      margin: 0;
+      display: inline-block;
+      position: relative;
+      &.active {
+        &::before {
+          content: "";
+          height: 3px;
+          position: absolute;
+          left: 0;
+          bottom: -14px;
+          right: 0;
+          background: #1f8ceb;
+        }
+      }
+      & + a {
+        margin-left: 30px;
+      }
     }
   }
 }
