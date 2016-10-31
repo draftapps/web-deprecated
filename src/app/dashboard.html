@@ -1,200 +1,12 @@
 <div class="svg-icons"><ng-include src="'images/svg-defs.svg'"></ng-include></div>
 <div class="screen canvas">
   <div class="screen__row">
-    <header class="c-header">
-      <div class="row expanded align-middle">
-        <div class="column large-2">
-          <button class="u-text-small u-items-middle"><svg class="icon-back"><use xlink:href="#shape-arrow" /></svg> Back</button>
-        </div>
-        <div class="column large-8">
-          <div class="row align-center">
-            <a ui-sref="dashboard">
-              <img class="c-header__element" src="images/logo2.png">
-            </a>
-          </div>
-        </div>
-        <div class="columns large-2 text-right">
-          <dropdown-toggle
-            class="c-header__element"
-            pane-align="right"
-            close-on-click="true"
-          >
-            <toggle>
-              <button class="notifier">
-                <span class="notifier__detect"></span>
-                <i class="ion-android-notifications u-icon-24"></i>
-              </button>
-            </toggle>
-            <pane>
-              <ul class="menu vertical">
-                <li><a ui-sref="logout"><i class="ion-android-exit"></i> Logout</a></li>
-              </ul>
-            </pane>
-          </dropdown-toggle>
-          <dropdown-toggle
-            class="c-header__element u-space-h-undo"
-            pane-align="right"
-            close-on-click="true"
-          >
-            <toggle>
-              <img
-                class="avatar"
-                src="images/demo/avatar.png"
-                width="32"
-              >
-            </toggle>
-            <pane>
-              <ul class="menu vertical">
-                <li><a href="#"><i class="ion-person"></i> Profile</a></li>
-                <li><a href="#"><i class="ion-person-add"></i> Team Members</a></li>
-                <li><a href="#"><i class="ion-android-share-alt"></i> Integrations</a></li>
-                <li><a href="#"><i class="ion-android-notifications"></i> Notifications</a></li>
-                <li><a href="#"><i class="ion-card"></i> Billing</a></li>
-                <li><a ui-sref="logout"><i class="ion-android-exit"></i> Logout</a></li>
-              </ul>
-            </pane>
-          </dropdown-toggle>
-        </div>
-      </div>
-    </header>
+    <ng-include src="'app/partials/app-header.html'"></ng-include>
   </div>
-
   <div class="screen__row">
-    <div class="page-head">
-      <div class="row expanded align-middle">
-        <div class="columns large-2"></div>
-        <div class="columns large-8">
-          <ul class="page-head__menu menu align-center">
-            <li class="active"><a ui-sref="dashboard"><svg><use xlink:href="#shape-dashboard" /></svg></a></li>
-            <li><a ui-sref="notes"><i class="ion-chatbox-working u-icon-24"></i></a></li>
-            <li><a><svg><use xlink:href="#shape-more" /></svg></a></li>
-            <li><a><svg><use xlink:href="#shape-layers" /></svg></a></li>
-          </ul>
-        </div>
-        <div class="columns large-2 text-right">
-          <ul class="actions menu align-right">
-            <li>
-              <dropdown-toggle pane-align="center" close-on-click="true">
-                <toggle>
-                  <button class="actions__button"><span class="actions__status actions__status--warning"></span></button>
-                </toggle>
-                <pane>
-                  <ul class="dd-menu">
-                    <li class="title">Status</span></li>
-                    <li><a href="#" class="status-danger">New</a></li>
-                    <li><a href="#" class="status-warning">In Progress</a></li>
-                    <li><a href="#" class="status-success">Approved</a></li>
-                  </ul>
-                </pane>
-              </dropdown-toggle>
-            </li>
-            <li>
-              <dropdown-toggle pane-align="center" close-on-click="true" class="calendar-menu">
-                <toggle>
-                  <button class="actions__button"><i class="ion-calendar"></i></button>
-                </toggle>
-                <pane>
-                  <ul class="dd-menu">
-                    <li class="title">Calendar</span></li>
-                    <li><div pickadate ng-model="date"></div></li>
-                  </ul>
-                </pane>
-              </dropdown-toggle>
-            </li>
-            <li>
-              <dropdown-toggle pane-align="center" close-on-click="true">
-                <toggle>
-                <button class="actions__button"><i class="ion-person"></i></button>
-                </toggle>
-                <pane>
-                  <ul class="dd-menu assign-dd">
-                    <li class="title">Assign to</span></li>
-                    <li><a href="#"><img src="images/demo/avatar.png" class="avatar">John Doe</a></li>
-                    <li><a href="#"><img src="images/demo/avatar.png" class="avatar">Marry Keith</a></li>
-                  </ul>
-                </pane>
-              </dropdown-toggle>
-            </li>
-            <li>
-              <dropdown-toggle pane-align="center" close-on-click="true" class="tags-dropdown">
-                <toggle>
-                  <button class="actions__button"><i class="ion-pricetag"></i></button>
-                </toggle>
-                <pane>
-                  <ul class="dd-menu">
-                    <li><span class="title">Tags</span></li>
-                    <li>
-                      <div class="tags">
-                        <a href="#" style="background: #4be1ab">screen</a>
-                        <a href="#" style="background: #fe5339">iOS</a>
-                        <a href="#" style="background: #f3d351">Product</a>
-                      </div>
-                      <div class="input-wrapper">
-                        <input type="text" placeholder="# Add Tag">
-                        <input type="color">
-                      </div>
-                      <a class="action-button">Add Tag</a>
-                    </li>
-                  </ul>
-                </pane>
-              </dropdown-toggle>
-            </li>
-            <li>
-              <dropdown-toggle pane-align="center" close-on-click="true">
-                <toggle>
-                  <button class="actions__button"><i class="ion-forward"></i></button>
-                </toggle>
-                <pane>
-                  <ul class="dd-menu forward-dd">
-                    <li class="title">Forward to</span></li>
-                    <li><a href="#"><img src="images/slack.svg" class="forward-to" alt="Trello">Slack</a></li>
-                    <li><a href="#"><img src="images/trello.svg" class="forward-to" alt="Trello"> Trello</a></li>
-                  </ul>
-                </pane>
-              </dropdown-toggle>
-            </li>
-            <li>
-              <dropdown-toggle pane-align="right" close-on-click="true" class="share-dropdown">
-                <toggle>
-                  <button class="actions__button"><svg><use xlink:href="#shape-attachment" /></svg></button>
-                </toggle>
-                <pane>
-                  <ul class="dd-menu">
-                    <li class="title">Share</span></li>
-                    <li>
-                      <div class="link-wrapper">
-                        <input type="text" value="http://draftapp.io/i8rm3c" disabled>
-                        <button>Copy</button>
-                      </div>
-                      <input type="email" placeholder="Enter Email Address">
-                      <a href="#" class="action-button">Send</a>
-                    </li>
-                  </ul>
-                </pane>
-              </dropdown-toggle>
-
-            </li>
-            <li>
-              <dropdown-toggle pane-align="right" close-on-click="true">
-                <toggle>
-                  <button class="actions__button u-space-h-undo"><i class="ion-more"></i></button>
-                </toggle>
-                <pane>
-                  <ul class="dd-menu">
-                    <li><a href="#"><i class="ion-ios-copy-outline"></i>Duplicate</a></li>
-                    <li><a href="#"><i class="ion-ios-trash-outline"></i> Delete</a></li>
-                  </ul>
-                </pane>
-              </dropdown-toggle>
-
-            </li>
-          </ul>
-        </div>
-      </div>
-    </div>
+    <ng-include src="'app/partials/canvas-header.html'"></ng-include>
   </div>
-
-  <div class="screen__row -rest">
+  <div class="screen__row -rest" ng-show="dashboardVm.project != undefined">
     <div class="row expanded collapse">
       <div class="columns large-2 left-sidebar" ng-hide="leftSideBarIsHidden">
         <aside class="sidebar">
@@ -226,7 +38,7 @@
                     <img
                       class="thumbnail"
                       ng-class="{'is-active': artBoard.objectID === dashboardVm.selectedArtBoard.obj.objectID}"
-                      ng-src="{{::(artBoard.imageBase64 || artBoard.imagePath)}}">
+                      ng-src="{{::(artBoard.imageBase64 || artBoard.thumbImage)}}">
                     <span class="u-text-small" ng-bind="::artBoard.name"></span>
                   </a>
                 </li>
@@ -746,5 +558,8 @@
         </div>
       </aside>
     </div>
+  </div>
+  <div>
+    <ng-include src="'app/partials/app-loader.html'" ng-show="dashboardVm.project == undefined"></ng-include>
   </div>
 </div>

@@ -7,6 +7,7 @@
 
     var vm = this;
     vm.activity = activity.data;
+    $scope.menu = "projects-activities";
     $scope.page = "activity";
   }
 })();

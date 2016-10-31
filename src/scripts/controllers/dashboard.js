@@ -3,167 +3,179 @@
     .module("app")
     .controller("DasboardCtrl", DasboardCtrl);
 
-  function DasboardCtrl(project) {
+  function DasboardCtrl($scope, $http, projectService) {
     var vm = this;
+    var currentArtboard;
+    var info;
 
-    vm.project = project.data;
-    vm.project.selectArtBoard = selectArtBoard;
-    vm.project.selectSlice = selectSlice;
-    vm.project.sliceMouseEnter = sliceMouseEnter;
-    vm.project.sliceMouseLeave = sliceMouseLeave;
-    vm.project.unitsData = [
-      {
-        units: [
-          {
-            name: "Standard",
-            unit: "px",
-            scale: 1
-          }
-        ]
-      },
-      {
-        name: "iOS Devices",
-        units: [
-          {
-            name: "Points @1x",
-            unit: "pt",
-            scale: 1
-          },
-          {
-            name: "Retina @2x",
-            unit: "pt",
-            scale: 2
-          },
-          {
-            name: "Retina HD @3x",
-            unit: "pt",
-            scale: 3
-          }
-        ]
-      },
-      {
-        name: "Android Devices",
-        units: [
-          {
-            name: "LDPI @0.75x",
-            unit: "dp/sp",
-            scale: .75
-          },
-          {
-            name: "MDPI @1x",
-            unit: "dp/sp",
-            scale: 1
-          },
-          {
-            name: "HDPI @1.5x",
-            unit: "dp/sp",
-            scale: 1.5
-          },
-          {
-            name: "XHDPI @2x",
-            unit: "dp/sp",
-            scale: 2
-          },
-          {
-            name: "XXHDPI @3x",
-            unit: "dp/sp",
-            scale: 3
-          },
-          {
-            name: "XXXHDPI @4x",
-            unit: "dp/sp",
-            scale: 4
-          }
-        ]
-      },
-      {
-        name: "Web View",
-        units: [
-          {
-            name: "CSS Rem 12px",
-            unit: "rem",
-            scale: 12
-          },
-          {
-            name: "CSS Rem 14px",
-            unit: "rem",
-            scale: 14
-          }
-        ]
-      }
-    ];
-    vm.project.selectedResolution = vm.project.unitsData[0].units[0].name;
-    vm.selectedArtBoard = {
-      obj: null,
-      ruler: {
-        isHidden: true,
-        vertical: {
-          width: 0,
-          left: 0
-        },
-        horizontal: {
-          height: 0,
-          top: 0
-        }
-      },
-      distance: {
-        top: {
-          value: 0,
-          isHidden: true,
-          x: 0,
-          y: 0,
-          h: 0
-        },
-        right: {
-          value: 0,
-          isHidden: true,
-          x: 0,
-          y: 0,
-          w: 0
-        },
-        bottom: {
-          value: 0,
-          isHidden: true,
-          x: 0,
-          y: 0,
-          h: 0
-        },
-        left: {
-          value: 0,
-          isHidden: true,
-          x: 0,
-          y: 0,
-          w: 0
-        }
-      },
-      screenStyle: getBoardScreenStyle,
-      screenParentStyle: getBoardParentScreenStyle,
-      layerStyle: getLayerStyle,
-      vRulersStyle: getVRulersStyle,
-      hRulersStyle: getHRulersStyle,
-      distanceStyle: getDistanceStyle,
+    $scope.page = "dashboard";
 
-      unselectLayer: unselectLayer,
-      screenMouseMove: screenMouseMove,
-      layerMouseMove: layerMouseMove,
-      layerMouseEnter: layerMouseEnter,
-      layerMouseLeave: layerMouseLeave,
-      selectLayer: selectLayer,
-      zoomIn: zoomIn,
-      zoomOut: zoomOut,
+    info = projectService.getProjectInfo();
+    projectService.getProject(info.id, info.slug)
+        .then(function(p) {
+          vm.project = p;
 
-      zoomSize: zoomSize,
-      unitSize: unitSize,
-      isNumber: isNumber,
-      round: round
-    };
-    activate();
+          vm.project.selectArtBoard = selectArtBoard;
+          vm.project.selectSlice = selectSlice;
+          vm.project.sliceMouseEnter = sliceMouseEnter;
+          vm.project.sliceMouseLeave = sliceMouseLeave;
+          vm.project.unitsData = [
+            {
+              units: [
+                {
+                  name: "Standard",
+                  unit: "px",
+                  scale: 1
+                }
+              ]
+            },
+            {
+              name: "iOS Devices",
+              units: [
+                {
+                  name: "Points @1x",
+                  unit: "pt",
+                  scale: 1
+                },
+                {
+                  name: "Retina @2x",
+                  unit: "pt",
+                  scale: 2
+                },
+                {
+                  name: "Retina HD @3x",
+                  unit: "pt",
+                  scale: 3
+                }
+              ]
+            },
+            {
+              name: "Android Devices",
+              units: [
+                {
+                  name: "LDPI @0.75x",
+                  unit: "dp/sp",
+                  scale: .75
+                },
+                {
+                  name: "MDPI @1x",
+                  unit: "dp/sp",
+                  scale: 1
+                },
+                {
+                  name: "HDPI @1.5x",
+                  unit: "dp/sp",
+                  scale: 1.5
+                },
+                {
+                  name: "XHDPI @2x",
+                  unit: "dp/sp",
+                  scale: 2
+                },
+                {
+                  name: "XXHDPI @3x",
+                  unit: "dp/sp",
+                  scale: 3
+                },
+                {
+                  name: "XXXHDPI @4x",
+                  unit: "dp/sp",
+                  scale: 4
+                }
+              ]
+            },
+            {
+              name: "Web View",
+              units: [
+                {
+                  name: "CSS Rem 12px",
+                  unit: "rem",
+                  scale: 12
+                },
+                {
+                  name: "CSS Rem 14px",
+                  unit: "rem",
+                  scale: 14
+                }
+              ]
+            }
+          ];
+          vm.project.selectedResolution = vm.project.unitsData[0].units[0].name;
+          vm.selectedArtBoard = {
+            obj: null,
+            ruler: {
+              isHidden: true,
+              vertical: {
+                width: 0,
+                left: 0
+              },
+              horizontal: {
+                height: 0,
+                top: 0
+              }
+            },
+            distance: {
+              top: {
+                value: 0,
+                isHidden: true,
+                x: 0,
+                y: 0,
+                h: 0
+              },
+              right: {
+                value: 0,
+                isHidden: true,
+                x: 0,
+                y: 0,
+                w: 0
+              },
+              bottom: {
+                value: 0,
+                isHidden: true,
+                x: 0,
+                y: 0,
+                h: 0
+              },
+              left: {
+                value: 0,
+                isHidden: true,
+                x: 0,
+                y: 0,
+                w: 0
+              }
+            },
+            screenStyle: getBoardScreenStyle,
+            screenParentStyle: getBoardParentScreenStyle,
+            layerStyle: getLayerStyle,
+            vRulersStyle: getVRulersStyle,
+            hRulersStyle: getHRulersStyle,
+            distanceStyle: getDistanceStyle,
+
+            unselectLayer: unselectLayer,
+            screenMouseMove: screenMouseMove,
+            layerMouseMove: layerMouseMove,
+            layerMouseEnter: layerMouseEnter,
+            layerMouseLeave: layerMouseLeave,
+            selectLayer: selectLayer,
+            zoomIn: zoomIn,
+            zoomOut: zoomOut,
+
+            zoomSize: zoomSize,
+            unitSize: unitSize,
+            isNumber: isNumber,
+            round: round
+          };
+
+          activate();
+        }, function() {
+          // console.log("Server did not send project data!");
+        });
 
     function activate() {
       vm.selectedArtBoard.obj = vm.project.artboards[0];
       vm.project.configs = getConfigs(
-        vm.project.scale, vm.project.unit, vm.project.colorFormat, vm.selectedArtBoard.obj.height
-      );
+          vm.project.scale, vm.project.unit, vm.project.colorFormat, vm.selectedArtBoard.obj.height
+          );
     }
 
     function getConfigs(scale, unit, colorFormat, height) {
@@ -216,11 +228,11 @@
 
     function isIntersect(selectedRect, targetRect){
       return !(
-        selectedRect.maxX <= targetRect.x ||
-        selectedRect.x >= targetRect.maxX ||
-        selectedRect.y >= targetRect.maxY ||
-        selectedRect.maxY <= targetRect.y
-      );
+          selectedRect.maxX <= targetRect.x ||
+          selectedRect.x >= targetRect.maxX ||
+          selectedRect.y >= targetRect.maxY ||
+          selectedRect.maxY <= targetRect.y
+          );
     }
 
     function getRect(layer){
@@ -452,8 +464,8 @@
         "width": zoomSize(vm.selectedArtBoard.obj.width),
         "height": zoomSize(vm.selectedArtBoard.obj.height),
         "background": "#FFF url(" +
-        (vm.selectedArtBoard.obj.imageBase64 || vm.selectedArtBoard.obj.imagePath) +
-        ") no-repeat",
+          (vm.selectedArtBoard.obj.imageBase64 || vm.selectedArtBoard.obj.fullImage) +
+          ") no-repeat",
         "backgroundSize": zoomSize(vm.selectedArtBoard.obj.width) + "px " + zoomSize(vm.selectedArtBoard.obj.height) + "px"
       };
     }
