@@ -8,7 +8,6 @@
       <div class="column medium-3">
         <aside class="project-summary">
           <h1 class="project-summary__title">{{project.name}}</h1>
-          <p class="project-summary__notice">Comment directly on a task, to clarify exactly what needs to be done. Discuss a project’s progress to keep the momentum going.</p>
           <div class="project-summary__status">
             <h2>Status</h2>
             <dropdown-toggle pane-align="left" close-on-click="true">
@@ -50,7 +49,7 @@
           </div>
           <div class="column medium-4" ng-repeat="artboard in project.artboards">
             <div class="card">
-              <div class="card__header"><a href="#"><span>View</span></a><img src="{{::(artboard.thumbImage || 'images/project-thumb.png')}}" /></div>
+              <div class="card__header"><a ui-sref="dashboard" ng-click="selectArtBoard(artboard)"><span>View</span></a><img ng-src="{{::(artboard.thumbImage || 'images/project-thumb.png')}}" /></div>
               <div class="card__content">
                 <div class="card__menu">
                   <dropdown-toggle pane-align="right" close-on-click="true">
@@ -74,7 +73,7 @@
       </div>
     </div>
     <div class="row artboards-list" ng-show="project.id == undefined">
-      <div class="columns medium-12"><p>Loading ...</p></div>
+      <ng-include src="'app/partials/app-loader.html'"></ng-include>
     </div>
   </div>
 </div>
