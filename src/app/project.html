@@ -16,9 +16,9 @@
               </toggle>
               <pane>
                 <ul class="dd-menu">
-                  <li><a href="#" class="status-danger">New</a></li>
-                  <li><a href="#" class="status-warning">In Progress</a></li>
-                  <li><a href="#" class="status-success">Approved</a></li>
+                  <li><a ng-click="updateStatus(0)" class="status-danger">New</a></li>
+                  <li><a ng-click="updateStatus(1)" class="status-warning">In Progress</a></li>
+                  <li><a ng-click="updateStatus(2)" class="status-success">Approved</a></li>
                 </ul>
               </pane>
             </dropdown-toggle>

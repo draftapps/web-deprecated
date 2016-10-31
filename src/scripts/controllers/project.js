@@ -26,6 +26,22 @@
       );
     };
 
+    $scope.updateStatus = function(statusId) {
+      var project = {
+        "project" : {
+          "status": statusId
+        }
+      };
+      $http.post("http://api.draftapp.io/projects/" + $stateParams.id + "/set_status", project)
+        .success(function(data) {
+          // Should close the dropdown
+        })
+        .error(function(data) {
+          // console.log('Error: ' + data);
+        });
+    };
+
+
     /**
      * [$scope.createProject - Create new project]
      * Upon callback, the following operations take place with the following reasons
