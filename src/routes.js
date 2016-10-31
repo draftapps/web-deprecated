@@ -97,9 +97,6 @@ function routesConfig($stateProvider, $urlRouterProvider, $locationProvider) {
       templateUrl: "app/dashboard.html",
       controller: "DasboardCtrl",
       controllerAs: "dashboardVm",
-      resolve: {
-        project: $http => $http.get("project.json")
-      },
       parent: "authed"
     })
     .state("logout", {

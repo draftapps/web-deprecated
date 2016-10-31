@@ -3,22 +3,28 @@
     .module("app")
     .controller("ProjectCtrl", ProjectCtrl);
 
-  function ProjectCtrl($scope, $http, $stateParams, $modal) {
+  function ProjectCtrl($scope, $http, $stateParams, $modal, projectService) {
 
     $scope.menu = "projects-activities";
-    $scope.project = {};
     $scope.status = ["New", "In Progress", "Approved"];
 
-    $scope.getProject = function(id, slug) {
-      $http.get("http://api.draftapp.io/projects/" + id + "?project[slug]=" + slug)
-        .success(function(data) {
-          $scope.project = data;
-        })
-        .error(function(data) {
-          // console.log('Error: ' + data);
-        });
+    projectService.getProject($stateParams.id, $stateParams.slug)
+      .then(function(project) {
+        $scope.project = project;
+      }, function() {
+        // console.log('Server did not send project data!');
+      });
+
+    $scope.selectArtBoard = function(artboard) {
+      // FIXME: this state won't be persisted if page is refreshed!
+      projectService.setProjectInfo(
+        {
+          artboard: artboard,
+          id: $stateParams.id,
+          slug: $stateParams.slug
+        }
+      );
     };
-    $scope.getProject($stateParams.id, $stateParams.slug);
 
     /**
      * [$scope.createProject - Create new project]
@@ -39,7 +45,7 @@
           data.created_at = new Date();
           $scope.projectData = {};
           $scope.modal.close();
-          $scope.getProject(data.id, data.slug);
+          projectService.getProject(data.id, data.slug);
         })
         .error(function(data) {
           // console.log('Error: ' + data);

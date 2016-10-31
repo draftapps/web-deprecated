@@ -6,7 +6,7 @@
   <div class="screen__row">
     <ng-include src="'app/partials/canvas-header.html'"></ng-include>
   </div>
-  <div class="screen__row -rest">
+  <div class="screen__row -rest" ng-show="dashboardVm.project != undefined">
     <div class="row expanded collapse">
       <div class="columns large-2 left-sidebar" ng-hide="leftSideBarIsHidden">
         <aside class="sidebar">
@@ -38,7 +38,7 @@
                     <img
                       class="thumbnail"
                       ng-class="{'is-active': artBoard.objectID === dashboardVm.selectedArtBoard.obj.objectID}"
-                      ng-src="{{::(artBoard.imageBase64 || artBoard.imagePath)}}">
+                      ng-src="{{::(artBoard.imageBase64 || artBoard.thumbImage)}}">
                     <span class="u-text-small" ng-bind="::artBoard.name"></span>
                   </a>
                 </li>
@@ -558,5 +558,8 @@
         </div>
       </aside>
     </div>
+  </div>
+  <div>
+    <ng-include src="'app/partials/app-loader.html'" ng-show="dashboardVm.project == undefined"></ng-include>
   </div>
 </div>
