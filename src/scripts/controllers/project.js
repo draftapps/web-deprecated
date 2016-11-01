@@ -29,12 +29,14 @@
     $scope.updateStatus = function(statusId) {
       var project = {
         "project" : {
+          "slug": $stateParams.slug,
           "status": statusId
         }
       };
       $http.post("http://api.draftapp.io/projects/" + $stateParams.id + "/set_status", project)
         .success(function(data) {
-          // Should close the dropdown
+          $scope.project.status = data.status;
+          $(".dropdown-pane").removeClass("is-open");
         })
         .error(function(data) {
           // console.log('Error: ' + data);
