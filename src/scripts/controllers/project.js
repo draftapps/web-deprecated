@@ -27,6 +27,8 @@
     };
 
     $scope.updateStatus = function(statusId) {
+      this.$close();
+      $scope.statusUpdating = true;
       var project = {
         "project" : {
           "slug": $stateParams.slug,
@@ -35,14 +37,14 @@
       };
       $http.post("http://api.draftapp.io/projects/" + $stateParams.id + "/set_status", project)
         .success(function(data) {
-          $scope.project.status = data.status;
-          $(".dropdown-pane").removeClass("is-open");
+          $scope.statusUpdating = false;
+          $scope.project = data;
         })
         .error(function(data) {
+          $scope.statusUpdating = false;
           // console.log('Error: ' + data);
         });
     };
-
 
     /**
      * [$scope.createProject - Create new project]

@@ -425,3 +425,7 @@
     line-height: 48px;
   }
 }
+dropdown-toggle.disabled {
+  opacity: 0.5;
+  pointer-events: none;
+}
