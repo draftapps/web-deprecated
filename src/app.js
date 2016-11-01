@@ -1,7 +1,7 @@
 (function () {
   angular
     .module("app", [
-      "ui.router", "mm.foundation", "ngFileUpload", "slickCarousel", "ng-token-auth", "pickadate", "yaru22.angular-timeago"
+      "ui.router", "mm.foundation", "ngFileUpload", "slickCarousel", "ng-token-auth", "pickadate", "yaru22.angular-timeago", "ui.select", "ngSanitize"
     ])
     .config(authProviderConfig);
 

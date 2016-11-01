@@ -14,9 +14,9 @@
           <input class="form-control" id="last_name" type="text" placeholder="Last Name (optional)" ng-model="settingsVM.form.lastName" required="" ng-class="{'is-invalid-input': settingsVM.errors.lastName[0]}"/>
         </div>
         <div class="column large-2">
-          <ui-select ng-model="settingsVM.memberRole" theme="bootstrap" style="width: 100%" title="choose Role" append-to-body="true">
-            <ui-select-match placeholder="Search a role...">{{$select.selected.name}}</ui-select-match>
-            <ui-select-choices repeat="role in settingsVM.roles track by $index"><span ng-bind-html="role.name"></span></ui-select-choices>
+          <ui-select ng-model="settingsVM.selectedRole" theme="selectize" style="width:100%; max-width:100%">
+            <ui-select-match placeholder="Select">{{$select.selected.name}}</ui-select-match>
+            <ui-select-choices repeat="role in settingsVM.roles | filter: $select.search"><span ng-bind-html="role.name | highlight: $select.search"></span></ui-select-choices>
           </ui-select>
         </div>
         <div class="column large-12"><span class="form-error" ng-class="{'is-visible': settingsVM.errors.email[0]}">Email {{settingsVM.errors.email[0]}}</span><span class="form-error" ng-class="{'is-visible': settingsVM.errors.firstName[0]}">First Name {{settingsVM.errors.firstName[0]}}</span><span class="form-error" ng-class="{'is-visible': settingsVM.errors.lastName[0]}">Last Name {{settingsVM.errors.lastName[0]}}</span><span class="form-error" ng-class="{'is-visible': settingsVM.errors.role[0]}">Role {{settingsVM.errors.role[0]}}</span></div>

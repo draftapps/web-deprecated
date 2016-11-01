@@ -14,7 +14,9 @@
     "ng-token-auth": "^0.0.29",
     "angular-pickadate": "^1.1.0",
     "angular-timeago": "^0.4.3",
-    "angular-ui-select": "^0.19.6"
+    "angular-ui-select": "^0.19.6",
+    "angular-sanitize": "^1.5.8",
+    "selectize": "^0.12.4"
   },
   "overrides": {
     "foundation-sites": {
