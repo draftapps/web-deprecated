@@ -138,6 +138,13 @@
 .team-members-settings .invite-form {
   padding-bottom: 50px;
   border-bottom: 1px solid #f0f2f7;
+  .head-filters {
+    margin: 0;
+    .select, .dropdown-pane {
+      max-width: 100%;
+    }
+
+  }
   .form-group {
     font-size: 14px;
   }
@@ -146,7 +153,7 @@
     font-size: 14px;
     height: auto;
     border-radius: 5px;
-    line-height: 50px;
+    line-height: 30px;
   }
   .form-control + .form-control {
     margin-left: 15px;
@@ -158,8 +165,12 @@
     }
   }
   .selectize-input {
-    line-height: 52px;
+    line-height: 33px;
     font-size: 14px;
+    input {
+      line-height: 1.2!important;
+      height: auto;
+    }
     .ng-binding {
       margin-left: 5px;
     }
