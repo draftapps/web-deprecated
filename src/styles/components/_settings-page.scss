@@ -59,7 +59,7 @@
     overflow: hidden;
     border: 1px solid #e4e7ef;
   }
-  .form-control {
+  .form-control, .selectize-control.single > .selectize-input > input {
     color: #3a405b;
     -webkit-text-fill-color: #3a405b;
     &::-webkit-input-placeholder {
@@ -160,6 +160,9 @@
   .selectize-input {
     line-height: 52px;
     font-size: 14px;
+    .ng-binding {
+      margin-left: 5px;
+    }
   }
   .add-member {
     color: #42d79e;

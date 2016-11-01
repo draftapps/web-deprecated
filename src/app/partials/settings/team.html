@@ -14,8 +14,8 @@
           <input class="form-control" id="last_name" type="text" placeholder="Last Name (optional)" ng-model="settingsVM.form.lastName" required="" ng-class="{'is-invalid-input': settingsVM.errors.lastName[0]}"/>
         </div>
         <div class="column large-2">
-          <ui-select ng-model="settingsVM.selectedRole" theme="selectize" style="width:100%; max-width:100%">
-            <ui-select-match placeholder="Select">{{$select.selected.name}}</ui-select-match>
+          <ui-select ng-model="settingsVM.role.selected" theme="selectize" style="width:100%; max-width:100%">
+            <ui-select-match placeholder="Select a role">{{$select.selected.name}}</ui-select-match>
             <ui-select-choices repeat="role in settingsVM.roles | filter: $select.search"><span ng-bind-html="role.name | highlight: $select.search"></span></ui-select-choices>
           </ui-select>
         </div>
