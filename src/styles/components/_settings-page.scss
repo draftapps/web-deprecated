@@ -59,6 +59,29 @@
     overflow: hidden;
     border: 1px solid #e4e7ef;
   }
+  .form-control {
+    color: #3a405b;
+    -webkit-text-fill-color: #3a405b;
+    &::-webkit-input-placeholder {
+      color: #b9bed1;
+      -webkit-text-fill-color: #b9bed1;
+    }
+
+    &:-moz-placeholder { /* Firefox 18- */
+      color: #b9bed1;
+      -webkit-text-fill-color: #b9bed1;
+    }
+
+    &::-moz-placeholder {  /* Firefox 19+ */
+      color: #b9bed1;
+      -webkit-text-fill-color: #b9bed1;
+    }
+
+    &:-ms-input-placeholder {
+      color: #b9bed1;
+      -webkit-text-fill-color: #b9bed1;
+    }
+  }
   .profile-settings {
     padding: 40px 15px;
   }
@@ -102,7 +125,7 @@
   legend {
     font-size: 16px;
     color: #a1a6bb;
-    font-weight: bold;
+    //font-weight: bold;
   }
   form {
     padding: 30px 20px;
@@ -255,7 +278,7 @@
   .summary-preference {
     input, label, p {
       margin: 0;
-      font-weight: bold;
+      //font-weight: bold;
     }
     .summary-options-title {
       margin-bottom: 20px;
