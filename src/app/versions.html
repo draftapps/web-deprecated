@@ -104,7 +104,7 @@
       </div>
 
       <div class="columns large-2 right-sidebar" ng-hide="rightSideBarIsHidden">
-        <aside class="sidebar">
+        <aside class="sidebar inspector">
           <div class="sidebar__head">
             <div class="sidebar__title">
               Details
@@ -118,16 +118,38 @@
           </div>
           <div class="sidebar__body">
             <div class="scroller">
-              <ul class="items-spaced">
-                <li class="text-cener" ng-if="!versionsVm.selectedVersion.obj.notes.length">No notes in this screen</li>
-                <li
-                  class="o-list--stripped"
-                  ng-repeat="note in versionsVm.selectedVersion.obj.notes"
-                  ng-click="versionsVm.selectedVersion.openNote(note, $index + 1)"
-                  ng-class="{'selected' : note.show === true}">
-                  note {{$index + 1}}
-                </li>
-              </ul>
+              <div class="context">
+                <h3 class="plain">Product_Screen</h3>
+                <dl class="params-list">
+                  <dt>Created:</dt>
+                  <dd>09 Jan 2016 10:32AM</dd>
+                  <dt>Updated:</dt>
+                  <dd>19 Jan 2016 9:43PM</dd>
+                  <dt>Creator:</dt>
+                  <dd>Carlos De Silva</dd>
+                </dl>
+              </div>
+              <div class="context">
+                <h4 class="plain">Privacy</h4>
+                <dropdown-toggle pane-align="left" close-on-click="true">
+                  <toggle>
+                    <button class="dropdown-toggler">Public</button>
+                  </toggle>
+                  <pane>
+                    <ul class="dd-menu">
+                      <li><a href="#">Public</a></li>
+                      <li><a href="#">Private</a></li>
+                    </ul>
+                  </pane>
+                </dropdown-toggle>
+                <h4 class="plain">Collaborators</h4>
+                <ul class="u-list-inline">
+                  <li><a href="#" class="add-more"><span>Add more</span></a></li>
+                </ul>
+              </div>
+              <div class="context">
+                <a class="export-button" href="#">Export</a>
+              </div>
             </div>
           </div>
         </aside>
