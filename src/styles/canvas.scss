@@ -1414,11 +1414,57 @@ main {
       padding: 0 15px;
       font-size: 13px;
       color: #8493a8;
+      &.plain {
+        padding: 0;
+        font-size: 14px;
+        line-height: 1.6;
+        color: #3a405b;
+        border: 0;
+        height: auto;
+        background: transparent;
+        font-weight: bold;
+        margin-bottom: 10px;
+      }
+    }
+    h4 {
+      color: #a1a6bb;
+      font-size: 14px;
+      margin-bottom: 10px;
+      &::before {
+        content: none;
+      }
+    }
+    .params-list {
+      font-size: 12px;
+      margin: 0;
+      &::before,
+      &::after {
+        content: "";
+        display: table;
+      }
+      &::after {
+        clear: both;
+      }
+      dt {
+        font-weight: normal;
+        color: #a1a6bb;
+        float: left;
+        width: 70px;
+        clear: left;
+        margin-bottom: 5px;
+      }
+      dd {
+        color: #3a405b;
+        margin-bottom: 5px;
+      }
     }
   }
   aside {
     .context {
       font-weight: 300;
+      & + .context {
+        border-top: 1px solid #e4e7ef;
+      }
       .columns {
         padding-top: 6px;
         padding-bottom: 6px;
@@ -1437,6 +1483,49 @@ main {
         &#content {
           min-height: 0;
           margin-top: 5px;
+        }
+      }
+      .dropdown-toggler {
+        display: block;
+        font-size: 14px;
+        line-height: 38px;
+        width: 100%;
+        text-align: left;
+        color: #3a405b;
+        border: 2px solid #e4e7ef;
+        border-radius: 5px;
+        padding: 0 10px;
+        background: #fff url(../images/arrow-down.png) 90% 50% no-repeat;
+        cursor: pointer;
+        margin-bottom: 20px;
+      }
+      .add-more {
+        width: 39px;
+        line-height: 39px;
+        height: 39px;
+        border-radius: 50%;
+        background: #42d79e;
+        text-indent: 110%;
+        display: inline-block;
+        position: relative;
+        overflow: hidden;
+        &::before,
+        &::after {
+          position: absolute;
+          top: 18px;
+          left: 50%;
+          content: "";
+          display: block;
+          width: 14px;
+          height: 2px;
+          background: #fff;
+          margin-left: -7px;
+        }
+        &::after {
+          top: 12px;
+          margin-left: -1px;
+          width: 2px;
+          height: 14px;
         }
       }
     }
