@@ -121,6 +121,17 @@ function routesConfig($stateProvider, $urlRouterProvider, $locationProvider) {
         }
       }
     })
+    .state("versions", {
+      url: "/versions",
+      templateUrl: "app/versions.html",
+      controller: "VersionsCtrl",
+      controllerAs: "versionsVm",
+      resolve: {
+        project: $http => {
+          return $http.get("versions.json");
+        }
+      }
+    })
     .state("ui-components", {
       url: "/ui-components",
       templateUrl: "app/ui-components.html"
