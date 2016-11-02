@@ -1,0 +1,157 @@
+<div class="svg-icons"><ng-include src="'images/svg-defs.svg'"></ng-include></div>
+<div class="screen canvas">
+  <div class="screen__row">
+    <ng-include src="'app/partials/app-header.html'"></ng-include>
+  </div>
+  <div class="screen__row">
+    <ng-include src="'app/partials/canvas-header.html'"></ng-include>
+  </div>
+  <div class="screen__row -rest">
+    <div class="row expanded collapse">
+      <div class="columns large-2 left-sidebar" ng-hide="leftSideBarIsHidden">
+        <aside class="sidebar">
+          <div class="sidebar__head">
+            <div class="sidebar__title">Screens</div>
+            <button
+              class="sidebar__collapse-button -left"
+              ng-click="leftSideBarIsHidden = !leftSideBarIsHidden">
+              <i class="sidebar__collapse-arrow ion-arrow-left-b"></i>
+              <i class="sidebar__collapse-menu ion-android-menu"></i>
+            </button>
+          </div>
+          <div class="sidebar__body">
+            <div class="scroller">
+              <ul class="items-spaced">
+                <li ng-repeat="version in versionsVm.project.versions">
+                  <a ng-click="versionsVm.project.selectVersion(version)">
+                    <img
+                      class="thumbnail"
+                      ng-class="{'is-active': version.objectID === versionsVm.selectedVersion.obj.objectID}"
+                      ng-src="{{::(version.imageBase64 || version.imagePath)}}">
+                    <span class="u-text-small" ng-bind="::version.name"></span>
+                  </a>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </aside>
+      </div>
+
+      <div class="sidebar__fixed-container" ng-show="leftSideBarIsHidden">
+        <aside class="sidebar -closed">
+          <div class="sidebar__head">
+            <ul class="sidebar__menu menu">
+              <li>
+                <a></a>
+              </li>
+            </ul>
+            <button
+              class="sidebar__collapse-button -right"
+              ng-click="leftSideBarIsHidden = !leftSideBarIsHidden">
+              <i class="sidebar__collapse-arrow ion-arrow-left-b"></i>
+              <i class="sidebar__collapse-menu ion-android-menu"></i>
+            </button>
+          </div>
+          <div class="sidebar__body"></div>
+        </aside>
+      </div>
+
+      <div
+        class="columns main-content notes-modal__container"
+        ng-class="{'large-8': !leftSideBarIsHidden && !rightSideBarIsHidden,
+          'large-10': leftSideBarIsHidden || rightSideBarIsHidden,
+          'large-12': leftSideBarIsHidden && rightSideBarIsHidden,
+          'canvas--padded-left': leftSideBarIsHidden,
+          'canvas--padded-right': rightSideBarIsHidden}"
+      >
+        <div class="nav-widget nav-widget--prev">
+          <a href="#"><svg><use xlink:href="#shape-prev" /></svg></a>
+        </div>
+        <div class="zoom-widget">
+
+          <button
+            class="zoom-in"
+            ng-disabled="versionsVm.project.configs.zoom <= .25"
+            ng-click="versionsVm.selectedVersion.zoomIn()">
+          </button>
+
+          <label class="zoom-text" style="margin: 0 5px;">
+            {{versionsVm.project.configs.zoom * 100}}%
+          </label>
+
+          <button
+            class="zoom-out"
+            ng-click="versionsVm.selectedVersion.zoomOut()"
+            ng-disabled="versionsVm.project.configs.zoom >= 2">
+          </button>
+        </div>
+        <div class="nav-widget nav-widget--next">
+          <a href="#"><svg><use xlink:href="#shape-next" /></svg></a>
+        </div>
+
+      <section class="canvas-screen-viewer scroller">
+        <div
+          class="canvas-screen-viewer-inner"
+          ng-style="versionsVm.selectedVersion.screenParentStyle()">
+          <div
+            id="screen"
+            class="canvas-screen"
+            ng-style="versionsVm.selectedVersion.screenStyle()"
+            >
+          </div>
+        </div>
+      </section>
+      </div>
+
+      <div class="columns large-2 right-sidebar" ng-hide="rightSideBarIsHidden">
+        <aside class="sidebar">
+          <div class="sidebar__head">
+            <div class="sidebar__title">
+              Details
+            </div>
+            <button
+              class="sidebar__collapse-button -right"
+              ng-click="rightSideBarIsHidden = !rightSideBarIsHidden">
+              <i class="sidebar__collapse-arrow ion-arrow-left-b"></i>
+              <i class="sidebar__collapse-menu ion-android-menu"></i>
+            </button>
+          </div>
+          <div class="sidebar__body">
+            <div class="scroller">
+              <ul class="items-spaced">
+                <li class="text-cener" ng-if="!versionsVm.selectedVersion.obj.notes.length">No notes in this screen</li>
+                <li
+                  class="o-list--stripped"
+                  ng-repeat="note in versionsVm.selectedVersion.obj.notes"
+                  ng-click="versionsVm.selectedVersion.openNote(note, $index + 1)"
+                  ng-class="{'selected' : note.show === true}">
+                  note {{$index + 1}}
+                </li>
+              </ul>
+            </div>
+          </div>
+        </aside>
+      </div>
+
+      <div class="sidebar__fixed-container" ng-show="rightSideBarIsHidden">
+        <aside class="sidebar -closed  -closed-right">
+          <div class="sidebar__head">
+            <ul class="sidebar__menu menu">
+              <li>
+                <a></a>
+              </li>
+            </ul>
+            <button
+              class="sidebar__collapse-button -left"
+              ng-click="rightSideBarIsHidden = !rightSideBarIsHidden">
+              <i class="sidebar__collapse-arrow ion-arrow-left-b"></i>
+              <i class="sidebar__collapse-menu ion-android-menu"></i>
+            </button>
+          </div>
+          <div class="sidebar__body"></div>
+        </aside>
+      </div>
+
+    </div>
+  </div>
+</div>
