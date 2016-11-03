@@ -56,6 +56,7 @@
   border-radius: 3px;
   .partial__content {
     border-radius: 3px;
+    border: 1px solid #e4e7ef;
     overflow: hidden;
   }
   .form-control, .selectize-control.single > .selectize-input > input {
@@ -100,6 +101,7 @@
   font-size: 16px;
   label {
     font-size: 16px;
+    color: #b9bed1;
   }
   .avatar-card, .form-control {
     border-radius: 3px;
@@ -110,6 +112,7 @@
   }
   label + .form-control {
     margin-top: 10px;
+    margin-bottom: 25px;
     height: 52px;
   }
   .button.success {
@@ -136,14 +139,17 @@
   font-size: 14px;
 }
 .team-members-settings .invite-form {
-  padding-bottom: 50px;
   border-bottom: 1px solid #f0f2f7;
   .head-filters {
     margin: 0;
     .select, .dropdown-pane {
       max-width: 100%;
     }
-
+    .select {
+      border-width: 1px;
+      line-height: 50px;
+      border-color: #dee0e9;
+    }
   }
   .form-group {
     font-size: 14px;
@@ -153,13 +159,14 @@
     font-size: 14px;
     height: auto;
     border-radius: 5px;
+    margin: 0;
     line-height: 30px;
   }
   .form-control + .form-control {
     margin-left: 15px;
   }
   .form-group {
-    margin: 30px 0 25px;
+    margin: 20px 0 0;
     .column {
       padding-left: 0;
     }
@@ -224,7 +231,7 @@
   &__email {
     flex-grow: 1;
     padding: 0 15px;
-    text-align: center;
+    text-align: left;
   }
   &__actions {
     flex-grow: 0;
@@ -238,7 +245,7 @@
     display: flex;
     align-items: center;
     line-height: 40px;
-    border: 1px solid #f0f2f7;
+    border: 2px solid #f0f2f7;
     border-radius: 25px;
     padding: 0 26px;
     &--admin {
@@ -251,6 +258,7 @@
     }
   }
   &__delete {
+    color: #b9bed1;
     font-size: 16px;
   }
 }
@@ -274,7 +282,9 @@
     align-items: center;
     padding: 45px;
     border-bottom: 1px solid #e4e7ef;
-    border-left: 1px solid #e4e7ef;
+    &:nth-child(even) {
+      border-left: 1px solid #e4e7ef;
+    }
     &--disabled {
       .integration-service__logo {
         position: relative;
@@ -309,6 +319,43 @@
     }
     .radio-wrapper {
       display: inline-block;
+      position: relative;
+      input {
+        opacity: 0;
+        &:checked + label {
+          &::before {
+            background-color: rgb(79, 213, 149);
+          }
+          &::after {
+            content: "";
+            display: inline-block;
+            position: absolute;
+            top: 4px;
+            left: 4px;
+            border-radius: 50%;
+            background: #fff;
+            width: 11px;
+            height: 10px;
+          }
+        }
+      }
+      label {
+        padding-left: 30px;
+        font-size: 14px;
+        color: #3a405b;
+        &::before {
+          content: "";
+          display: inline-block;
+          position: absolute;
+          top: 0;
+          left: 0;
+          border-radius: 50%;
+          background-color: rgb(228, 231, 239);
+          box-shadow: inset 0px 1px 1px 0px rgba(0, 0, 0, 0.15);
+          width: 19px;
+          height: 18px;
+        }
+      }
     }
     .radio-wrapper + .radio-wrapper {
       margin-left: 35px;
@@ -322,14 +369,16 @@
       padding: 25px;
     }
     legend {
-      margin-bottom: 25px;
+      margin-bottom: 15px;
+      position: relative;
+      top: -6px;
     }
   }
 }
 .email-preferences {
-  margin-top: 55px;
+  margin-top: 45px;
   legend {
-    margin-bottom: 35px;
+    margin-bottom: 30px;
   }
   display: flex;
   flex-direction: column;
