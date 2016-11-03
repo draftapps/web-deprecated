@@ -5,12 +5,13 @@
 
   function ComparisonCtrl($scope, comparisonData) {
     var vm = this;
-
     $scope.page = "comparison";
+    vm.comparisonData = {};
+    vm.project = {};
 
-    vm.project = project.data;
-    vm.project.selectVersion = selectVersion;
-    vm.selectedVersion = {
+    vm.comparisonData.pages = comparisonData.data;
+    vm.comparisonData.selectPage = selectPage;
+    vm.selectedPage = {
       obj: null,
       screenStyle: getBoardScreenStyle,
       screenParentStyle: getBoardParentScreenStyle,
@@ -21,9 +22,9 @@
     activate();
 
     function activate() {
-      vm.selectedVersion.obj = vm.project.comparison[0];
+      vm.selectedPage.obj = vm.comparisonData.pages[0];
       vm.project.configs = getConfigs(
-          vm.project.scale, vm.project.unit, vm.project.colorFormat, vm.selectedVersion.obj.height
+          vm.project.scale, vm.project.unit, vm.project.colorFormat, vm.selectedPage.obj.height
       );
     }
 
@@ -52,22 +53,22 @@
     }
 
     function getBoardScreenStyle() {
-      if (!vm.selectedVersion.obj) return;
+      if (!vm.selectedPage.obj) return;
       return {
-        "width": zoomSize(vm.selectedVersion.obj.width),
-        "height": zoomSize(vm.selectedVersion.obj.height),
+        "width": zoomSize(vm.selectedPage.obj.width),
+        "height": zoomSize(vm.selectedPage.obj.height),
         "background": "#FFF url(" +
-        (vm.selectedVersion.obj.imageBase64 || vm.selectedVersion.obj.imagePath) +
+        (vm.selectedPage.obj.originalImageBase64 || vm.selectedPage.obj.originalImagePath) +
         ") no-repeat",
-        "backgroundSize": zoomSize(vm.selectedVersion.obj.width) + "px " + zoomSize(vm.selectedVersion.obj.height) + "px"
+        "backgroundSize": zoomSize(vm.selectedPage.obj.width) + "px " + zoomSize(vm.selectedPage.obj.height) + "px"
       };
     }
 
     function getBoardParentScreenStyle() {
-      if (!vm.selectedVersion.obj) return;
+      if (!vm.selectedPage.obj) return;
       return {
-        "width": zoomSize(vm.selectedVersion.obj.width),
-        "height": zoomSize(vm.selectedVersion.obj.height)
+        "width": zoomSize(vm.selectedPage.obj.width),
+        "height": zoomSize(vm.selectedPage.obj.height)
       };
     }
 
@@ -79,8 +80,8 @@
       vm.project.configs.zoom += .25;
     }
 
-    function selectVersion(version) {
-      vm.selectedVersion.obj = version;
+    function selectPage(index) {
+      vm.selectedPage.obj = this.pages[index];
     }
   }
 })();
