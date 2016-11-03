@@ -11,7 +11,10 @@ gulp.task('inject', inject);
 function inject() {
   const injectScripts = gulp.src([
     conf.path.tmp('**/*.js'),
-    `!${conf.path.tmp('**/*.spec.js')}`
+    `!${conf.path.tmp('**/*.spec.js')}`,
+    // Excluding highlight pack from the injected files cause we already inject it manually
+    `!${conf.path.tmp('scripts/vendor/highlight.pack.js')}`,
+    `!${conf.path.tmp('highlight.pack.js')}`
   ])
   .pipe(angularFilesort()).on('error', conf.errorHandler('AngularFilesort'));
 

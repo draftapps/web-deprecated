@@ -7,6 +7,14 @@
     var vm = this;
 
     $scope.page = "versions";
+    $scope.drawnNumbers = false;
+
+    $scope.drawLineNumbers = function() {
+      if (!$scope.drawnNumbers) {
+        hljs.initLineNumbersOnLoad();
+        $scope.drawnNumbers = true;
+      }
+    }
 
     vm.project = project.data;
     vm.project.selectVersion = selectVersion;
