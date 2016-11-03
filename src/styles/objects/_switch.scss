@@ -6,12 +6,14 @@
     height: 20px;
     top: 8px;
     left: 8px;
+    box-shadow: 0px 10px 25px 0px rgba(34, 35, 40, 0.4);
   }
   input:checked ~ .switch-paddle::after {
     left: 40px;
   }
   .switch-paddle {
     border-radius: 25px;
+    margin: 0;
     width: 68px;
     height: 36px;
     background-color: #e4e7ef;

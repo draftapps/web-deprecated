@@ -6,7 +6,7 @@
   </div>
   <div class="screen__row">
     <div class="row">
-      <div class="column large-1 page-head">
+      <div class="column large-12 page-head">
         <h2 class="screen__title">Settings</h2>
       </div>
     </div>
@@ -19,10 +19,6 @@
           <li ng-class="{ active: settingsVM.activePageName == 'team-members' }"><a href="#" ng-click="settingsVM.switchPage('team-members')"><i class="ion-person-add"></i> Team Members</a></li>
           <li ng-class="{ active: settingsVM.activePageName == 'integrations' }"><a href="#" ng-click="settingsVM.switchPage('integrations')"><i class="ion-android-share-alt"></i> Integrations</a></li>
           <li ng-class="{ active: settingsVM.activePageName == 'notifications' }"><a href="#" ng-click="settingsVM.switchPage('notifications')"><i class="ion-android-notifications"></i> Notifications</a></li>
-          <!--li(ng-class="{ active: settingsVM.activePageName == 'billing' }")-->
-          <!--  a(href='#', ng-click="settingsVM.switchPage('billing')")-->
-          <!--    i.ion-card-->
-          <!--    |  Billing-->
         </ul>
       </div>
       <div class="column large-9 settings__partial">
