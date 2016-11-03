@@ -1,34 +1,35 @@
-{
-  "original":[
-    {
-      "pageName":"Page 1",
-      "pageObjectID":"A0C448E6-AE5D-4824-AA12-1687E6F5F85A",
-      "name":"Version 3",
-      "slug":"version-3",
-      "objectID":"CA7656AE-AC9F-48F0-82C3-E2CF9D0E1A3D",
-      "width":750,
-      "height":1334,
-      "imagePath":"preview/page-1-dashboard.png"
-    },
-    {
-      "pageName":"Page 1",
-      "pageObjectID":"A0C448E6-AE5D-4824-AA12-1687E6F5F85A",
-      "name":"Version 2",
-      "slug":"version-2",
-      "objectID":"8DBD87BC-973A-4B21-917D-86AEA6ECFEEF",
-      "width":750,
-      "height":1334,
-      "imagePath":"preview/page-1-home.png"
-    },
-    {
-      "pageName":"Page 1",
-      "pageObjectID":"A0C448E6-AE5D-4824-AA12-1687E6F5F85A",
-      "name":"Version 1",
-      "slug":"version-1",
-      "objectID":"B7171427-F2CC-42D0-9602-0614F97F9F4A",
-      "width":750,
-      "height":1334,
-      "imagePath":"preview/page-1-login.png"
-    }
-  ]
-}
+[
+  {
+    "pageName": "Dashboard",
+    "pageObjectID": "A0C448E6-AE5D-4824-AA12-1687E6F5F85A",
+    "name": "DashBoard",
+    "slug": "dashboard",
+    "objectID": "CA7656AE-AC9F-48F0-82C3-E2CF9D0E1A3D",
+    "width": 750,
+    "height": 1334,
+    "originalImagePath": "preview/page-1-dashboard.png",
+    "implementedImagePath": "preview/page-1-dashboard.png"
+  },
+  {
+    "pageName": "Home",
+    "pageObjectID": "A0C448E6-AE5D-4824-AA12-1687E6F5F85A",
+    "name": "Home",
+    "slug": "home",
+    "objectID": "8DBD87BC-973A-4B21-917D-86AEA6ECFEEF",
+    "width": 750,
+    "height": 1334,
+    "originalImagePath": "preview/page-1-home.png",
+    "implementedImagePath": "preview/page-1-home.png"
+  },
+  {
+    "pageName": "Login",
+    "pageObjectID": "A0C448E6-AE5D-4824-AA12-1687E6F5F85A",
+    "name": "Login",
+    "slug": "login",
+    "objectID": "B7171427-F2CC-42D0-9602-0614F97F9F4A",
+    "width": 750,
+    "height": 1334,
+    "originalImagePath": "preview/page-1-login.png",
+    "implementedImagePath": "preview/page-1-login.png"
+  }
+]

@@ -1,6 +1,6 @@
 .svg-icons
   ng-include(src="'images/svg-defs.svg'")
-.screen.canvas
+.screen.canvas.comparison
   .screen__row
     ng-include(src="'app/partials/app-header.html'")
   .screen__row
@@ -10,17 +10,17 @@
       .columns.large-2.left-sidebar(ng-hide='leftSideBarIsHidden')
         aside.sidebar
           .sidebar__head
-            .sidebar__title Screens
+            .sidebar__title Original Screens
             button.sidebar__collapse-button.-left(ng-click='leftSideBarIsHidden = !leftSideBarIsHidden')
               i.sidebar__collapse-arrow.ion-arrow-left-b
               i.sidebar__collapse-menu.ion-android-menu
           .sidebar__body
             .scroller
               ul.items-spaced
-                li(ng-repeat='version in versionsVm.project.versions')
-                  a(ng-click='versionsVm.project.selectVersion(version)')
-                    img.thumbnail(ng-class="{'is-active': version.objectID === versionsVm.selectedVersion.obj.objectID}", ng-src='{{::(version.imageBase64 || version.imagePath)}}')
-                    span.u-text-small(ng-bind='::version.name')
+                li(ng-repeat='page in comparisonVm.comparisonData.pages')
+                  a(ng-click='comparisonVm.comparisonData.selectPage($index)')
+                    img.thumbnail(ng-class="{'is-active': page.objectID === comparisonVm.selectedPage.obj.objectID}", ng-src='{{::(page.imageBase64 || page.originalImagePath)}}')
+                    span.u-text-small(ng-bind='::page.name')
       .sidebar__fixed-container(ng-show='leftSideBarIsHidden')
         aside.sidebar.-closed
           .sidebar__head
@@ -36,36 +36,24 @@
       'large-12': leftSideBarIsHidden && rightSideBarIsHidden,\
       'canvas--padded-left': leftSideBarIsHidden,\
       'canvas--padded-right': rightSideBarIsHidden}")
-        .nav-widget.nav-widget--prev
-          a(href='#')
-            svg
-              use(xlink:href='#shape-prev')
-        .zoom-widget
-          button.zoom-in(ng-disabled='versionsVm.project.configs.zoom <= .25', ng-click='versionsVm.selectedVersion.zoomIn()')
-          label.zoom-text(style='margin: 0 5px;')
-            | {{versionsVm.project.configs.zoom * 100}}%
-          button.zoom-out(ng-click='versionsVm.selectedVersion.zoomOut()', ng-disabled='versionsVm.project.configs.zoom >= 2')
-        .nav-widget.nav-widget--next
-          a(href='#')
-            svg
-              use(xlink:href='#shape-next')
         section.canvas-screen-viewer.scroller
-          .canvas-screen-viewer-inner(ng-style='versionsVm.selectedVersion.screenParentStyle()')
-            #screen.canvas-screen(ng-style='versionsVm.selectedVersion.screenStyle()')
+          .canvas-screen-viewer-inner(ng-style='comparisonVm.selectedPage.screenParentStyle()')
+            #screen.canvas-screen(ng-style='comparisonVm.selectedPage.screenStyle()')
       .columns.large-2.right-sidebar(ng-hide='rightSideBarIsHidden')
         aside.sidebar
           .sidebar__head
             .sidebar__title
-              | Details
+              | Implemented Screens
             button.sidebar__collapse-button.-right(ng-click='rightSideBarIsHidden = !rightSideBarIsHidden')
               i.sidebar__collapse-arrow.ion-arrow-left-b
               i.sidebar__collapse-menu.ion-android-menu
           .sidebar__body
             .scroller
               ul.items-spaced
-                li.text-cener(ng-if='!versionsVm.selectedVersion.obj.notes.length') No notes in this screen
-                li.o-list--stripped(ng-repeat='note in versionsVm.selectedVersion.obj.notes', ng-click='versionsVm.selectedVersion.openNote(note, $index + 1)', ng-class="{'selected' : note.show === true}")
-                  | note {{$index + 1}}
+                li(ng-repeat='page in comparisonVm.comparisonData.pages')
+                  a(ng-click='comparisonVm.comparisonData.selectPage($index)')
+                    img.thumbnail(ng-class="{'is-active': page.objectID === comparisonVm.selectedPage.obj.objectID}", ng-src='{{::(page.imageBase64 || page.implementedImagePath)}}')
+                    span.u-text-small(ng-bind='page.name')
       .sidebar__fixed-container(ng-show='rightSideBarIsHidden')
         aside.sidebar.-closed.-closed-right
           .sidebar__head
