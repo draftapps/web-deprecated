@@ -1402,6 +1402,12 @@ main {
     }
   }
   .sidebar__body {
+    .hljs-wrapper {
+      height: 100%;
+      [hljs] , pre, code {
+        height: 100%;
+      }
+    }
     font-size: 13px;
     position: relative;
     .fixed-button {
