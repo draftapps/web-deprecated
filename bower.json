@@ -16,12 +16,27 @@
     "angular-timeago": "^0.4.3",
     "angular-ui-select": "^0.19.6",
     "angular-sanitize": "^1.5.8",
-    "selectize": "^0.12.4"
+    "selectize": "^0.12.4",
+    "angular-highlightjs": "^0.6.2",
+    "highlightjs-line-numbers.js": "^1.1.0",
+    "twentytwenty": "https://github.com/zurb/twentytwenty.git"
   },
   "overrides": {
     "foundation-sites": {
       "main": [
         "scss/foundation.scss"
+      ]
+    },
+    "highlightjs-line-numbers.js": {
+      "main": [
+        "dist/highlightjs-line-numbers.min.js"
+      ]
+    },
+    "twentytwenty": {
+      "main": [
+        "css/twentytwenty.css",
+        "js/jquery.event.move.js",
+        "js/jquery.twentytwenty.js"
       ]
     }
   },

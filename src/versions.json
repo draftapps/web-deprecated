@@ -1,0 +1,25 @@
+{
+  "versions":[
+    {
+      "name":"Version 3",
+      "slug":"version-3",
+      "width":750,
+      "height":1334,
+      "imagePath":"preview/page-1-dashboard.png"
+    },
+    {
+      "name":"Version 2",
+      "slug":"version-2",
+      "width":750,
+      "height":1334,
+      "imagePath":"preview/page-1-home.png"
+    },
+    {
+      "name":"Version 1",
+      "slug":"version-1",
+      "width":750,
+      "height":1334,
+      "imagePath":"preview/page-1-login.png"
+    }
+  ]
+}
