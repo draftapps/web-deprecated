@@ -121,6 +121,13 @@ function routesConfig($stateProvider, $urlRouterProvider, $locationProvider) {
       controllerAs: "dashboardVm",
       parent: "authed"
     })
+    .state("styleguide", {
+      url: "/styleguide",
+      templateUrl: "app/styleguide.html",
+      controller: "StyleguideCtrl",
+      controllerAs: "styleguideVm",
+      parent: "authed"
+    })
     .state("versions", {
       url: "/versions",
       templateUrl: "app/versions.html",
@@ -142,13 +149,6 @@ function routesConfig($stateProvider, $urlRouterProvider, $locationProvider) {
           return $http.get("comparison.json");
         }
       }
-    })
-    .state("styleguide", {
-      url: "/styleguide",
-      templateUrl: "app/styleguide.html",
-      controller: "StyleguideCtrl",
-      controllerAs: "styleguideVm",
-      parent: "authed"
     })
     .state("notes", {
       url: "/notes",
