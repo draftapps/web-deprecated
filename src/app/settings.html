@@ -15,18 +15,17 @@
     <div class="row">
       <div class="column large-3">
         <ul class="menu vertical settings__side-menu">
-          <li ng-class="{ active: settingsVM.activePageName == 'profile' }"><a href="#" ng-click="settingsVM.switchPage('profile')"><i class="ion-person"></i> Profile</a></li>
-          <li ng-class="{ active: settingsVM.activePageName == 'team-members' }"><a href="#" ng-click="settingsVM.switchPage('team-members')"><i class="ion-person-add"></i> Team Members</a></li>
-          <li ng-class="{ active: settingsVM.activePageName == 'integrations' }"><a href="#" ng-click="settingsVM.switchPage('integrations')"><i class="ion-android-share-alt"></i> Integrations</a></li>
-          <li ng-class="{ active: settingsVM.activePageName == 'notifications' }"><a href="#" ng-click="settingsVM.switchPage('notifications')"><i class="ion-android-notifications"></i> Notifications</a></li>
+          <li ng-class="{ active: tab === 'profile' }"><a href="/settings/profile"><i class="ion-person"></i> Profile</a></li>
+          <li ng-class="{ active: tab === 'team' }"><a href="/settings/team"><i class="ion-person-add"></i> Team Members</a></li>
+          <li ng-class="{ active: tab === 'integrations' }"><a href="/settings/integrations"><i class="ion-android-share-alt"></i> Integrations</a></li>
+          <li ng-class="{ active: tab === 'notifications' }"><a href="/settings/notifications"><i class="ion-android-notifications"></i> Notifications</a></li>
         </ul>
       </div>
       <div class="column large-9 settings__partial">
-        <ng-include src="'app/partials/settings/profile.html'" ng-if="settingsVM.activePageName == 'profile'"></ng-include>
-        <ng-include src="'app/partials/settings/team.html'" ng-if="settingsVM.activePageName == 'team-members'"></ng-include>
-        <ng-include src="'app/partials/settings/integrations.html'" ng-if="settingsVM.activePageName == 'integrations'"></ng-include>
-        <ng-include src="'app/partials/settings/notifications.html'" ng-if="settingsVM.activePageName == 'notifications'"></ng-include>
-        <ng-include src="'app/partials/settings/billing.html'" ng-if="settingsVM.activePageName == 'billing'"></ng-include>
+        <ng-include src="'app/partials/settings/profile.html'" ng-if="tab === 'profile'"></ng-include>
+        <ng-include src="'app/partials/settings/team.html'" ng-if="tab === 'team'"></ng-include>
+        <ng-include src="'app/partials/settings/integrations.html'" ng-if="tab === 'integrations'"></ng-include>
+        <ng-include src="'app/partials/settings/notifications.html'" ng-if="tab === 'notifications'"></ng-include>
       </div>
     </div>
   </div>
