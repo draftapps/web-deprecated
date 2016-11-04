@@ -15,6 +15,23 @@
         // console.log('Server did not send project data!');
       });
 
+    $scope.members = [
+      {
+        email: '',
+        role: ''
+      }
+    ];
+
+    $scope.addNewMember = function() {
+      var newItemNo = $scope.members.length+1;
+      $scope.members.push(
+        {
+          email: '',
+          role: ''
+        }
+      );
+    };
+
     $scope.selectArtBoard = function(artboard) {
       // FIXME: this state won't be persisted if page is refreshed!
       projectService.setProjectInfo(

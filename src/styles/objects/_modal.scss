@@ -55,8 +55,35 @@
       }
     }
   }
+  select,
+  input {
+    height: 46px;
+    border-radius: 5px;
+  }
+  .select-wrapper {
+    position: relative;
+    &::before {
+      content: "";
+      position: absolute;
+      top: 20px;
+      right: 10px;
+      background: url(../images/arrow-down.png) 0 0 no-repeat;
+      width: 10px;
+      height: 6px;
+    }
+    select {
+      background: transparent;
+    }
+  }
   .button--block {
     margin-top: 30px;
+  }
+  .row.adjust {
+    margin-left: -0.9375rem;
+    margin-right: -0.9375rem;
+  }
+  p {
+    font-size: 14px;
   }
 }
 .modal-cta {
