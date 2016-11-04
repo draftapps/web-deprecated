@@ -283,6 +283,7 @@
       position: relative;
       width: 100%;
       text-align: left;
+      background: url(../images/arrow-down.png) 95% 50% no-repeat;
       &.status {
         &--danger::before { border-color: #fe5a42; }
         &--warning::before { border-color: #fba529; }
