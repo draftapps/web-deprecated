@@ -2016,3 +2016,15 @@ main {
   -ms-user-select: none;
   user-select: none;
 }
+.twentytwenty-container {
+  max-width: 350px;
+  margin: 50px auto;
+  .twentytwenty-before-label:before,
+  .twentytwenty-after-label:before {
+    content: none;
+  }
+}
+.no-compare {
+  padding-top: 50px;
+  font-weight: 300;
+}

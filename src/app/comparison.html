@@ -20,7 +20,7 @@
           <div class="sidebar__body">
             <div class="scroller">
               <ul class="items-spaced">
-                <li ng-repeat="page in comparisonVm.comparisonData.pages"><a ng-click="comparisonVm.comparisonData.selectPage($index)"><img class="thumbnail" ng-class="{'is-active': page.objectID === comparisonVm.selectedPage.obj.objectID}" ng-src="{{::(page.imageBase64 || page.originalImagePath)}}"/><span class="u-text-small" ng-bind="::page.name"></span></a></li>
+                <li ng-repeat="page in comparisonVm.comparisonData.pages"><a ng-click="comparisonVm.comparisonData.setOriginalScreen($index)"><img class="thumbnail" ng-class="{'is-active': page.objectID === comparisonVm.selectedPage.obj.objectID}" ng-src="{{::(page.imageBase64 || page.originalImagePath)}}"/><span class="u-text-small" ng-bind="::page.name"></span></a></li>
               </ul>
             </div>
           </div>
@@ -39,9 +39,10 @@
       </div>
       <div class="columns main-content notes-modal__container" ng-class="{'large-8': !leftSideBarIsHidden &amp;&amp; !rightSideBarIsHidden,      'large-10': leftSideBarIsHidden || rightSideBarIsHidden,      'large-12': leftSideBarIsHidden &amp;&amp; rightSideBarIsHidden,      'canvas--padded-left': leftSideBarIsHidden,      'canvas--padded-right': rightSideBarIsHidden}">
         <section class="canvas-screen-viewer scroller">
-          <div class="canvas-screen-viewer-inner" ng-style="comparisonVm.selectedPage.screenParentStyle()">
-            <div class="canvas-screen" id="screen" ng-style="comparisonVm.selectedPage.screenStyle()"></div>
+          <div class="text-center no-compare" ng-show="!img1 || !img2">
+            <p>Please select an original and implemented images to compare them.</p>
           </div>
+          <div compare img1="{img1}" img2="{img2}"></div>
         </section>
       </div>
       <div class="columns large-2 right-sidebar" ng-hide="rightSideBarIsHidden">
@@ -53,7 +54,7 @@
           <div class="sidebar__body">
             <div class="scroller">
               <ul class="items-spaced">
-                <li ng-repeat="page in comparisonVm.comparisonData.pages"><a ng-click="comparisonVm.comparisonData.selectPage($index)"><img class="thumbnail" ng-class="{'is-active': page.objectID === comparisonVm.selectedPage.obj.objectID}" ng-src="{{::(page.imageBase64 || page.implementedImagePath)}}"/><span class="u-text-small" ng-bind="page.name"></span></a></li>
+                <li ng-repeat="page in comparisonVm.comparisonData.pages"><a ng-click="comparisonVm.comparisonData.setImplementedScreen($index)"><img class="thumbnail" ng-class="{'is-active': page.objectID === comparisonVm.selectedPage.obj.objectID}" ng-src="{{::(page.imageBase64 || page.implementedImagePath)}}"/><span class="u-text-small" ng-bind="page.name"></span></a></li>
               </ul>
             </div>
           </div>
