@@ -1222,6 +1222,15 @@ main {
   }
   .page-head {
     border-bottom-color: #e1e6eb;
+    .style-guide-link {
+      svg {
+        width: 24px;
+        height: 45px;
+        vertical-align: top;
+        position: relative;
+        left: 3px;
+      }
+    }
     .actions {
       .actions__button {
         margin-left: 5px;
@@ -1297,6 +1306,45 @@ main {
     }
   }
   .sidebar__menu {
+    position: relative;
+    .download-code {
+      background: #fff;
+      margin-left: auto;
+      margin-right: 8px;
+      border: 1px solid #c3c7d7;
+      border-radius: 3px;
+      padding: 0 5px;
+      height: 32px;
+      svg {
+        width: 20px;
+        height: 30px;
+        fill: #c3c7d7;
+      }
+    }
+    .select-wrapper {
+      padding: 8px;
+      position: relative;
+      &::before {
+        content: "";
+        position: absolute;
+        top: 23px;
+        right: 15px;
+        background: url(../images/arrow-down.png) 90% 50% no-repeat;
+        width: 10px;
+        height: 6px;
+      }
+      select {
+        background: transparent;
+        border: 1px solid #e4e7ef;
+        border-radius: 5px;
+        background: #fff;
+        font-size: 13px;
+        color: #3a405b;
+        width: 150px;
+        margin: 0;
+        height: 36px;
+      }
+    }
     .active {
       svg {
         fill: #4f8ff7;

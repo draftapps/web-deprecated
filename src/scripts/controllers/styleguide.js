@@ -8,6 +8,6 @@
     var info;
 
     $scope.page = "styleguide";
-
+    hljs.initLineNumbersOnLoad();
   }
 })();

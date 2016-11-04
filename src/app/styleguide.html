@@ -141,18 +141,14 @@
       <div class="columns large-4 right-sidebar" ng-hide="rightSideBarIsHidden">
         <aside class="sidebar">
           <div class="sidebar__head">
-            <ul class="sidebar__menu sidebar__menu--right sidebar__menu--items-4 menu">
-              <li ng-class="{'active': rightActivetab === 'code'}">
-                <a
-                  ng-click="rightActivetab = 'code'"
-                  ng-init="rightActivetab = 'props'">
-                  <i class="ion-code u-align-block-center"></i>
-                </a>
-              </li>
-              <li>
-
-              </li>
-            </ul>
+            <div class="sidebar__menu sidebar__menu--right sidebar__menu--items-4 menu">
+              <div class="select-wrapper">
+                <select name="" id="">
+                  <option value="">Objective C</option>
+                </select>
+              </div>
+              <a href="#" class="download-code"><svg><use xlink:href="#shape-download" /></svg></a>
+            </div>
             <button
               class="sidebar__collapse-button -right"
               ng-click="rightSideBarIsHidden = !rightSideBarIsHidden">
