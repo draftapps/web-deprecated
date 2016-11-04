@@ -15,7 +15,8 @@
     "angular-pickadate": "^1.1.0",
     "angular-timeago": "^0.4.3",
     "angular-highlightjs": "^0.6.2",
-    "highlightjs-line-numbers.js": "^1.1.0"
+    "highlightjs-line-numbers.js": "^1.1.0",
+    "twentytwenty": "https://github.com/zurb/twentytwenty.git"
   },
   "overrides": {
     "foundation-sites": {
@@ -26,6 +27,13 @@
     "highlightjs-line-numbers.js": {
       "main": [
         "dist/highlightjs-line-numbers.min.js"
+      ]
+    },
+    "twentytwenty": {
+      "main": [
+        "css/twentytwenty.css",
+        "js/jquery.event.move.js",
+        "js/jquery.twentytwenty.js"
       ]
     }
   },
