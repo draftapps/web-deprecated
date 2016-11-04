@@ -143,6 +143,13 @@ function routesConfig($stateProvider, $urlRouterProvider, $locationProvider) {
         }
       }
     })
+    .state("styleguide", {
+      url: "/styleguide",
+      templateUrl: "app/styleguide.html",
+      controller: "StyleguideCtrl",
+      controllerAs: "styleguideVm",
+      parent: "authed"
+    })
     .state("notes", {
       url: "/notes",
       templateUrl: "app/notes.html",

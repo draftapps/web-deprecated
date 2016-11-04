@@ -1977,7 +1977,6 @@ main {
     margin-right: 17px;
   }
 }
-
 .canvas {
   .code-block {
     margin: 50px;
@@ -2053,4 +2052,80 @@ main {
 .no-compare {
   padding-top: 50px;
   font-weight: 300;
+}
+.style-guide-wrapper {
+  & + hr {
+    margin: 0 30px;
+    border-bottom-color: #e5e9f0;
+  }
+  padding: 30px;
+  h1 {
+    font-weight: 500;
+    font-size: 16px;
+    color: #68768c;
+    margin-top: 0;
+  }
+  h2 {
+    font-size: 12px;
+    color: #68768c;
+    text-transform: uppercase;
+    font-weight: 300;
+    margin: 30px 0;
+  }
+  .style-guide-color-block {
+    border-radius: 3px;
+    margin-bottom: 15px;
+    width: 40px;
+    height: 40px;
+  }
+  dl {
+    margin: 0;
+    &.color-details {
+      dt {
+        width: 50px;
+      }
+    }
+    &.font-details {
+      dt {
+        width: 100px;
+      }
+    }
+  }
+  dt {
+    float: left;
+    text-transform: uppercase;
+    clear: left;
+    color: #b3bbc5;
+    font-size: 14px;
+    font-weight: 400;
+    margin-bottom: 10px;
+  }
+  dd {
+    font-size: 14px;
+    font-weight: 400;
+    color: #68768c;
+    margin-bottom: 10px;
+  }
+  h3 {
+    font-weight: 400;
+    font-size: 30px;
+    color: #393c3e;
+  }
+  p {
+    font-size: 16px;
+    line-height: 1;
+  }
+  .color-preview {
+    line-height: 20px;
+    color: #71787e;
+    font-size: 14px;
+    span {
+      float: left;
+      width: 20px;
+      height: 20px;
+      background: currentColor;
+      margin-right: 12px;
+      border-radius: 50%;
+    }
+  }
 }
