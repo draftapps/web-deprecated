@@ -5,3 +5,8 @@ dist/
 node_modules/
 jspm_packages/
 bower_components/
+.idea/
+yarn.lock
+extra/
+*.pug
+.DS_Store

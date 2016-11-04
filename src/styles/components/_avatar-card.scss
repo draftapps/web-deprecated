@@ -1,0 +1,53 @@
+.avatar-card {
+  display: inline-block;
+  border: 1px solid #f0f2f7;
+  &__img-wrapper {
+    padding: 15px;
+    text-align: center;
+    img {
+      border: 1px solid #f0f2f7;
+      vertical-align: top;
+    }
+    input[type="file"] {
+      position: absolute;
+      opacity: 0;
+      z-index: -1;
+      width: 10px;
+    }
+  }
+  &__actions {
+    font-size:14px;
+    font-family: 'Montserrat', sans-serif;
+    button {
+      line-height: 40px;
+      padding: 0 35px;
+      float: left;
+      &:first-child {
+        border-radius: 0 0 0 2px;
+      }
+      &:last-child {
+        border-radius: 0 0 2px 0;
+      }
+    }
+    button + button {
+      border-left: 1px solid #f0f2f7;
+    }
+    button:hover {
+      background-color: #f0f2f7;
+    }
+  }
+  &__img-wrapper + &__actions {
+    border-top: 1px solid #f0f2f7;
+  }
+  &__change {
+    color: #3a405b;
+  }
+  &__delete {
+    color: #fe5339;
+    .icon {
+      font-size: 11px;
+      margin-right: 7px;
+    }
+  }
+
+}

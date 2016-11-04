@@ -124,5 +124,12 @@ function routesConfig($stateProvider, $urlRouterProvider, $locationProvider) {
     .state("ui-components", {
       url: "/ui-components",
       templateUrl: "app/ui-components.html"
+    })
+    .state("settings", {
+      url: "/settings",
+      templateUrl: "app/settings.html",
+      controller: "SettingsCtrl",
+      controllerAs: "settingsVM"
     });
+
 }

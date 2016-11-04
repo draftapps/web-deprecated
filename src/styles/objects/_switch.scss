@@ -1,0 +1,32 @@
+.switch {
+  margin: 0;
+  .switch-paddle:after {
+    border-radius: 50%;
+    width: 20px;
+    height: 20px;
+    top: 8px;
+    left: 8px;
+    box-shadow: 0px 10px 25px 0px rgba(34, 35, 40, 0.4);
+  }
+  input:checked ~ .switch-paddle::after {
+    left: 40px;
+  }
+  .switch-paddle {
+    border-radius: 25px;
+    margin: 0;
+    width: 68px;
+    height: 36px;
+    background-color: #e4e7ef;
+  }
+  input:checked ~ .switch-paddle {
+    background-color: #42d79e;
+  }
+  .switch-active {
+    margin-left: 5px;
+    color: #35ac7e;
+  }
+  .switch-inactive {
+    margin-left: 5px;
+    color: #b9bed1;
+  }
+}

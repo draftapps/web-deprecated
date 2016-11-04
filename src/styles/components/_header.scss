@@ -1,6 +1,12 @@
 .c-header {
   background-color: $white;
   border-bottom: 1px solid $silver-dark;
+  .icon-back {
+    width: 16px;
+    height: 16px;
+    fill: #c2c7d7;
+    margin-right: 9px;
+  }
 }
 
 .c-header__element {
@@ -49,10 +55,30 @@ header {
     }
   }
 }
+
 .logo {
   width: 124px;
   min-height: 73px;
 }
+
+.main-nav {
+  .nav-links {
+    margin: 0;
+    list-style: none;
+    li {
+      height: 100%;
+      display: inline-block;
+    }
+    li + li {
+      margin-left: 10px;
+    }
+    a {
+      margin: 0;
+      padding: 13px;
+    }
+  }
+}
+
 .canvas .screen__row {
   .add-new {
     width: 28px;

@@ -1,0 +1,33 @@
+
+<div class="profile-settings partial__content">
+  <div class="row">
+    <form class="text-left column large-6 large-offset-3" ng-submit="settingsVM.submit()">
+      <fieldset ng-disabled="settingsVM.loading">
+        <div class="form-group text-center">
+          <div class="avatar-card">
+            <div class="avatar-card__img-wrapper"><img class="avatar" src="images/avatar-archer.png"/>
+              <input type="file" name="avatar"/>
+            </div>
+            <div class="avatar-card__actions clearfix">
+              <button class="avatar-card__change" type="button">Change</button>
+              <button class="avatar-card__delete" type="button"><i class="icon ion-close-round"></i>Delete</button>
+            </div>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="name">Your Name</label>
+          <input class="form-control" id="name" autofocus="" type="text" placeholder="Your Name" ng-model="settingsVM.form.name" required="" ng-class="{'is-invalid-input': settingsVM.errors.name[0]}"/><span class="form-error" ng-class="{'is-visible': settingsVM.errors.name[0]}">Name {{settingsVM.errors.name[0]}}</span>
+        </div>
+        <div class="form-group">
+          <label for="email">Your Email</label>
+          <input class="form-control" id="email" type="email" placeholder="Your Email" ng-model="settingsVM.form.email" required="" ng-class="{'is-invalid-input': settingsVM.errors.email[0]}"/><span class="form-error" ng-class="{'is-visible': settingsVM.errors.email[0]}">Email {{settingsVM.errors.email[0]}}</span>
+        </div>
+        <div class="form-group u-space-v-large">
+          <label for="new-password">Change Password</label>
+          <input class="form-control" id="new-password" type="password" placeholder="Enter New Password" ng-model="settingsVM.form.password" required="" ng-class="{'is-invalid-input': settingsVM.errors.password[0]}"/><span class="form-error" ng-class="{'is-visible': settingsVM.errors.password[0]}">Password {{settingsVM.errors.password[0]}}</span>
+        </div>
+        <button class="button expanded success" type="submit" ng-disabled="settingsVM.loading">Save</button>
+      </fieldset>
+    </form>
+  </div>
+</div>

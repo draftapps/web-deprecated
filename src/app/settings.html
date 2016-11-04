@@ -1,0 +1,33 @@
+
+<ng-include class="svg-icons" src="'images/svg-defs.svg'"></ng-include>
+<div class="screen canvas settings">
+  <div class="screen__row">
+    <ng-include src="'app/partials/app-header.html'"></ng-include>
+  </div>
+  <div class="screen__row">
+    <div class="row">
+      <div class="column large-12 page-head">
+        <h2 class="screen__title">Settings</h2>
+      </div>
+    </div>
+  </div>
+  <div class="screen__row">
+    <div class="row">
+      <div class="column large-3">
+        <ul class="menu vertical settings__side-menu">
+          <li ng-class="{ active: settingsVM.activePageName == 'profile' }"><a href="#" ng-click="settingsVM.switchPage('profile')"><i class="ion-person"></i> Profile</a></li>
+          <li ng-class="{ active: settingsVM.activePageName == 'team-members' }"><a href="#" ng-click="settingsVM.switchPage('team-members')"><i class="ion-person-add"></i> Team Members</a></li>
+          <li ng-class="{ active: settingsVM.activePageName == 'integrations' }"><a href="#" ng-click="settingsVM.switchPage('integrations')"><i class="ion-android-share-alt"></i> Integrations</a></li>
+          <li ng-class="{ active: settingsVM.activePageName == 'notifications' }"><a href="#" ng-click="settingsVM.switchPage('notifications')"><i class="ion-android-notifications"></i> Notifications</a></li>
+        </ul>
+      </div>
+      <div class="column large-9 settings__partial">
+        <ng-include src="'app/partials/settings/profile.html'" ng-if="settingsVM.activePageName == 'profile'"></ng-include>
+        <ng-include src="'app/partials/settings/team.html'" ng-if="settingsVM.activePageName == 'team-members'"></ng-include>
+        <ng-include src="'app/partials/settings/integrations.html'" ng-if="settingsVM.activePageName == 'integrations'"></ng-include>
+        <ng-include src="'app/partials/settings/notifications.html'" ng-if="settingsVM.activePageName == 'notifications'"></ng-include>
+        <ng-include src="'app/partials/settings/billing.html'" ng-if="settingsVM.activePageName == 'billing'"></ng-include>
+      </div>
+    </div>
+  </div>
+</div>
