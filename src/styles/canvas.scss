@@ -1208,6 +1208,9 @@ main {
       margin: 0.2rem 0.5rem;
     }
     .avatar {
+      width: 36px;
+      height: 36px;
+      object-fit: cover;
       border: 2px solid #babfd2;
     }
   }
