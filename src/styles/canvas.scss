@@ -1352,6 +1352,26 @@ main {
   }
   .sidebar__body {
     font-size: 13px;
+    position: relative;
+    .fixed-button {
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 80px;
+      border-top: 1px solid #e4e7ef;
+      position: absolute;
+      background: #fff;
+      text-align: center;
+      padding: 15px;
+      a {
+        border-radius: 3px;
+        font-size: 14px;
+        background: #42d79e;
+        color: #fff;
+        display: block;
+        line-height: 48px;
+      }
+    }
     .items-spaced > li {
       padding: 7px 15px;
       font-weight: 300;

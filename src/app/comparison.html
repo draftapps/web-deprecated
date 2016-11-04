@@ -53,9 +53,12 @@
           </div>
           <div class="sidebar__body">
             <div class="scroller">
-              <ul class="items-spaced">
+              <ul class="items-spaced fixed-button-bottom">
                 <li ng-repeat="page in comparisonVm.comparisonData.pages"><a ng-click="comparisonVm.comparisonData.setImplementedScreen($index)"><img class="thumbnail" ng-class="{'is-active': page.objectID === comparisonVm.selectedPage.obj.objectID}" ng-src="{{::(page.imageBase64 || page.implementedImagePath)}}"/><span class="u-text-small" ng-bind="page.name"></span></a></li>
               </ul>
+            </div>
+            <div class="fixed-button">
+              <a href="#">Upload Implemented Screens</a>
             </div>
           </div>
         </aside>
