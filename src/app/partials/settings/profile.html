@@ -16,11 +16,11 @@
         </div>
         <div class="form-group">
           <label for="name">Your Name</label>
-          <input class="form-control" id="name" autofocus="" type="text" placeholder="Your Name" ng-model="settingsVM.form.name" required="" ng-class="{'is-invalid-input': settingsVM.errors.name[0]}"/><span class="form-error" ng-class="{'is-visible': settingsVM.errors.name[0]}">Name {{settingsVM.errors.name[0]}}</span>
+          <input class="form-control" id="name" autofocus="" type="text" placeholder="Your Name" ng-model="$parent.user.name" required="" ng-class="{'is-invalid-input': settingsVM.errors.name[0]}"/><span class="form-error" ng-class="{'is-visible': settingsVM.errors.name[0]}">Name {{settingsVM.errors.name[0]}}</span>
         </div>
         <div class="form-group">
           <label for="email">Your Email</label>
-          <input class="form-control" id="email" type="email" placeholder="Your Email" ng-model="settingsVM.form.email" required="" ng-class="{'is-invalid-input': settingsVM.errors.email[0]}"/><span class="form-error" ng-class="{'is-visible': settingsVM.errors.email[0]}">Email {{settingsVM.errors.email[0]}}</span>
+          <input class="form-control" id="email" type="email" placeholder="Your Email" ng-model="$parent.user.email" required="" ng-class="{'is-invalid-input': settingsVM.errors.email[0]}"/><span class="form-error" ng-class="{'is-visible': settingsVM.errors.email[0]}">Email {{settingsVM.errors.email[0]}}</span>
         </div>
         <div class="form-group u-space-v-large">
           <label for="new-password">Change Password</label>

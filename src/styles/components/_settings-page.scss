@@ -273,7 +273,7 @@
   border-right: 1px solid #e4e7ef;
   img {
     margin: 0;
-    width: auto;
+    height: 33px;
   }
   .integration-service {
     flex: 0 0 50%;
@@ -287,8 +287,14 @@
     }
     &--disabled {
       .integration-service__logo {
+        filter: gray; /* IE6-9 */
+        filter: grayscale(1); /* Microsoft Edge and Firefox 35+ */
+        -webkit-filter: grayscale(1); /* Google Chrome, Safari 6+ & Opera 15+ */
         position: relative;
         top: 13px;
+        img {
+          opacity: 0.1;
+        }
       }
     }
     &__switch {

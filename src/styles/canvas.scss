@@ -1208,6 +1208,9 @@ main {
       margin: 0.2rem 0.5rem;
     }
     .avatar {
+      width: 36px;
+      height: 36px;
+      object-fit: cover;
       border: 2px solid #babfd2;
     }
   }
@@ -1230,7 +1233,7 @@ main {
         width: 36px;
         height: 36px;
         color: #c3c7d7;
-        border-color: #c3c7d7;
+        border-color: #d5d9e7;
         border-width: 2px;
         svg {
           fill: #c3c7d7;
@@ -1572,6 +1575,9 @@ main {
     }
   }
   .tags-dropdown {
+    .dropdown-pane {
+      width: 230px;
+    }
   }
   .input-wrapper {
     padding: 13px;
