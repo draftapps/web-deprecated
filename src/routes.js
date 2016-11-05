@@ -92,6 +92,16 @@ function routesConfig($stateProvider, $urlRouterProvider, $locationProvider) {
         },
         parent: "authed"
       })
+      .state("notifications", {
+        url: "/notifications",
+        templateUrl: "app/notifications.html",
+        controller: "NotificationsCtrl",
+        controllerAs: "notificationsVm",
+        resolve: {
+          notifications: $http => $http.get("notifications.json")
+        },
+        parent: "authed"
+      })
       .state("dashboard", {
         url: "/dashboard",
         templateUrl: "app/dashboard.html",

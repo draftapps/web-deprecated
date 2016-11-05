@@ -1,0 +1,37 @@
+{
+  "notifications": [
+    {
+      "user": "Randy Nguyen",
+      "type": 1,
+      "what": "Note 1",
+      "where": "Chat.png",
+      "message": "Hey, you add a one and two zeros to that or we walk! They work here in the Slurm factory. Fry, we have a crate to deliver.",
+      "created_at": "2016-10-23T22:32:45.956Z"
+    },
+    {
+      "user": "Randy Nguyen",
+      "type": 2,
+      "what": "Note 2",
+      "to": "Slack",
+      "created_at": "2016-10-23T22:32:45.956Z"
+    },
+    {
+      "user": "Randy Nguyen",
+      "type": 3,
+      "what": "Note 4",
+      "created_at": "2016-10-23T22:32:45.956Z"
+    },
+    {
+      "user": "Randy Nguyen",
+      "type": 4,
+      "what": "Note 6",
+      "created_at": "2016-10-23T22:32:45.956Z"
+    },
+    {
+      "user": "Randy Nguyen",
+      "type": 0,
+      "what": "Android UI Kit",
+      "created_at": "2016-10-23T22:32:45.956Z"
+    }
+  ]
+}
