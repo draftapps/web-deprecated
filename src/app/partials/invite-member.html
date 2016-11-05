@@ -1,0 +1,29 @@
+<section class="modal">
+  <div class="modal-header">
+    <h1>Invite Team Member</h1>
+    <button ng-click="cancel()" class="close-button" aria-label="Close reveal" type="button">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <form>
+      <fieldset ng-repeat="member in members">
+        <div class="row adjust">
+          <div class="column small-8">
+            <input ng-model="member.email" placeholder="Enter email address" type="email" />
+          </div>
+          <div class="column small-4">
+            <div class="select-wrapper">
+              <select ng-model="member.role">
+                <option value="">Admin</option>
+                <option value="">User</option>
+              </select>
+            </div>
+          </div>
+        </div>
+      </fieldset>
+      <p><a ng-click="addNewMember()" class="link--green"><i class="ion-plus"></i> Add Another Team Member</a></p>
+      <button class="button button--success button--block" type="submit">Invite Team</button>
+    </form>
+  </div>
+</section>

@@ -27,7 +27,7 @@
             <h2>Collaborators</h2>
             <ul>
               <li ng-repeat="user in project.team.users"><img tooltip-placement="bottom" tooltip="{{user.name}}" alt="{{user.name}}" ng-src="{{::(user.image || 'images/user-avatar.png')}}" /></li>
-              <li><a href="#" class="add-more"><span>Add more</span></a></li>
+              <li><a ng-click="openModal('app/partials/invite-member.html')" class="add-more"><span>Add more</span></a></li>
             </ul>
           </div>
           <div class="project-summary__tags">
