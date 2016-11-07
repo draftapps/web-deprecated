@@ -148,7 +148,7 @@
                     <pane>
                       <div class="notes-modal">
                         <div class="notes-modal__content">
-                          <div class="notes-modal__head">Note {{$index + 1}}</div>
+                          <div class="notes-modal__head">Note {{$index + 1}} <span class="note__actions"><a href="#" tooltip-placement="bottom" tooltip="Resolve">Resolve</a> <a href="#"><i class="ion-ios-trash-outline"></i></a></span></div>
                           <div class="notes-modal__body">
                             <div class="scroller">
                               <div class="media-object" ng-repeat="message in note.note">

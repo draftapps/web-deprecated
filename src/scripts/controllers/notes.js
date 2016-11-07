@@ -169,7 +169,6 @@
         userImg: "images/demo/avatar.png"
       });
       vm.selectedArtBoard.currentopenedNote.newMessage = "";
-      console.log(vm.selectedArtBoard.obj.notes);
     }
 
     function getConfigs(scale, unit, colorFormat, height) {

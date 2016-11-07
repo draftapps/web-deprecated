@@ -626,6 +626,30 @@ main {
     }
   }
 }
+.notes-modal__head {
+  justify-content: space-between;
+}
+.note__actions {
+  a {
+    &[tooltip] {
+      vertical-align: top;
+      width: 23px;
+      height: 23px;
+      background: #f7f8fa;
+      border: 2px solid #c3c7d7;
+      border-radius: 50%;
+      text-indent: 101%;
+      overflow: hidden;
+      display: inline-block;
+    }
+    .ion-ios-trash-outline {
+      color: #a1a6bb !important;
+      position: relative;
+      top: 1px;
+      margin: 0 0 0 8px !important;
+    }
+  }
+}
 .notes-modal {
   .notes-modal__body {
     padding: 0;
