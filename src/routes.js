@@ -148,7 +148,8 @@ function routesConfig($stateProvider, $urlRouterProvider, $locationProvider) {
         comparisonData: $http => {
           return $http.get("comparison.json");
         }
-      }
+      },
+      parent: "authed"
     })
     .state("notes", {
       url: "/notes",
@@ -159,7 +160,8 @@ function routesConfig($stateProvider, $urlRouterProvider, $locationProvider) {
         project: $http => {
           return $http.get("project.json");
         }
-      }
+      },
+      parent: "authed"
     })
     .state("ui-components", {
       url: "/ui-components",

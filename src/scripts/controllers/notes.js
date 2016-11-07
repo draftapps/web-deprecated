@@ -122,10 +122,12 @@
     function openNote(note, $index) {
       vm.selectedArtBoard.currentopenedNote.obj = note;
       vm.selectedArtBoard.currentopenedNote.index = $index;
-      vm.selectedArtBoard.currentopenedNote.isOpened = true;
     }
 
     function createNote(event) {
+      if(!$(event.toElement).is('#screen')) {
+        return;
+      }
       var offset = $("#screen").offset();
       var x = (event.pageX - offset.left) / vm.project.configs.zoom;
       var y = (event.pageY - offset.top) / vm.project.configs.zoom;
@@ -148,20 +150,26 @@
       vm.selectedArtBoard.currentopenedNote.index = null;
     }
 
-    function addNewReply() {
-      if (vm.selectedArtBoard.currentopenedNote.index > vm.selectedArtBoard.obj.notes.length) {
-        vm.selectedArtBoard.obj.notes.push(vm.selectedArtBoard.currentopenedNote.obj);
+    function addNewReply(note, index) {
+      if (note === undefined) {
+        if (vm.selectedArtBoard.obj.notes.indexOf(vm.selectedArtBoard.currentopenedNote.obj) === -1) {
+          vm.selectedArtBoard.obj.notes.push(vm.selectedArtBoard.currentopenedNote.obj);
+        }
         vm.selectedArtBoard.currentopenedNote.obj =
           vm.selectedArtBoard.obj.notes[vm.selectedArtBoard.obj.notes.length - 1];
+      } else {
+        // Set the currentopenedNote to push the message to it
+        openNote(note, index);
       }
 
       vm.selectedArtBoard.currentopenedNote.obj.note.push({
         text: vm.selectedArtBoard.currentopenedNote.newMessage,
-        date: "2min ago",
-        userName: "Abo El Naga",
+        date: new Date(),
+        userName: $scope.$parent.user.name,
         userImg: "images/demo/avatar.png"
       });
       vm.selectedArtBoard.currentopenedNote.newMessage = "";
+      console.log(vm.selectedArtBoard.obj.notes);
     }
 
     function getConfigs(scale, unit, colorFormat, height) {
