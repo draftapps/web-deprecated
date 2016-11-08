@@ -207,24 +207,33 @@
             <div class="scroller">
               <ul class="items-spaced notes-sidebar">
                 <li class="text-cener" ng-if="!notesVm.selectedArtBoard.obj.notes.length">No notes in this screen</li>
-                <li
-                  ng-repeat="note in notesVm.selectedArtBoard.obj.notes"
-                  ng-click="notesVm.selectedArtBoard.openNote(note, $index + 1)">
-                    <p class="note-title">Note {{$index + 1}} <a href="#" tooltip-placement="left" tooltip="Resolve">Resolve</a></p>
-                    <div class="scroller">
-                      <div class="media-object" ng-repeat="message in note.note">
-                        <div class="media-object-section">
-                          <div>
-                            <img class="avatar" ng-src="{{message.userImg}}" width="32">
-                          </div>
-                        </div>
-                        <div class="media-object-section main-section">
-                          <h6 class="u-space-v-undo">{{message.userName}}</h6>
-                          <p class="created-at"><time-ago from-time='{{ message.date }}'></time-ago></p>
-                          <p class="note-text">{{message.text}}</p>
+                <li ng-repeat="note in notesVm.selectedArtBoard.obj.notes">
+                  <p class="note-title">Note {{$index + 1}} <a href="#" tooltip-placement="left" tooltip="Resolve">Resolve</a></p>
+                  <div class="scroller">
+                    <div class="media-object" ng-repeat="message in note.note">
+                      <div class="media-object-section">
+                        <div>
+                          <img class="avatar" ng-src="{{message.userImg}}" width="32">
                         </div>
                       </div>
-                    </div>                </li>
+                      <div class="media-object-section main-section">
+                        <h6 class="u-space-v-undo">{{message.userName}}</h6>
+                        <p class="created-at"><time-ago from-time='{{ message.date }}'></time-ago></p>
+                        <p class="note-text">{{message.text}}</p>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="reply-to-note">
+                    <p ng-hide="notesVm.selectedArtBoard.currentopenedNote.index === $index"><a ng-click="notesVm.selectedArtBoard.showNoteReply(note, $index)">Reply</a></p>
+                    <div ng-show="notesVm.selectedArtBoard.currentopenedNote.index === $index">
+                      <textarea class="new-reply-box" placeholder="Type your message" ng-model="notesVm.selectedArtBoard.currentopenedNote.newMessage"></textarea>
+                      <button
+                        class="button success"
+                        ng-click="notesVm.selectedArtBoard.addNewReply(note, $index)"
+                        ng-disabled="!notesVm.selectedArtBoard.currentopenedNote.newMessage">Reply</button>
+                    </div>
+                  </div>
+                </li>
               </ul>
             </div>
           </div>

@@ -103,6 +103,7 @@
       createNote: createNote,
       closeNote: closeNote,
       addNewReply: addNewReply,
+      showNoteReply: showNoteReply,
       screenStyle: getBoardScreenStyle,
       screenParentStyle: getBoardParentScreenStyle,
       notesStyle: getNotesStyle,
@@ -169,6 +170,11 @@
         userImg: "images/demo/avatar.png"
       });
       vm.selectedArtBoard.currentopenedNote.newMessage = "";
+    }
+
+    function showNoteReply(note, index) {
+      openNote(note, index);
+      console.log(vm.selectedArtBoard.currentopenedNote);
     }
 
     function getConfigs(scale, unit, colorFormat, height) {

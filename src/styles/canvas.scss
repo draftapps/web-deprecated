@@ -2326,4 +2326,20 @@ main {
     line-height: 1.4;
     margin-left: -40px;
   }
+  .reply-to-note {
+    padding-left: 30px;
+    padding-right: 10px;
+    padding-bottom: 10px;
+  }
+  .new-reply-box {
+    font-size: 12px;
+    margin: 0;
+    border-radius: 3px 3px 0 0;
+  }
+  .button {
+    font-size: 14px;
+    display: block;
+    width: 100%;
+    border-radius: 0 0 3px 3px;
+  }
 }
