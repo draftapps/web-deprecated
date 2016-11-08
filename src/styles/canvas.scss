@@ -2271,13 +2271,21 @@ main {
   }
 }
 .notes-sidebar {
-  li {
-    padding: 0 !important;
+  .accordion-title {
+    padding: 0;
+    border: 0;
+  }
+  .accordion-content {
+    padding: 0;
+  }
+  .text-cener {
+    text-align: center;
+    padding: 10px;
   }
   .note-title {
     line-height: 42px;
-    border-bottom: 1px solid #e4e7ef;
     border-top: 1px solid #e4e7ef;
+    color: #8493a8;
     margin: 0;
     position: relative;
     padding: 0 15px;
