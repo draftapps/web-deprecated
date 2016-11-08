@@ -128,7 +128,7 @@
       if(!$(event.toElement).is("#screen") && !$(event.toElement).is(".add-new")) {
         return;
       }
-      if($('#notes .is-open').length !== 0) {
+      if($("#notes .is-open").length !== 0) {
         return;
       }
       if($(event.toElement).is(".add-new")) {
