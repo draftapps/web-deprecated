@@ -1734,6 +1734,7 @@ main {
   .calendar-menu {
     .dropdown-pane {
       width: 270px;
+      z-index: 11;
     }
   }
   .tags-dropdown {
