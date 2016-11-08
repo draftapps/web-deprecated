@@ -3,4 +3,15 @@
   left: 50%;
   top: 50%;
   transform: translate(-50%, -50%);
+  width: 50px;
+  height: 50px;
+  background: url(../images/animation.png) 0 0 no-repeat;
+  background-size: auto 50px;
+  animation: play 2s steps(6) infinite;
+  img {
+    display: none;
+  }
+}
+@keyframes play {
+ 100% { background-position: -300px; }
 }
