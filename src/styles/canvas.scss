@@ -623,6 +623,9 @@ main {
     .dropdown-pane {
       width: 280px;
       border: 0;
+      &::after {
+        border-bottom-color: #e4e7ef;
+      }
     }
   }
 }
@@ -647,6 +650,13 @@ main {
       position: relative;
       top: 1px;
       margin: 0 0 0 8px !important;
+    }
+    svg {
+      fill: #a1a6bb;
+      width: 13px;
+      height: 17px;
+      margin-top: 2px;
+      margin-left: 8px;
     }
   }
 }
