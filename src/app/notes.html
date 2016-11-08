@@ -193,9 +193,7 @@
       <div class="columns large-2 right-sidebar" ng-hide="rightSideBarIsHidden">
         <aside class="sidebar">
           <div class="sidebar__head">
-            <div class="sidebar__title">
-              Notes
-            </div>
+            <div class="sidebar__title">Notes <a ng-click="notesVm.selectedArtBoard.createNote($event)" class="add-new"></a></div>
             <button
               class="sidebar__collapse-button -right"
               ng-click="rightSideBarIsHidden = !rightSideBarIsHidden">

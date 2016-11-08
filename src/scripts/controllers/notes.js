@@ -126,12 +126,17 @@
     }
 
     function createNote(event) {
-      if(!$(event.toElement).is('#screen')) {
+      if(!$(event.toElement).is("#screen") && !$(event.toElement).is(".add-new")) {
         return;
       }
-      var offset = $("#screen").offset();
-      var x = (event.pageX - offset.left) / vm.project.configs.zoom;
-      var y = (event.pageY - offset.top) / vm.project.configs.zoom;
+      if($(event.toElement).is(".add-new")) {
+        var x = -9999;
+        var y = -9999;
+      } else {
+        var offset = $("#screen").offset();
+        var x = (event.pageX - offset.left) / vm.project.configs.zoom;
+        var y = (event.pageY - offset.top) / vm.project.configs.zoom;
+      }
       vm.selectedArtBoard.currentopenedNote.obj = {
         rect:{
           x: x,

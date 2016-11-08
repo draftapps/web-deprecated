@@ -161,7 +161,7 @@ function routesConfig($stateProvider, $urlRouterProvider, $locationProvider) {
           return $http.get("project.json");
         }
       },
-      // parent: "authed"
+      parent: "authed"
     })
     .state("ui-components", {
       url: "/ui-components",
