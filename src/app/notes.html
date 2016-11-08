@@ -222,7 +222,7 @@
                     </div>
                   </div>
                   <div class="reply-to-note">
-                    <p ng-hide="notesVm.selectedArtBoard.currentopenedNote.index === $index"><a ng-click="notesVm.selectedArtBoard.showNoteReply(note, $index)">Reply</a></p>
+                    <p ng-hide="notesVm.selectedArtBoard.currentopenedNote.index === $index"><a ng-click="notesVm.selectedArtBoard.openNote(note, $index)">Reply</a></p>
                     <div ng-show="notesVm.selectedArtBoard.currentopenedNote.index === $index">
                       <textarea class="new-reply-box" placeholder="Type your message" ng-model="notesVm.selectedArtBoard.currentopenedNote.newMessage"></textarea>
                       <button
