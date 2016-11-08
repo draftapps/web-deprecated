@@ -121,6 +121,13 @@ function routesConfig($stateProvider, $urlRouterProvider, $locationProvider) {
       controllerAs: "dashboardVm",
       parent: "authed"
     })
+    .state("styleguide", {
+      url: "/styleguide",
+      templateUrl: "app/styleguide.html",
+      controller: "StyleguideCtrl",
+      controllerAs: "styleguideVm",
+      parent: "authed"
+    })
     .state("versions", {
       url: "/versions",
       templateUrl: "app/versions.html",
