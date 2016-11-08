@@ -2260,3 +2260,70 @@ main {
     }
   }
 }
+.notes-sidebar {
+  li {
+    padding: 0 !important;
+  }
+  .note-title {
+    line-height: 42px;
+    border-bottom: 1px solid #e4e7ef;
+    border-top: 1px solid #e4e7ef;
+    margin: 0;
+    position: relative;
+    padding: 0 15px;
+    background: #f7f8fa;
+    a {
+      float: right;
+      margin-top: 9px;
+      width: 23px;
+      height: 23px;
+      background: #ffffff;
+      border: 2px solid #c3c7d7;
+      border-radius: 50%;
+      text-indent: 101%;
+      overflow: hidden;
+      display: inline-block;
+    }
+    .tooltip {
+      line-height: 1.7;
+    }
+    &::before {
+      content: "";
+      display: block;
+      float: left;
+      width: 2px;
+      background: #42d79e;
+      height: 42px;
+      position: absolute;
+      top: 0;
+      left: 0;
+      bottom: 0;
+    }
+  }
+  .media-object {
+    padding: 12px;
+    margin-bottom: 0px;
+    h6 {
+      font-size: 14px;
+    }
+    & + .media-object {
+      padding-left: 32px;
+      background: url(../images/reply.png) 12px 20px no-repeat;
+      background-size: 14px 11px;
+    }
+  }
+  .created-at {
+    font-size: 11px;
+    margin-bottom: 5px;
+  }
+  .media-object-section:first-child {
+    padding-right: 5px;
+  }
+  .note-text {
+    background: #f7f8fa;
+    font-size: 13px;
+    padding: 5px 10px;
+    line-height: 1.4;
+    margin-left: -40px;
+  }
+}
