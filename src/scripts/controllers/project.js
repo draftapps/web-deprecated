@@ -8,6 +8,11 @@
     $scope.menu = "projects-activities";
     $scope.status = ["New", "In Progress", "Approved"];
 
+    $scope.project = {
+      id: $stateParams.id,
+      slug: $stateParams.slug
+    };
+
     projectService.getProject($stateParams.id, $stateParams.slug)
       .then(function(project) {
         $scope.project = project;

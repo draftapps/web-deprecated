@@ -115,7 +115,7 @@ function routesConfig($stateProvider, $urlRouterProvider, $locationProvider) {
       parent: "authed"
     })
     .state("dashboard", {
-      url: "/dashboard",
+      url: "/projects/:id/:slug/:artboardId/inspect",
       templateUrl: "app/dashboard.html",
       controller: "DasboardCtrl",
       controllerAs: "dashboardVm",
