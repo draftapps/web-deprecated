@@ -3,12 +3,12 @@
     <div class="columns large-2"></div>
     <div class="columns large-8">
       <ul class="page-head__menu menu align-center">
-        <li ng-class="page === 'dashboard' ? 'active' : ''"><a ui-sref="dashboard"><svg><use xlink:href="#shape-dashboard" /></svg></a></li>
-        <li ng-class="page === 'notes' ? 'active' : ''"><a ui-sref="notes"><svg><use xlink:href="#shape-notes" /></svg></a></li>
-        <li ng-class="page === 'styleguide' ? 'active style-guide-link' : ' style-guide-link'"><a ui-sref="styleguide"><svg><use xlink:href="#shape-styleguide" /></svg></a></li>
-        <li ng-class="page === 'flow' ? 'active' : ''"><a><svg><use xlink:href="#shape-flow" /></svg></a></li>
-        <li ng-class="page === 'versions' ? 'active' : ''"><a ui-sref="versions"><svg><use xlink:href="#shape-versions" /></svg></a></li>
-        <li ng-class="page === 'comparison' ? 'active' : ''"><a ui-sref="comparison"><svg><use xlink:href="#shape-comparison" /></svg></a></li>
+        <li ng-class="page === 'dashboard' ? 'active' : ''"><a ui-sref="dashboard"><svg tooltip-placement="bottom" tooltip="Inspect"><use xlink:href="#shape-dashboard" /></svg></a></li>
+        <li ng-class="page === 'notes' ? 'active' : ''"><a ui-sref="notes"><svg tooltip-placement="bottom" tooltip="Notes"><use xlink:href="#shape-notes" /></svg></a></li>
+        <li ng-class="page === 'styleguide' ? 'active style-guide-link' : ' style-guide-link'"><a ui-sref="styleguide"><svg tooltip-placement="bottom" tooltip="Style Guide"><use xlink:href="#shape-styleguide" /></svg></a></li>
+        <li ng-class="page === 'flow' ? 'active' : ''"><a><svg tooltip-placement="bottom" tooltip="Map"><use xlink:href="#shape-flow" /></svg></a></li>
+        <li ng-class="page === 'versions' ? 'active' : ''"><a ui-sref="versions"><svg tooltip-placement="bottom" tooltip="Version Control"><use xlink:href="#shape-versions" /></svg></a></li>
+        <li ng-class="page === 'comparison' ? 'active' : ''"><a ui-sref="comparison"><svg tooltip-placement="bottom" tooltip="Comparison Mode"><use xlink:href="#shape-comparison" /></svg></a></li>
       </ul>
     </div>
     <div class="columns large-2 text-right">

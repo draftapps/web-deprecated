@@ -14,12 +14,12 @@
             <ul class="sidebar__menu sidebar__menu--left sidebar__menu--items-2 menu">
               <li ng-class="{'active': activetab === 'boards'}">
                 <a ng-click="activetab = 'boards'" ng-init="activetab = 'boards'">
-                  <svg><use xlink:href="#shape-images" /></svg>
+                  <svg tooltip-placement="bottom" tooltip="Screens"><use xlink:href="#shape-images" /></svg>
                 </a>
               </li>
               <li ng-class="{'active': activetab === 'layers'}">
                 <a ng-click="activetab = 'layers'">
-                  <svg><use xlink:href="#shape-layers" /></svg>
+                  <svg tooltip-placement="bottom" tooltip="Layers"><use xlink:href="#shape-layers" /></svg>
                 </a>
               </li>
             </ul>
@@ -187,22 +187,22 @@
                 <a
                   ng-click="rightActivetab = 'code'"
                   ng-init="rightActivetab = 'props'">
-                  <svg><use xlink:href="#shape-code" /></svg>
+                  <svg tooltip-placement="bottom" tooltip="Code"><use xlink:href="#shape-code"/></svg>
                 </a>
               </li>
               <li ng-class="{'active': rightActivetab === 'colors'}">
                 <a ng-click="rightActivetab = 'colors'">
-                  <svg><use xlink:href="#shape-color" /></svg>
+                  <svg tooltip-placement="bottom" tooltip="Colors"><use xlink:href="#shape-color" /></svg>
                 </a>
               </li>
               <li ng-class="{'active': rightActivetab === 'props'}">
                 <a ng-click="rightActivetab = 'props'">
-                  <svg class="icon-text"><use xlink:href="#shape-t" /></svg>
+                  <svg class="icon-text" tooltip-placement="bottom" tooltip="Text"><use xlink:href="#shape-t" /></svg>
                 </a>
               </li>
               <li ng-class="{'active': rightActivetab === 'slices'}">
                 <a ng-click="rightActivetab = 'slices'">
-                  <svg><use xlink:href="#shape-image" /></svg>
+                  <svg tooltip-placement="bottom" tooltip="Bitmaps"><use xlink:href="#shape-image" /></svg>
                 </a>
               </li>
             </ul>
@@ -221,7 +221,6 @@
 }</pre>
                 </div>
               </div>
-
               <ul class="items-spaced color-wrapper" ng-show="rightActivetab === 'colors'">
                 <li ng-repeat="color in dashboardVm.project.colors">
                   <span class="color-sample" style="background-color: {{color.color['css-rgba']}}"></span>

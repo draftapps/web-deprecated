@@ -1,9 +1,20 @@
 .tooltip {
   white-space: nowrap;
   border-radius: 3px;
+  font-size: 12px;
+  line-height: 1.4;
   max-width: none !important;
   padding: 5px 10px;
   &::before {
     border-width: 0.4rem;
   }
+}
+ul.sidebar__menu.sidebar__menu--left.sidebar__menu--items-2.menu .tooltip {
+  top: 50px !important;
+}
+ul.page-head__menu.menu.align-center .tooltip {
+  top: 98px !important;
+}
+ul.sidebar__menu.sidebar__menu--right.sidebar__menu--items-4.menu .tooltip {
+  top: 49px !important;
 }
