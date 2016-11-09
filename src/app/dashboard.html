@@ -14,12 +14,12 @@
             <ul class="sidebar__menu sidebar__menu--left sidebar__menu--items-2 menu">
               <li ng-class="{'active': activetab === 'boards'}">
                 <a ng-click="activetab = 'boards'" ng-init="activetab = 'boards'">
-                  <svg><use xlink:href="#shape-images" /></svg>
+                  <svg tooltip-placement="bottom" tooltip="Screens"><use xlink:href="#shape-images" /></svg>
                 </a>
               </li>
               <li ng-class="{'active': activetab === 'layers'}">
                 <a ng-click="activetab = 'layers'">
-                  <svg><use xlink:href="#shape-layers" /></svg>
+                  <svg tooltip-placement="bottom" tooltip="Layers"><use xlink:href="#shape-layers" /></svg>
                 </a>
               </li>
             </ul>
@@ -189,23 +189,22 @@
                 <a
                   ng-click="rightActivetab = 'code'"
                   ng-init="rightActivetab = 'props'">
-                  <i class="ion-code u-align-block-center"></i>
+                  <i class="ion-code u-align-block-center" tooltip-placement="bottom" tooltip="Code"></i>
                 </a>
               </li>
               <li ng-class="{'active': rightActivetab === 'colors'}">
-                <a
-                  ng-click="rightActivetab = 'colors'">
-                  <i class="ion-android-color-palette u-align-block-center"></i>
+                <a ng-click="rightActivetab = 'colors'">
+                  <i tooltip-placement="bottom" tooltip="Colors" class="ion-android-color-palette u-align-block-center"></i>
                 </a>
               </li>
               <li ng-class="{'active': rightActivetab === 'props'}">
                 <a ng-click="rightActivetab = 'props'">
-                  <svg class="icon-text"><use xlink:href="#shape-t" /></svg>
+                  <svg class="icon-text" tooltip-placement="bottom" tooltip="Text"><use xlink:href="#shape-t" /></svg>
                 </a>
               </li>
               <li ng-class="{'active': rightActivetab === 'slices'}">
                 <a ng-click="rightActivetab = 'slices'">
-                  <i class="ion-image u-align-block-center"></i>
+                  <i tooltip-placement="bottom" tooltip="Bitmaps" class="ion-image u-align-block-center"></i>
                 </a>
               </li>
             </ul>
