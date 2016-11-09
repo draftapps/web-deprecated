@@ -1,0 +1,216 @@
+<div class="svg-icons"><ng-include src="'images/svg-defs.svg'"></ng-include></div>
+<div class="screen canvas">
+  <div class="screen__row">
+    <ng-include src="'app/partials/app-header.html'"></ng-include>
+  </div>
+  <div class="screen__row">
+    <ng-include src="'app/partials/canvas-header.html'"></ng-include>
+  </div>
+  <div class="screen__row -rest">
+    <div class="row expanded collapse">
+      <div
+        class="columns main-content"
+        ng-class="{'large-10': !rightSideBarIsHidden,
+          'large-12': rightSideBarIsHidden,
+          'canvas--padded-right': rightSideBarIsHidden}"
+      >
+        <section class="canvas-screen-viewer scroller">
+          <div class="style-guide-wrapper">
+            <h1 class="category-title">Colour Palette</h1>
+            <div class="row">
+              <div class="columns small-3">
+                <div class="style-guide-color-block" style="background-color: rgb(104, 118, 140);"></div>
+                <dl class="color-details">
+                  <dt>HEX</dt>
+                  <dd>00aeef</dd>
+                  <dt>RGB</dt>
+                  <dd>104, 118, 140</dd>
+                  <dt>CMYK</dt>
+                  <dd>64%, 49%, 32%, 6%</dd>
+                  <dt>CSS</dt>
+                  <dd>$profile-bar</dd>
+                </dl>
+              </div>
+              <div class="columns small-3">
+                <div class="style-guide-color-block" style="background-color: rgb(104, 118, 140);"></div>
+                <dl class="color-details">
+                  <dt>HEX</dt>
+                  <dd>00aeef</dd>
+                  <dt>RGB</dt>
+                  <dd>104, 118, 140</dd>
+                  <dt>CMYK</dt>
+                  <dd>64%, 49%, 32%, 6%</dd>
+                  <dt>CSS</dt>
+                  <dd>$profile-bar</dd>
+                </dl>
+              </div>
+              <div class="columns small-3">
+                <div class="style-guide-color-block" style="background-color: rgb(104, 118, 140);"></div>
+                <dl class="color-details">
+                  <dt>HEX</dt>
+                  <dd>00aeef</dd>
+                  <dt>RGB</dt>
+                  <dd>104, 118, 140</dd>
+                  <dt>CMYK</dt>
+                  <dd>64%, 49%, 32%, 6%</dd>
+                  <dt>CSS</dt>
+                  <dd>$profile-bar</dd>
+                </dl>
+              </div>
+              <div class="columns small-3">
+                <div class="style-guide-color-block" style="background-color: rgb(104, 118, 140);"></div>
+                <dl class="color-details">
+                  <dt>HEX</dt>
+                  <dd>00aeef</dd>
+                  <dt>RGB</dt>
+                  <dd>104, 118, 140</dd>
+                  <dt>CMYK</dt>
+                  <dd>64%, 49%, 32%, 6%</dd>
+                  <dt>CSS</dt>
+                  <dd>$profile-bar</dd>
+                </dl>
+              </div>
+            </div>
+          </div>
+          <hr>
+          <div class="style-guide-wrapper">
+            <h1>Fonts</h1>
+            <div class="row">
+              <div class="columns small-4">
+                <h2>Headline 1</h2>
+                <h3>About Us</h3>
+                <p>Proxima Nova Semibold</p>
+                <dl class="font-details">
+                  <dt>font size</dt>
+                  <dd>32Px</dd>
+                  <dt>Line-height</dt>
+                  <dd>44PX</dd>
+                </dl>
+                <div class="row">
+                  <div class="columns small-6">
+                    <div class="color-preview"><span></span>#393c3e</div>
+                  </div>
+                  <div class="columns small-6">
+                    <div class="color-preview"><span></span>#393c3e</div>
+                  </div>
+                </div>
+              </div>
+              <div class="columns small-4">
+                <h2>Headline 1</h2>
+                <h3>About Us</h3>
+                <p>Proxima Nova Semibold</p>
+                <dl class="font-details">
+                  <dt>font size</dt>
+                  <dd>32Px</dd>
+                  <dt>Line-height</dt>
+                  <dd>44PX</dd>
+                </dl>
+                <div class="row">
+                  <div class="columns small-6">
+                    <div class="color-preview"><span></span>#393c3e</div>
+                  </div>
+                  <div class="columns small-6">
+                    <div class="color-preview"><span></span>#393c3e</div>
+                  </div>
+                </div>
+              </div>
+              <div class="columns small-4">
+                <h2>Headline 1</h2>
+                <h3>About Us</h3>
+                <p>Proxima Nova Semibold</p>
+                <dl class="font-details">
+                  <dt>font size</dt>
+                  <dd>32Px</dd>
+                  <dt>Line-height</dt>
+                  <dd>44PX</dd>
+                </dl>
+                <div class="row">
+                  <div class="columns small-6">
+                    <div class="color-preview"><span></span>#393c3e</div>
+                  </div>
+                  <div class="columns small-6">
+                    <div class="color-preview"><span></span>#393c3e</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+      </div>
+
+      <div class="columns large-4 right-sidebar" ng-hide="rightSideBarIsHidden">
+        <aside class="sidebar">
+          <div class="sidebar__head">
+            <div class="sidebar__menu sidebar__menu--right sidebar__menu--items-4 menu">
+              <div class="select-wrapper">
+                <select name="" id="">
+                  <option value="">Objective C</option>
+                </select>
+              </div>
+              <a href="#" class="download-code"><svg><use xlink:href="#shape-download" /></svg></a>
+            </div>
+            <button
+              class="sidebar__collapse-button -right"
+              ng-click="rightSideBarIsHidden = !rightSideBarIsHidden">
+              <i class="sidebar__collapse-arrow ion-arrow-left-b"></i>
+              <i class="sidebar__collapse-menu ion-android-menu"></i>
+            </button>
+          </div>
+          <div class="sidebar__body">
+            <div class="scroller hljs-wrapper">
+              <div hljs>
+<!-- Home -->
+<table id="data">
+  <thead>
+    <tr>
+      <th class="table-head">ID</th>
+      <th class="table-head">Name</th>
+      <th class="table-head">Age</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>1</td>
+      <td>Ahmad Alfy</td>
+      <td>32</td>
+    </tr>
+    <tr>
+      <td>2</td>
+      <td>Ahmed Mahmoud</td>
+      <td>27</td>
+    </tr>
+    <tr>
+      <td>3</td>
+      <td>Karim Marwan</td>
+      <td>33</td>
+    </tr>
+  </tbody>
+</table>
+              </div>
+            </div>
+          </div>
+        </aside>
+      </div>
+
+      <div class="sidebar__fixed-container" ng-show="rightSideBarIsHidden">
+        <aside class="sidebar -closed  -closed-right">
+          <div class="sidebar__head">
+            <ul class="sidebar__menu menu">
+              <li>
+                <a></a>
+              </li>
+            </ul>
+            <button
+              class="sidebar__collapse-button -left"
+              ng-click="rightSideBarIsHidden = !rightSideBarIsHidden">
+              <i class="sidebar__collapse-arrow ion-arrow-left-b"></i>
+              <i class="sidebar__collapse-menu ion-android-menu"></i>
+            </button>
+          </div>
+          <div class="sidebar__body">
+          </div>
+        </aside>
+      </div>
+    </div>
+  </div>
+</div>
