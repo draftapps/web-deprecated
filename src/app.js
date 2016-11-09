@@ -17,7 +17,8 @@
     $authProvider.configure({
       apiUrl: "http://api2.draftapp.io",
       authProviderPaths: {
-        github: "/auth/github"
+        github: "/auth/github",
+        dropbox: "/auth/dropbox"
       }
     });
   }
