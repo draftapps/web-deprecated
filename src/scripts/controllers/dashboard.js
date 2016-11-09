@@ -8,6 +8,12 @@
 
     $scope.page = "dashboard";
 
+    $scope.project = {
+      id: $stateParams.id,
+      slug: $stateParams.slug,
+      artboardId: $stateParams.artboardId
+    }
+
     var info = {
       id: $stateParams.id,
       slug: $stateParams.slug

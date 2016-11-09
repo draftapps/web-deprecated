@@ -3,9 +3,18 @@
       .module("app")
       .controller("ComparisonCtrl", ComparisonCtrl);
 
-  function ComparisonCtrl($scope, $window, comparisonData) {
+  function ComparisonCtrl($scope, $stateParams, $window, comparisonData) {
     var vm = this;
     $scope.page = "comparison";
+
+    $scope.project = {
+      id: $stateParams.id,
+      slug: $stateParams.slug,
+      artboardId: $stateParams.artboardId
+    };
+
+    console.log($scope.project);
+
     vm.comparisonData = {};
     vm.project = {};
 

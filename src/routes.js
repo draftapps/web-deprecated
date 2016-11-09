@@ -122,14 +122,14 @@ function routesConfig($stateProvider, $urlRouterProvider, $locationProvider) {
       parent: "authed"
     })
     .state("styleguide", {
-      url: "/styleguide",
+      url: "/projects/:id/:slug/:artboardId/styleguide",
       templateUrl: "app/styleguide.html",
       controller: "StyleguideCtrl",
       controllerAs: "styleguideVm",
       parent: "authed"
     })
     .state("versions", {
-      url: "/versions",
+      url: "/projects/:id/:slug/:artboardId/versions",
       templateUrl: "app/versions.html",
       controller: "VersionsCtrl",
       controllerAs: "versionsVm",
@@ -140,7 +140,7 @@ function routesConfig($stateProvider, $urlRouterProvider, $locationProvider) {
       }
     })
     .state("comparison", {
-      url: "/comparison",
+      url: "/projects/:id/:slug/:artboardId/comparison",
       templateUrl: "app/comparison.html",
       controller: "ComparisonCtrl",
       controllerAs: "comparisonVm",
@@ -152,7 +152,7 @@ function routesConfig($stateProvider, $urlRouterProvider, $locationProvider) {
       parent: "authed"
     })
     .state("notes", {
-      url: "/notes",
+      url: "/projects/:id/:slug/:artboardId/notes",
       templateUrl: "app/notes.html",
       controller: "NotesCtrl",
       controllerAs: "notesVm",
