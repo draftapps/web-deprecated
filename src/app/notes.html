@@ -8,7 +8,7 @@
   </div>
   <div class="screen__row -rest">
     <div class="row expanded collapse">
-      <div class="columns large-2 left-sidebar" ng-hide="leftSideBarIsHidden">
+      <div class="columns large-2 left-sidebar wide-sidebar" ng-hide="leftSideBarIsHidden">
         <aside class="sidebar">
           <div class="sidebar__head">
             <div class="sidebar__title">Screens</div>
@@ -94,10 +94,7 @@
           ng-click="notesVm.selectedArtBoard.closeNote()"></div>
         <div class="notes-modal" ng-show="notesVm.selectedArtBoard.currentopenedNote.isOpened">
           <div class="notes-modal__content">
-            <div class="notes-modal__head">
-              note {{notesVm.selectedArtBoard.currentopenedNote.index}}
-            </div>
-
+            <div class="notes-modal__head">Note {{notesVm.selectedArtBoard.currentopenedNote.index}}</div>
             <div class="notes-modal__body">
               <div class="scroller">
                 <div class="media-object" ng-repeat="message in notesVm.selectedArtBoard.currentopenedNote.obj.note">
@@ -108,13 +105,12 @@
                   </div>
                   <div class="media-object-section main-section">
                     <h6 class="u-space-v-undo">{{message.userName}}</h6>
-                    <div class="u-space-v-small u-text-s">{{message.date}}</div>
-                    <p class="u-text-s" style="background-color: #f3f6f8;border-radius: 3px;padding: 10px;">{{message.text}}</p>
+                    <p class="created-at"><time-ago from-time='{{ message.date }}'></time-ago></p>
+                    <p class="note-text">{{message.text}}</p>
                   </div>
                 </div>
               </div>
             </div>
-
             <div class="notes-modal__footer">
               <div class="notes-modal__txt-box-container">
                 <textarea
@@ -123,7 +119,6 @@
                   ng-model="notesVm.selectedArtBoard.currentopenedNote.newMessage"></textarea>
               </div>
             </div>
-
             <div class="notes-modal__footer">
               <button
                 class="button success notes-modal__button"
@@ -143,15 +138,49 @@
               ng-style="notesVm.selectedArtBoard.screenStyle()"
               ng-click="notesVm.selectedArtBoard.createNote($event)">
               <div id="notes">
-                <div
-                  class="note"
-                  ng-repeat="note in notesVm.selectedArtBoard.obj.notes"
-                  data-index="{{$index + 1}}"
-                  ng-style="notesVm.selectedArtBoard.notesStyle(note)"
-                  ng-mouseenter="note.show = true"
-                  ng-mouseleave="note.show = false"
-                  ng-click="notesVm.selectedArtBoard.openNote(note, $index + 1);$event.stopPropagation()">
-                  <div ng-show="note.show">{{note.note[0]}}</div>
+                <div ng-repeat="note in notesVm.selectedArtBoard.obj.notes">
+                  <dropdown-toggle class="note-wrapper" pane-align="center" close-on-click="true">
+                    <toggle>
+                      <div data-index="{{$index + 1}}" ng-style="notesVm.selectedArtBoard.notesStyle(note)" class="note"></div>
+                    </toggle>
+                    <pane>
+                      <div class="notes-modal">
+                        <div class="notes-modal__content">
+                          <div class="notes-modal__head">Note {{$index + 1}} <span class="note__actions"><a href="#" tooltip-placement="bottom" tooltip="Resolve">Resolve</a> <a href="#"><svg><use xlink:href="#shape-trash" /></svg></a></span></div>
+                          <div class="notes-modal__body">
+                            <div class="scroller">
+                              <div class="media-object" ng-repeat="message in note.note">
+                                <div class="media-object-section">
+                                  <div>
+                                    <img class="avatar" ng-src="{{message.userImg}}" width="32">
+                                  </div>
+                                </div>
+                                <div class="media-object-section main-section">
+                                  <h6 class="u-space-v-undo">{{message.userName}}</h6>
+                                  <p class="created-at"><time-ago from-time='{{ message.date }}'></time-ago></p>
+                                  <p class="note-text">{{message.text}}</p>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="notes-modal__footer">
+                            <div class="notes-modal__txt-box-container">
+                              <textarea
+                                class="notes-modal__txt-box"
+                                placeholder="Type your message"
+                                ng-model="notesVm.selectedArtBoard.currentopenedNote.newMessage"></textarea>
+                            </div>
+                          </div>
+                          <div class="notes-modal__footer">
+                            <button
+                              class="button success notes-modal__button"
+                              ng-click="notesVm.selectedArtBoard.addNewReply(note, $index)"
+                              ng-disabled="!notesVm.selectedArtBoard.currentopenedNote.newMessage">Reply</button>
+                          </div>
+                        </div>
+                      </div>
+                    </pane>
+                  </dropdown-toggle>
                 </div>
               </div>
             </div>
@@ -162,9 +191,7 @@
       <div class="columns large-2 right-sidebar" ng-hide="rightSideBarIsHidden">
         <aside class="sidebar">
           <div class="sidebar__head">
-            <div class="sidebar__title">
-              Notes
-            </div>
+            <div class="sidebar__title">Notes <a ng-click="notesVm.selectedArtBoard.createNote($event)" class="add-new"></a></div>
             <button
               class="sidebar__collapse-button -right"
               ng-click="rightSideBarIsHidden = !rightSideBarIsHidden">
@@ -173,16 +200,38 @@
           </div>
           <div class="sidebar__body">
             <div class="scroller">
-              <ul class="items-spaced">
-                <li class="text-cener" ng-if="!notesVm.selectedArtBoard.obj.notes.length">No notes in this screen</li>
-                <li
-                  class="o-list--stripped"
-                  ng-repeat="note in notesVm.selectedArtBoard.obj.notes"
-                  ng-click="notesVm.selectedArtBoard.openNote(note, $index + 1)"
-                  ng-class="{'selected' : note.show === true}">
-                  note {{$index + 1}}
-                </li>
-              </ul>
+              <div class="notes-sidebar">
+                <p class="text-cener" ng-if="!notesVm.selectedArtBoard.obj.notes.length">No notes in this screen</p>
+                <accordion close-others="true">
+                  <accordion-group ng-repeat="note in notesVm.selectedArtBoard.obj.notes" is-open="$index === 0">
+                    <accordion-heading>
+                      <p class="note-title">Note {{$index + 1}} <a href="#" tooltip-placement="left" tooltip="Resolve">Resolve</a></p>
+                    </accordion-heading>
+                    <div class="media-object" ng-repeat="message in note.note">
+                      <div class="media-object-section">
+                        <div>
+                          <img class="avatar" ng-src="{{message.userImg}}" width="32">
+                        </div>
+                      </div>
+                      <div class="media-object-section main-section">
+                        <h6 class="u-space-v-undo">{{message.userName}}</h6>
+                        <p class="created-at"><time-ago from-time='{{ message.date }}'></time-ago></p>
+                        <p class="note-text">{{message.text}}</p>
+                      </div>
+                    </div>
+                    <div class="reply-to-note">
+                      <p ng-hide="notesVm.selectedArtBoard.currentopenedNote.index === $index"><a ng-click="notesVm.selectedArtBoard.openNote(note, $index)">Reply</a></p>
+                      <div ng-show="notesVm.selectedArtBoard.currentopenedNote.index === $index">
+                        <textarea class="new-reply-box" placeholder="Type your message" ng-model="notesVm.selectedArtBoard.currentopenedNote.newMessage"></textarea>
+                        <button
+                          class="button success"
+                          ng-click="notesVm.selectedArtBoard.addNewReply(note, $index)"
+                          ng-disabled="!notesVm.selectedArtBoard.currentopenedNote.newMessage">Reply</button>
+                      </div>
+                    </div>
+                  </accordion-group>
+                </accordion>
+              </div>
             </div>
           </div>
         </aside>

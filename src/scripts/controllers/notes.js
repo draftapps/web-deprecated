@@ -122,13 +122,23 @@
     function openNote(note, $index) {
       vm.selectedArtBoard.currentopenedNote.obj = note;
       vm.selectedArtBoard.currentopenedNote.index = $index;
-      vm.selectedArtBoard.currentopenedNote.isOpened = true;
     }
 
     function createNote(event) {
-      var offset = $("#screen").offset();
-      var x = (event.pageX - offset.left) / vm.project.configs.zoom;
-      var y = (event.pageY - offset.top) / vm.project.configs.zoom;
+      if(!$(event.toElement).is("#screen") && !$(event.toElement).is(".add-new")) {
+        return;
+      }
+      if($("#notes .is-open").length !== 0) {
+        return;
+      }
+      if($(event.toElement).is(".add-new")) {
+        var x = -9999;
+        var y = -9999;
+      } else {
+        var offset = $("#screen").offset();
+        var x = (event.pageX - offset.left) / vm.project.configs.zoom;
+        var y = (event.pageY - offset.top) / vm.project.configs.zoom;
+      }
       vm.selectedArtBoard.currentopenedNote.obj = {
         rect:{
           x: x,
@@ -148,17 +158,22 @@
       vm.selectedArtBoard.currentopenedNote.index = null;
     }
 
-    function addNewReply() {
-      if (vm.selectedArtBoard.currentopenedNote.index > vm.selectedArtBoard.obj.notes.length) {
-        vm.selectedArtBoard.obj.notes.push(vm.selectedArtBoard.currentopenedNote.obj);
+    function addNewReply(note, index) {
+      if (note === undefined) {
+        if (vm.selectedArtBoard.obj.notes.indexOf(vm.selectedArtBoard.currentopenedNote.obj) === -1) {
+          vm.selectedArtBoard.obj.notes.push(vm.selectedArtBoard.currentopenedNote.obj);
+        }
         vm.selectedArtBoard.currentopenedNote.obj =
           vm.selectedArtBoard.obj.notes[vm.selectedArtBoard.obj.notes.length - 1];
+      } else {
+        // Set the currentopenedNote to push the message to it
+        openNote(note, index);
       }
 
       vm.selectedArtBoard.currentopenedNote.obj.note.push({
         text: vm.selectedArtBoard.currentopenedNote.newMessage,
-        date: "2min ago",
-        userName: "Abo El Naga",
+        date: new Date(),
+        userName: $scope.$parent.user.name,
         userImg: "images/demo/avatar.png"
       });
       vm.selectedArtBoard.currentopenedNote.newMessage = "";
