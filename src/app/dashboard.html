@@ -26,8 +26,7 @@
             <button
               class="sidebar__collapse-button -left"
               ng-click="leftSideBarIsHidden = !leftSideBarIsHidden">
-              <i class="sidebar__collapse-arrow ion-arrow-left-b"></i>
-              <i class="sidebar__collapse-menu ion-android-menu"></i>
+              <svg><use xlink:href="#shape-bar-close-left" /></svg>
             </button>
           </div>
           <div class="sidebar__body">
@@ -70,8 +69,7 @@
             <button
               class="sidebar__collapse-button -right"
               ng-click="leftSideBarIsHidden = !leftSideBarIsHidden">
-              <i class="sidebar__collapse-arrow ion-arrow-left-b"></i>
-              <i class="sidebar__collapse-menu ion-android-menu"></i>
+              <svg><use xlink:href="#shape-bar-close-left" /></svg>
             </button>
           </div>
           <div class="sidebar__body"></div>
@@ -189,13 +187,12 @@
                 <a
                   ng-click="rightActivetab = 'code'"
                   ng-init="rightActivetab = 'props'">
-                  <i class="ion-code u-align-block-center"></i>
+                  <svg><use xlink:href="#shape-code" /></svg>
                 </a>
               </li>
               <li ng-class="{'active': rightActivetab === 'colors'}">
-                <a
-                  ng-click="rightActivetab = 'colors'">
-                  <i class="ion-android-color-palette u-align-block-center"></i>
+                <a ng-click="rightActivetab = 'colors'">
+                  <svg><use xlink:href="#shape-color" /></svg>
                 </a>
               </li>
               <li ng-class="{'active': rightActivetab === 'props'}">
@@ -205,15 +202,14 @@
               </li>
               <li ng-class="{'active': rightActivetab === 'slices'}">
                 <a ng-click="rightActivetab = 'slices'">
-                  <i class="ion-image u-align-block-center"></i>
+                  <svg><use xlink:href="#shape-image" /></svg>
                 </a>
               </li>
             </ul>
             <button
               class="sidebar__collapse-button -right"
               ng-click="rightSideBarIsHidden = !rightSideBarIsHidden">
-              <i class="sidebar__collapse-arrow ion-arrow-left-b"></i>
-              <i class="sidebar__collapse-menu ion-android-menu"></i>
+              <svg><use xlink:href="#shape-bar-close-right" /></svg>
             </button>
           </div>
           <div class="sidebar__body">
@@ -524,8 +520,7 @@
             <button
               class="sidebar__collapse-button -left"
               ng-click="rightSideBarIsHidden = !rightSideBarIsHidden">
-              <i class="sidebar__collapse-arrow ion-arrow-left-b"></i>
-              <i class="sidebar__collapse-menu ion-android-menu"></i>
+              <svg><use xlink:href="#shape-bar-close-right" /></svg>
             </button>
           </div>
           <div class="sidebar__body"></div>
