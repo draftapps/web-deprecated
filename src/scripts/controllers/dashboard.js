@@ -3,7 +3,7 @@
     .module("app")
     .controller("DasboardCtrl", DasboardCtrl);
 
-  function DasboardCtrl($scope, $http, projectService) {
+  function DasboardCtrl($scope, $http, $timeout, projectService) {
     var vm = this;
     var info;
 
@@ -573,6 +573,11 @@
       layer.styleList = layer.css.join("\n");
       vm.selectedArtBoard.ruler.isHidden = true;
       vm.selectedArtBoard.selectedLayer = layer;
+      // Sadly hljsLineNumber have no destroy method. This has to be done using jQuery
+      $timeout(function(){
+        $('.hljs-line-numbers').remove();
+        hljs.initLineNumbersOnLoad();
+      }, 50);
     }
 
     function setRuler(layer) {

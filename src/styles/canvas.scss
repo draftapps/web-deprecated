@@ -2005,10 +2005,48 @@ main {
       }
     }
   }
+  .code-outer-wrapper {
+    height: 100%;
+  }
   .code-wrapper {
+    height: 100%;
     padding: 10px;
+    .code-block {
+      height: 100%;
+      margin: 0 -10px;
+      pre {
+        height: 100%;
+      }
+      .hljs {
+        height: 100%;
+        border: 0;
+      }
+    }
     pre {
       white-space: pre-wrap;
+    }
+    .select-wrapper {
+      position: relative;
+      select {
+        border: 1px solid #e4e7ef;
+        border-radius: 5px;
+        background: #fff;
+        font-size: 13px;
+        color: #3a405b;
+        width: 100%;
+        margin: 0 0 10px;
+        height: 43px;
+        outline: none;
+      }
+      &::before {
+        content: "";
+        position: absolute;
+        top: 19px;
+        right: 15px;
+        background: url(../images/arrow-down.png) 90% 50% no-repeat;
+        width: 10px;
+        height: 6px;
+      }
     }
   }
   .add-style-guide {
@@ -2180,10 +2218,9 @@ main {
     }
   }
 }
-.hljs-line-numbers {
+.hljs.hljs-line-numbers {
   text-align: right;
-  border-right: 1px solid #ccc;
-  color: #999;
+  color: #a1a6bb;
   -webkit-touch-callout: none;
   -webkit-user-select: none;
   -khtml-user-select: none;
