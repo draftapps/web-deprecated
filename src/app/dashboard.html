@@ -222,14 +222,18 @@
                       <option value="">Swift</option>
                     </select>
                   </div>
-                  <div hljs class="code-block" hljs-interpolate="true" hljs-language="css">
+                  <div class="scroller">
+                    <div hljs class="code-block" hljs-interpolate="true" hljs-language="css">
 .layer {
   {{dashboardVm.selectedArtBoard.selectedLayer.formattedStyle}}
 }
+                    </div>
                   </div>
                 </div>
+                <div class="fixed-button">
+                  <a href="#">Download</a>
+                </div>
               </div>
-
               <ul class="items-spaced color-wrapper" ng-show="rightActivetab === 'colors'">
                 <li ng-repeat="color in dashboardVm.project.colors">
                   <span class="color-sample" style="background-color: {{color.color['css-rgba']}}"></span>

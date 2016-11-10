@@ -2007,18 +2007,33 @@ main {
   }
   .code-outer-wrapper {
     height: 100%;
+    .fixed-button {
+      a {
+        font-size: 14px;
+        color: #3a405b;
+        font-weight: 400;
+        line-height: 48px;
+        text-align: center;
+        display: block;
+        background: #e4e7ef;
+        border-radius: 5px;
+      }
+    }
   }
   .code-wrapper {
     height: 100%;
     padding: 10px;
-    .code-block {
-      height: 100%;
+    .scroller {
       margin: 0 -10px;
+      background: #3a405b;
+      height: calc(100% - 53px);
+      padding-bottom: 80px;
+    }
+    .code-block {
+      margin: 0;
       pre {
-        height: 100%;
       }
       .hljs {
-        height: 100%;
         border: 0;
       }
     }
