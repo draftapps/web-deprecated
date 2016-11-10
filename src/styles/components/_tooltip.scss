@@ -1,12 +1,13 @@
 .tooltip {
   white-space: nowrap;
-  border-radius: 3px;
-  font-size: 12px;
-  line-height: 1.4;
+  border-radius: 5px;
+  font-size: 14px;
+  line-height: 2.3;
   max-width: none !important;
   padding: 5px 10px;
+  font-weight: 300;
   &::before {
-    border-width: 0.4rem;
+    border-width: 0.5rem;
   }
 }
 ul.sidebar__menu.sidebar__menu--left.sidebar__menu--items-2.menu .tooltip {
