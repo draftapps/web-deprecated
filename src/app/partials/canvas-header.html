@@ -16,7 +16,7 @@
         <li>
           <dropdown-toggle pane-align="center" close-on-click="true">
             <toggle>
-              <button class="actions__button"><span class="actions__status actions__status--warning"></span></button>
+              <button class="actions__button" tooltip-placement="bottom" tooltip="Set status"><span class="actions__status actions__status--warning"></span></button>
             </toggle>
             <pane>
               <ul class="dd-menu">
@@ -31,7 +31,7 @@
         <li>
           <dropdown-toggle pane-align="center" close-on-click="true" class="calendar-menu">
             <toggle>
-              <button class="actions__button"><svg><use href="#shape-calendar" /></svg></button>
+              <button class="actions__button" tooltip-placement="bottom" tooltip="Set due date"><svg><use href="#shape-calendar" /></svg></button>
             </toggle>
             <pane>
               <ul class="dd-menu">
@@ -43,7 +43,7 @@
         <li>
           <dropdown-toggle pane-align="center" close-on-click="true">
             <toggle>
-            <button class="actions__button"><i class="ion-person"></i></button>
+            <button class="actions__button" tooltip-placement="bottom" tooltip="Add assignee"><i class="ion-person"></i></button>
             </toggle>
             <pane>
               <ul class="dd-menu assign-dd">
@@ -57,7 +57,7 @@
         <li>
           <dropdown-toggle pane-align="center" close-on-click="true" class="tags-dropdown">
             <toggle>
-              <button class="actions__button"><svg><use href="#shape-tag" /></svg></button>
+              <button class="actions__button" tooltip-placement="bottom" tooltip="Add tag"><svg><use href="#shape-tag" /></svg></button>
             </toggle>
             <pane>
               <ul class="dd-menu">
@@ -81,7 +81,7 @@
         <li>
           <dropdown-toggle pane-align="center" close-on-click="true">
             <toggle>
-              <button class="actions__button"><svg><use xlink:href="#shape-forward" /></svg></button>
+              <button class="actions__button" tooltip-placement="bottom" tooltip="Forward"><svg><use xlink:href="#shape-forward" /></svg></button>
             </toggle>
             <pane>
               <ul class="dd-menu forward-dd">
@@ -95,7 +95,7 @@
         <li>
           <dropdown-toggle pane-align="right" close-on-click="true" class="share-dropdown">
             <toggle>
-              <button class="actions__button"><svg><use xlink:href="#shape-attachment" /></svg></button>
+              <button class="actions__button" tooltip-placement="bottom" tooltip="Share"><svg><use xlink:href="#shape-attachment" /></svg></button>
             </toggle>
             <pane>
               <ul class="dd-menu">
@@ -111,12 +111,11 @@
               </ul>
             </pane>
           </dropdown-toggle>
-
         </li>
         <li>
           <dropdown-toggle pane-align="right" close-on-click="true">
             <toggle>
-              <button class="actions__button u-space-h-undo"><i class="ion-more"></i></button>
+              <button class="actions__button u-space-h-undo" tooltip-placement="bottom" tooltip="More"><i class="ion-more"></i></button>
             </toggle>
             <pane>
               <ul class="dd-menu">
@@ -125,7 +124,6 @@
               </ul>
             </pane>
           </dropdown-toggle>
-
         </li>
       </ul>
     </div>
