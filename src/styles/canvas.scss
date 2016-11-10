@@ -2023,6 +2023,12 @@ main {
   }
 }
 .canvas {
+  .main-content {
+    position: relative;
+  }
+  .screen__row > .row {
+    flex-wrap: nowrap;
+  }
   .code-block {
     margin: 50px;
   }
