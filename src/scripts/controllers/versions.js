@@ -3,11 +3,17 @@
     .module("app")
     .controller("VersionsCtrl", VersionsCtrl);
 
-  function VersionsCtrl($scope, project) {
+  function VersionsCtrl($scope, $stateParams, project) {
     var vm = this;
 
     $scope.page = "versions";
     $scope.drawnNumbers = false;
+
+    $scope.project = {
+      id: $stateParams.id,
+      slug: $stateParams.slug,
+      artboardId: $stateParams.artboardId
+    };
 
     $scope.drawLineNumbers = function() {
       if (!$scope.drawnNumbers) {

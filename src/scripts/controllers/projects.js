@@ -3,7 +3,7 @@
     .module("app")
     .controller("ProjectsCtrl", ProjectsCtrl);
 
-  function ProjectsCtrl($scope, projects, $http, $modal, $location) {
+  function ProjectsCtrl($scope, projects, $http, $modal, $location, ENV) {
 
     var vm = this;
     vm.projects = projects.data;
@@ -34,7 +34,7 @@
       var project = {
         "project" : $scope.projectData
       };
-      $http.post("http://api.draftapp.io/projects", project)
+      $http.post(ENV.api + "projects", project)
         .success(function(data) {
           data.created_at = new Date();
           $scope.projectData = {};
@@ -59,7 +59,7 @@
     $scope.deleteProject = function(id, slug) {
       $http({
         method: "DELETE",
-        url: "http://api.draftapp.io/projects/" + id + "?project[slug]=" + slug,
+        url: ENV.api + "projects/" + id + "?project[slug]=" + slug,
         headers: {"Content-Type": "application/json;charset=utf-8"}
       })
         .success(function(data) {

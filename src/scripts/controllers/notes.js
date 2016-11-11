@@ -3,10 +3,16 @@
     .module("app")
     .controller("NotesCtrl", NotesCtrl);
 
-  function NotesCtrl($scope, project) {
+  function NotesCtrl($scope, $stateParams, project) {
     var vm = this;
 
     $scope.page = "notes";
+
+    $scope.project = {
+      id: $stateParams.id,
+      slug: $stateParams.slug,
+      artboardId: $stateParams.artboardId
+    };
 
     vm.project = project.data;
     vm.project.selectArtBoard = selectArtBoard;

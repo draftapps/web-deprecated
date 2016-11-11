@@ -3,10 +3,27 @@
     .module("app")
     .controller("ProjectCtrl", ProjectCtrl);
 
-  function ProjectCtrl($scope, $http, $stateParams, $modal, projectService) {
+  function ProjectCtrl($scope, $http, $stateParams, $modal, projectService, CacheFactory, ENV) {
+
+    var projectCache,
+        projectCacheKey = ENV.api + 'projects/' + $stateParams.id + '?project[slug]=' + $stateParams.slug;
+
+    if (!CacheFactory.get('projectCache')) {
+      CacheFactory.createCache('projectCache', {
+        deleteOnExpire: 'aggressive',
+        recycleFreq: 60000
+      });
+    }
+
+    projectCache = CacheFactory.get('projectCache');
 
     $scope.menu = "projects-activities";
     $scope.status = ["New", "In Progress", "Approved"];
+
+    $scope.project = {
+      id: $stateParams.id,
+      slug: $stateParams.slug
+    };
 
     projectService.getProject($stateParams.id, $stateParams.slug)
       .then(function(project) {
@@ -52,10 +69,12 @@
           "status": statusId
         }
       };
-      $http.post("http://api.draftapp.io/projects/" + $stateParams.id + "/set_status", project)
+      $http.post(ENV.api + "projects/" + $stateParams.id + "/set_status", project)
         .success(function(data) {
           $scope.statusUpdating = false;
           $scope.project = data;
+          projectCache.remove(projectCacheKey);
+          projectCache.put(projectCacheKey, data)
         })
         .error(function(data) {
           $scope.statusUpdating = false;
@@ -77,7 +96,7 @@
       var project = {
         "project" : $scope.projectData
       };
-      $http.post("http://api.draftapp.io/projects", project)
+      $http.post(ENV.api + "projects", project)
         .success(function(data) {
           data.created_at = new Date();
           $scope.projectData = {};

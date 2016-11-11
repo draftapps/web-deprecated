@@ -3,15 +3,24 @@
     .module("app")
     .controller("DasboardCtrl", DasboardCtrl);
 
-  function DasboardCtrl($scope, $http, $timeout, projectService) {
+  function DasboardCtrl($scope, $http, $timeout, $stateParams, projectService) {
     var vm = this;
-    var info;
 
     $scope.page = "dashboard";
 
-    info = projectService.getProjectInfo();
+    $scope.project = {
+      id: $stateParams.id,
+      slug: $stateParams.slug,
+      artboardId: $stateParams.artboardId
+    }
+
+    var info = {
+      id: $stateParams.id,
+      slug: $stateParams.slug
+    }
     projectService.getProject(info.id, info.slug)
         .then(function(p) {
+          info.currentArtboard = _.findWhere(p.artboards, {id: parseInt($stateParams.artboardId)})
           initialize(p, info);
         }, function() {
           // console.log("Server did not send project data!");
@@ -176,10 +185,10 @@
     }
 
     function activate() {
-      vm.selectedArtBoard.obj = vm.project.artboards[0];
+      vm.selectedArtBoard.obj = _.findWhere(vm.project.artboards, {id: parseInt($stateParams.artboardId)});
       vm.project.configs = getConfigs(
-          vm.project.scale, vm.project.unit, vm.project.colorFormat, vm.selectedArtBoard.obj.height
-          );
+        vm.project.scale, vm.project.unit, vm.project.colorFormat, vm.selectedArtBoard.obj.height
+      );
     }
 
     function getConfigs(scale, unit, colorFormat, height) {

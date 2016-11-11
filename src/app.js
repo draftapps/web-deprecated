@@ -1,9 +1,10 @@
 (function () {
   angular
     .module("app", [
-      "ui.router", "mm.foundation", "ngFileUpload", "slickCarousel", "ng-token-auth", "pickadate", "yaru22.angular-timeago", "hljs"
+      "app.config", "ui.router", "mm.foundation", "ngFileUpload", "slickCarousel", "ng-token-auth", "pickadate", "yaru22.angular-timeago", "hljs", "angular-cache"
     ])
-    .config(authProviderConfig);
+    .config(authProviderConfig)
+    .config(cashFactorySettings);
 
   function authProviderConfig($authProvider) {
     $authProvider.configure({
@@ -11,6 +12,14 @@
       authProviderPaths: {
         github: "/auth/github"
       }
+    });
+  }
+
+  function cashFactorySettings(CacheFactoryProvider) {
+    angular.extend(CacheFactoryProvider.defaults, {
+      maxAge: 15 * 60 * 1000, // One hour
+      deleteOnExpire: 'aggressive',
+      storageMode: 'localStorage'
     });
   }
 })();
