@@ -3,7 +3,19 @@
     .module("app")
     .controller("ProjectCtrl", ProjectCtrl);
 
-  function ProjectCtrl($scope, $http, $stateParams, $modal, projectService, ENV) {
+  function ProjectCtrl($scope, $http, $stateParams, $modal, projectService, CacheFactory, ENV) {
+
+    var projectCache,
+        projectCacheKey = ENV.api + 'projects/' + $stateParams.id + '?project[slug]=' + $stateParams.slug;
+
+    if (!CacheFactory.get('projectCache')) {
+      CacheFactory.createCache('projectCache', {
+        deleteOnExpire: 'aggressive',
+        recycleFreq: 60000
+      });
+    }
+
+    projectCache = CacheFactory.get('projectCache');
 
     $scope.menu = "projects-activities";
     $scope.status = ["New", "In Progress", "Approved"];
@@ -61,6 +73,8 @@
         .success(function(data) {
           $scope.statusUpdating = false;
           $scope.project = data;
+          projectCache.remove(projectCacheKey);
+          projectCache.put(projectCacheKey, data)
         })
         .error(function(data) {
           $scope.statusUpdating = false;

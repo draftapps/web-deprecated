@@ -19,7 +19,8 @@
     "selectize": "^0.12.4",
     "angular-highlightjs": "^0.6.2",
     "highlightjs-line-numbers.js": "^1.1.0",
-    "twentytwenty": "https://github.com/zurb/twentytwenty.git"
+    "twentytwenty": "https://github.com/zurb/twentytwenty.git",
+    "angular-cache": "^4.6.0"
   },
   "overrides": {
     "foundation-sites": {
