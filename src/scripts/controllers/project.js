@@ -4,7 +4,6 @@
     .controller("ProjectCtrl", ProjectCtrl);
 
   function ProjectCtrl($scope, $http, $stateParams, $modal, projectService, ENV) {
-    console.log(ENV);
 
     $scope.menu = "projects-activities";
     $scope.status = ["New", "In Progress", "Approved"];
@@ -58,7 +57,7 @@
           "status": statusId
         }
       };
-      $http.post("http://api.draftapp.io/projects/" + $stateParams.id + "/set_status", project)
+      $http.post(ENV.api + "projects/" + $stateParams.id + "/set_status", project)
         .success(function(data) {
           $scope.statusUpdating = false;
           $scope.project = data;
@@ -83,7 +82,7 @@
       var project = {
         "project" : $scope.projectData
       };
-      $http.post("http://api.draftapp.io/projects", project)
+      $http.post(ENV.api + "projects", project)
         .success(function(data) {
           data.created_at = new Date();
           $scope.projectData = {};

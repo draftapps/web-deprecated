@@ -3,7 +3,7 @@ angular
   .config(routesConfig);
 
 /** @ngInject */
-function routesConfig($stateProvider, $urlRouterProvider, $locationProvider) {
+function routesConfig($stateProvider, $urlRouterProvider, $locationProvider, ENV) {
   $locationProvider.html5Mode(true).hashPrefix("!");
   $urlRouterProvider.otherwise("/");
 
@@ -84,7 +84,7 @@ function routesConfig($stateProvider, $urlRouterProvider, $locationProvider) {
       controller: "ProjectsCtrl",
       controllerAs: "projectsVm",
       resolve: {
-        projects: $http => $http.get("http://api.draftapp.io/projects")
+        projects: $http => $http.get(ENV.api + "projects")
       },
       parent: "authed"
     })
