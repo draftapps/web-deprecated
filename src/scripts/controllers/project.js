@@ -3,7 +3,8 @@
     .module("app")
     .controller("ProjectCtrl", ProjectCtrl);
 
-  function ProjectCtrl($scope, $http, $stateParams, $modal, projectService) {
+  function ProjectCtrl($scope, $http, $stateParams, $modal, projectService, ENV) {
+    console.log(ENV);
 
     $scope.menu = "projects-activities";
     $scope.status = ["New", "In Progress", "Approved"];
