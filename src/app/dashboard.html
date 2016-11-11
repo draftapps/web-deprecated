@@ -236,9 +236,9 @@
               </div>
               <ul class="items-spaced color-wrapper" ng-show="rightActivetab === 'colors'">
                 <li ng-repeat="color in dashboardVm.project.colors">
-                  <span class="color-sample" style="background-color: {{color.color['css-rgba']}}"></span>
+                  <span class="color-sample" style="background-color: {{color.color['cssRgba']}}"></span>
                   <span class="color-name">{{color.name}}</span><br>
-                  <span class="color-code">{{color.color['color-hex']}}</span>
+                  <span class="color-code">{{color.color['colorHex']}}</span>
                 </li>
                 <li class="add-style-guide">
                   <a href="#">+ Add Style Guide</a>
