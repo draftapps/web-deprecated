@@ -1278,6 +1278,10 @@ main {
   .sidebar {
     border-left: 1px solid #e4e7ef;
   }
+  .sidebar,
+  .sidebar a {
+    color: #8493a8;
+  }
   .wide-sidebar,
   .right-sidebar {
     flex: 0 0 290px;
