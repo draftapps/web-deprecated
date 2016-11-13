@@ -3,12 +3,14 @@
     .module("app")
     .controller("RegisterCtrl", RegisterCtrl);
 
-  function RegisterCtrl($auth, $state) {
+  function RegisterCtrl($auth, $state, $scope) {
     const vm = this;
 
     vm.form = {};
     vm.submit = submit;
     vm.github = github;
+
+    $scope.passwordField = 'password';
 
     function auth(method, ...params) {
       start();

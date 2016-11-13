@@ -1,97 +1,53 @@
-<div class="u-space-v-xxlarge"></div>
-
-<div class="row align-center">
-  <div class="column large-6 medium-7">
-    <div class="row collapse u-space-v">
-      <div class="column">
-        <div class="card card--shadowed text-center">
-          <div class="card__body">
-            <img src="images/logo.png" alt="" class="card__logo">
-            <div class="row collapse align-center is-collapse-child">
-              <div class="column medium-10">
-                <h3>Get Started Free</h3>
-                <p class="u-text-small u-space-v-large">Free 30 days. No Credit Card needed</p>
-
-                <form ng-submit="registerVM.submit()" class="text-left">
-                  <fieldset ng-disabled="registerVM.loading">
-                    <div class="form-group">
-                      <input
-                        autofocus
-                        type="email"
-                        placeholder="Your Email"
-                        ng-model="registerVM.form.email"
-                        required
-                        ng-class="{'is-invalid-input': registerVM.errors.email[0]}"
-                      >
-                      <span
-                        class="form-error"
-                        ng-class="{'is-visible': registerVM.errors.email[0]}"
-                      >Email {{registerVM.errors.email[0]}}</span>
-                    </div>
-
-                    <div class="form-group">
-                      <input
-                        type="text"
-                        placeholder="Your Name"
-                        ng-model="registerVM.form.name"
-                        required
-                        ng-class="{'is-invalid-input': registerVM.errors.name[0]}"
-                      >
-                      <span
-                        class="form-error"
-                        ng-class="{'is-visible': registerVM.errors.name[0]}"
-                      >Name {{registerVM.errors.name[0]}}</span>
-                    </div>
-
-                    <div class="form-group u-space-v-large">
-                      <input
-                        type="password"
-                        placeholder="Create Password"
-                        ng-model="registerVM.form.password"
-                        required
-                        ng-class="{'is-invalid-input': registerVM.errors.password[0]}"
-                      >
-                      <span
-                        class="form-error"
-                        ng-class="{'is-visible': registerVM.errors.password[0]}"
-                      >Password {{registerVM.errors.password[0]}}</span>
-                    </div>
-
-                    <button
-                      type="submit"
-                      class="button expanded success"
-                      ng-disabled="registerVM.loading"
-                    >Sign up free</button>
-
-                    <div class="c-seperator text-center">
-                      <span class="c-seperator__text">Or</span>
-                    </div>
-
-                    <button
-                      type="button"
-                      class="button expanded primary u-space-v"
-                      ng-click="registerVM.github()"
-                      ng-disabled="registerVM.loading"
-                    >
-                      <i class="ion-social-octocat"></i> Sign up via Github
-                    </button>
-
-                    <p class="u-text-small text-center u-space-v-undo">
-                      By signing up you are agreeing to Draft's
-                      <a class="link link--underline" ui-sref="terms">Terms of Use</a>
-                      and we will add you to our mailing list.
-                    </p>
-                  </fieldset>
-                </form>
-              </div>
-            </div>
-          </div>
-        </div>
+<div class="svg-icons"><ng-include src="'images/svg-defs.svg'"></ng-include></div>
+<div class="sign sign--two-halfs">
+  <div class="row expanded">
+    <div class="columns large-6 align-center text-center">
+      <div class="content-wrapper">
+        <h3>Get Started Free</h3>
+        <p class="u-text-small u-space-v-large">Free 30 days. No Credit Card needed</p>
+        <p><img src="images/group.svg" alt=""></p>
+        <p>Already have an account? <a class="link link--underline" ui-sref="login">Login?</a></p>
       </div>
     </div>
-    <div class="row collapse text-center u-text-small u-space-v-large">
-      <div class="column">
-        Already have an account? <a class="link link--underline" ui-sref="login">Login?</a>
+    <div class="columns large-6 medium">
+      <div class="content-wrapper">
+        <form ng-submit="registerVM.submit()" class="text-left">
+          <fieldset ng-disabled="registerVM.loading">
+            <label>Full Name</label>
+            <div class="row">
+              <div class="columns large-6">
+                <div class="form-group u-space-v-large">
+                  <input autofocus type="text" placeholder="First name" ng-model="registerVM.form.name" required ng-class="{'is-invalid-input': registerVM.errors.name[0]}">
+                  <span class="form-error" ng-class="{'is-visible': registerVM.errors.name[0]}" >Name {{registerVM.errors.name[0]}}</span>
+                </div>
+              </div>
+              <div class="columns large-6">
+                <input type="text" placeholder="Last name" />
+              </div>
+            </div>
+            <div class="form-group u-space-v-large">
+              <label for="email">Email Address</label>
+              <input type="email" id="email" placeholder="Your Email" ng-model="registerVM.form.email" required ng-class="{'is-invalid-input': registerVM.errors.email[0]}">
+              <span class="form-error" ng-class="{'is-visible': registerVM.errors.email[0]}">Email {{registerVM.errors.email[0]}}</span>
+            </div>
+            <div class="form-group u-space-v-large">
+              <label for="password">Password</label>
+              <input type="{{passwordField}}" id="password" placeholder="Create Password" ng-model="registerVM.form.password" required ng-class="{'is-invalid-input': registerVM.errors.password[0]}">
+              <a class="show-password" ng-mousedown="passwordField = 'text'" ng-mouseup="passwordField = 'password'">
+                <svg><use xlink:href="#shape-eye" /></svg>
+              </a>
+              <span class="form-error" ng-class="{'is-visible': registerVM.errors.password[0]}">Password {{registerVM.errors.password[0]}}</span>
+            </div>
+
+            <button type="submit" class="button expanded success" ng-disabled="registerVM.loading">Sign Up Free</button>
+
+            <div class="c-seperator text-center"><span class="c-seperator__text">Or</span></div>
+
+            <button type="button" class="button expanded button-grey u-space-v" ng-click="registerVM.github()" ng-disabled="registerVM.loading"><svg><use xlink:href="#shape-github" /></svg> Sign up with Github</button>
+
+            <p class="terms text-center">By signing up you are agreeing to Draft's <a class="link link--underline" ui-sref="terms">Terms of Use</a> and we will add you to our mailing list.</p>
+          </fieldset>
+        </form>
       </div>
     </div>
   </div>
