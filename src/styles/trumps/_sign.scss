@@ -4,6 +4,19 @@
   & > .row > .column {
     width: 560px;
   }
+  .form-group {
+    position: relative;
+  }
+  .show-password {
+    position: absolute;
+    right: 20px;
+    bottom: 14px;
+    svg {
+      fill: #c3c7d7;
+      width: 17px;
+      height: 10px;
+    }
+  }
   .full-logo {
     height: 45px;
     width: 154px;

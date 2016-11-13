@@ -26,7 +26,10 @@
 
                       <div class="form-group">
                         <label for="password">Password</label>
-                        <input type="password" placeholder="Password" id="password" ng-model="loginVM.form.password" required>
+                        <input type="{{passwordField}}" placeholder="Password" id="password" ng-model="loginVM.form.password" required>
+                        <a class="show-password" ng-mousedown="passwordField = 'text'" ng-mouseup="passwordField = 'password'">
+                          <svg><use xlink:href="#shape-eye" /></svg>
+                        </a>
                       </div>
 
                       <div class="form-group text-left">
