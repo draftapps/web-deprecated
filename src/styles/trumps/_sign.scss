@@ -1,6 +1,9 @@
 .sign {
   background: #f3f6f8;
   padding-top: 60px;
+  & > .row > .column {
+    width: 560px;
+  }
   .full-logo {
     height: 45px;
     width: 154px;
