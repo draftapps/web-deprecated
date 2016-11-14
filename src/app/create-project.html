@@ -13,39 +13,41 @@
       <div class="content-wrapper">
         <img class="full-logo" src="images/draft-logo.svg" alt="Draft">
         <form ng-submit="createProject()" name="new-project">
-          <div class="form-group">
-            <label for="name">Title</label>
-            <input type="text" name="name" id="name" ng-model="projectData.name"/>
-          </div>
-          <div class="form-group">
-            <p class="label-like">Platform</p>
-            <div class="check-buttons row">
+          <fieldset ng-disabled="createprojectVM.loading">
+            <div class="form-group">
+              <label for="name">Title</label>
+              <input type="text" name="name" id="name" ng-model="projectData.name"/>
+            </div>
+            <div class="form-group">
+              <p class="label-like">Platform</p>
+              <div class="check-buttons row">
+                <div class="column small-4">
+                  <input checked="checked" id="platform-ios" ng-model="projectData.platform" name="platform[]" value="ios" type="radio"><label for="platform-ios"><svg><use xlink:href="#shape-apple" /></svg><span>iOS</span></label>
+                </div>
+                <div class="column small-4">
+                  <input id="platform-android" ng-model="projectData.platform" name="platform[]" value="android" type="radio"><label for="platform-android"><svg><use xlink:href="#shape-android" /></svg><span>Android</span></label>
+                </div>
+                <div class="column small-4">
+                  <input id="platform-web" ng-model="projectData.platform" name="platform[]" value="web" type="radio"><label for="platform-web"><svg><use xlink:href="#shape-browser" /></svg><span>Web</span></label>
+                </div>
+              </div>
+            </div>
+            <p class="label-like">Resolution</p>
+            <div class="row">
               <div class="column small-4">
-                <input checked="checked" id="platform-ios" ng-model="projectData.platform" name="platform[]" value="ios" type="radio"><label for="platform-ios"><svg><use xlink:href="#shape-apple" /></svg><span>iOS</span></label>
+                <input ng-model="projectData.scale" id="resolution-1" name="resolution" value="1" type="radio" class="custom-radio" checked="checked"><label for="resolution-1">1x</label>
               </div>
               <div class="column small-4">
-                <input id="platform-android" ng-model="projectData.platform" name="platform[]" value="android" type="radio"><label for="platform-android"><svg><use xlink:href="#shape-android" /></svg><span>Android</span></label>
+                <input ng-model="projectData.scale" id="resolution-2" name="resolution" value="2" type="radio" class="custom-radio"><label for="resolution-2">2x</label>
               </div>
               <div class="column small-4">
-                <input id="platform-web" ng-model="projectData.platform" name="platform[]" value="web" type="radio"><label for="platform-web"><svg><use xlink:href="#shape-browser" /></svg><span>Web</span></label>
+                <input ng-model="projectData.scale" id="resolution-3" name="resolution" value="3" type="radio" class="custom-radio"><label for="resolution-3">3x</label>
               </div>
             </div>
-          </div>
-          <p class="label-like">Resolution</p>
-          <div class="row">
-            <div class="column small-4">
-              <input ng-model="projectData.scale" id="resolution-1" name="resolution" value="1" type="radio" class="custom-radio" checked="checked"><label for="resolution-1">1x</label>
-            </div>
-            <div class="column small-4">
-              <input ng-model="projectData.scale" id="resolution-2" name="resolution" value="2" type="radio" class="custom-radio"><label for="resolution-2">2x</label>
-            </div>
-            <div class="column small-4">
-              <input ng-model="projectData.scale" id="resolution-3" name="resolution" value="3" type="radio" class="custom-radio"><label for="resolution-3">3x</label>
-            </div>
-          </div>
+          </fieldset>
           <div class="row form-actions">
             <div class="columns large-6"><a href="invite-members" class="button button--light button--block">Skip</a></div>
-            <div class="columns large-6"><button class="button button--success button--block" type="submit">Continue</button></div>
+            <div class="columns large-6"><button ng-disabled="createprojectVM.loading" class="button button--success button--block" type="submit">Continue</button></div>
           </div>
         </form>
       </div>
