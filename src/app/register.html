@@ -17,12 +17,13 @@
             <div class="row">
               <div class="columns large-6">
                 <div class="form-group u-space-v-large">
-                  <input autofocus type="text" placeholder="First name" ng-model="registerVM.form.name" required ng-class="{'is-invalid-input': registerVM.errors.name[0]}">
-                  <span class="form-error" ng-class="{'is-visible': registerVM.errors.name[0]}" >Name {{registerVM.errors.name[0]}}</span>
+                  <input autofocus type="text" placeholder="First name" ng-model="registerVM.form.firstName" required ng-class="{'is-invalid-input': registerVM.errors.firstname[0]}">
+                  <span class="form-error" ng-class="{'is-visible': registerVM.errors.firstname[0]}" >Name {{registerVM.errors.firstname[0]}}</span>
                 </div>
               </div>
               <div class="columns large-6">
-                <input type="text" placeholder="Last name" />
+                  <input type="text" placeholder="Last name" ng-model="registerVM.form.lastname" required ng-class="{'is-invalid-input': registerVM.errors.lastname[0]}">
+                  <span class="form-error" ng-class="{'is-visible': registerVM.errors.lastname[0]}" >Name {{registerVM.errors.lastname[0]}}</span>
               </div>
             </div>
             <div class="form-group u-space-v-large">
