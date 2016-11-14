@@ -1,0 +1,28 @@
+<div class="svg-icons"><ng-include src="'images/svg-defs.svg'"></ng-include></div>
+<div class="sign sign--light sign--two-halfs">
+  <div class="row expanded">
+    <div class="columns large-6 align-center text-center">
+      <div class="content-wrapper">
+        <h3>Invite team members</h3>
+        <p class="u-text-small">Start collaborating by inviting your teammates.</p>
+        <p><img src="images/group-2.svg" alt=""></p>
+      </div>
+    </div>
+    <div class="columns large-6 medium">
+      <div class="content-wrapper">
+        <img class="full-logo" src="images/draft-logo.svg" alt="Draft">
+        <form ng-submit="inviteMembers()">
+          <div class="form-group">
+            <p class="label-like">Email Addresses</p>
+            <input ng-repeat="member in members" ng-model="member.email" placeholder="Team Member Email" type="email" />
+            <p><a ng-click="addNewMember()" class="link--green"><i class="ion-plus"></i> Add Another Team Member</a></p>
+          </div>
+          <div class="row form-actions">
+            <div class="columns large-6"><a href="/projects" class="button button--light button--block">Skip</a></div>
+            <div class="columns large-6"><button class="button button--success button--block" type="submit">Continue</button></div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

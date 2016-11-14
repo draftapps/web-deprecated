@@ -1,8 +1,12 @@
 .sign {
   background: #f3f6f8;
   padding-top: 60px;
+  min-height: 100vh;
   & > .row > .column {
     width: 560px;
+  }
+  & > .row {
+    min-height: 100vh;
   }
   &.sign--two-halfs {
     background: transparent;
@@ -17,6 +21,9 @@
             p:last-child {
               font-size: 14px;
               margin-top: auto;
+            }
+            p.u-text-small + p {
+              margin-top: 0;
             }
           }
         }
@@ -80,6 +87,11 @@
     width: 154px;
     margin: 0 auto 30px;
     display: block;
+  }
+  .content-wrapper {
+    .full-logo {
+      margin: -70px 0 50px;
+    }
   }
   h4 {
     font-weight: bold;

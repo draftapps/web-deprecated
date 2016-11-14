@@ -69,7 +69,14 @@ function routesConfig($stateProvider, $urlRouterProvider, $locationProvider, ENV
       templateUrl: "app/create-project.html",
       controller: "CreateProjectCtrl",
       controllerAs: "createprojectVM",
-      parent: "not-authed"
+      parent: "authed"
+    })
+    .state("invite-members", {
+      url: "/invite-members",
+      templateUrl: "app/invite-members.html",
+      controller: "InviteMembersCtrl",
+      controllerAs: "invitemembersVM",
+      parent: "authed"
     })
     .state("forgot-password", {
       url: "/forgot-password?reset_password_token",
