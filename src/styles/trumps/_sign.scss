@@ -83,7 +83,11 @@
     font-weight: bold;
     font-family: 'Montserrat', sans-serif;
     line-height: 1.2;
-    margin-bottom: 50px;
+    margin-bottom: 30px;
+    & + p {
+      line-height: 1.2;
+      margin-bottom: 30px;
+    }
   }
   .label-like,
   label {
@@ -212,5 +216,10 @@
     line-height: 54px;
     padding-top: 0;
     padding-bottom: 0;
+  }
+}
+.password-reset {
+  .button {
+    margin: 30px 0;
   }
 }
