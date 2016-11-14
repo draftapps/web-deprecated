@@ -1,0 +1,53 @@
+<div class="svg-icons"><ng-include src="'images/svg-defs.svg'"></ng-include></div>
+<div class="sign sign--light sign--two-halfs">
+  <div class="row expanded">
+    <div class="columns large-6 align-center text-center">
+      <div class="content-wrapper">
+        <h3>Create your first project</h3>
+        <p class="u-text-small u-space-v-large">Start importing your designs from Draft’s Sketch plugin.</p>
+        <p><img src="images/single.svg" alt=""></p>
+        <p><button type="button" class="button expanded button--yellow"><svg><use xlink:href="#shape-sketch"></use></svg> Download Sketch Plugin</button></p>
+      </div>
+    </div>
+    <div class="columns large-6 medium">
+      <div class="content-wrapper">
+        <form ng-submit="createProject()" name="new-project">
+          <div class="form-group">
+            <label for="name">Title</label>
+            <input type="text" name="name" id="name" ng-model="projectData.name"/>
+          </div>
+          <div class="form-group">
+            <p class="label-like">Platform</p>
+            <div class="check-buttons row">
+              <div class="column small-4">
+                <input checked="checked" id="platform-ios" ng-model="projectData.platform" name="platform[]" value="ios" type="radio"><label for="platform-ios"><svg><use xlink:href="#shape-apple" /></svg><span>iOS</span></label>
+              </div>
+              <div class="column small-4">
+                <input id="platform-android" ng-model="projectData.platform" name="platform[]" value="android" type="radio"><label for="platform-android"><svg><use xlink:href="#shape-android" /></svg><span>Android</span></label>
+              </div>
+              <div class="column small-4">
+                <input id="platform-web" ng-model="projectData.platform" name="platform[]" value="web" type="radio"><label for="platform-web"><svg><use xlink:href="#shape-browser" /></svg><span>Web</span></label>
+              </div>
+            </div>
+          </div>
+          <p class="label-like">Resolution</p>
+          <div class="row">
+            <div class="column small-4">
+              <input ng-model="projectData.scale" id="resolution-1" name="resolution" value="1" type="radio" class="custom-radio" checked="checked"><label for="resolution-1">1x</label>
+            </div>
+            <div class="column small-4">
+              <input ng-model="projectData.scale" id="resolution-2" name="resolution" value="2" type="radio" class="custom-radio"><label for="resolution-2">2x</label>
+            </div>
+            <div class="column small-4">
+              <input ng-model="projectData.scale" id="resolution-3" name="resolution" value="3" type="radio" class="custom-radio"><label for="resolution-3">3x</label>
+            </div>
+          </div>
+          <div class="row form-actions">
+            <div class="columns large-6"><button class="button button--light button--block" type="submit">Skip</button></div>
+            <div class="columns large-6"><button class="button button--success button--block" type="submit">Continue</button></div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

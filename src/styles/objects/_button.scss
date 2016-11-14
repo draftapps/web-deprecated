@@ -28,4 +28,24 @@
   &--block {
     width: 100%;
   }
+  &--grey {
+    background: #444444;
+    &:hover {
+      background: #000;
+    }
+  }
+  &--yellow {
+    background: #ffda44;
+    &:hover {
+      background: #f0ca30;
+    }
+  }
+  &--light {
+    background: #e4e7ef;
+    color: rgb(58, 64, 91);
+    &:hover {
+      background: #e4e7ef;
+      color: rgb(58, 64, 91);
+    }
+  }
 }

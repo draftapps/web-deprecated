@@ -1,9 +1,9 @@
 (function () {
   angular
     .module("app")
-    .controller("RegisterCtrl", RegisterCtrl);
+    .controller("CreateProjectCtrl", CreateProjectCtrl);
 
-  function RegisterCtrl($auth, $state, $scope) {
+  function CreateProjectCtrl($auth, $state, $scope) {
     const vm = this;
 
     vm.form = {};
@@ -38,7 +38,7 @@
     }
 
     function success() {
-      $state.go("create-project");
+      $state.go("projects");
     }
 
     function fail(err) {

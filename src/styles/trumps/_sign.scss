@@ -48,6 +48,20 @@
       }
     }
   }
+  &--light {
+    &.sign--two-halfs {
+      & > .row {
+        & > .columns {
+          &:first-child {
+            background: #f7f8fa;
+          }
+        }
+      }
+      h3 {
+        font-size: 24px;
+      }
+    }
+  }
   .form-group {
     position: relative;
   }
@@ -73,6 +87,7 @@
     line-height: 1.2;
     margin-bottom: 50px;
   }
+  .label-like,
   label {
     font-size: 16px;
     color: #3a405b;
@@ -137,12 +152,6 @@
       padding: 10px;
     }
   }
-  .button-grey {
-    background: #444444;
-    &:hover {
-      background: #000;
-    }
-  }
   .foot-options {
     font-size: 13px;
     color: #a1a6bb;
@@ -157,5 +166,47 @@
         text-decoration: underline;
       }
     }
+  }
+  .custom-radio{
+    & + label::before {
+      border-radius: 50%;
+      background-color: rgb(228, 231, 239);
+      box-shadow: inset 0px 1px 1px 0px rgba(0, 0, 0, 0.15);
+      width: 18px;
+      border: 0;
+      height: 18px;
+    }
+    &:checked + label {
+      &::before {
+        background: #4fd595;
+      }
+      &::after {
+        content: "";
+        display: block;
+        border-radius: 50%;
+        width: 10px;
+        height: 10px;
+        background: #fff;
+        position: absolute;
+        top: 4px;
+        left: 4px;
+      }
+    }
+  }
+  .check-buttons {
+    padding: 0 15px;
+    input:checked + label {
+      background-color: #4fd696;
+      border-color: #4fd696;
+    }
+    input:checked {
+      & + label::after {
+        color: #4fd696;
+      }
+    }
+  }
+  .form-actions {
+    margin-top: 40px;
+    margin-bottom: 15px;
   }
 }
