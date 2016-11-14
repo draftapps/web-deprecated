@@ -13,8 +13,6 @@
       artboardId: $stateParams.artboardId
     };
 
-    console.log($scope.project);
-
     vm.comparisonData = {};
     vm.project = {};
 

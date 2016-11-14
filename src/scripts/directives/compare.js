@@ -19,14 +19,13 @@
   });
 
   function compare(scope, element, attrs) {
-    var setElementLoadEvent = function() {
-      element.on("load", function() {
-        element.twentytwenty();
-      });
-    };
-    $(window).load(function() {
-      $(element).twentytwenty();
-      setElementLoadEvent();
+    // var setElementLoadEvent = function() {
+    //   element.on("load", function() {
+    //     element.twentytwenty();
+    //   });
+    // };
+    $(element).find('img').on('load', function() {
+      element.twentytwenty();
     });
   }
 })();
