@@ -38,7 +38,7 @@
     }
 
     function success() {
-      $state.go("dashboard");
+      $state.go("projects");
     }
 
     function fail(err) {

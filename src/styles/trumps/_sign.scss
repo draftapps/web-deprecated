@@ -139,6 +139,9 @@
   }
   .button-grey {
     background: #444444;
+    &:hover {
+      background: #000;
+    }
   }
   .foot-options {
     font-size: 13px;
