@@ -15,12 +15,12 @@
       & > .columns {
         padding: 150px 0 75px;
         &:first-child {
-          background: #e4e7ef;
+          background: #f7f8fa;
           .content-wrapper {
             margin-left: auto;
             p:last-child {
               font-size: 14px;
-              margin-top: auto;
+              margin-top: 60px;
             }
             p.u-text-small + p {
               margin-top: 0;
@@ -32,9 +32,8 @@
           .content-wrapper {
             margin-right: auto;
             .terms {
-              margin-top: 30px;
+              margin: 30px 0;
               font-size: 14px;
-              margin-bottom: 0;
             }
           }
         }
@@ -48,24 +47,11 @@
       height: 100%;
     }
     h3 {
+      font-size: 24px;
       line-height: 1;
       margin: -20px 0 0;
       & + p {
         font-size: 18px;
-      }
-    }
-  }
-  &--light {
-    &.sign--two-halfs {
-      & > .row {
-        & > .columns {
-          &:first-child {
-            background: #f7f8fa;
-          }
-        }
-      }
-      h3 {
-        font-size: 24px;
       }
     }
   }
@@ -160,9 +146,6 @@
   }
   .social-login {
     margin-bottom: 40px;
-    .button {
-      padding: 10px;
-    }
   }
   .foot-options {
     font-size: 13px;
@@ -220,5 +203,14 @@
   .form-actions {
     margin-top: 40px;
     margin-bottom: 15px;
+  }
+  .form-error {
+    font-size: 14px;
+  }
+  .button {
+    height: 54px;
+    line-height: 54px;
+    padding-top: 0;
+    padding-bottom: 0;
   }
 }
