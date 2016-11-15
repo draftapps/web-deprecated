@@ -1329,6 +1329,12 @@ main {
   }
   .page-head {
     border-bottom-color: #e1e6eb;
+    .dropdown-pane svg {
+      width: 18px;
+      height: 18px;
+      margin-right: 6px;
+      vertical-align: text-bottom;
+    }
     .actions {
       .actions__button {
         margin-left: 5px;
