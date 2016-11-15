@@ -1434,6 +1434,7 @@ main {
         top: 23px;
         right: 15px;
         background: url(../images/arrow-down.png) 90% 50% no-repeat;
+        background-size: 10px 6px;
         width: 10px;
         height: 6px;
       }
@@ -1684,6 +1685,7 @@ main {
         border-radius: 5px;
         padding: 0 10px;
         background: #fff url(../images/arrow-down.png) 90% 50% no-repeat;
+        background-size: 10px 6px;
         cursor: pointer;
         margin-bottom: 20px;
       }
@@ -2074,6 +2076,7 @@ main {
         top: 19px;
         right: 15px;
         background: url(../images/arrow-down.png) 90% 50% no-repeat;
+        background-size: 10px 6px;
         width: 10px;
         height: 6px;
       }
@@ -2137,6 +2140,7 @@ main {
       border-radius: 5px;
       padding: 0 10px;
       background: #fff url(../images/arrow-down.png) 90% 50% no-repeat;
+      background-size: 10px 6px;
       cursor: pointer;
     }
     .dropdown-pane {
@@ -2151,6 +2155,7 @@ main {
         &:first-child {
           a {
             background: #fff url(../images/arrow-up.png) 90% 50% no-repeat;
+            background-size: 10px 6px;
             &:hover {
               background-color: #f7f8fb;
             }

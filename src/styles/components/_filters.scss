@@ -40,6 +40,7 @@
     border-radius: 5px;
     padding: 0 10px;
     background: #fff url(../images/arrow-down.png) 90% 50% no-repeat;
+    background-size: 10px 6px;
     cursor: pointer;
     text-align: left;
     border: 2px solid #e4e7ef;
@@ -53,6 +54,7 @@
     }
     ul .title {
       background: #fff url(../images/arrow-up.png) 90% 50% no-repeat;
+      background-size: 10px 6px;
       border-radius: 5px 5px 0 0;
       line-height: 46px;
     }
