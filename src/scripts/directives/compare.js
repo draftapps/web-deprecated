@@ -19,14 +19,12 @@
   });
 
   function compare(scope, element, attrs) {
-    var setElementLoadEvent = function() {
-      element.on("load", function() {
-        element.twentytwenty();
+    scope.$parent.$parent.loading = true;
+    $(element).find('img').on('load', function() {
+      element.twentytwenty();
+      scope.$apply(function(){
+        scope.$parent.$parent.loading = false;
       });
-    };
-    $(window).load(function() {
-      $(element).twentytwenty();
-      setElementLoadEvent();
     });
   }
 })();

@@ -36,7 +36,7 @@
                   <a ng-click="dashboardVm.project.selectArtBoard(artBoard)">
                     <img
                       class="thumbnail"
-                      ng-class="{'is-active': artBoard.objectID === dashboardVm.selectedArtBoard.obj.objectID}"
+                      ng-class="{'is-active': artBoard.objectId === dashboardVm.selectedArtBoard.obj.objectId}"
                       ng-src="{{::(artBoard.imageBase64 || artBoard.thumbImage)}}">
                     <span class="u-text-small" ng-bind="::artBoard.name"></span>
                   </a>

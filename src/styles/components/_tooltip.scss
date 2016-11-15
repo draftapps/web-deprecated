@@ -19,3 +19,6 @@ ul.page-head__menu.menu.align-center .tooltip {
 ul.sidebar__menu.sidebar__menu--right.sidebar__menu--items-4.menu .tooltip {
   top: 49px !important;
 }
+.accordion .tooltip.left::before {
+  border-width: 5px;
+}
