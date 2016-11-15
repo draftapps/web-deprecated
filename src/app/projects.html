@@ -86,8 +86,10 @@
                 </pane>
               </dropdown-toggle>
             </div>
-            <p class="card__title status--{{project.status}}">{{project.name}}</p>
-            <p class="card__date"><time-ago from-time='{{ project.created_at }}'></time-ago></p>
+            <div class="card__head-wrapper">
+              <p class="card__title status--{{project.status}}">{{project.name}}</p>
+              <p class="card__date"><time-ago from-time='{{ project.created_at }}'></time-ago></p>
+            </div>
             <p class="card__alert">Due</p>
             <ul class="card__users">
               <li ng-repeat="user in project.team.users"><img tooltip-placement="bottom" tooltip="{{user.name}}" alt="{{user.name}}" ng-src="{{::(user.image || 'images/user-avatar.png')}}" /></li>
