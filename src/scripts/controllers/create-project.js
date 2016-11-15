@@ -3,31 +3,25 @@
     .module("app")
     .controller("CreateProjectCtrl", CreateProjectCtrl);
 
-  function CreateProjectCtrl($auth, $state, $scope) {
+  function CreateProjectCtrl($auth, $state, $scope, $http, ENV) {
     const vm = this;
 
     vm.form = {};
-    vm.submit = submit;
-    vm.github = github;
 
-    $scope.passwordField = 'password';
-
-    function auth(method, ...params) {
+    $scope.createProject = function() {
       start();
-
-      $auth[method](...params)
-        .then(success)
-        .catch(fail)
-        .finally(end);
-    }
-
-    function submit() {
-      auth("submitRegistration", vm.form);
-    }
-
-    function github() {
-      auth("authenticate", "github");
-    }
+      var project = {
+        "project" : $scope.projectData
+      };
+      $http.post(ENV.api + "projects", project)
+        .success(function(data) {
+          success();
+        })
+        .error(function(data) {
+          // console.log('Error: ' + data);
+          end();
+        });
+    };
 
     function start() {
       vm.loading = true;
@@ -38,7 +32,7 @@
     }
 
     function success() {
-      $state.go("projects");
+      $state.go("invite-members");
     }
 
     function fail(err) {
