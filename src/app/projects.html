@@ -5,7 +5,7 @@
   </div>
   <div class="container" ng-show="projectsVm.projects.length > 0">
     <div class="row head-filters">
-      <div class="column medium-8">
+      <div class="column medium-9">
         <dropdown-toggle pane-align="left" close-on-click="true">
           <toggle>
             <button class="select">By Status</button>
@@ -46,8 +46,23 @@
             </ul>
           </pane>
         </dropdown-toggle>
+        <dropdown-toggle pane-align="left" close-on-click="true">
+          <toggle>
+            <button class="select">By Tag</button>
+          </toggle>
+          <pane>
+            <ul class="menu vertical">
+              <li class="title">By Tag</li>
+              <li><a href="#">Tag 1</a></li>
+              <li><a href="#">Tag 2</a></li>
+              <li><a href="#">Tag 3</a></li>
+              <li><a href="#">Tag 4</a></li>
+              <li><a href="#">Tag 5</a></li>
+            </ul>
+          </pane>
+        </dropdown-toggle>
       </div>
-      <div class="column medium-4 text-right">
+      <div class="column medium-3 text-right">
         <button class="button button--success" ng-click="openModal('app/partials/new-project.html')">New Project</button>
       </div>
     </div>
