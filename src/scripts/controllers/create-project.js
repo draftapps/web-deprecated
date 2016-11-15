@@ -7,6 +7,9 @@
     const vm = this;
 
     vm.form = {};
+    $scope.projectData = {};
+
+    $scope.projectData.platform = 'ios';
 
     $scope.createProject = function() {
       start();
