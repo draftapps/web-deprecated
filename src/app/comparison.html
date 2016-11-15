@@ -42,7 +42,8 @@
           <div class="text-center no-compare" ng-show="!img1 || !img2">
             <img src="images/comparison-empty-state.png" alt="">
           </div>
-          <div ng-if="img1 && img2" compare img1="{img1}" img2="{img2}"></div>
+          <div class="c-loader" ng-show="loading"></div>
+          <div ng-hide="loading" ng-if="img1 && img2" compare img1="{img1}" img2="{img2}"></div>
         </section>
       </div>
       <div class="columns large-2 right-sidebar" ng-hide="rightSideBarIsHidden">

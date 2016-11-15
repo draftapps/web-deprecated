@@ -13,6 +13,8 @@
       artboardId: $stateParams.artboardId
     };
 
+    $scope.loading = false;
+
     vm.comparisonData = {};
     vm.project = {};
 
