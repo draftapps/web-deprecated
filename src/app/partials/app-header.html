@@ -15,7 +15,7 @@
       </div>
     </div>
     <div class="columns large-2 text-right">
-      <a ng-click="openModal('app/partials/new-project.html')" class="add-new"><span>Add</span></a>
+      <a ng-show="page !== 'projects'" ng-click="openModal('app/partials/new-project.html')" class="add-new"><span>Add</span></a>
       <dropdown-toggle class="c-header__element" pane-align="right" close-on-click="true">
         <toggle>
           <button class="notifier">
