@@ -1,7 +1,7 @@
 <div class="page-head">
   <div class="row expanded align-middle">
-    <div class="columns large-2"></div>
-    <div class="columns large-8">
+    <div class="columns large-4"></div>
+    <div class="columns large-4">
       <ul class="page-head__menu menu align-center">
         <li ng-class="page === 'dashboard' ? 'active' : ''"><a href="/projects/{{project.id}}/{{project.slug}}/{{project.artboardId}}/inspect"><svg tooltip-placement="bottom" tooltip="Inspect"><use xlink:href="#shape-dashboard" /></svg></a></li>
         <li ng-class="page === 'notes' ? 'active' : ''"><a href="/projects/{{project.id}}/{{project.slug}}/{{project.artboardId}}/notes"><svg tooltip-placement="bottom" tooltip="Notes"><use xlink:href="#shape-notes" /></svg></a></li>
@@ -11,7 +11,7 @@
         <li ng-class="page === 'comparison' ? 'active' : ''"><a href="/projects/{{project.id}}/{{project.slug}}/{{project.artboardId}}/comparison"><svg tooltip-placement="bottom" tooltip="Comparison Mode"><use xlink:href="#shape-comparison" /></svg></a></li>
       </ul>
     </div>
-    <div class="columns large-2 text-right">
+    <div class="columns large-4 text-right">
       <ul class="actions menu align-right">
         <li>
           <dropdown-toggle pane-align="center" close-on-click="true">

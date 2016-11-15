@@ -5,9 +5,10 @@
 .notes-modal {
   position: absolute;
   height: 80%;
-  width: 33.3%;
+  width: 335px;
   top: 10%;
-  left: 33.3%;
+  left: 50%;
+  margin-left: -167px;
   z-index: 11;
   background-color: $white;
   border-radius: 3px;

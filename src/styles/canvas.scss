@@ -610,12 +610,17 @@ main {
   z-index: 666;
 }
 .canvas {
+  & > .screen__row:nth-child(2) {
+    position: relative;
+    z-index: 20;
+  }
   .note-wrapper {
     box-sizing: border-box;
     .notes-modal {
       width: 100%;
       position: static;
       height: 500px;
+      margin-left: 0;
       &__body {
         padding: 0;
       }
