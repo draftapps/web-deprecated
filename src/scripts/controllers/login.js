@@ -3,12 +3,14 @@
     .module("app")
     .controller("LoginCtrl", LoginCtrl);
 
-  function LoginCtrl($auth, $state) {
+  function LoginCtrl($auth, $state, $scope) {
     const vm = this;
 
     vm.form = {};
     vm.submit = submit;
     vm.github = github;
+
+    $scope.passwordField = 'password';
 
     function auth(method, ...params) {
       start();

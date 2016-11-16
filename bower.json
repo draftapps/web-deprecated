@@ -20,7 +20,8 @@
     "angular-highlightjs": "^0.6.2",
     "highlightjs-line-numbers.js": "^1.1.0",
     "twentytwenty": "https://github.com/zurb/twentytwenty.git",
-    "angular-cache": "^4.6.0"
+    "angular-cache": "^4.6.0",
+    "angular-capitalize": "^2.0.4"
   },
   "overrides": {
     "foundation-sites": {

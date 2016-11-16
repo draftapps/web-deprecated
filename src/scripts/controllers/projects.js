@@ -10,6 +10,8 @@
     $scope.menu = "projects-activities";
     $scope.page = "projects";
     $scope.projectData = {};
+    // Setting iOS as the default platform to display its resolution
+    $scope.projectData.platform = 'ios'
     $scope.filter = "all";
     /**
      * [$scope.setFilter - Filter the list of the projects]
@@ -38,6 +40,7 @@
         .success(function(data) {
           data.created_at = new Date();
           $scope.projectData = {};
+          $scope.projectData.platform = 'ios'
           $scope.projectsVm.projects.push(data);
           $scope.modal.close();
         })

@@ -1,93 +1,69 @@
-<div class="u-space-v-xxlarge"></div>
+<div class="svg-icons"><ng-include src="'images/svg-defs.svg'"></ng-include></div>
+<div class="sign">
+  <img class="full-logo" src="images/draft-logo.svg" alt="Draft">
+  <div class="row align-center">
+    <div class="column large-6 medium-7">
+      <div class="row collapse u-space-v">
+        <div class="column">
+          <div class="card card--shadowed text-center">
+            <div class="card__body">
+              <div class="row collapse align-center is-collapse-child">
+                <div class="column medium-10">
+                  <h4 class="u-space-v">Welcome back!<br />log in to your Draft account</h4>
 
-<div class="row align-center">
-  <div class="column large-6 medium-7">
-    <div class="row collapse u-space-v">
-      <div class="column">
-        <div class="card card--shadowed text-center">
-          <div class="card__body">
-            <img src="images/logo.png" alt="" class="card__logo">
-            <div class="row collapse align-center is-collapse-child">
-              <div class="column medium-10">
-                <h4 class="u-space-v">
-                  Welcome back,<br>log in to your account
-                </h4>
+                  <div class="callout alert text-left" ng-if="loginVM.errors.length">
+                    <ul>
+                      <li ng-repeat="error in loginVM.errors">{{error}}</li>
+                    </ul>
+                  </div>
 
-                <div
-                  class="callout alert text-left"
-                  ng-if="loginVM.errors.length"
-                >
-                  <ul>
-                    <li ng-repeat="error in loginVM.errors">{{error}}</li>
-                  </ul>
+                  <form ng-submit="loginVM.submit()">
+                    <fieldset ng-disabled="loginVM.loading">
+                      <div class="form-group">
+                        <label for="email">Email Address</label>
+                        <input autofocus type="email" id="email" placeholder="Email" ng-model="loginVM.form.email" required>
+                      </div>
+
+                      <div class="form-group">
+                        <label for="password">Password</label>
+                        <input type="{{passwordField}}" placeholder="Password" id="password" ng-model="loginVM.form.password" required>
+                        <a class="show-password" ng-mousedown="passwordField = 'text'" ng-mouseup="passwordField = 'password'">
+                          <svg><use xlink:href="#shape-eye" /></svg>
+                        </a>
+                      </div>
+
+                      <div class="form-group text-left">
+                        <input class="custom-checkbox" id="remember" type="checkbox" ng-model="loginVM.form.remember_me">
+                        <label for="remember">Remember Me</label>
+                      </div>
+
+                      <button type="submit" class="button expanded success" ng-disabled="loginVM.loading">Sign in</button>
+
+                      <div class="c-seperator">
+                        <span class="c-seperator__text">Or</span>
+                      </div>
+
+                      <div class="row social-login">
+                        <div class="columns medium-6">
+                          <button type="button" class="button expanded primary" ng-click="" ng-disabled="loginVM.loading"><svg><use xlink:href="#shape-dropbox" /></svg></button>
+                        </div>
+                        <div class="columns medium-6">
+                          <button type="button" class="button expanded button--grey" ng-click="loginVM.github()" ng-disabled="loginVM.loading"><svg><use xlink:href="#shape-github" /></svg></button>
+                        </div>
+                      </div>
+                    </fieldset>
+                  </form>
+                  <div class="row foot-options">
+                    <div class="column">
+                      <a ui-sref="forgot-password" class="link--underline-hover float-left">Forgot your password?</a>
+                      <p class="float-right u-space-v-undo">Don't have an account? <a class="link link--underline" ui-sref="register">Get started</a></p>
+                    </div>
+                  </div>
                 </div>
-
-                <form ng-submit="loginVM.submit()">
-                  <fieldset ng-disabled="loginVM.loading">
-                    <div class="form-group">
-                      <input
-                        autofocus
-                        type="email"
-                        placeholder="Email",
-                        ng-model="loginVM.form.email"
-                        required
-                      >
-                    </div>
-
-                    <div class="form-group">
-                      <input
-                        type="password"
-                        placeholder="Password"
-                        ng-model="loginVM.form.password"
-                        required
-                      >
-                    </div>
-
-                    <div class="form-group text-left">
-                      <input
-                        id="rememberMe"
-                        type="checkbox"
-                        ng-model="loginVM.form.remember_me"
-                      >
-                      <label for="rememberMe">Remember Me</label>
-                    </div>
-
-                    <button
-                      type="submit"
-                      class="button expanded success"
-                      ng-disabled="loginVM.loading"
-                    >Sign in</button>
-
-                    <div class="c-seperator">
-                      <span class="c-seperator__text">Or</span>
-                    </div>
-
-                    <button
-                      type="button"
-                      class="button expanded primary"
-                      ng-click="loginVM.github()"
-                      ng-disabled="loginVM.loading"
-                    >
-                      <i class="ion-social-octocat"></i> Sign in via Github
-                    </button>
-                  </fieldset>
-                </form>
               </div>
             </div>
           </div>
         </div>
-      </div>
-    </div>
-    <div class="row collapse u-text-small u-space-v-large">
-      <div class="column">
-        <a
-          ui-sref="forgot-password"
-          class="link--underline-hover float-left"
-        >Forgot your password?</a>
-
-        <p class="float-right u-space-v-undo">
-          Don't have an account? <a class="link link--underline" ui-sref="register">Get started</a>
-        </p>
       </div>
     </div>
   </div>

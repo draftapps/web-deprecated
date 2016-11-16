@@ -22,15 +22,48 @@
         </div>
       </div>
       <p class="label-like">Resolution</p>
-      <div class="row">
+      <div class="row" ng-show="projectData.platform === 'ios'">
         <div class="column small-4">
-          <input ng-model="projectData.scale" id="resolution-1" name="resolution" value="1" type="radio" class="custom-radio" checked="checked"><label for="resolution-1">1x</label>
+          <input ng-model="projectData.scale" id="resolution-1" name="resolution" value="@1x" type="radio" class="custom-radio" checked="checked"><label for="resolution-1">@1x</label>
         </div>
         <div class="column small-4">
-          <input ng-model="projectData.scale" id="resolution-2" name="resolution" value="2" type="radio" class="custom-radio"><label for="resolution-2">2x</label>
+          <input ng-model="projectData.scale" id="resolution-2" name="resolution" value="@2x" type="radio" class="custom-radio"><label for="resolution-2">@2x</label>
         </div>
         <div class="column small-4">
-          <input ng-model="projectData.scale" id="resolution-3" name="resolution" value="3" type="radio" class="custom-radio"><label for="resolution-3">3x</label>
+          <input ng-model="projectData.scale" id="resolution-3" name="resolution" value="@3x" type="radio" class="custom-radio"><label for="resolution-3">@3x</label>
+        </div>
+      </div>
+      <div class="row" ng-show="projectData.platform === 'android'">
+        <div class="column small-4">
+          <input ng-model="projectData.scale" id="resolution-4" name="resolution" value="ldpi" type="radio" class="custom-radio" checked="checked"><label for="resolution-4">ldpi</label>
+        </div>
+        <div class="column small-4">
+          <input ng-model="projectData.scale" id="resolution-5" name="resolution" value="mdpi" type="radio" class="custom-radio"><label for="resolution-5">mdpi</label>
+        </div>
+        <div class="column small-4">
+          <input ng-model="projectData.scale" id="resolution-6" name="resolution" value="hdpi" type="radio" class="custom-radio"><label for="resolution-6">hdpi</label>
+        </div>
+      </div>
+      <div class="row" ng-show="projectData.platform === 'android'">
+        <div class="column small-4">
+          <input ng-model="projectData.scale" id="resolution-7" name="resolution" value="xhdpi" type="radio" class="custom-radio" checked="checked"><label for="resolution-7">xhdpi</label>
+        </div>
+        <div class="column small-4">
+          <input ng-model="projectData.scale" id="resolution-8" name="resolution" value="xxhdpi" type="radio" class="custom-radio"><label for="resolution-8">xxhdpi</label>
+        </div>
+        <div class="column small-4">
+          <input ng-model="projectData.scale" id="resolution-9" name="resolution" value="xxxhdpi" type="radio" class="custom-radio"><label for="resolution-9">xxxhdpi</label>
+        </div>
+      </div>
+      <div class="row" ng-show="projectData.platform === 'web'">
+        <div class="column small-4">
+          <input ng-model="projectData.scale" id="resolution-10" name="resolution" value="1x" type="radio" class="custom-radio" checked="checked"><label for="resolution-10">1x</label>
+        </div>
+        <div class="column small-4">
+          <input ng-model="projectData.scale" id="resolution-11" name="resolution" value="2x" type="radio" class="custom-radio"><label for="resolution-11">2x</label>
+        </div>
+        <div class="column small-4">
+          <input ng-model="projectData.scale" id="resolution-12" name="resolution" value="3x" type="radio" class="custom-radio"><label for="resolution-12">3x</label>
         </div>
       </div>
       <button class="button button--success button--block" type="submit">Create Project</button>
