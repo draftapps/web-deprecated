@@ -355,14 +355,14 @@
                       <div class="row" ng-repeat="fill in dashboardVm.selectedArtBoard.selectedLayer.fills">
                         <div class="columns small-12">
                           <div class="color" data-name="{{dashboardVm.project.colorNames[fill.color['argbHex']]}}" ng-if="fill.fillType === 'color'">
-                            <label><em><i style="background-color:{{fill.color['cssRgba']}};"></i></em></label>
+                            <label><em><i class="color-sample" style="background-color:{{fill.color['cssRgba']}};"></i></em></label>
                             <input
                               data-color="todo"
                               type="text" value="{{fill.color[dashboardVm.project.configs.colorFormat]}}" readonly="readonly">
                           </div>
                           <div class="gradient" ng-if="fill.fillType !== 'color'">
                             <div ng-repeat="color in fill.gradient.colorStops" class="color" data-name="{{dashboardVm.project.colorNames[color['argbHex']]}}">
-                              <label><em><i style="background-color:{{color.color['cssRgba']}};"></i></em></label>
+                              <label><em><i class="color-sample" style="background-color:{{color.color['cssRgba']}};"></i></em></label>
                               <input
                                 data-color="todo"
                                 type="text" value="{{color.color[dashboardVm.project.configs.colorFormat]}}" readonly="readonly">
@@ -402,7 +402,7 @@
                             data-name="{{dashboardVm.project.colorNames[dashboardVm.selectedArtBoard.selectedLayer['argbHex']]}}">
                             <label>
                               <em>
-                                <i style="background-color:{{dashboardVm.selectedArtBoard.selectedLayer['cssRgba']}};"></i>
+                                <i class="color-sample" style="background-color:{{dashboardVm.selectedArtBoard.selectedLayer['cssRgba']}};"></i>
                               </em>
                             </label>
                             <input
@@ -507,7 +507,7 @@
                   </section>
 
                   <section ng-if="dashboardVm.selectedArtBoard.selectedLayer.exportable.length">
-                    <h3>EXPORTABLES</h3>
+                    <h3>Exportables</h3>
                     <div class="context">
                       <ul class="exportable">
                         <li ng-repeat="exportable in dashboardVm.selectedArtBoard.selectedLayer.exportable">
