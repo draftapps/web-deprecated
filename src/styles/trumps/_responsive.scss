@@ -32,6 +32,11 @@
   }
 }
 @media (max-width: 767px) {
+  .more-features .medium-up-3 .column,
+  .more-features .large-up-3 .column {
+    margin-left: auto;
+    margin-right: auto;
+  }
   .c-overlay {
     display: block;
     position: fixed;
@@ -131,6 +136,8 @@
       display: block;
     }
   }
+  .more-features.integration-details .medium-up-3 .column,
+  .more-features.integration-details .medium-up-3 .columns,
   .more-features.integration-details .large-up-3 .column,
   .more-features.integration-details .large-up-3 .columns {
     margin-bottom: 30px;
