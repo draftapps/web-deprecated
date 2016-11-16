@@ -610,9 +610,13 @@ main {
   z-index: 666;
 }
 .canvas {
+  & > .screen__row:nth-child(1) {
+    position: relative;
+    z-index: 12;
+  }
   & > .screen__row:nth-child(2) {
     position: relative;
-    z-index: 20;
+    z-index: 11;
   }
   .note-wrapper {
     box-sizing: border-box;
