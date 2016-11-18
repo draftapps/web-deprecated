@@ -24,10 +24,16 @@
 
     function setOriginalScreen(index) {
       $scope.img1 = vm.comparisonData.pages[index].implementedImagePath;
+      if($scope.img2 === undefined) {
+        $scope.img2 = vm.comparisonData.pages[index].implementedImagePath;
+      }
       $(window).trigger("resize");
     }
     function setImplementedScreen(index) {
       $scope.img2 = vm.comparisonData.pages[index].implementedImagePath;
+      if($scope.img1 === undefined) {
+        $scope.img1 = vm.comparisonData.pages[index].implementedImagePath;
+      }
       $(window).trigger("resize");
     }
   }
