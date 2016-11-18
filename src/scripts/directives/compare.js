@@ -21,6 +21,11 @@
   function compare(scope, element, attrs) {
     scope.$parent.$parent.loading = true;
     $(element).find('img').on('load', function() {
+      if($(element).parent().is('.twentytwenty-wrapper')) {
+        $(element).unwrap();
+        $(element).find('.twentytwenty-overlay').remove();
+        $(element).find('.twentytwenty-handle').remove();
+      }
       element.twentytwenty();
       scope.$apply(function(){
         scope.$parent.$parent.loading = false;
