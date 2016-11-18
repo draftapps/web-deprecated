@@ -11,15 +11,35 @@
     $scope.page = "projects";
     $scope.projectData = {};
     // Setting iOS as the default platform to display its resolution
-    $scope.projectData.platform = 'ios'
-    $scope.filter = "all";
+    $scope.projectData.platform = "ios"
+
+    $scope.statuses = ["New", "In Progress", "Approved"];
     /**
      * [$scope.setFilter - Filter the list of the projects]
      * @param  {string} filter [The string used for filtering]
      * When done, the dropdown is closed using this.$close();
      */
-    $scope.setFilter = function(filter){
-      $scope.filter = filter;
+    $scope.setFilter = function(filter, filterCategory){
+      switch(filterCategory) {
+        case "status":
+          $scope.statusFilter = filter;
+          $scope.statusFilterText = $scope.statuses[filter];
+          break;
+        case "platform":
+          $scope.platformFilter = filter;
+          switch(filter) {
+            case "ios":
+              $scope.platformFilterText = "iOS";
+              break;
+            case "android":
+              $scope.platformFilterText = "Android";
+              break;
+            case "web":
+              $scope.platformFilterText = "Web";
+              break;
+          }
+          break;
+      }
       this.$close();
     };
     /**
@@ -40,12 +60,12 @@
         .success(function(data) {
           data.created_at = new Date();
           $scope.projectData = {};
-          $scope.projectData.platform = 'ios'
+          $scope.projectData.platform = "ios"
           $scope.projectsVm.projects.push(data);
           $scope.modal.close();
         })
         .error(function(data) {
-          // console.log('Error: ' + data);
+          // console.log("Error: " + data);
         });
     };
 
@@ -74,7 +94,7 @@
           $scope.modal.close();
         })
         .error(function(data) {
-          // console.log('Error: ' + data);
+          // console.log("Error: " + data);
         });
     };
 
