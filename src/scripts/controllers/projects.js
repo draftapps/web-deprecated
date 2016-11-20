@@ -90,7 +90,6 @@
           var projects = $scope.projectsVm.projects;
           var index = _.findIndex(projects, function(project) { return project.id === id; });
           projects.splice(index, 1);
-          console.log($scope.modal);
           $scope.modal.close();
         })
         .error(function(data) {
