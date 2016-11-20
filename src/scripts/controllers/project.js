@@ -121,7 +121,7 @@
       }
       var params = {
         templateUrl: template,
-        controller: ["$scope", function($scope, $modalInstance) {
+        controller: ["$scope", "$modalInstance", function($scope, $modalInstance) {
           $scope.reposition = function() {
             $modalInstance.reposition();
           };
