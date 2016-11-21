@@ -121,7 +121,7 @@
       }
       var params = {
         templateUrl: template,
-        controller: function($scope, $modalInstance) {
+        controller: ["$scope", "$modalInstance", function($scope, $modalInstance) {
           $scope.reposition = function() {
             $modalInstance.reposition();
           };
@@ -131,7 +131,7 @@
           $scope.cancel = function() {
             $modalInstance.dismiss("cancel");
           };
-        },
+        }],
         scope: $scope
       };
       var modalInstance = $modal.open(params);
