@@ -25,7 +25,7 @@ RUN bower install --allow-root --force-latest
 
 ADD . /home/webapp
 
-RUN gulp serve:dist
+RUN gulp build
 
 COPY nginx.conf /etc/nginx/nginx.conf
 
