@@ -1,4 +1,4 @@
-<div class="page-head">
+<div class="page-head" ng-controller="CanvasHeaderCtrl">
   <div class="row expanded align-middle">
     <div class="columns large-4"></div>
     <div class="columns large-4">
@@ -16,14 +16,14 @@
         <li>
           <dropdown-toggle pane-align="center" close-on-click="true">
             <toggle>
-              <button class="actions__button" tooltip-placement="bottom" tooltip="Set status"><span class="actions__status actions__status--warning"></span></button>
+              <button class="actions__button" tooltip-placement="bottom" tooltip="Set status"><span class="actions__status actions__status--{{artboardStatusesClasses[currentArtboard.status]}}"></span></button>
             </toggle>
             <pane>
               <ul class="dd-menu">
                 <li class="title">Status</span></li>
-                <li><a href="#" class="status-danger">New</a></li>
-                <li><a href="#" class="status-warning">In Progress</a></li>
-                <li><a href="#" class="status-success">Approved</a></li>
+                <li><a href="#" ng-click="setArtBoardStatus(0, $event)" class="status-danger">New</a></li>
+                <li><a href="#" ng-click="setArtBoardStatus(1, $event)" class="status-warning">In Progress</a></li>
+                <li><a href="#" ng-click="setArtBoardStatus(2, $event)" class="status-success">Approved</a></li>
               </ul>
             </pane>
           </dropdown-toggle>
