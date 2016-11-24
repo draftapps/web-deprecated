@@ -41,6 +41,16 @@
           id: currentId,
           slug: currentSlug
         };
+      },
+      getProjectActivities: function(id) {
+        return $q(function(resolve, reject) {
+          $http.get(ENV.api + "projects/" + id + "/activities")
+          .success(function(data) {
+            resolve(data);
+          }).error(function(data) {
+            reject("Server didn't send the correct data");
+          });
+        });
       }
     };
   }
