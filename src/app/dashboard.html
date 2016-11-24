@@ -33,7 +33,7 @@
             <div class="scroller">
               <ul class="items-spaced">
                 <li ng-repeat="artBoard in dashboardVm.project.artboards" ng-show="activetab === 'boards'">
-                  <a ng-click="dashboardVm.project.selectArtBoard(artBoard)">
+                  <a href="/projects/{{project.id}}/{{project.slug}}/{{artBoard.id}}/inspect" ng-click="dashboardVm.project.selectArtBoard(artBoard)">
                     <img
                       class="thumbnail"
                       ng-class="{'is-active': artBoard.objectId === dashboardVm.selectedArtBoard.obj.objectId}"
