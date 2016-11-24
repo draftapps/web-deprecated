@@ -7,8 +7,9 @@
     const vm = this;
 
     vm.form = {};
-    vm.submit = submit;
-    vm.github = github;
+    vm.submit  = submit;
+    vm.github  = github;
+    vm.dropbox = dropbox;
 
     $scope.passwordField = 'password';
 
@@ -27,6 +28,10 @@
 
     function github() {
       auth("authenticate", "github");
+    }
+
+    function dropbox() {
+      auth("authenticate", "dropbox");
     }
 
     function start() {
