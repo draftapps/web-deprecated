@@ -33,7 +33,6 @@
         // console.log("Server did not send project data!");
       });
 
-
     $scope.setArtBoardStatus = function(status, $event) {
       var toggler = $($event.currentTarget).closest('dropdown-toggle')
       toggler.addClass('disabled');
@@ -45,6 +44,28 @@
       $http.post(ENV.api + "projects/" + $stateParams.id + "/artboards/" + $stateParams.artboardId + "/set_status", artboard)
         .success(function(data) {
           toggler.removeClass('disabled');
+          $scope.currentArtboard = data;
+          projectCache.remove(projectCacheKey);
+        })
+        .error(function(data) {
+          toggler.removeClass('disabled');
+          // console.log("Error: " + data);
+        });
+    };
+
+    $scope.setArtBoardDueDate = function(date) {
+      console.log(date);
+      var toggler = $('dropdown-toggle.calendar-menu')
+      toggler.addClass('disabled');
+      //this.$close();
+      var artboard = {
+        "artboard_id" : $stateParams.artboardId,
+        "due_date": date
+      };
+      $http.post(ENV.api + "projects/" + $stateParams.id + "/artboards/" + $stateParams.artboardId + "/set_due_date", artboard)
+        .success(function(data) {
+          toggler.removeClass('disabled');
+          // TODO: Pickadate throw an error here because it cannot handle the data
           $scope.currentArtboard = data;
           projectCache.remove(projectCacheKey);
         })
