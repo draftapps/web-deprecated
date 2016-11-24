@@ -49,6 +49,24 @@
       );
     };
 
+    $scope.inviteMembers = function() {
+      console.log($scope.members);
+      var project = {
+        "project" : {
+          "slug": $stateParams.slug,
+          "firstname": $scope.members[0].firstname,
+          "lastname": $scope.members[0].lastname,
+          "email": $scope.members[0].email,
+        }
+      };
+      projectService.addTeamMember($stateParams.id, project)
+      .then(function(data) {
+        console.log(data);
+      }, function() {
+        // console.log('Server did not send project data!');
+      });
+    }
+
     $scope.selectArtBoard = function(artboard) {
       // FIXME: this state won't be persisted if page is refreshed!
       projectService.setProjectInfo(
@@ -133,6 +151,9 @@
           };
         }],
         scope: $scope
+      };
+      if(template === "app/partials/invite-member.html") {
+        params.size = "large";
       };
       var modalInstance = $modal.open(params);
       $scope.modal = modalInstance;

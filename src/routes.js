@@ -102,20 +102,17 @@ function routesConfig($stateProvider, $urlRouterProvider, $locationProvider, ENV
       },
       parent: "authed"
     })
+    .state("activity", {
+      url: "/projects/:id/activities",
+      templateUrl: "app/activity.html",
+      controller: "ActivityCtrl",
+      controllerAs: "activityVm",
+      parent: "authed"
+    })
     .state("project", {
       url: "/projects/:id/:slug",
       templateUrl: "app/project.html",
       controller: "ProjectCtrl",
-      parent: "authed"
-    })
-    .state("activity", {
-      url: "/activity",
-      templateUrl: "app/activity.html",
-      controller: "ActivityCtrl",
-      controllerAs: "activityVm",
-      resolve: {
-        activity: $http => $http.get("activity.json")
-      },
       parent: "authed"
     })
     .state("notifications", {
