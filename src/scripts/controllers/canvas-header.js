@@ -20,6 +20,7 @@
     projectCache = CacheFactory.get('projectCache');
 
     $scope.artboardStatusesClasses = ['danger', 'warning', 'success'];
+    $scope.newTag = "";
 
     var info = {
       id: $stateParams.id,
@@ -54,7 +55,6 @@
     };
 
     $scope.setArtBoardDueDate = function(date) {
-      console.log(date);
       var toggler = $('dropdown-toggle.calendar-menu')
       toggler.addClass('disabled');
       //this.$close();
@@ -74,5 +74,28 @@
           // console.log("Error: " + data);
         });
     };
+
+    $scope.addTag = function(tag) {
+      var toggler = $('dropdown-toggle.tags-dropdown')
+      toggler.addClass('disabled');
+      //this.$close();
+      var tagDetails = {
+        "taggable_id" : parseInt($stateParams.artboardId),
+        "taggable_type": "artboard",
+        "tag": {
+          "name": tag
+        }
+      };
+      $http.post(ENV.api + "tags", tagDetails)
+        .success(function(data) {
+          console.log(data);
+          toggler.removeClass('disabled');
+          projectCache.remove(projectCacheKey);
+        })
+        .error(function(data) {
+          toggler.removeClass('disabled');
+          // console.log("Error: " + data);
+        });
+    }
   }
 })();
