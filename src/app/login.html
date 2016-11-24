@@ -45,7 +45,7 @@
 
                       <div class="row social-login">
                         <div class="columns medium-6">
-                          <button type="button" class="button expanded primary" ng-click="" ng-disabled="loginVM.loading"><svg><use xlink:href="#shape-dropbox" /></svg></button>
+                          <button type="button" class="button expanded primary" ng-click="loginVM.dropbox()" ng-disabled="loginVM.loading"><svg><use xlink:href="#shape-dropbox" /></svg></button>
                         </div>
                         <div class="columns medium-6">
                           <button type="button" class="button expanded button--grey" ng-click="loginVM.github()" ng-disabled="loginVM.loading"><svg><use xlink:href="#shape-github" /></svg></button>
@@ -58,32 +58,8 @@
                       <a ui-sref="forgot-password" class="link--underline-hover float-left">Forgot your password?</a>
                       <p class="float-right u-space-v-undo">Don't have an account? <a class="link link--underline" ui-sref="register">Get started</a></p>
                     </div>
-<<<<<<< 856f1c9b2ce7a3952b969a61921b99c122ba5bf9
                   </div>
                 </div>
-=======
-
-                    <button
-                      type="button"
-                      class="button expanded primary"
-                      ng-click="loginVM.github()"
-                      ng-disabled="loginVM.loading"
-                    >
-                      <i class="ion-social-octocat"></i> Sign in via Github
-                    </button>
-
-                    <br>
-                    <button
-                       type="button"
-                       class="button expanded primary"
-                       ng-click="loginVM.dropbox()"
-                       ng-disabled="loginVM.loading"
-                       >
-                       <i class="ion-social-dropbox"></i> Sign in via Dropbox
-                    </button>
-                  </fieldset>
-                </form>
->>>>>>> Add Dropbox authentication
               </div>
             </div>
           </div>
