@@ -15,7 +15,7 @@
 
   function authProviderConfig($authProvider) {
     $authProvider.configure({
-      apiUrl: "http://api2.draftapp.io",
+      apiUrl: "https://api2.draftapp.io",
       authProviderPaths: {
         github: "/auth/github",
         dropbox: "/auth/dropbox"

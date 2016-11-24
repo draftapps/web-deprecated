@@ -1,12 +1,12 @@
 {
   "local": {
     "ENV": {
-      "api": "http://api2.draftapp.io/"
+      "api": "https://api2.draftapp.io/"
     }
   },
   "production": {
     "ENV": {
-      "api": "http://api2.draftapp.io/"
+      "api": "https://api2.draftapp.io/"
     }
   }
 }
