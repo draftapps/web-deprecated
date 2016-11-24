@@ -1748,9 +1748,13 @@ main {
       }
     }
     .dropdown-pane {
-      &::after,
       &::before {
-        left: 90%;
+        left: auto;
+        right: 8px;
+      }
+      &::after {
+        left: auto;
+        right: 11px;
       }
     }
   }
