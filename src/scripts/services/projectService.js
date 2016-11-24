@@ -51,6 +51,17 @@
             reject("Server didn't send the correct data");
           });
         });
+      },
+      addTeamMember: function(id, members) {
+        return $q(function(resolve, reject) {
+          $http.post(ENV.api + "projects/" + id + "/add_team_member", members)
+          .success(function(data) {
+            console.log(data);
+            resolve(data);
+          }).error(function(data) {
+            reject("Server didn't send the correct data");
+          });
+        });
       }
     };
   }

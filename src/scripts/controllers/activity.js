@@ -11,7 +11,6 @@
 
     projectService.getProjectActivities($stateParams.id)
       .then(function(activities) {
-        console.log(activities);
         vm.activity = activities;
       }, function() {
         // console.log('Server did not send project data!');
