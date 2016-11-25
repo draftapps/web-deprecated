@@ -22,11 +22,11 @@
             <div class="scroller">
               <ul class="items-spaced">
                 <li ng-repeat="artBoard in notesVm.project.artboards">
-                  <a ng-click="notesVm.project.selectArtBoard(artBoard)">
+                  <a href="/projects/{{project.id}}/{{project.slug}}/{{artBoard.id}}/notes" ng-click="notesVm.project.selectArtBoard(artBoard)">
                     <img
                       class="thumbnail"
-                      ng-class="{'is-active': artBoard.objectID === notesVm.selectedArtBoard.obj.objectID}"
-                      ng-src="{{::(artBoard.imageBase64 || artBoard.imagePath)}}">
+                      ng-class="{'is-active': artBoard.id === notesVm.selectedArtBoard.obj.id}"
+                      ng-src="{{::(artBoard.imageBase64 || artBoard.thumbImage)}}">
                     <span class="u-text-small" ng-bind="::artBoard.name"></span>
                   </a>
                 </li>
@@ -64,7 +64,7 @@
           'canvas--padded-right': rightSideBarIsHidden}"
       >
         <div class="nav-widget nav-widget--prev">
-          <a href="#"><svg><use xlink:href="#shape-prev" /></svg></a>
+          <button ng-disabled="artboardIndex === 0" ng-click="notesVm.project.selectArtBoard(notesVm.project.artboards[artboardIndex - 1])"><svg><use xlink:href="#shape-prev" /></svg></button>
         </div>
         <div class="zoom-widget">
 
@@ -85,7 +85,7 @@
           </button>
         </div>
         <div class="nav-widget nav-widget--next">
-          <a href="#"><svg><use xlink:href="#shape-next" /></svg></a>
+          <button ng-disabled="(artboardIndex + 1) === notesVm.project.artboards.length" ng-click="notesVm.project.selectArtBoard(notesVm.project.artboards[artboardIndex + 1])"><svg><use xlink:href="#shape-next" /></svg></button>
         </div>
 
         <div

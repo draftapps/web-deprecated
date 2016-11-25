@@ -3,7 +3,7 @@
     .module("app")
     .controller("NotesCtrl", NotesCtrl);
 
-  function NotesCtrl($scope, $stateParams, project) {
+  function NotesCtrl($scope, $stateParams, $location, projectService) {
     var vm = this;
 
     $scope.page = "notes";
@@ -14,112 +14,128 @@
       artboardId: $stateParams.artboardId
     };
 
-    vm.project = project.data;
-    vm.project.selectArtBoard = selectArtBoard;
-    vm.project.unitsData = [
-      {
-        units: [
+    var info = {
+      id: $stateParams.id,
+      slug: $stateParams.slug
+    }
+    projectService.getProject(info.id, info.slug)
+        .then(function(p) {
+          info.currentArtboard = _.findWhere(p.artboards, {id: parseInt($stateParams.artboardId)})
+          initialize(p, info);
+        }, function() {
+          // console.log("Server did not send project data!");
+        });
+
+      function initialize(project, info) {
+        vm.project = project;
+        vm.project.selectArtBoard = selectArtBoard;
+        vm.project.unitsData = [
           {
-            name: "Standard",
-            unit: "px",
-            scale: 1
+            units: [
+              {
+                name: "Standard",
+                unit: "px",
+                scale: 1
+              }
+            ]
+          },
+          {
+            name: "iOS Devices",
+            units: [
+              {
+                name: "Points @1x",
+                unit: "pt",
+                scale: 1
+              },
+              {
+                name: "Retina @2x",
+                unit: "pt",
+                scale: 2
+              },
+              {
+                name: "Retina HD @3x",
+                unit: "pt",
+                scale: 3
+              }
+            ]
+          },
+          {
+            name: "Android Devices",
+            units: [
+              {
+                name: "LDPI @0.75x",
+                unit: "dp/sp",
+                scale: .75
+              },
+              {
+                name: "MDPI @1x",
+                unit: "dp/sp",
+                scale: 1
+              },
+              {
+                name: "HDPI @1.5x",
+                unit: "dp/sp",
+                scale: 1.5
+              },
+              {
+                name: "XHDPI @2x",
+                unit: "dp/sp",
+                scale: 2
+              },
+              {
+                name: "XXHDPI @3x",
+                unit: "dp/sp",
+                scale: 3
+              },
+              {
+                name: "XXXHDPI @4x",
+                unit: "dp/sp",
+                scale: 4
+              }
+            ]
+          },
+          {
+            name: "Web View",
+            units: [
+              {
+                name: "CSS Rem 12px",
+                unit: "rem",
+                scale: 12
+              },
+              {
+                name: "CSS Rem 14px",
+                unit: "rem",
+                scale: 14
+              }
+            ]
           }
-        ]
-      },
-      {
-        name: "iOS Devices",
-        units: [
-          {
-            name: "Points @1x",
-            unit: "pt",
-            scale: 1
+        ];
+        vm.project.selectedResolution = vm.project.unitsData[0].units[0].name;
+        vm.selectedArtBoard = {
+          obj: null,
+          currentopenedNote: {
+            obj: null,
+            isOpened: false,
+            newMessgae: ""
           },
-          {
-            name: "Retina @2x",
-            unit: "pt",
-            scale: 2
-          },
-          {
-            name: "Retina HD @3x",
-            unit: "pt",
-            scale: 3
-          }
-        ]
-      },
-      {
-        name: "Android Devices",
-        units: [
-          {
-            name: "LDPI @0.75x",
-            unit: "dp/sp",
-            scale: .75
-          },
-          {
-            name: "MDPI @1x",
-            unit: "dp/sp",
-            scale: 1
-          },
-          {
-            name: "HDPI @1.5x",
-            unit: "dp/sp",
-            scale: 1.5
-          },
-          {
-            name: "XHDPI @2x",
-            unit: "dp/sp",
-            scale: 2
-          },
-          {
-            name: "XXHDPI @3x",
-            unit: "dp/sp",
-            scale: 3
-          },
-          {
-            name: "XXXHDPI @4x",
-            unit: "dp/sp",
-            scale: 4
-          }
-        ]
-      },
-      {
-        name: "Web View",
-        units: [
-          {
-            name: "CSS Rem 12px",
-            unit: "rem",
-            scale: 12
-          },
-          {
-            name: "CSS Rem 14px",
-            unit: "rem",
-            scale: 14
-          }
-        ]
+          openNote: openNote,
+          createNote: createNote,
+          closeNote: closeNote,
+          addNewReply: addNewReply,
+          screenStyle: getBoardScreenStyle,
+          screenParentStyle: getBoardParentScreenStyle,
+          notesStyle: getNotesStyle,
+          zoomIn: zoomIn,
+          zoomOut: zoomOut,
+          zoomSize: zoomSize
+        };
+        activate();
+        selectArtBoard(info.currentArtboard);
+        $scope.artboardIndex = _.findIndex(project.artboards, { id: info.currentArtboard.id});
       }
-    ];
-    vm.project.selectedResolution = vm.project.unitsData[0].units[0].name;
-    vm.selectedArtBoard = {
-      obj: null,
-      currentopenedNote: {
-        obj: null,
-        isOpened: false,
-        newMessgae: ""
-      },
-      openNote: openNote,
-      createNote: createNote,
-      closeNote: closeNote,
-      addNewReply: addNewReply,
-      screenStyle: getBoardScreenStyle,
-      screenParentStyle: getBoardParentScreenStyle,
-      notesStyle: getNotesStyle,
-      zoomIn: zoomIn,
-      zoomOut: zoomOut,
-      zoomSize: zoomSize
-    };
-    activate();
 
     function activate() {
-      vm.selectedArtBoard.obj = vm.project.artboards[0];
+      vm.selectedArtBoard.obj = _.findWhere(vm.project.artboards, {id: parseInt($stateParams.artboardId)});
       vm.project.configs = getConfigs(
         vm.project.scale, vm.project.unit, vm.project.colorFormat, vm.selectedArtBoard.obj.height
       );
@@ -227,7 +243,7 @@
         "width": zoomSize(vm.selectedArtBoard.obj.width),
         "height": zoomSize(vm.selectedArtBoard.obj.height),
         "background": "#FFF url(" +
-        (vm.selectedArtBoard.obj.imageBase64 || vm.selectedArtBoard.obj.imagePath) +
+        (vm.selectedArtBoard.obj.imageBase64 || vm.selectedArtBoard.obj.fullImage) +
         ") no-repeat",
         "backgroundSize": zoomSize(vm.selectedArtBoard.obj.width) + "px " + zoomSize(vm.selectedArtBoard.obj.height) + "px"
       };
@@ -258,6 +274,7 @@
 
     function selectArtBoard(artBoard) {
       vm.selectedArtBoard.obj = artBoard;
+      $location.path("/projects/" + $stateParams.id + "/" + $stateParams.slug + "/"+ artBoard.id + "/notes");
     }
   }
 })();

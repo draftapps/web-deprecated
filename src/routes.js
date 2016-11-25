@@ -167,11 +167,6 @@ function routesConfig($stateProvider, $urlRouterProvider, $locationProvider, ENV
       templateUrl: "app/notes.html",
       controller: "NotesCtrl",
       controllerAs: "notesVm",
-      resolve: {
-        project: $http => {
-          return $http.get("project.json");
-        }
-      },
       parent: "authed"
     })
     .state("ui-components", {
