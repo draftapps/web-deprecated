@@ -3,7 +3,7 @@
     .module("app")
     .controller("DasboardCtrl", DasboardCtrl);
 
-  function DasboardCtrl($scope, $http, $timeout, $stateParams, projectService) {
+  function DasboardCtrl($scope, $http, $timeout, $stateParams, $location, projectService) {
     var vm = this;
 
     $scope.page = "dashboard";
@@ -182,6 +182,7 @@
 
       activate();
       selectArtBoard(info.currentArtboard);
+      $scope.artboardIndex = _.findIndex(project.artboards, { id: info.currentArtboard.id});
     }
 
     function activate() {
@@ -631,6 +632,7 @@
     function selectArtBoard(artBoard) {
       unselectLayer();
       vm.selectedArtBoard.obj = artBoard;
+      $location.path("/projects/" + $stateParams.id + "/" + $stateParams.slug + "/"+ artBoard.id + "/inspect");
     }
 
     function selectSlice(layer) {

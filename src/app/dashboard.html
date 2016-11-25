@@ -33,7 +33,7 @@
             <div class="scroller">
               <ul class="items-spaced">
                 <li ng-repeat="artBoard in dashboardVm.project.artboards" ng-show="activetab === 'boards'">
-                  <a ng-click="dashboardVm.project.selectArtBoard(artBoard)">
+                  <a href="/projects/{{project.id}}/{{project.slug}}/{{artBoard.id}}/inspect" ng-click="dashboardVm.project.selectArtBoard(artBoard)">
                     <img
                       class="thumbnail"
                       ng-class="{'is-active': artBoard.objectId === dashboardVm.selectedArtBoard.obj.objectId}"
@@ -85,7 +85,7 @@
           'canvas--padded-right': rightSideBarIsHidden}"
       >
         <div class="nav-widget nav-widget--prev">
-          <a ng-click="dashboardVm.project.selectArtBoard()"><svg><use xlink:href="#shape-prev" /></svg></a>
+          <button ng-disabled="artboardIndex === 0" ng-click="dashboardVm.project.selectArtBoard(dashboardVm.project.artboards[artboardIndex - 1])"><svg><use xlink:href="#shape-prev" /></svg></button>
         </div>
         <div class="zoom-widget" ng-click="$event.stopPropagation()">
           <button
@@ -105,7 +105,7 @@
           </button>
         </div>
         <div class="nav-widget nav-widget--next">
-          <a ng-click="dashboardVm.project.selectArtBoard()"><svg><use xlink:href="#shape-next" /></svg></a>
+          <button ng-disabled="(artboardIndex + 1) === dashboardVm.project.artboards.length" ng-click="dashboardVm.project.selectArtBoard(dashboardVm.project.artboards[artboardIndex + 1])"><svg><use xlink:href="#shape-next" /></svg></button>
         </div>
         <section
           class="canvas-screen-viewer scroller"
