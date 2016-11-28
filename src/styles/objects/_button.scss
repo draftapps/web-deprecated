@@ -30,20 +30,23 @@
   }
   &--grey {
     background: #444444;
-    &:hover {
+    &:hover,
+    &:focus {
       background: #000;
     }
   }
   &--yellow {
     background: #ffda44;
-    &:hover {
+    &:hover,
+    &:focus {
       background: #f0ca30;
     }
   }
   &--light {
     background: #e4e7ef;
     color: rgb(58, 64, 91);
-    &:hover {
+    &:hover,
+    &:focus {
       background: #e4e7ef;
       color: rgb(58, 64, 91);
     }
