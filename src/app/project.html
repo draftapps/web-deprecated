@@ -42,11 +42,6 @@
       </div>
       <div class="column medium-9">
         <div class="row projects-list" ng-show="project.artboards.length !== 0">
-          <div class="column medium-4">
-            <div class="card upload-artboard">
-              <p>Upload design files or drag’n’drop here</p>
-            </div>
-          </div>
           <div class="column medium-4" ng-repeat="artboard in project.artboards">
             <div class="card">
               <div class="card__header"><a href="/projects/{{project.id}}/{{project.slug}}/{{artboard.id}}/inspect"><span>View</span></a><img ng-src="{{::(artboard.thumbImage || 'images/project-thumb.png')}}" /></div>
