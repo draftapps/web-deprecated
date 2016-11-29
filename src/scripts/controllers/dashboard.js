@@ -19,6 +19,7 @@
     var vm = this;
     $scope.page = "dashboard";
     $scope.styleguideColors = [];
+    $scope.styleguideActiveColors = [];
 
     $scope.project = {
       id: $stateParams.id,
@@ -196,6 +197,11 @@
       activate();
       selectArtBoard(info.currentArtboard);
       $scope.artboardIndex = _.findIndex(project.artboards, { id: info.currentArtboard.id});
+      if (project.styleguide.colors.length > 0) {
+        $scope.styleguideActiveColors = project.styleguide.colors.map(function(obj){
+          return obj.name;
+        });
+      }
     }
 
     function activate() {
@@ -668,21 +674,17 @@
       if (slice) slice.hasSlice = false;
     }
 
-    function updateStyleguide(index) {
+    function updateStyleguide(all) {
       var colors = [];
-      if(index === 'all') {
+      if(all) {
         colors = vm.project.colors;
       } else {
-        var idx = $scope.styleguideColors.indexOf(index);
-        // is currently selected
-        if (idx > -1) {
-          $scope.styleguideColors.splice(idx, 1);
-        } else {
-          $scope.styleguideColors.push(index);
-        }
-        for (var i = 0; i < $scope.styleguideColors.length; i++) {
-          colors.push(vm.project.colors[$scope.styleguideColors[i]])
-        }
+        // TODO: Refactor this part to not use jQuery
+        $('input[name="styleguideColors[]"]').each(function() {
+          if($(this).is(':checked')) {
+            colors.push(_.findWhere(vm.project.colors, {name: $(this).val()}))
+          }
+        })
       }
       var styleguide = {
         "project_id" : vm.project.id,
@@ -697,7 +699,6 @@
         .error(function(data) {
           // console.log("Error: " + data);
         });
-
     }
   }
 })();

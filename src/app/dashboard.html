@@ -237,7 +237,7 @@
               <ul class="items-spaced color-wrapper" ng-show="rightActivetab === 'colors'">
                 <li ng-repeat="color in dashboardVm.project.colors">
                   <div class="color-selector">
-                    <input name="styleguideColors[]" ng-click="dashboardVm.project.updateStyleguide($index)" value="{{$index}}" type="checkbox" id="color-{{$index}}">
+                    <input name="styleguideColors[]" ng-checked="styleguideActiveColors.indexOf(color.name) !== -1" ng-click="dashboardVm.project.updateStyleguide()" value="{{color.name}}" type="checkbox" id="color-{{$index}}">
                     <label for="color-{{$index}}"></label>
                   </div>
                   <span class="color-sample" style="background-color: {{color.color['cssRgba']}}"></span>
@@ -245,7 +245,7 @@
                   <span class="color-code">{{color.color['colorHex']}}</span>
                 </li>
                 <li class="add-style-guide">
-                  <a ng-click="dashboardVm.project.updateStyleguide('all')">+ Add Style Guide</a>
+                  <a ng-click="dashboardVm.project.updateStyleguide(true)">+ Add Style Guide</a>
                 </li>
               </ul>
               <aside class="inspector" ng-show="rightActivetab === 'slices'">
