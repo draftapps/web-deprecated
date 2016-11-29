@@ -678,7 +678,7 @@
         "id" : vm.project.styleguideId,
         "colors": colors
       };
-      $http.post(ENV.api + "projects/" + $stateParams.id + "/styleguides/" + $stateParams.artboardId + "/add_color", styleguide)
+      $http.post(ENV.api + "projects/" + $stateParams.id + "/styleguides/" + vm.project.styleguideId + "/add_color", styleguide)
         .success(function(data) {
           console.log(data);
         })
