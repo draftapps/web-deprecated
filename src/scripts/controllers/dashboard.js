@@ -3,10 +3,23 @@
     .module("app")
     .controller("DasboardCtrl", DasboardCtrl);
 
-  function DasboardCtrl($scope, $http, $timeout, $stateParams, $location, projectService) {
-    var vm = this;
+  function DasboardCtrl($scope, $http, $timeout, $stateParams, $location, projectService, CacheFactory, ENV) {
 
+    var projectCache,
+        projectCacheKey = ENV.api + 'projects/' + $stateParams.id + '?project[slug]=' + $stateParams.slug;
+
+    if (!CacheFactory.get('projectCache')) {
+      CacheFactory.createCache('projectCache', {
+        deleteOnExpire: 'aggressive',
+        recycleFreq: 60000
+      });
+    }
+    projectCache = CacheFactory.get('projectCache');
+
+    var vm = this;
     $scope.page = "dashboard";
+    $scope.styleguideColors = [];
+    $scope.styleguideActiveColors = [];
 
     $scope.project = {
       id: $stateParams.id,
@@ -33,6 +46,7 @@
       vm.project.selectSlice = selectSlice;
       vm.project.sliceMouseEnter = sliceMouseEnter;
       vm.project.sliceMouseLeave = sliceMouseLeave;
+      vm.project.updateStyleguide = updateStyleguide;
       vm.project.unitsData = [
         {
           units: [
@@ -183,6 +197,11 @@
       activate();
       selectArtBoard(info.currentArtboard);
       $scope.artboardIndex = _.findIndex(project.artboards, { id: info.currentArtboard.id});
+      if (project.styleguide.colors.length > 0) {
+        $scope.styleguideActiveColors = project.styleguide.colors.map(function(obj){
+          return obj.name;
+        });
+      }
     }
 
     function activate() {
@@ -655,5 +674,31 @@
       if (slice) slice.hasSlice = false;
     }
 
+    function updateStyleguide(all) {
+      var colors = [];
+      if(all) {
+        colors = vm.project.colors;
+      } else {
+        // TODO: Refactor this part to not use jQuery
+        $('input[name="styleguideColors[]"]').each(function() {
+          if($(this).is(':checked')) {
+            colors.push(_.findWhere(vm.project.colors, {name: $(this).val()}))
+          }
+        })
+      }
+      var styleguide = {
+        "project_id" : vm.project.id,
+        "id" : vm.project.styleguide.id,
+        "colors": colors
+      };
+      $http.post(ENV.api + "projects/" + $stateParams.id + "/styleguides/" + vm.project.styleguide.id + "/add_color", styleguide)
+        .success(function(data) {
+          projectCache.remove(projectCacheKey);
+          // console.log(data);
+        })
+        .error(function(data) {
+          // console.log("Error: " + data);
+        });
+    }
   }
 })();

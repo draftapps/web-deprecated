@@ -1587,6 +1587,38 @@ main {
     margin-right: 15px;
     box-shadow: 0 0 1px #ccc;
   }
+  .color-selector {
+    float: right;
+    position: relative;
+    input {
+      opacity: 0;
+      position: absolute;
+      &:checked {
+        & + label {
+          background: #c3c7d7;
+          &::before {
+            content: "\f122";
+          }
+        }
+      }
+    }
+    label {
+      width: 26px;
+      height: 26px;
+      background: #42d79e;
+      margin: 0;
+      border-radius: 3px;
+      color: #fff;
+      margin-top: 5px;
+      text-align: center;
+      &::before {
+        content: "\f218";
+        display: inline-block;
+        line-height: 26px;
+        font-family: "Ionicons";
+      }
+    }
+  }
   .color-name {
     color: #c0c7da;
   }
