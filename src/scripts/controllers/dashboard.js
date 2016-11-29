@@ -3,11 +3,21 @@
     .module("app")
     .controller("DasboardCtrl", DasboardCtrl);
 
-  function DasboardCtrl($scope, $http, $timeout, $stateParams, $location, ENV, projectService) {
+  function DasboardCtrl($scope, $http, $timeout, $stateParams, $location, projectService, CacheFactory, ENV) {
+
+    var projectCache,
+        projectCacheKey = ENV.api + 'projects/' + $stateParams.id + '?project[slug]=' + $stateParams.slug;
+
+    if (!CacheFactory.get('projectCache')) {
+      CacheFactory.createCache('projectCache', {
+        deleteOnExpire: 'aggressive',
+        recycleFreq: 60000
+      });
+    }
+    projectCache = CacheFactory.get('projectCache');
+
     var vm = this;
-
     $scope.page = "dashboard";
-
     $scope.styleguideColors = [];
 
     $scope.project = {
@@ -681,6 +691,7 @@
       };
       $http.post(ENV.api + "projects/" + $stateParams.id + "/styleguides/" + vm.project.styleguide.id + "/add_color", styleguide)
         .success(function(data) {
+          projectCache.remove(projectCacheKey);
           // console.log(data);
         })
         .error(function(data) {
