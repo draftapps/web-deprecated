@@ -245,7 +245,7 @@
                   <span class="color-code">{{color.color['colorHex']}}</span>
                 </li>
                 <li class="add-style-guide">
-                  <a href="#">+ Add Style Guide</a>
+                  <a ng-click="dashboardVm.project.updateStyleguide('all')">+ Add Style Guide</a>
                 </li>
               </ul>
               <aside class="inspector" ng-show="rightActivetab === 'slices'">

@@ -659,20 +659,21 @@
     }
 
     function updateStyleguide(index) {
-      var idx = $scope.styleguideColors.indexOf(index);
-      // is currently selected
-      if (idx > -1) {
-        $scope.styleguideColors.splice(idx, 1);
-      } else {
-        $scope.styleguideColors.push(index);
-      }
-
       var colors = [];
-
-      for (var i = 0; i < $scope.styleguideColors.length; i++) {
-        colors.push(vm.project.colors[$scope.styleguideColors[i]])
+      if(index === 'all') {
+        colors = vm.project.colors;
+      } else {
+        var idx = $scope.styleguideColors.indexOf(index);
+        // is currently selected
+        if (idx > -1) {
+          $scope.styleguideColors.splice(idx, 1);
+        } else {
+          $scope.styleguideColors.push(index);
+        }
+        for (var i = 0; i < $scope.styleguideColors.length; i++) {
+          colors.push(vm.project.colors[$scope.styleguideColors[i]])
+        }
       }
-
       var styleguide = {
         "project_id" : vm.project.id,
         "id" : vm.project.styleguideId,
@@ -680,10 +681,9 @@
       };
       $http.post(ENV.api + "projects/" + $stateParams.id + "/styleguides/" + vm.project.styleguideId + "/add_color", styleguide)
         .success(function(data) {
-          console.log(data);
+          // console.log(data);
         })
         .error(function(data) {
-          toggler.removeClass('disabled');
           // console.log("Error: " + data);
         });
 
