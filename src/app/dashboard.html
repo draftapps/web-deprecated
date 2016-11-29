@@ -237,7 +237,7 @@
               <ul class="items-spaced color-wrapper" ng-show="rightActivetab === 'colors'">
                 <li ng-repeat="color in dashboardVm.project.colors">
                   <div class="color-selector">
-                    <input type="checkbox" id="color-{{$index}}">
+                    <input name="styleguideColors[]" ng-click="dashboardVm.project.updateStyleguide($index)" value="{{$index}}" type="checkbox" id="color-{{$index}}">
                     <label for="color-{{$index}}"></label>
                   </div>
                   <span class="color-sample" style="background-color: {{color.color['cssRgba']}}"></span>

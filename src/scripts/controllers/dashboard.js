@@ -3,10 +3,12 @@
     .module("app")
     .controller("DasboardCtrl", DasboardCtrl);
 
-  function DasboardCtrl($scope, $http, $timeout, $stateParams, $location, projectService) {
+  function DasboardCtrl($scope, $http, $timeout, $stateParams, $location, ENV, projectService) {
     var vm = this;
 
     $scope.page = "dashboard";
+
+    $scope.styleguideColors = [];
 
     $scope.project = {
       id: $stateParams.id,
@@ -33,6 +35,7 @@
       vm.project.selectSlice = selectSlice;
       vm.project.sliceMouseEnter = sliceMouseEnter;
       vm.project.sliceMouseLeave = sliceMouseLeave;
+      vm.project.updateStyleguide = updateStyleguide;
       vm.project.unitsData = [
         {
           units: [
@@ -655,5 +658,35 @@
       if (slice) slice.hasSlice = false;
     }
 
+    function updateStyleguide(index) {
+      var idx = $scope.styleguideColors.indexOf(index);
+      // is currently selected
+      if (idx > -1) {
+        $scope.styleguideColors.splice(idx, 1);
+      } else {
+        $scope.styleguideColors.push(index);
+      }
+
+      var colors = [];
+
+      for (var i = 0; i < $scope.styleguideColors.length; i++) {
+        colors.push(vm.project.colors[$scope.styleguideColors[i]])
+      }
+
+      var styleguide = {
+        "project_id" : vm.project.id,
+        "id" : vm.project.styleguideId,
+        "colors": colors
+      };
+      $http.post(ENV.api + "projects/" + $stateParams.id + "/styleguides/" + $stateParams.artboardId + "/add_color", styleguide)
+        .success(function(data) {
+          console.log(data);
+        })
+        .error(function(data) {
+          toggler.removeClass('disabled');
+          // console.log("Error: " + data);
+        });
+
+    }
   }
 })();
