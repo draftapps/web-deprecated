@@ -676,10 +676,10 @@
       }
       var styleguide = {
         "project_id" : vm.project.id,
-        "id" : vm.project.styleguideId,
+        "id" : vm.project.styleguide.id,
         "colors": colors
       };
-      $http.post(ENV.api + "projects/" + $stateParams.id + "/styleguides/" + vm.project.styleguideId + "/add_color", styleguide)
+      $http.post(ENV.api + "projects/" + $stateParams.id + "/styleguides/" + vm.project.styleguide.id + "/add_color", styleguide)
         .success(function(data) {
           // console.log(data);
         })
