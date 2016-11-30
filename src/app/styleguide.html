@@ -14,66 +14,28 @@
           'large-12': rightSideBarIsHidden,
           'canvas--padded-right': rightSideBarIsHidden}"
       >
+        <div ng-show="styleguideVm.project === undefined">
+          <ng-include src="'app/partials/app-loader.html'"></ng-include>
+        </div>
         <section class="canvas-screen-viewer scroller">
-          <div class="style-guide-wrapper">
+          <div ng-hide="styleguideVm.project === undefined" class="style-guide-wrapper">
             <h1 class="category-title">Colour Palette</h1>
             <div class="row">
-              <div class="columns small-3">
-                <div class="style-guide-color-block" style="background-color: rgb(104, 118, 140);"></div>
+              <div ng-repeat="color in styleguideVm.project.styleguide.colors" class="columns small-3">
+                <div class="style-guide-color-block" style="background-color: {{color.color.cssRgba}}"></div>
                 <dl class="color-details">
                   <dt>HEX</dt>
-                  <dd>00aeef</dd>
+                  <dd>{{color.color.colorHex}}</dd>
                   <dt>RGB</dt>
-                  <dd>104, 118, 140</dd>
-                  <dt>CMYK</dt>
-                  <dd>64%, 49%, 32%, 6%</dd>
+                  <dd>({{color.color.r}}, {{color.color.g}}, {{color.color.b}})</dd>
                   <dt>CSS</dt>
-                  <dd>$profile-bar</dd>
-                </dl>
-              </div>
-              <div class="columns small-3">
-                <div class="style-guide-color-block" style="background-color: rgb(104, 118, 140);"></div>
-                <dl class="color-details">
-                  <dt>HEX</dt>
-                  <dd>00aeef</dd>
-                  <dt>RGB</dt>
-                  <dd>104, 118, 140</dd>
-                  <dt>CMYK</dt>
-                  <dd>64%, 49%, 32%, 6%</dd>
-                  <dt>CSS</dt>
-                  <dd>$profile-bar</dd>
-                </dl>
-              </div>
-              <div class="columns small-3">
-                <div class="style-guide-color-block" style="background-color: rgb(104, 118, 140);"></div>
-                <dl class="color-details">
-                  <dt>HEX</dt>
-                  <dd>00aeef</dd>
-                  <dt>RGB</dt>
-                  <dd>104, 118, 140</dd>
-                  <dt>CMYK</dt>
-                  <dd>64%, 49%, 32%, 6%</dd>
-                  <dt>CSS</dt>
-                  <dd>$profile-bar</dd>
-                </dl>
-              </div>
-              <div class="columns small-3">
-                <div class="style-guide-color-block" style="background-color: rgb(104, 118, 140);"></div>
-                <dl class="color-details">
-                  <dt>HEX</dt>
-                  <dd>00aeef</dd>
-                  <dt>RGB</dt>
-                  <dd>104, 118, 140</dd>
-                  <dt>CMYK</dt>
-                  <dd>64%, 49%, 32%, 6%</dd>
-                  <dt>CSS</dt>
-                  <dd>$profile-bar</dd>
+                  <dd>{{color.name}}</dd>
                 </dl>
               </div>
             </div>
           </div>
           <hr>
-          <div class="style-guide-wrapper">
+          <div ng-hide="styleguideVm.project === undefined" class="style-guide-wrapper">
             <h1>Fonts</h1>
             <div class="row">
               <div class="columns small-4">
