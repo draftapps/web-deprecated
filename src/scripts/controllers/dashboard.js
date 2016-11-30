@@ -678,13 +678,16 @@
       var colors = [];
       if(all) {
         colors = vm.project.colors;
+        $('input[name="styleguideColors[]"]').each(function() {
+          $(this).prop('checked', true);
+        });
       } else {
         // TODO: Refactor this part to not use jQuery
         $('input[name="styleguideColors[]"]').each(function() {
           if($(this).is(':checked')) {
             colors.push(_.findWhere(vm.project.colors, {name: $(this).val()}))
           }
-        })
+        });
       }
       var styleguide = {
         "project_id" : vm.project.id,
