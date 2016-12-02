@@ -3,7 +3,7 @@
     .module("app")
     .controller("CreateProjectCtrl", CreateProjectCtrl);
 
-  function CreateProjectCtrl($auth, $state, $scope, $http, ENV) {
+  function CreateProjectCtrl($auth, $state, $scope, $http, projectService, ENV) {
     const vm = this;
 
     vm.form = {};
@@ -18,7 +18,7 @@
       };
       $http.post(ENV.api + "projects", project)
         .success(function(data) {
-          success();
+          success(data);
         })
         .error(function(data) {
           // console.log('Error: ' + data);
@@ -34,7 +34,9 @@
       vm.loading = false;
     }
 
-    function success() {
+    function success(project) {
+      console.log(project);
+      projectService.setProjectInfo(project)
       $state.go("invite-members");
     }
 
