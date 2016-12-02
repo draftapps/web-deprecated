@@ -1,0 +1,21 @@
+#toast-container {
+  position: absolute;
+  top: 15px;
+}
+#toast-container.toast-top-center .toast, #toast-container.toast-bottom-center .toast {
+  width: 80%;
+  font-weight: 300;
+  box-shadow: none;
+  opacity: 1;
+}
+.toast-success {
+  background-color: #4be1ab;
+}
+.toast-close-button {
+  font-weight: 300;
+  font-size: 30px;
+  position: absolute;
+  right: 20px;
+  top: 8px;
+  text-shadow: none;
+}

@@ -1,11 +1,12 @@
 (function () {
   angular
     .module("app", [
-      "app.config", "ui.router", "ui.gravatar", "mm.foundation", "ngFileUpload", "slickCarousel", "ng-token-auth", "pickadate", "yaru22.angular-timeago", "hljs", "angular-cache", "ehFilters"
+      "app.config", "ui.router", "ui.gravatar", "mm.foundation", "ngFileUpload", "slickCarousel", "ng-token-auth", "pickadate", "yaru22.angular-timeago", "hljs", "angular-cache", "ehFilters", "toastr"
     ])
     .run(scrollTop)
     .config(authProviderConfig)
-    .config(cashFactorySettings);
+    .config(cashFactorySettings)
+    .config(toastrConfig);
 
   function scrollTop($rootScope, $anchorScroll){
     $rootScope.$on("$locationChangeSuccess", function(){
@@ -20,6 +21,18 @@
         github: "/auth/github",
         dropbox: "/auth/dropbox"
       }
+    });
+  }
+
+  function toastrConfig(toastrConfig) {
+    angular.extend(toastrConfig, {
+      containerId: 'toast-container',
+      newestOnTop: true,
+      positionClass: 'toast-top-center',
+      preventDuplicates: false,
+      preventOpenDuplicates: false,
+      closeButton: true,
+      closeHtml: '<button>&times;</button>',
     });
   }
 

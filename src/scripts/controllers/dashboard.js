@@ -3,7 +3,11 @@
     .module("app")
     .controller("DasboardCtrl", DasboardCtrl);
 
-  function DasboardCtrl($scope, $http, $timeout, $stateParams, $location, projectService, CacheFactory, ENV) {
+  function DasboardCtrl($scope, $http, $timeout, $stateParams, $location, projectService, CacheFactory, toastr, toastrConfig, ENV) {
+
+    angular.extend(toastrConfig, {
+      target: '.canvas-screen-viewer'
+    });
 
     var projectCache,
         projectCacheKey = ENV.api + 'projects/' + $stateParams.id + '?project[slug]=' + $stateParams.slug;
@@ -697,6 +701,7 @@
       $http.post(ENV.api + "projects/" + $stateParams.id + "/styleguides/" + vm.project.styleguide.id + "/add_color", styleguide)
         .success(function(data) {
           projectCache.remove(projectCacheKey);
+          toastr.success('Well Done! Color added successfully to your styleguide');
           // console.log(data);
         })
         .error(function(data) {
