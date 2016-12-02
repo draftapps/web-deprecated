@@ -5,6 +5,8 @@
 
   function ProjectsCtrl($scope, projects, $http, $modal, $location, ENV) {
 
+    $scope.userInfo = $scope.$parent.user;
+
     var vm = this;
     vm.projects = projects.data;
     $scope.menu = "projects-activities";

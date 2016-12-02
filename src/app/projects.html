@@ -92,7 +92,10 @@
             </div>
             <p class="card__alert">Due</p>
             <ul class="card__users">
-              <li ng-repeat="user in project.team.users"><img tooltip-placement="bottom" tooltip="{{user.name}}" alt="{{user.name}}" ng-src="{{::(user.image || 'images/user-avatar.png')}}" /></li>
+              <li ng-repeat="user in project.team.users">
+                <img ng-if="user.image!==null" tooltip-placement="bottom" tooltip="{{user.name}}" alt="{{user.name}}" ng-src="{{::(user.image)}}" />
+                <img ng-if="user.image===null" tooltip-placement="bottom" tooltip="{{user.name}}" alt="{{user.name}}" gravatar-src="user.email" ng-fallback="images/user-avatar.png" />
+              </li>
             </ul>
             <div class="card__images"><svg><use xlink:href="#shape-images" /></svg> {{project.artboards_count}}</div>
           </div>

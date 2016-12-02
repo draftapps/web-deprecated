@@ -31,7 +31,10 @@
       </dropdown-toggle>
       <dropdown-toggle class="c-header__element u-space-h-undo" pane-align="right" close-on-click="true">
         <toggle>
-          <img class="avatar" ng-src="{{::($parent.user.image || 'images/user-avatar.png')}}">
+          <div ng-controller="UserInfoCtrl">
+            <img class="avatar" ng-if="user.image!==null" alt="{{user.name}}" ng-src="{{::(user.image)}}" />
+            <img class="avatar" ng-if="user.image===null" alt="{{user.name}}" gravatar-src="user.email" ng-fallback="images/user-avatar.png" />
+          </div>
         </toggle>
         <pane>
           <ul class="menu vertical">
