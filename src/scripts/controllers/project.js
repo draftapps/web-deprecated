@@ -25,43 +25,49 @@
       slug: $stateParams.slug
     };
 
-    projectService.getProject($stateParams.id, $stateParams.slug)
-      .then(function(project) {
-        $scope.project = project;
-      }, function() {
-        // console.log('Server did not send project data!');
-      });
+    function init() {
+      projectService.getProject($stateParams.id, $stateParams.slug)
+        .then(function(project) {
+          $scope.project = project;
+        }, function() {
+          // console.log('Server did not send project data!');
+        });
+      $scope.members = [
+        {
+          firstname: '',
+          lastname: '',
+          email: '',
+          role: '0'
+        }
+      ];
+    }
 
-    $scope.members = [
-      {
-        email: '',
-        role: ''
-      }
-    ];
+    init();
 
     $scope.addNewMember = function() {
       var newItemNo = $scope.members.length+1;
       $scope.members.push(
         {
+          firstname: '',
+          lastname: '',
           email: '',
-          role: ''
+          role: '0'
         }
       );
     };
 
     $scope.inviteMembers = function() {
-      console.log($scope.members);
       var project = {
         "project" : {
           "slug": $stateParams.slug,
-          "firstname": $scope.members[0].firstname,
-          "lastname": $scope.members[0].lastname,
-          "email": $scope.members[0].email,
+          "users" : $scope.members
         }
       };
       projectService.addTeamMember($stateParams.id, project)
       .then(function(data) {
-        console.log(data);
+        $scope.modal.close();
+        projectCache.remove(projectCacheKey);
+        init();
       }, function() {
         // console.log('Server did not send project data!');
       });
