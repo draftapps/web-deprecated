@@ -3,9 +3,11 @@
     .module("app")
     .controller("ProjectsCtrl", ProjectsCtrl);
 
-  function ProjectsCtrl($scope, projects, $http, $modal, $location, ENV) {
+  function ProjectsCtrl($scope, projects, $http, $modal, $location, toastr, toastrConfig, ENV) {
 
-    $scope.userInfo = $scope.$parent.user;
+    angular.extend(toastrConfig, {
+      target: '#toastr-wrapper'
+    });
 
     var vm = this;
     vm.projects = projects.data;
@@ -60,6 +62,7 @@
       };
       $http.post(ENV.api + "projects", project)
         .success(function(data) {
+          toastr.success('Well done! Project created successfully');
           data.created_at = new Date();
           $scope.projectData = {};
           $scope.projectData.platform = "ios"
@@ -88,6 +91,7 @@
         headers: {"Content-Type": "application/json;charset=utf-8"}
       })
         .success(function(data) {
+          toastr.success('Project deleted successfully');
           $scope.projectData = {};
           var projects = $scope.projectsVm.projects;
           var index = _.findIndex(projects, function(project) { return project.id === id; });
