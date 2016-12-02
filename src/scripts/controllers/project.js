@@ -132,6 +132,22 @@
         });
     };
 
+    $scope.deleteArtboard = function(artboardId) {
+      $http({
+        method: "DELETE",
+        url: ENV.api + "projects/" + $stateParams.id + "/artboards/" + artboardId,
+        headers: {"Content-Type": "application/json;charset=utf-8"}
+      })
+        .success(function(data) {
+          projectCache.remove(projectCacheKey);
+          init();
+          $scope.modal.close();
+        })
+        .error(function(data) {
+          // console.log("Error: " + data);
+        });
+    };
+
     /**
      * [openModal - Open modal window]
      * @param  {string} template [URL of the template partial that will be rendered]
