@@ -28,7 +28,7 @@
             <ul>
               <li ng-repeat="user in project.team.users">
               <img ng-if="user.image!==null" tooltip-placement="bottom" tooltip="{{user.name}}" alt="{{user.name}}" ng-src="{{::(user.image)}}" />
-              <img ng-if="user.image===null" tooltip-placement="bottom" tooltip="{{user.name}}" alt="{{user.name}}" gravatar-src="user.email" ng-src="images/user-avatar.png" />
+              <img ng-if="user.image===null" tooltip-placement="bottom" tooltip="{{user.name}}" alt="{{user.name}}" gravatar-src="user.email" ng-fallback="images/user-avatar.png" />
               </li>
               <li><a ng-click="openModal('app/partials/invite-member.html')" class="add-more"><span>Add more</span></a></li>
             </ul>
