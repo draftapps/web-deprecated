@@ -19,3 +19,15 @@
   top: 8px;
   text-shadow: none;
 }
+#toastr-wrapper {
+  position: relative;
+  #toast-container{
+    position: static;
+  }
+  .toast-top-center .toast,
+  .toast-bottom-center .toast {
+    width: 100%;
+    position: relative;
+    top: 15px;
+  }
+}
