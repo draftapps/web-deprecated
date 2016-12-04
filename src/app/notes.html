@@ -138,7 +138,7 @@
               ng-style="notesVm.selectedArtBoard.screenStyle()"
               ng-click="notesVm.selectedArtBoard.createNote($event)">
               <div id="notes">
-                <div ng-repeat="note in notesVm.selectedArtBoard.obj.notes">
+                <div ng-repeat="note in notesVm.notes">
                   <dropdown-toggle class="note-wrapper" pane-align="center" close-on-click="true">
                     <toggle>
                       <div data-index="{{$index + 1}}" ng-style="notesVm.selectedArtBoard.notesStyle(note)" class="note"></div>
@@ -149,16 +149,17 @@
                           <div class="notes-modal__head">Note {{$index + 1}} <span class="note__actions"><a href="#" tooltip-placement="bottom" tooltip="Resolve">Resolve</a> <a href="#"><svg><use xlink:href="#shape-trash" /></svg></a></span></div>
                           <div class="notes-modal__body">
                             <div class="scroller">
-                              <div class="media-object" ng-repeat="message in note.note">
+                              <div class="media-object">
                                 <div class="media-object-section">
                                   <div>
-                                    <img class="avatar" ng-src="{{message.userImg}}" width="32">
+                                    <img class="avatar" ng-if="note.user.image!==null" alt="{{note.user.name}}" ng-src="{{::(user.image)}}" width="32" />
+                                    <img class="avatar" ng-if="note.user.image===null" alt="{{note.user.name}}" gravatar-src="note.user.email" ng-fallback="images/user-avatar.png" width="32" />
                                   </div>
                                 </div>
                                 <div class="media-object-section main-section">
-                                  <h6 class="u-space-v-undo">{{message.userName}}</h6>
-                                  <p class="created-at"><time-ago from-time='{{ message.date }}'></time-ago></p>
-                                  <p class="note-text">{{message.text}}</p>
+                                  <h6 class="u-space-v-undo">{{note.user.name}}</h6>
+                                  <p class="created-at"><time-ago from-time='{{ note.updated_at }}'></time-ago></p>
+                                  <p class="note-text">{{note.note}}</p>
                                 </div>
                               </div>
                             </div>
@@ -201,22 +202,23 @@
           <div class="sidebar__body">
             <div class="scroller">
               <div class="notes-sidebar">
-                <p class="text-cener" ng-if="!notesVm.selectedArtBoard.obj.notes.length">No notes in this screen</p>
+                <p class="text-cener" ng-if="!notesVm.notes.length">No notes in this screen</p>
                 <accordion close-others="true">
-                  <accordion-group ng-repeat="note in notesVm.selectedArtBoard.obj.notes" is-open="$index === 0">
+                  <accordion-group ng-repeat="note in notesVm.notes" is-open="$index === 0">
                     <accordion-heading>
                       <p class="note-title">Note {{$index + 1}} <a href="#" tooltip-placement="left" tooltip="Resolve">Resolve</a></p>
                     </accordion-heading>
-                    <div class="media-object" ng-repeat="message in note.note">
+                    <div class="media-object">
                       <div class="media-object-section">
                         <div>
-                          <img class="avatar" ng-src="{{message.userImg}}" width="32">
+                          <img class="avatar" ng-if="note.user.image!==null" alt="{{note.user.name}}" ng-src="{{::(user.image)}}" width="32" />
+                          <img class="avatar" ng-if="note.user.image===null" alt="{{note.user.name}}" gravatar-src="note.user.email" ng-fallback="images/user-avatar.png" width="32" />
                         </div>
                       </div>
                       <div class="media-object-section main-section">
-                        <h6 class="u-space-v-undo">{{message.userName}}</h6>
-                        <p class="created-at"><time-ago from-time='{{ message.date }}'></time-ago></p>
-                        <p class="note-text">{{message.text}}</p>
+                        <h6 class="u-space-v-undo">{{note.user.name}}</h6>
+                        <p class="created-at"><time-ago from-time='{{ note.updated_at }}'></time-ago></p>
+                        <p class="note-text">{{note.note}}</p>
                       </div>
                     </div>
                     <div class="reply-to-note">

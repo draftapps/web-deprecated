@@ -3,7 +3,7 @@
     .module("app")
     .controller("NotesCtrl", NotesCtrl);
 
-  function NotesCtrl($scope, $stateParams, $location, projectService) {
+  function NotesCtrl($scope, $stateParams, $location, projectService, notesService) {
     var vm = this;
 
     $scope.page = "notes";
@@ -139,6 +139,15 @@
       vm.project.configs = getConfigs(
         vm.project.scale, vm.project.unit, vm.project.colorFormat, vm.selectedArtBoard.obj.height
       );
+      notesService.getNotes($stateParams.id, $stateParams.artboardId)
+        .then(function(p) {
+          vm.notes = p;
+          for (var i = 0; i < vm.notes.length; i++) {
+            vm.notes[i].user = _.findWhere(vm.project.team.users, {id: vm.notes[i].user_id});
+          }
+        }, function() {
+          // console.log("Server did not send project data!");
+        });
     }
 
     function openNote(note, $index) {
