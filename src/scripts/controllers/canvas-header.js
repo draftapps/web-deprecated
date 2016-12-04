@@ -3,7 +3,11 @@
     .module("app")
     .controller("CanvasHeaderCtrl", CanvasHeaderCtrl);
 
-  function CanvasHeaderCtrl($scope, $http, $stateParams, ENV, CacheFactory, projectService) {
+  function CanvasHeaderCtrl($scope, $http, $stateParams, ENV, CacheFactory, projectService, toastr, toastrConfig) {
+
+    angular.extend(toastrConfig, {
+      target: '.canvas-screen-viewer'
+    });
 
     $scope.currentArtboard = {};
 
@@ -44,6 +48,7 @@
       };
       $http.post(ENV.api + "projects/" + $stateParams.id + "/artboards/" + $stateParams.artboardId + "/set_status", artboard)
         .success(function(data) {
+          toastr.success('Well Done! Artboard status updated');
           toggler.removeClass('disabled');
           $scope.currentArtboard = data;
           projectCache.remove(projectCacheKey);
@@ -57,7 +62,7 @@
     $scope.setArtBoardDueDate = function(date) {
       var toggler = $('dropdown-toggle.calendar-menu')
       toggler.addClass('disabled');
-      //this.$close();
+      this.$close();
       var artboard = {
         "artboard_id" : $stateParams.artboardId,
         "due_date": date
@@ -66,6 +71,7 @@
         .success(function(data) {
           toggler.removeClass('disabled');
           // TODO: Pickadate throw an error here because it cannot handle the data
+          toastr.success('Well Done! Artboard due date updated');
           $scope.currentArtboard = data;
           projectCache.remove(projectCacheKey);
         })
@@ -88,7 +94,7 @@
       };
       $http.post(ENV.api + "tags", tagDetails)
         .success(function(data) {
-          console.log(data);
+          toastr.success('Well Done! Artboard tags updated');
           toggler.removeClass('disabled');
           projectCache.remove(projectCacheKey);
         })

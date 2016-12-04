@@ -3,7 +3,11 @@
     .module("app")
     .controller("ProjectCtrl", ProjectCtrl);
 
-  function ProjectCtrl($scope, $http, $stateParams, $modal, projectService, CacheFactory, ENV) {
+  function ProjectCtrl($scope, $http, $stateParams, $modal, projectService, CacheFactory, toastr, toastrConfig, ENV) {
+
+    angular.extend(toastrConfig, {
+      target: '#toastr-wrapper'
+    });
 
     var projectCache,
         projectCacheKey = ENV.api + 'projects/' + $stateParams.id + '?project[slug]=' + $stateParams.slug;
@@ -65,6 +69,7 @@
       };
       projectService.addTeamMember($stateParams.id, project)
       .then(function(data) {
+        toastr.success('Invitations sent to your members successfully');
         $scope.modal.close();
         projectCache.remove(projectCacheKey);
         init();
@@ -95,6 +100,7 @@
       };
       $http.post(ENV.api + "projects/" + $stateParams.id + "/set_status", project)
         .success(function(data) {
+          toastr.success('Well done! Status updated successfully');
           $scope.statusUpdating = false;
           $scope.project = data;
           projectCache.remove(projectCacheKey);

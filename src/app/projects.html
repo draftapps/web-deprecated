@@ -4,6 +4,9 @@
     <ng-include src="'app/partials/app-header.html'"></ng-include>
   </div>
   <div class="container" ng-show="projectsVm.projects.length > 0">
+    <div class="row">
+      <div class="columns small-12" id="toastr-wrapper"></div>
+    </div>
     <div class="row head-filters">
       <div class="column medium-9">
         <dropdown-toggle pane-align="left" close-on-click="true">

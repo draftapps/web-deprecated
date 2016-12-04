@@ -313,20 +313,20 @@
   }
   &__collaborators {
     ul {
-      margin: 0;
+      margin: 0 -5px;
       padding: 0;
       list-style: none;
       li {
         vertical-align: top;
         display: inline-block;
+        margin: 0 5px 5px;
         img {
           border-radius: 50%;
           border: 2px solid #b9bed1;
-          width: 39px;
-          height: 39px;
+          width: 38px;
+          height: 38px;
         }
         & + li {
-          margin-left: 10px;
           &:last-child {
             margin-left: 5px;
           }
