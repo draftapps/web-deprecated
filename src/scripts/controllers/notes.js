@@ -3,7 +3,7 @@
     .module("app")
     .controller("NotesCtrl", NotesCtrl);
 
-  function NotesCtrl($scope, $stateParams, $location, projectService, notesService, toastr) {
+  function NotesCtrl($scope, $stateParams, $location, $modal, projectService, notesService, toastr) {
     var vm = this;
 
     $scope.page = "notes";
@@ -121,6 +121,7 @@
         openNote: openNote,
         createNote: createNote,
         closeNote: closeNote,
+        resolveNote: resolveNote,
         addNewReply: addNewReply,
         screenStyle: getBoardScreenStyle,
         screenParentStyle: getBoardParentScreenStyle,
@@ -181,6 +182,17 @@
       };
       vm.selectedArtBoard.currentopenedNote.index = vm.selectedArtBoard.obj.notes.length + 1;
       vm.selectedArtBoard.currentopenedNote.isOpened = true;
+    }
+
+    function resolveNote(id, projectId, artboardId) {
+      notesService.resolveNote(id, projectId, artboardId)
+      .then(function(p) {
+        $scope.modal.close();
+        toastr.success('Well Done! Note resolved successfully');
+        activate();
+      }, function() {
+        // console.log("Server did not send project data!");
+      });
     }
 
     function closeNote() {
@@ -288,5 +300,37 @@
       vm.selectedArtBoard.obj = artBoard;
       $location.path("/projects/" + $stateParams.id + "/" + $stateParams.slug + "/"+ artBoard.id + "/notes");
     }
+
+    $scope.openModal = function(template, parameters, $event) {
+      if(parameters !== undefined) {
+        $scope.projectData = parameters;
+      }
+      if($event !== undefined) {
+        $event.stopPropagation();
+      }
+      var params = {
+        templateUrl: template,
+        controller: ["$scope", "$modalInstance", function($scope, $modalInstance) {
+          $scope.reposition = function() {
+            $modalInstance.reposition();
+          };
+          $scope.ok = function() {
+            $modalInstance.close();
+          };
+          $scope.cancel = function() {
+            $modalInstance.dismiss("cancel");
+          };
+        }],
+        scope: $scope
+      };
+      var modalInstance = $modal.open(params);
+      $scope.modal = modalInstance;
+      modalInstance.result.then(function() {
+      }, function() {
+        // Callback when the modal is dismissed.
+        $scope.projectData = {};
+      });
+    };
+
   }
 })();

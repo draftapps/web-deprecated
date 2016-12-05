@@ -1,0 +1,12 @@
+<section class="modal">
+  <div class="modal-header">
+    <h1>Resolve Note</h1>
+    <button ng-click="cancel()" class="close-button" aria-label="Close reveal" type="button">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <p>Are you sure you want to resolve this note?</p>
+    <div class="text-right modal-cta"><a ng-click="notesVm.selectedArtBoard.resolveNote(projectData.id, projectData.projectId, projectData.artboardId)" class="button button--danger">Yes, resolve</a></div>
+  </div>
+</section>

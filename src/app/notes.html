@@ -146,7 +146,7 @@
                     <pane>
                       <div class="notes-modal">
                         <div class="notes-modal__content">
-                          <div class="notes-modal__head">Note {{$index + 1}} <span class="note__actions"><a href="#" tooltip-placement="bottom" tooltip="Resolve">Resolve</a> <a href="#"><svg><use xlink:href="#shape-trash" /></svg></a></span></div>
+                          <div class="notes-modal__head">Note {{$index + 1}} <span class="note__actions"><a ng-click="openModal('app/partials/resolve-note.html', {id: note.id, projectId: project.id, artboardId: project.artboardId})" tooltip-placement="bottom" tooltip="Resolve">Resolve</a> <a href="#"><svg><use xlink:href="#shape-trash" /></svg></a></span></div>
                           <div class="notes-modal__body">
                             <div class="scroller">
                               <div class="media-object">
@@ -219,7 +219,7 @@
                 <accordion close-others="true">
                   <accordion-group ng-repeat="note in notesVm.notes" is-open="$index === 0">
                     <accordion-heading>
-                      <p class="note-title">Note {{$index + 1}} <a href="#" tooltip-placement="left" tooltip="Resolve">Resolve</a></p>
+                      <p class="note-title">Note {{$index + 1}} <a ng-click="openModal('app/partials/resolve-note.html', {id: note.id, projectId: project.id, artboardId: project.artboardId}, $event)" tooltip-placement="left" tooltip="Resolve">Resolve</a></p>
                     </accordion-heading>
                     <div class="media-object">
                       <div class="media-object-section">

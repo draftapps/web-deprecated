@@ -32,6 +32,20 @@
             reject("Server didn't send the correct data");
           });
         });
+      },
+      resolveNote: function(id, projectId, artboardId) {
+        return $q(function(resolve, reject) {
+          $http({
+            method: "DELETE",
+            url: ENV.api + "projects/" + projectId + "/artboards/" + artboardId + "/notes/" + id,
+            headers: {"Content-Type": "application/json;charset=utf-8"}
+          })
+          .success(function(data) {
+            resolve(data);
+          }).error(function(data) {
+            reject("Server didn't send the correct data");
+          });
+        });
       }
     };
   }
