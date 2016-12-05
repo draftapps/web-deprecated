@@ -33,6 +33,22 @@
           });
         });
       },
+      createReply: function(projectId, artboardId, noteId, note, userId) {
+        var reply = {
+          "artboard_id" : parseInt(artboardId),
+          "note_id": parseInt(artboardId),
+          "user_id": parseInt(userId),
+          "text": note
+        };
+        return $q(function(resolve, reject) {
+          $http.post(ENV.api + "projects/" + projectId + "/artboards/" + artboardId + "/notes/" + noteId + "/note_replies" , reply)
+          .success(function(data) {
+            resolve(data);
+          }).error(function(data) {
+            reject("Server didn't send the correct data");
+          });
+        });
+      },
       resolveNote: function(id, projectId, artboardId) {
         return $q(function(resolve, reject) {
           $http({

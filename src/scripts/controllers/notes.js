@@ -202,26 +202,36 @@
     }
 
     function addNewReply(note, index) {
+      // If new note
       if (note === undefined) {
         if (vm.selectedArtBoard.obj.notes.indexOf(vm.selectedArtBoard.currentopenedNote.obj) === -1) {
           vm.selectedArtBoard.obj.notes.push(vm.selectedArtBoard.currentopenedNote.obj);
         }
         vm.selectedArtBoard.currentopenedNote.obj =
           vm.selectedArtBoard.obj.notes[vm.selectedArtBoard.obj.notes.length - 1];
-      } else {
-        // Set the currentopenedNote to push the message to it
-        openNote(note, index);
-      }
-      var newNote = {
-        rect: vm.selectedArtBoard.currentopenedNote.obj.rect,
-        message: vm.selectedArtBoard.currentopenedNote.newMessage
-      }
-      notesService.createNote($stateParams.id, $stateParams.artboardId, newNote.rect, newNote.message)
+        var newNote = {
+          rect: vm.selectedArtBoard.currentopenedNote.obj.rect,
+          message: vm.selectedArtBoard.currentopenedNote.newMessage
+        }
+        notesService.createNote($stateParams.id, $stateParams.artboardId, newNote.rect, newNote.message)
         .then(function(p) {
           toastr.success('Well Done! Note added successfully');
         }, function() {
           // console.log("Server did not send project data!");
         });
+      } else {
+        // Set the currentopenedNote to push the message to it
+        openNote(note, index);
+        var reply = vm.selectedArtBoard.currentopenedNote.newMessage;
+        var userId = $scope.$parent.user.id;
+        console.log(notesService);
+        notesService.createReply($stateParams.id, $stateParams.artboardId, note.id, reply, userId)
+        .then(function(p) {
+          toastr.success('Well Done! Reply added successfully');
+        }, function() {
+          // console.log("Server did not send project data!");
+        });
+      }
       vm.selectedArtBoard.currentopenedNote.newMessage = "";
     }
 
