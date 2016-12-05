@@ -152,14 +152,27 @@
                               <div class="media-object">
                                 <div class="media-object-section">
                                   <div>
-                                    <img class="avatar" ng-if="note.user.image!==null" alt="{{note.user.name}}" ng-src="{{::(user.image)}}" width="32" />
-                                    <img class="avatar" ng-if="note.user.image===null" alt="{{note.user.name}}" gravatar-src="note.user.email" ng-fallback="images/user-avatar.png" width="32" />
+                                    <img class="avatar" ng-if="note.user_img!==null" alt="{{note.user_name}}" ng-src="{{::(note.user_img)}}" width="32" />
+                                    <img class="avatar" ng-if="note.user_img===null" alt="{{note.user_name}}" gravatar-src="note.user_email" ng-fallback="images/user-avatar.png" width="32" />
                                   </div>
                                 </div>
                                 <div class="media-object-section main-section">
-                                  <h6 class="u-space-v-undo">{{note.user.name}}</h6>
-                                  <p class="created-at"><time-ago from-time='{{ note.updated_at }}'></time-ago></p>
-                                  <p class="note-text">{{note.note}}</p>
+                                  <h6 class="u-space-v-undo">{{note.user_name}}</h6>
+                                  <p class="created-at"><time-ago from-time='{{ note.date }}'></time-ago></p>
+                                  <p class="note-text">{{note.text}}</p>
+                                </div>
+                              </div>
+                              <div class="media-object" ng-repeat="note in note.replies">
+                                <div class="media-object-section">
+                                  <div>
+                                    <img class="avatar" ng-if="note.user_img!==null" alt="{{note.user_name}}" ng-src="{{::(note.user_img)}}" width="32" />
+                                    <img class="avatar" ng-if="note.user_img===null" alt="{{note.user_name}}" gravatar-src="note.user_email" ng-fallback="images/user-avatar.png" width="32" />
+                                  </div>
+                                </div>
+                                <div class="media-object-section main-section">
+                                  <h6 class="u-space-v-undo">{{note.user_name}}</h6>
+                                  <p class="created-at"><time-ago from-time='{{ note.date }}'></time-ago></p>
+                                  <p class="note-text">{{note.text}}</p>
                                 </div>
                               </div>
                             </div>
@@ -211,14 +224,14 @@
                     <div class="media-object">
                       <div class="media-object-section">
                         <div>
-                          <img class="avatar" ng-if="note.user.image!==null" alt="{{note.user.name}}" ng-src="{{::(user.image)}}" width="32" />
-                          <img class="avatar" ng-if="note.user.image===null" alt="{{note.user.name}}" gravatar-src="note.user.email" ng-fallback="images/user-avatar.png" width="32" />
+                          <img class="avatar" ng-if="note.user_img!==null" alt="{{note.user_name}}" ng-src="{{::(note.user_img)}}" width="32" />
+                          <img class="avatar" ng-if="note.user_img===null" alt="{{note.user_name}}" gravatar-src="note.user_email" ng-fallback="images/user-avatar.png" width="32" />
                         </div>
                       </div>
                       <div class="media-object-section main-section">
-                        <h6 class="u-space-v-undo">{{note.user.name}}</h6>
-                        <p class="created-at"><time-ago from-time='{{ note.updated_at }}'></time-ago></p>
-                        <p class="note-text">{{note.note}}</p>
+                        <h6 class="u-space-v-undo">{{note.user_name}}</h6>
+                        <p class="created-at"><time-ago from-time='{{ note.date }}'></time-ago></p>
+                        <p class="note-text">{{note.text}}</p>
                       </div>
                     </div>
                     <div class="reply-to-note">

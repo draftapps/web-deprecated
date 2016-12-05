@@ -15,6 +15,23 @@
             reject("Server didn't send the correct data");
           });
         });
+      },
+      createNote: function(projectId, artboardId, rect, note) {
+        var note = {
+          "artboard_id" : parseInt(artboardId),
+          "note": {
+            "note": note,
+            "rect": rect
+          }
+        };
+        return $q(function(resolve, reject) {
+          $http.post(ENV.api + "projects/" + projectId + "/artboards/" + artboardId + "/notes", note)
+          .success(function(data) {
+            resolve(data);
+          }).error(function(data) {
+            reject("Server didn't send the correct data");
+          });
+        });
       }
     };
   }
