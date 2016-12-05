@@ -3,7 +3,7 @@
     .module("app")
     .controller("NotesCtrl", NotesCtrl);
 
-  function NotesCtrl($scope, $stateParams, $location, projectService, notesService) {
+  function NotesCtrl($scope, $stateParams, $location, projectService, notesService, toastr) {
     var vm = this;
 
     $scope.page = "notes";
@@ -200,13 +200,16 @@
         // Set the currentopenedNote to push the message to it
         openNote(note, index);
       }
-
-      vm.selectedArtBoard.currentopenedNote.obj.note.push({
-        text: vm.selectedArtBoard.currentopenedNote.newMessage,
-        date: new Date(),
-        userName: $scope.$parent.user.name,
-        userImg: "images/demo/avatar.png"
-      });
+      var newNote = {
+        rect: vm.selectedArtBoard.currentopenedNote.obj.rect,
+        message: vm.selectedArtBoard.currentopenedNote.newMessage
+      }
+      notesService.createNote($stateParams.id, $stateParams.artboardId, newNote.rect, newNote.message)
+        .then(function(p) {
+          toastr.success('Well Done! Note added successfully');
+        }, function() {
+          // console.log("Server did not send project data!");
+        });
       vm.selectedArtBoard.currentopenedNote.newMessage = "";
     }
 
