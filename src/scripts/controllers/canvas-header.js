@@ -3,7 +3,7 @@
     .module("app")
     .controller("CanvasHeaderCtrl", CanvasHeaderCtrl);
 
-  function CanvasHeaderCtrl($scope, $http, $stateParams, ENV, CacheFactory, projectService, toastr, toastrConfig) {
+  function CanvasHeaderCtrl($scope, $http, $stateParams, ENV, CacheFactory, projectService, tagsService, toastr, toastrConfig) {
 
     angular.extend(toastrConfig, {
       target: '.canvas-screen-viewer'
@@ -81,7 +81,7 @@
         });
     };
 
-    $scope.addTag = function(tag) {
+    $scope.addTag = function(tag, color) {
       var toggler = $('dropdown-toggle.tags-dropdown')
       toggler.addClass('disabled');
       //this.$close();
@@ -89,19 +89,19 @@
         "taggable_id" : parseInt($stateParams.artboardId),
         "taggable_type": "artboard",
         "tag": {
-          "name": tag
+          "name": tag,
+          "color": color
         }
       };
-      $http.post(ENV.api + "tags", tagDetails)
-        .success(function(data) {
-          toastr.success('Well Done! Artboard tags updated');
-          toggler.removeClass('disabled');
-          projectCache.remove(projectCacheKey);
-        })
-        .error(function(data) {
-          toggler.removeClass('disabled');
-          // console.log("Error: " + data);
-        });
+      tagsService.createTag(tagDetails)
+      .then(function(data) {
+        toastr.success('Well Done! Artboard tags updated');
+        toggler.removeClass('disabled');
+        projectCache.remove(projectCacheKey);
+      }, function() {
+        toggler.removeClass('disabled');
+        // console.log('Server did not send project data!');
+      });
     }
 
     // TODO: Change this to the real endpoint

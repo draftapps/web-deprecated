@@ -1804,7 +1804,7 @@ main {
   .input-wrapper {
     padding: 13px;
     position: relative;
-    &::before {
+    .selected-color {
       content: "";
       display: block;
       position: absolute;
