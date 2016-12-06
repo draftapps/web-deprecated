@@ -35,6 +35,7 @@
     projectService.getProject(info.id, info.slug)
       .then(function(p) {
         $scope.currentArtboard = _.findWhere(p.artboards, {id: parseInt($stateParams.artboardId)});
+        $scope.team = p.team.users;
       }, function() {
         // console.log("Server did not send project data!");
       });
