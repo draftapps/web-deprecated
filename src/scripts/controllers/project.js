@@ -92,7 +92,7 @@
       };
       projectService.removeTeamMember($stateParams.id, project)
       .then(function(data) {
-        toastr.success('Invitations sent to your members successfully');
+        toastr.success('Member removed from your team successfully');
         $scope.modal.close();
         projectCache.remove(projectCacheKey);
         init();
