@@ -41,6 +41,12 @@
         "js/jquery.event.move.js",
         "js/jquery.twentytwenty.js"
       ]
+    },
+    "perfect-scrollbar": {
+      "main": [
+        "css/perfect-scrollbar.css",
+        "js/perfect-scrollbar.jquery.js"
+      ]
     }
   },
   "devDependencies": {
