@@ -64,7 +64,7 @@
                 <li><span class="title">Tags</span></li>
                 <li>
                   <div class="tags">
-                    <a href="#" ng-repeat="tag in currentArtboard.tags" style="background: {{tag.color}}">{{tag.name}}</a>
+                    <a ng-repeat="tag in currentArtboard.tags" style="background: {{tag.color}}">{{tag.name}} <span ng-click="deleteTag(tag.id, $event)">&times;</span></a>
                   </div>
                   <div class="input-wrapper">
                     <div class="selected-color" style="background: {{tagColor}}"></div>
