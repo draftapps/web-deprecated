@@ -142,11 +142,17 @@
       projectService.assignArtboard($stateParams.id, $stateParams.artboardId, member)
       .then(function(p) {
         dropdownMenu.$close();
+        toggler.removeClass('disabled');
         toastr.success('Well Done! Member was assignd to this artboard successfully');
         projectCache.remove(projectCacheKey);
       }, function() {
+        toggler.removeClass('disabled');
         // console.log("Server did not send project data!");
       });
+    }
+
+    $scope.memberInAssignees = function(id) {
+      return _.find($scope.currentArtboard.assignees, {id: id}) !== undefined;
     }
 
     // TODO: Change this to the real endpoint

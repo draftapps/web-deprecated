@@ -48,7 +48,7 @@
             <pane>
               <ul class="dd-menu assign-dd">
                 <li class="title">Assign to</span></li>
-                <li ng-repeat="member in team">
+                <li ng-repeat="member in team" ng-class="{'assignee': memberInAssignees(member.id)}">
                   <a ng-click="assignArtboard(member.id, $event)"><img class="avatar" ng-if="member.image!==null" alt="{{member.name}}" ng-src="{{::(member.image)}}" width="32" /><img class="avatar" ng-if="member.image===null" alt="{{member.name}}" gravatar-src="member.email" ng-fallback="images/user-avatar.png" width="32" />{{member.name || 'Unnamed member'}}</a>
               </ul>
             </pane>
