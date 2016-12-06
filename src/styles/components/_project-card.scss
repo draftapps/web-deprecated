@@ -319,7 +319,7 @@
       li {
         vertical-align: top;
         display: inline-block;
-        margin: 0 5px 5px;
+        margin: 0 4px 4px;
         position: relative;
         cursor: pointer;
         &::before {
@@ -368,6 +368,7 @@
         display: inline-block;
         position: relative;
         overflow: hidden;
+        vertical-align: top;
         &::before,
         &::after {
           position: absolute;
