@@ -1,4 +1,4 @@
-<header class="c-header">
+<header class="c-header" ng-controller="CanvasHeaderCtrl">
   <div class="row expanded align-middle">
     <div class="column large-2">
       <nav ng-show="menu === 'projects-activities'">
@@ -16,7 +16,7 @@
     </div>
     <div class="columns large-2 text-right">
       <a ng-show="page !== 'projects'" ng-click="openModal('app/partials/new-project.html')" class="add-new"><span>Add</span></a>
-      <dropdown-toggle class="c-header__element" pane-align="right" close-on-click="true">
+      <dropdown-toggle class="c-header__element notifications-dropdown-list" pane-align="right" close-on-click="true">
         <toggle>
           <button class="notifier">
             <span class="notifier__detect"></span>
@@ -24,8 +24,27 @@
           </button>
         </toggle>
         <pane>
-          <ul class="menu vertical">
-            <li><a ui-sref="logout"><i class="ion-android-exit"></i> Logout</a></li>
+          <ul class="menu vertical activities-list">
+            <li ng-repeat="activity in notifications">
+              <div class="activity new-activity" ng-if="activity.type === 0">
+                <p><svg class="icon"><use xlink:href="#shape-new" /></use><span>{{activity.user}}</span> created new project <span>{{activity.what}}</span></p>
+              </div>
+              <div class="activity add-activity" ng-if="activity.type === 1">
+                <p><svg class="icon"><use xlink:href="#shape-comment" /></use><span>{{activity.user}}</span> added <span>{{activity.what}}</span> to screen {{activity.where}}</p>
+                <blockquote>
+                  <p>{{activity.message}}</p>
+                </blockquote>
+              </div>
+              <div class="activity forward-activity" ng-if="activity.type === 2">
+                <p><svg class="icon"><use xlink:href="#shape-forward" /></use><span>{{activity.user}}</span> forwarded {{activity.what}} to <span>{{activity.where}}</span></p>
+              </div>
+              <div class="activity delete-activity" ng-if="activity.type === 3">
+                <p><svg class="icon"><use xlink:href="#shape-delete" /></use><span>{{activity.user}}</span> deleted {{activity.what}}</p>
+              </div>
+              <div class="activity resolve-activity" ng-if="activity.type === 4">
+                <p><svg class="icon"><use xlink:href="#shape-resolve" /></use><span>{{activity.user}}</span> resolved note <span>{{activity.what}}</span></p>
+              </div>
+            </li>
           </ul>
         </pane>
       </dropdown-toggle>

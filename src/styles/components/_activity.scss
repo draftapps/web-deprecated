@@ -27,6 +27,23 @@
   }
 }
 .activities-list {
+  &.menu {
+    div {
+      position: relative;
+      &::before {
+        content: "";
+        width: 24px;
+        height: 24px;
+        position: absolute;
+        left: -30px;
+        border-radius: 50%;
+        top: 0;
+      }
+    }
+    .activity .icon {
+      left: -23px;
+    }
+  }
   ul {
     list-style: none;
     padding: 0;
