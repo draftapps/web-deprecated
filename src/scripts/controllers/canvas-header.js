@@ -131,6 +131,24 @@
       });
     }
 
+    $scope.assignArtboard = function(userId, $event) {
+      var toggler = $($event.currentTarget).closest('dropdown-toggle')
+      toggler.addClass('disabled');
+      var dropdownMenu = this;
+      var member = {
+        "artboard_id" : $stateParams.artboardId,
+        "user_id": userId
+      };
+      projectService.assignArtboard($stateParams.id, $stateParams.artboardId, member)
+      .then(function(p) {
+        dropdownMenu.$close();
+        toastr.success('Well Done! Member was assignd to this artboard successfully');
+        projectCache.remove(projectCacheKey);
+      }, function() {
+        // console.log("Server did not send project data!");
+      });
+    }
+
     // TODO: Change this to the real endpoint
     projectService.getProjectActivities($stateParams.id)
     .then(function(activities) {
