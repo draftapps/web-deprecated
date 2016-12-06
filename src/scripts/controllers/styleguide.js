@@ -32,11 +32,13 @@
       slug: $stateParams.slug
     }
     projectService.getProject(info.id, info.slug)
-      .then(function(p) {
-        vm.project = p;
-        hljs.initLineNumbersOnLoad();
-      }, function() {
-        // console.log("Server did not send project data!");
-      });
+    .then(function(p) {
+      vm.project = p;
+      $scope.currentArtboard = _.findWhere(p.artboards, {id: parseInt($stateParams.artboardId)})
+      hljs.initLineNumbersOnLoad();
+    }, function() {
+      // console.log("Server did not send project data!");
+    });
+
   }
 })();
