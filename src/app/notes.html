@@ -165,13 +165,13 @@
                               <div class="media-object" ng-repeat="note in note.replies">
                                 <div class="media-object-section">
                                   <div>
-                                    <img class="avatar" ng-if="note.user_img!==null" alt="{{note.user_name}}" ng-src="{{::(note.user_img)}}" width="32" />
-                                    <img class="avatar" ng-if="note.user_img===null" alt="{{note.user_name}}" gravatar-src="note.user_email" ng-fallback="images/user-avatar.png" width="32" />
+                                    <img class="avatar" ng-if="note.user_image!==null" alt="{{note.user_name}}" ng-src="{{::(note.user_image)}}" width="32" />
+                                    <img class="avatar" ng-if="note.user_image===null" alt="{{note.user_name}}" gravatar-src="note.user_email" ng-fallback="images/user-avatar.png" width="32" />
                                   </div>
                                 </div>
                                 <div class="media-object-section main-section">
                                   <h6 class="u-space-v-undo">{{note.user_name}}</h6>
-                                  <p class="created-at"><time-ago from-time='{{ note.date }}'></time-ago></p>
+                                  <p class="created-at"><time-ago from-time='{{ note.created_at }}'></time-ago></p>
                                   <p class="note-text">{{note.text}}</p>
                                 </div>
                               </div>
@@ -217,7 +217,7 @@
               <div class="notes-sidebar">
                 <p class="text-cener" ng-if="!notesVm.notes.length">No notes in this screen</p>
                 <accordion close-others="true">
-                  <accordion-group ng-repeat="note in notesVm.notes" is-open="$index === 0">
+                  <accordion-group ng-repeat="note in notesVm.notes" is-open="$index === openedNote || $index === 0">
                     <accordion-heading>
                       <p class="note-title">Note {{$index + 1}} <a ng-click="openModal('app/partials/resolve-note.html', {id: note.id, projectId: project.id, artboardId: project.artboardId}, $event)" tooltip-placement="left" tooltip="Resolve">Resolve</a></p>
                     </accordion-heading>
@@ -231,6 +231,19 @@
                       <div class="media-object-section main-section">
                         <h6 class="u-space-v-undo">{{note.user_name}}</h6>
                         <p class="created-at"><time-ago from-time='{{ note.date }}'></time-ago></p>
+                        <p class="note-text">{{note.text}}</p>
+                      </div>
+                    </div>
+                    <div class="media-object" ng-repeat="note in note.replies">
+                      <div class="media-object-section">
+                        <div>
+                          <img class="avatar" ng-if="note.user_image!==null" alt="{{note.user_name}}" ng-src="{{::(note.user_image)}}" width="32" />
+                          <img class="avatar" ng-if="note.user_image===null" alt="{{note.user_name}}" gravatar-src="note.user_email" ng-fallback="images/user-avatar.png" width="32" />
+                        </div>
+                      </div>
+                      <div class="media-object-section main-section">
+                        <h6 class="u-space-v-undo">{{note.user_name}}</h6>
+                        <p class="created-at"><time-ago from-time='{{ note.created_at }}'></time-ago></p>
                         <p class="note-text">{{note.text}}</p>
                       </div>
                     </div>

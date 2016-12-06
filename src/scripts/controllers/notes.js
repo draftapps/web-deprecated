@@ -140,15 +140,16 @@
       vm.project.configs = getConfigs(
         vm.project.scale, vm.project.unit, vm.project.colorFormat, vm.selectedArtBoard.obj.height
       );
+      getNotes();
+    }
+
+    function getNotes() {
       notesService.getNotes($stateParams.id, $stateParams.artboardId)
-        .then(function(p) {
-          vm.notes = p;
-          for (var i = 0; i < vm.notes.length; i++) {
-            vm.notes[i].user = _.findWhere(vm.project.team.users, {id: vm.notes[i].user_id});
-          }
-        }, function() {
-          // console.log("Server did not send project data!");
-        });
+      .then(function(p) {
+        vm.notes = p;
+      }, function() {
+        // console.log("Server did not send project data!");
+      });
     }
 
     function openNote(note, $index) {
@@ -189,7 +190,7 @@
       .then(function(p) {
         $scope.modal.close();
         toastr.success('Well Done! Note resolved successfully');
-        activate();
+        getNotes();
       }, function() {
         // console.log("Server did not send project data!");
       });
@@ -217,6 +218,8 @@
         }
         notesService.createNote($stateParams.id, $stateParams.artboardId, userId, newNote.rect, newNote.message)
         .then(function(p) {
+          getNotes();
+          vm.selectedArtBoard.currentopenedNote.isOpened = false;
           toastr.success('Well Done! Note added successfully');
         }, function() {
           // console.log("Server did not send project data!");
@@ -225,10 +228,12 @@
         // Set the currentopenedNote to push the message to it
         openNote(note, index);
         var reply = vm.selectedArtBoard.currentopenedNote.newMessage;
-        console.log(notesService);
         notesService.createReply($stateParams.id, $stateParams.artboardId, note.id, reply, userId)
         .then(function(p) {
+          getNotes();
           toastr.success('Well Done! Reply added successfully');
+          $scope.openedNote = index;
+          console.log($scope.openedNote);
         }, function() {
           // console.log("Server did not send project data!");
         });
