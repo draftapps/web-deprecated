@@ -3,7 +3,7 @@
     .module("app")
     .controller("ProjectCtrl", ProjectCtrl);
 
-  function ProjectCtrl($scope, $http, $stateParams, $modal, projectService, CacheFactory, toastr, toastrConfig, ENV) {
+  function ProjectCtrl($scope, $http, $stateParams, $modal, projectService, tagsService, CacheFactory, toastr, toastrConfig, ENV) {
 
     angular.extend(toastrConfig, {
       target: '#toastr-wrapper'
@@ -23,6 +23,7 @@
 
     $scope.menu = "projects-activities";
     $scope.status = ["New", "In Progress", "Approved"];
+    $scope.tagColor = "#4f8ff7";
 
     $scope.project = {
       id: $stateParams.id,
@@ -92,7 +93,7 @@
       };
       projectService.removeTeamMember($stateParams.id, project)
       .then(function(data) {
-        toastr.success('Invitations sent to your members successfully');
+        toastr.success('Member removed from your team successfully');
         $scope.modal.close();
         projectCache.remove(projectCacheKey);
         init();
@@ -214,6 +215,55 @@
         $scope.projectData = {};
       });
     };
+
+    $scope.addTag = function(tag, color) {
+      var toggler = $('dropdown-toggle.tags-dropdown')
+      toggler.addClass('disabled');
+      var dropdown = this;
+      var tagDetails = {
+        "taggable_id" : parseInt($stateParams.id),
+        "taggable_type": "Project",
+        "tag": {
+          "name": tag,
+          "color": color
+        }
+      };
+      tagsService.createTag(tagDetails)
+      .then(function(data) {
+        dropdown.$close();
+        toastr.success('Well Done! Project tags updated');
+        projectCache.remove(projectCacheKey);
+        tagsService.getTags($stateParams.id, "Project")
+        .then(function(data) {
+          toggler.removeClass('disabled');
+          $scope.project.tags = data;
+        }, function() {
+          toggler.removeClass('disabled');
+          // console.log('Server did not send project data!');
+        });
+      }, function() {
+        toggler.removeClass('disabled');
+        // console.log('Server did not send project data!');
+      });
+    }
+
+    $scope.deleteTag = function(id, $event) {
+      $($event.currentTarget).closest('a').css('opacity', 0.5);
+      tagsService.deleteTag(id)
+      .then(function(data) {
+        toastr.success('Well Done! Tag removed');
+        projectCache.remove(projectCacheKey);
+        tagsService.getTags($stateParams.id, "Project")
+        .then(function(data) {
+          $scope.project.tags = data;
+        }, function() {
+          // console.log('Server did not send project data!');
+        });
+      }, function() {
+        toggler.removeClass('disabled');
+        // console.log('Server did not send project data!');
+      });
+    }
 
   }
 })();

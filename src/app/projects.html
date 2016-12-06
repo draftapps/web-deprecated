@@ -51,16 +51,13 @@
         </dropdown-toggle>
         <dropdown-toggle pane-align="left" close-on-click="true">
           <toggle>
-            <button class="select">By Tag</button>
+            <button class="select">{{tagFilter || 'By tag'}}</button>
           </toggle>
           <pane>
             <ul class="menu vertical">
               <li class="title">By Tag</li>
-              <li><a href="#">Tag 1</a></li>
-              <li><a href="#">Tag 2</a></li>
-              <li><a href="#">Tag 3</a></li>
-              <li><a href="#">Tag 4</a></li>
-              <li><a href="#">Tag 5</a></li>
+              <li><a ng-click="setFilter(undefined, 'tag')">All</a></li>
+              <li ng-repeat="tag in tags"><a href="#" ng-click="setFilter(tag, 'tag')">{{tag}}</a></li>
             </ul>
           </pane>
         </dropdown-toggle>
@@ -70,7 +67,7 @@
       </div>
     </div>
     <div class="row projects-list">
-      <div class="column medium-3" ng-repeat="project in projectsVm.projects" ng-show="(platformFilter === project.platform || platformFilter === undefined) && (statusFilter === project.status || statusFilter === undefined)">
+      <div class="column medium-3" ng-repeat="project in projectsVm.projects" ng-show="(platformFilter === project.platform || platformFilter === undefined) && (statusFilter === project.status || statusFilter === undefined) && ( tagInProject(tagFilter, project.tags) || tagFilter === undefined)">
         <div class="card">
           <div ng-class="project.thumb === null ? 'no-thumb card__header' : 'card__header'"><a href="/projects/{{project.id}}/{{project.slug}}"><span>View Project</span></a><img ng-src="{{::(project.thumb || 'images/project-thumb.png')}}" alt="{{project.name}}"></div>
           <div class="card__content">
