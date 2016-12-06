@@ -61,6 +61,16 @@
             reject("Server didn't send the correct data");
           });
         });
+      },
+      removeTeamMember: function(id, members) {
+        return $q(function(resolve, reject) {
+          $http.post(ENV.api + "projects/" + id + "/remove_team_member", members)
+          .success(function(data) {
+            resolve(data);
+          }).error(function(data) {
+            reject("Server didn't send the correct data");
+          });
+        });
       }
     };
   }
