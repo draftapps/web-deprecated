@@ -29,9 +29,9 @@
           <div class="project-summary__collaborators">
             <h2>Collaborators</h2>
             <ul>
-              <li ng-repeat="user in project.team.users">
-              <img ng-if="user.image!==null" tooltip-placement="bottom" tooltip="{{user.name}}" alt="{{user.name}}" ng-src="{{::(user.image)}}" />
-              <img ng-if="user.image===null" tooltip-placement="bottom" tooltip="{{user.name}}" alt="{{user.name}}" gravatar-src="user.email" ng-fallback="images/user-avatar.png" />
+              <li ng-repeat="user in project.team.users" ng-click="openModal('app/partials/remove-member.html', {email: user.email, name: user.name})">
+                <img ng-if="user.image!==null" tooltip-placement="bottom" tooltip="Remove {{user.name}}" alt="{{user.name}}" ng-src="{{::(user.image)}}" />
+                <img ng-if="user.image===null" tooltip-placement="bottom" tooltip="Remove {{user.name}}" alt="{{user.name}}" gravatar-src="user.email" ng-fallback="images/user-avatar.png" />
               </li>
               <li><a ng-click="openModal('app/partials/invite-member.html')" class="add-more"><span>Add more</span></a></li>
             </ul>

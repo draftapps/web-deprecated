@@ -78,6 +78,29 @@
       });
     }
 
+    $scope.removeMember = function(email) {
+      if($scope.$parent.user.email === email) {
+        $scope.modal.close();
+        toastr.error('You cannot remove yourself from the project');
+        return;
+      }
+      var project = {
+        "project" : {
+          "slug": $stateParams.slug,
+          "email" : email
+        }
+      };
+      projectService.removeTeamMember($stateParams.id, project)
+      .then(function(data) {
+        toastr.success('Invitations sent to your members successfully');
+        $scope.modal.close();
+        projectCache.remove(projectCacheKey);
+        init();
+      }, function() {
+        // console.log('Server did not send project data!');
+      });
+    }
+
     $scope.selectArtBoard = function(artboard) {
       // FIXME: this state won't be persisted if page is refreshed!
       projectService.setProjectInfo(
