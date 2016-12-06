@@ -202,6 +202,8 @@
     }
 
     function addNewReply(note, index) {
+      var userId = $scope.$parent.user.id;
+
       // If new note
       if (note === undefined) {
         if (vm.selectedArtBoard.obj.notes.indexOf(vm.selectedArtBoard.currentopenedNote.obj) === -1) {
@@ -213,7 +215,7 @@
           rect: vm.selectedArtBoard.currentopenedNote.obj.rect,
           message: vm.selectedArtBoard.currentopenedNote.newMessage
         }
-        notesService.createNote($stateParams.id, $stateParams.artboardId, newNote.rect, newNote.message)
+        notesService.createNote($stateParams.id, $stateParams.artboardId, userId, newNote.rect, newNote.message)
         .then(function(p) {
           toastr.success('Well Done! Note added successfully');
         }, function() {
@@ -223,7 +225,6 @@
         // Set the currentopenedNote to push the message to it
         openNote(note, index);
         var reply = vm.selectedArtBoard.currentopenedNote.newMessage;
-        var userId = $scope.$parent.user.id;
         console.log(notesService);
         notesService.createReply($stateParams.id, $stateParams.artboardId, note.id, reply, userId)
         .then(function(p) {
