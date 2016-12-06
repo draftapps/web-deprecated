@@ -39,9 +39,24 @@
           <div class="project-summary__tags">
             <h2>Tags</h2>
             <ul>
-              <li><a style="color: #faca00" href="#">Development</a></li>
-              <li><a style="color: #81c926;" href="#">iOS UI</a></li>
-              <li><a href="#" class="add-more"><span>Add more</span></a></li>
+              <li ng-repeat="tag in project.tags"><a class="tag" style="color: {{tag.color}}">{{tag.name}} <span ng-click="deleteTag(tag.id, $event)">&times;</span></a></li>
+              <li>
+                <dropdown-toggle pane-align="left" close-on-click="true" class="tags-dropdown">
+                  <toggle><a href="#" class="add-more"><span>Add more</span></a></toggle>
+                  <pane>
+                    <ul class="dd-menu">
+                      <li>
+                        <div class="input-wrapper">
+                          <div class="selected-color" style="background: {{tagColor}}"></div>
+                          <input type="text" ng-model="newTag" placeholder="# Add Tag">
+                          <input type="color" ng-model="tagColor">
+                        </div>
+                        <a ng-click="addTag(newTag, tagColor)" class="action-button">Add Tag</a>
+                      </li>
+                    </ul>
+                  </pane>
+                </dropdown-toggle>
+              </li>
             </ul>
           </div>
         </aside>
