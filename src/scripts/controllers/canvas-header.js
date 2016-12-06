@@ -112,6 +112,24 @@
       });
     }
 
+    $scope.deleteTag = function(id, $event) {
+      $($event.currentTarget).closest('a').css('opacity', 0.5);
+      tagsService.deleteTag(id)
+      .then(function(data) {
+        toastr.success('Well Done! Tag removed');
+        projectCache.remove(projectCacheKey);
+        tagsService.getTags($stateParams.artboardId, "Artboard")
+        .then(function(data) {
+          $scope.currentArtboard.tags = data;
+        }, function() {
+          // console.log('Server did not send project data!');
+        });
+      }, function() {
+        toggler.removeClass('disabled');
+        // console.log('Server did not send project data!');
+      });
+    }
+
     // TODO: Change this to the real endpoint
     projectService.getProjectActivities($stateParams.id)
     .then(function(activities) {
