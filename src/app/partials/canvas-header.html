@@ -69,10 +69,11 @@
                     <a href="#" style="background: #f3d351">Product</a>
                   </div>
                   <div class="input-wrapper">
+                    <div class="selected-color" style="background: {{tagColor}}"></div>
                     <input type="text" ng-model="newTag" placeholder="# Add Tag">
-                    <input type="color">
+                    <input type="color" ng-model="tagColor">
                   </div>
-                  <a ng-click="addTag(newTag)" class="action-button">Add Tag</a>
+                  <a ng-click="addTag(newTag, tagColor)" class="action-button">Add Tag</a>
                 </li>
               </ul>
             </pane>
