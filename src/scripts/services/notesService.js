@@ -16,10 +16,11 @@
           });
         });
       },
-      createNote: function(projectId, artboardId, rect, note) {
+      createNote: function(projectId, artboardId, userId, rect, note) {
         var note = {
-          "artboard_id" : parseInt(artboardId),
           "note": {
+            "artboard_id" : parseInt(artboardId),
+            "user_id": parseInt(userId),
             "note": note,
             "rect": rect
           }
