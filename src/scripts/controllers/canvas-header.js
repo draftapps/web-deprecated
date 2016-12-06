@@ -103,5 +103,13 @@
           // console.log("Error: " + data);
         });
     }
+
+    // TODO: Change this to the real endpoint
+    projectService.getProjectActivities($stateParams.id)
+    .then(function(activities) {
+      $scope.notifications = activities[0].activities;
+    }, function() {
+      // console.log('Server did not send project data!');
+    });
   }
 })();

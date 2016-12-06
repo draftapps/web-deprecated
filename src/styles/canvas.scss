@@ -2505,3 +2505,12 @@ main {
 .columns.main-content.large-8 {
   overflow: hidden;
 }
+.notifications-dropdown-list {
+  .dropdown-pane {
+    width: 315px;
+    li {
+      padding: 15px 15px 15px 40px;
+      font-size: 14px;
+    }
+  }
+}
