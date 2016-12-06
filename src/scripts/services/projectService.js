@@ -71,6 +71,17 @@
             reject("Server didn't send the correct data");
           });
         });
+      },
+      assignArtboard: function(projectId, artboardId, member) {
+        // POST /projects/:project_id/artboards/:id/add_assignees
+        return $q(function(resolve, reject) {
+          $http.post(ENV.api + "projects/" + projectId + "/artboards/" + artboardId + "/add_assignee", member)
+          .success(function(data) {
+            resolve(data);
+          }).error(function(data) {
+            reject("Server didn't send the correct data");
+          });
+        });
       }
     };
   }

@@ -41,15 +41,15 @@
           </dropdown-toggle>
         </li>
         <li>
-          <dropdown-toggle pane-align="center" close-on-click="true">
+          <dropdown-toggle pane-align="center" close-on-click="true" class="assign-menu">
             <toggle>
             <button class="actions__button" tooltip-placement="bottom" tooltip="Add assignee"><i class="ion-person"></i></button>
             </toggle>
             <pane>
               <ul class="dd-menu assign-dd">
                 <li class="title">Assign to</span></li>
-                <li><a href="#"><img src="images/demo/avatar.png" class="avatar">John Doe</a></li>
-                <li><a href="#"><img src="images/demo/avatar.png" class="avatar">Marry Keith</a></li>
+                <li ng-repeat="member in team" ng-class="{'assignee': memberInAssignees(member.id)}">
+                  <a ng-click="assignArtboard(member.id, $event)"><img class="avatar" ng-if="member.image!==null" alt="{{member.name}}" ng-src="{{::(member.image)}}" width="32" /><img class="avatar" ng-if="member.image===null" alt="{{member.name}}" gravatar-src="member.email" ng-fallback="images/user-avatar.png" width="32" />{{member.name || 'Unnamed member'}}</a>
               </ul>
             </pane>
           </dropdown-toggle>

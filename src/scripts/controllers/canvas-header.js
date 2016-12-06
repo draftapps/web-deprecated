@@ -35,6 +35,7 @@
     projectService.getProject(info.id, info.slug)
       .then(function(p) {
         $scope.currentArtboard = _.findWhere(p.artboards, {id: parseInt($stateParams.artboardId)});
+        $scope.team = p.team.users;
       }, function() {
         // console.log("Server did not send project data!");
       });
@@ -128,6 +129,30 @@
         toggler.removeClass('disabled');
         // console.log('Server did not send project data!');
       });
+    }
+
+    $scope.assignArtboard = function(userId, $event) {
+      var toggler = $($event.currentTarget).closest('dropdown-toggle')
+      toggler.addClass('disabled');
+      var dropdownMenu = this;
+      var member = {
+        "artboard_id" : $stateParams.artboardId,
+        "user_id": userId
+      };
+      projectService.assignArtboard($stateParams.id, $stateParams.artboardId, member)
+      .then(function(p) {
+        dropdownMenu.$close();
+        toggler.removeClass('disabled');
+        toastr.success('Well Done! Member was assignd to this artboard successfully');
+        projectCache.remove(projectCacheKey);
+      }, function() {
+        toggler.removeClass('disabled');
+        // console.log("Server did not send project data!");
+      });
+    }
+
+    $scope.memberInAssignees = function(id) {
+      return _.find($scope.currentArtboard.assignees, {id: id}) !== undefined;
     }
 
     // TODO: Change this to the real endpoint
