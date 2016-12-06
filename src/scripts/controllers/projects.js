@@ -14,8 +14,19 @@
     $scope.menu = "projects-activities";
     $scope.page = "projects";
     $scope.projectData = {};
-    // Setting iOS as the default platform to display its resolution
-    $scope.projectData.platform = "ios"
+    $scope.tags = [];
+    $scope.projectData.platform = "ios";     // Setting iOS as the default platform to display its resolution
+
+    // Reducing projects into tags
+    _.each(projects.data, function(project) {
+      if(project.tags.length > 0) {
+        $scope.tags.push(project.tags);
+      }
+    });
+    // Flattening the array http://stackoverflow.com/a/10865042/497828
+    $scope.tags = [].concat.apply([], $scope.tags);
+    $scope.tags = $scope.tags.map(function(tag){ return tag.name; });
+    $scope.tags = _.uniq($scope.tags);
 
     $scope.statuses = ["New", "In Progress", "Approved"];
     /**
@@ -42,6 +53,9 @@
               $scope.platformFilterText = "Web";
               break;
           }
+          break;
+        case "tag":
+          $scope.tagFilter = filter;
           break;
       }
       this.$close();
@@ -137,5 +151,9 @@
         $scope.projectData = {};
       });
     };
+
+    $scope.tagInProject = function(tag, projectTags) {
+      return _.find(projectTags, {name: tag}) !== undefined;
+    }
   }
 })();
