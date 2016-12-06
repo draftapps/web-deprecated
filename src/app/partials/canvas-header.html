@@ -64,9 +64,7 @@
                 <li><span class="title">Tags</span></li>
                 <li>
                   <div class="tags">
-                    <a href="#" style="background: #4be1ab">screen</a>
-                    <a href="#" style="background: #fe5339">iOS</a>
-                    <a href="#" style="background: #f3d351">Product</a>
+                    <a href="#" ng-repeat="tag in currentArtboard.tags" style="background: {{tag.color}}">{{tag.name}}</a>
                   </div>
                   <div class="input-wrapper">
                     <div class="selected-color" style="background: {{tagColor}}"></div>

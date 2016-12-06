@@ -17,7 +17,7 @@
           "taggable_type": type
         }
         return $q(function(resolve, reject) {
-          $http.get(ENV.api + "tags")
+          $http.get(ENV.api + "tags", entity)
           .success(function(data) {
             resolve(data);
           }).error(function(data) {

@@ -24,6 +24,7 @@
     projectCache = CacheFactory.get('projectCache');
 
     $scope.artboardStatusesClasses = ['danger', 'warning', 'success'];
+    $scope.tagColor = "#4f8ff7";
     $scope.newTag = "";
 
     var info = {
@@ -87,7 +88,7 @@
       //this.$close();
       var tagDetails = {
         "taggable_id" : parseInt($stateParams.artboardId),
-        "taggable_type": "artboard",
+        "taggable_type": "Artboard",
         "tag": {
           "name": tag,
           "color": color
@@ -96,8 +97,15 @@
       tagsService.createTag(tagDetails)
       .then(function(data) {
         toastr.success('Well Done! Artboard tags updated');
-        toggler.removeClass('disabled');
         projectCache.remove(projectCacheKey);
+        tagsService.getTags($stateParams.artboardId, "Artboard")
+        .then(function(data) {
+          toggler.removeClass('disabled');
+          $scope.currentArtboard.tags = data;
+        }, function() {
+          toggler.removeClass('disabled');
+          // console.log('Server did not send project data!');
+        });
       }, function() {
         toggler.removeClass('disabled');
         // console.log('Server did not send project data!');
