@@ -301,7 +301,7 @@
       return {
         "left": zoomSize(note.rect.x) + "px",
         "top":  zoomSize(note.rect.y) + "px"
-      };
+      }
     }
 
     function zoomIn() {
