@@ -3,7 +3,7 @@
     .module("app")
     .controller("NotesCtrl", NotesCtrl);
 
-  function NotesCtrl($scope, $stateParams, $location, projectService) {
+  function NotesCtrl($scope, $stateParams, $location, $modal, projectService, notesService, toastr) {
     var vm = this;
 
     $scope.page = "notes";
@@ -121,6 +121,7 @@
         openNote: openNote,
         createNote: createNote,
         closeNote: closeNote,
+        resolveNote: resolveNote,
         addNewReply: addNewReply,
         screenStyle: getBoardScreenStyle,
         screenParentStyle: getBoardParentScreenStyle,
@@ -139,6 +140,16 @@
       vm.project.configs = getConfigs(
         vm.project.scale, vm.project.unit, vm.project.colorFormat, vm.selectedArtBoard.obj.height
       );
+      getNotes();
+    }
+
+    function getNotes() {
+      notesService.getNotes($stateParams.id, $stateParams.artboardId)
+      .then(function(p) {
+        vm.notes = p;
+      }, function() {
+        // console.log("Server did not send project data!");
+      });
     }
 
     function openNote(note, $index) {
@@ -174,6 +185,17 @@
       vm.selectedArtBoard.currentopenedNote.isOpened = true;
     }
 
+    function resolveNote(id, projectId, artboardId) {
+      notesService.resolveNote(id, projectId, artboardId)
+      .then(function(p) {
+        $scope.modal.close();
+        toastr.success('Well Done! Note resolved successfully');
+        getNotes();
+      }, function() {
+        // console.log("Server did not send project data!");
+      });
+    }
+
     function closeNote() {
       vm.selectedArtBoard.currentopenedNote.obj = null;
       vm.selectedArtBoard.currentopenedNote.isOpened = false;
@@ -181,23 +203,41 @@
     }
 
     function addNewReply(note, index) {
+      var userId = $scope.$parent.user.id;
+
+      // If new note
       if (note === undefined) {
         if (vm.selectedArtBoard.obj.notes.indexOf(vm.selectedArtBoard.currentopenedNote.obj) === -1) {
           vm.selectedArtBoard.obj.notes.push(vm.selectedArtBoard.currentopenedNote.obj);
         }
         vm.selectedArtBoard.currentopenedNote.obj =
           vm.selectedArtBoard.obj.notes[vm.selectedArtBoard.obj.notes.length - 1];
+        var newNote = {
+          rect: vm.selectedArtBoard.currentopenedNote.obj.rect,
+          message: vm.selectedArtBoard.currentopenedNote.newMessage
+        }
+        notesService.createNote($stateParams.id, $stateParams.artboardId, userId, newNote.rect, newNote.message)
+        .then(function(p) {
+          getNotes();
+          vm.selectedArtBoard.currentopenedNote.isOpened = false;
+          toastr.success('Well Done! Note added successfully');
+        }, function() {
+          // console.log("Server did not send project data!");
+        });
       } else {
         // Set the currentopenedNote to push the message to it
         openNote(note, index);
+        var reply = vm.selectedArtBoard.currentopenedNote.newMessage;
+        notesService.createReply($stateParams.id, $stateParams.artboardId, note.id, reply, userId)
+        .then(function(p) {
+          getNotes();
+          toastr.success('Well Done! Reply added successfully');
+          $scope.openedNote = index;
+          console.log($scope.openedNote);
+        }, function() {
+          // console.log("Server did not send project data!");
+        });
       }
-
-      vm.selectedArtBoard.currentopenedNote.obj.note.push({
-        text: vm.selectedArtBoard.currentopenedNote.newMessage,
-        date: new Date(),
-        userName: $scope.$parent.user.name,
-        userImg: "images/demo/avatar.png"
-      });
       vm.selectedArtBoard.currentopenedNote.newMessage = "";
     }
 
@@ -261,7 +301,7 @@
       return {
         "left": zoomSize(note.rect.x) + "px",
         "top":  zoomSize(note.rect.y) + "px"
-      };
+      }
     }
 
     function zoomIn() {
@@ -276,5 +316,37 @@
       vm.selectedArtBoard.obj = artBoard;
       $location.path("/projects/" + $stateParams.id + "/" + $stateParams.slug + "/"+ artBoard.id + "/notes");
     }
+
+    $scope.openModal = function(template, parameters, $event) {
+      if(parameters !== undefined) {
+        $scope.projectData = parameters;
+      }
+      if($event !== undefined) {
+        $event.stopPropagation();
+      }
+      var params = {
+        templateUrl: template,
+        controller: ["$scope", "$modalInstance", function($scope, $modalInstance) {
+          $scope.reposition = function() {
+            $modalInstance.reposition();
+          };
+          $scope.ok = function() {
+            $modalInstance.close();
+          };
+          $scope.cancel = function() {
+            $modalInstance.dismiss("cancel");
+          };
+        }],
+        scope: $scope
+      };
+      var modalInstance = $modal.open(params);
+      $scope.modal = modalInstance;
+      modalInstance.result.then(function() {
+      }, function() {
+        // Callback when the modal is dismissed.
+        $scope.projectData = {};
+      });
+    };
+
   }
 })();
