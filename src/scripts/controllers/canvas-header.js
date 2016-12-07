@@ -3,13 +3,14 @@
     .module("app")
     .controller("CanvasHeaderCtrl", CanvasHeaderCtrl);
 
-  function CanvasHeaderCtrl($scope, $http, $stateParams, ENV, CacheFactory, projectService, tagsService, toastr, toastrConfig) {
+  function CanvasHeaderCtrl($scope, $modal, $http, $stateParams, ENV, CacheFactory, projectService, tagsService, toastr, toastrConfig) {
 
     angular.extend(toastrConfig, {
       target: '.canvas-screen-viewer'
     });
 
     $scope.currentArtboard = {};
+    $scope.projectData = {};
 
     var projectCache,
         projectCacheKey = ENV.api + 'projects/' + $stateParams.id + '?project[slug]=' + $stateParams.slug;
@@ -154,6 +155,45 @@
     $scope.memberInAssignees = function(id) {
       return _.find($scope.currentArtboard.assignees, {id: id}) !== undefined;
     }
+
+    $scope.openModal = function(template, parameters) {
+      var params = {
+        templateUrl: template,
+        controller: ["$scope", "$modalInstance", function($scope, $modalInstance) {
+          $scope.reposition = function() {
+            $modalInstance.reposition();
+          };
+          $scope.ok = function() {
+            $modalInstance.close();
+          };
+          $scope.cancel = function() {
+            $modalInstance.dismiss("cancel");
+          };
+        }],
+        scope: $scope
+      };
+      var modalInstance = $modal.open(params);
+      $scope.modal = modalInstance;
+      modalInstance.result.then(function() {
+      }, function() {
+        // Callback when the modal is dismissed.
+        $scope.projectData = {};
+      });
+    };
+
+    $scope.createProject = function() {
+      var project = {
+        "project" : $scope.projectData
+      };
+      $http.post(ENV.api + "projects", project)
+      .success(function(data) {
+        $scope.modal.close();
+        toastr.success('Well Done! Project added successfully');
+      })
+      .error(function(data) {
+        // console.log('Error: ' + data);
+      });
+    };
 
     // TODO: Change this to the real endpoint
     projectService.getProjectActivities($stateParams.id)
