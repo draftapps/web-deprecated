@@ -15,6 +15,16 @@
             reject("Server didn't send the correct data");
           });
         });
+      },
+      updateNotificationsSettings: function(userId, params) {
+        return $q(function(resolve, reject) {
+          $http.put(ENV.api + "users/" + userId + "/notification_settings/1", params)
+          .success(function(data) {
+            resolve(data);
+          }).error(function(data) {
+            reject("Server didn't send the correct data");
+          });
+        });
       }
     };
   }
