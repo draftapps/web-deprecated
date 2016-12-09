@@ -2526,6 +2526,14 @@ main {
 .notifications-dropdown-list {
   .dropdown-pane {
     width: 315px;
+    transform: translateX(-97%) !important;
+    border-width: 1px;
+    &::before {
+      border-width: 7px;
+    }
+    &::after {
+      right: 10px !important;
+    }
     li {
       padding: 15px 15px 15px 40px;
       font-size: 14px;
