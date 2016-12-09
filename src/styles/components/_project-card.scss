@@ -443,13 +443,13 @@
         }
       }
       .tag {
-        font-size: 13px;
-        border: 1px solid;
+        font-size: 10px;
         line-height: 24px;
-        height: 26px;
-        padding: 0 10px;
+        height: 24px;
+        padding: 0 8px;
+        color: #fff;
         display: inline-block;
-        border-radius: 50px;
+        border-radius: 3px;
         margin: 0 3px 5px;
         span {
           font-size: 16px;
@@ -457,7 +457,7 @@
           display: inline-block;
           position: relative;
           right: -3px;
-          border-left: 1px solid currentColor;
+          box-shadow: -1px 0 rgba(255, 255, 255, 0.2);
           padding-left: 5px;
           margin-right: -5px;
           width: 20px;

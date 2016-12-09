@@ -39,7 +39,7 @@
           <div class="project-summary__tags">
             <h2>Tags</h2>
             <ul>
-              <li ng-repeat="tag in project.tags"><a class="tag" style="color: {{tag.color}}">{{tag.name}} <span ng-click="deleteTag(tag.id, $event)">&times;</span></a></li>
+              <li ng-repeat="tag in project.tags"><a class="tag" style="background: {{tag.color}}">{{tag.name}} <span ng-click="deleteTag(tag.id, $event)">&times;</span></a></li>
               <li>
                 <dropdown-toggle pane-align="left" close-on-click="true" class="tags-dropdown">
                   <toggle><a href="#" class="add-more"><span>Add more</span></a></toggle>
