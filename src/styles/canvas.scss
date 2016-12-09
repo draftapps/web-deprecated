@@ -671,7 +671,7 @@ main {
 }
 .notes-modal {
   &__footer {
-    .button.disabled, .button[disabled] {
+    .button.success.disabled, .button.success[disabled] {
       opacity: 1;
       cursor: pointer;
       &:hover {
