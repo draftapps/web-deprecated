@@ -33,13 +33,15 @@
       slug: $stateParams.slug
     }
 
-    projectService.getProject(info.id, info.slug)
+    if(info.slug !==undefined) {
+      projectService.getProject(info.id, info.slug)
       .then(function(p) {
         $scope.currentArtboard = _.findWhere(p.artboards, {id: parseInt($stateParams.artboardId)});
         $scope.team = p.team.users;
       }, function() {
         // console.log("Server did not send project data!");
       });
+    }
 
     $scope.setArtBoardStatus = function(status, $event) {
       var toggler = $($event.currentTarget).closest('dropdown-toggle')
@@ -196,11 +198,13 @@
     };
 
     // TODO: Change this to the real endpoint
-    projectService.getProjectActivities($stateParams.id)
-    .then(function(activities) {
-      $scope.notifications = activities[0].activities;
-    }, function() {
-      // console.log('Server did not send project data!');
-    });
+    // if($stateParams.slug !== undefined) {
+    //   projectService.getProjectActivities($stateParams.id)
+    //   .then(function(activities) {
+    //     $scope.notifications = activities[0].activities;
+    //   }, function() {
+    //     // console.log('Server did not send project data!');
+    //   });
+    // }
   }
 })();
