@@ -94,7 +94,7 @@
           ng-click="notesVm.selectedArtBoard.closeNote()"></div>
         <div class="notes-modal" ng-show="notesVm.selectedArtBoard.currentopenedNote.isOpened">
           <div class="notes-modal__content">
-            <div class="notes-modal__head">Note {{notesVm.selectedArtBoard.currentopenedNote.index}}</div>
+            <div class="notes-modal__head">Note {{notesVm.notes.length + 1}}</div>
             <div class="notes-modal__body">
               <div class="scroller">
                 <div class="media-object" ng-repeat="message in notesVm.selectedArtBoard.currentopenedNote.obj.note">
