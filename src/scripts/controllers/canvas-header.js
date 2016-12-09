@@ -45,7 +45,7 @@
 
     $scope.setArtBoardStatus = function(status, $event) {
       var toggler = $($event.currentTarget).closest('dropdown-toggle')
-      toggler.addClass('disabled');
+      // toggler.addClass('disabled');
       this.$close();
       var artboard = {
         "artboard_id" : $stateParams.artboardId,
@@ -66,7 +66,7 @@
 
     $scope.setArtBoardDueDate = function(date) {
       var toggler = $('dropdown-toggle.calendar-menu')
-      toggler.addClass('disabled');
+      // toggler.addClass('disabled');
       this.$close();
       var artboard = {
         "artboard_id" : $stateParams.artboardId,
@@ -88,7 +88,7 @@
 
     $scope.addTag = function(tag, color) {
       var toggler = $('dropdown-toggle.tags-dropdown')
-      toggler.addClass('disabled');
+      // toggler.addClass('disabled');
       //this.$close();
       var tagDetails = {
         "taggable_id" : parseInt($stateParams.artboardId),
@@ -136,15 +136,14 @@
 
     $scope.assignArtboard = function(userId, $event) {
       var toggler = $($event.currentTarget).closest('dropdown-toggle')
-      toggler.addClass('disabled');
-      var dropdownMenu = this;
+      // toggler.addClass('disabled');
+      this.$close();
       var member = {
         "artboard_id" : $stateParams.artboardId,
         "user_id": userId
       };
       projectService.assignArtboard($stateParams.id, $stateParams.artboardId, member)
       .then(function(p) {
-        dropdownMenu.$close();
         toggler.removeClass('disabled');
         toastr.success('Well Done! Member was assignd to this artboard successfully');
         projectCache.remove(projectCacheKey);
