@@ -15,7 +15,9 @@
     $scope.page = "projects";
     $scope.projectData = {};
     $scope.tags = [];
-    $scope.projectData.platform = "ios";     // Setting iOS as the default platform to display its resolution
+    // Initial values
+    $scope.projectData.platform = "ios";
+    $scope.projectData.scale = "@1x";
 
     // Reducing projects into tags
     _.each(projects.data, function(project) {
