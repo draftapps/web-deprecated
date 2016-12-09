@@ -1480,13 +1480,13 @@ main {
   }
   .layer-type {
     &-symbol {
-      background: url(../images/layer-shape.png) 50% 50% no-repeat;
+      background-image: url(../images/layers/layer-shape.png);
     }
     &-shape {
-      background: url(../images/layer-image.png) 50% 50% no-repeat;
+      background-image: url(../images/layers/layer-image.png);
     }
     &-text {
-      background: url(../images/layer-text.png) 50% 50% no-repeat;
+      background-image: url(../images/layers/layer-text.png);
     }
   }
   .o-list--stripped {
@@ -1499,15 +1499,20 @@ main {
     &.selected {
       .layer-type {
         &-symbol {
-          background: url(../images/layer-shape-active.png) 50% 50% no-repeat;
+          background-image: url(../images/layers/layer-shape-active.png);
         }
         &-shape {
-          background: url(../images/layer-image-active.png) 50% 50% no-repeat;
+          background-image: url(../images/layers/layer-image-active.png);
         }
         &-text {
-          background: url(../images/layer-text-active.png) 50% 50% no-repeat;
+          background-image: url(../images/layers/layer-text-active.png);
         }
       }
+    }
+    span[class*="layer-type"] {
+      background-size: 14px 14px;
+      background-repeat: no-repeat;
+      background-position: 50% 50%;
     }
   }
   .sidebar__body {
