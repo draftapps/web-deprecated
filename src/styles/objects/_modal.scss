@@ -7,6 +7,14 @@
   box-shadow: 0px 10px 30px 0px rgba(28, 30, 35, 0.2);
   top: 50px;
   border: 0;
+  &.large {
+    .button--block {
+      max-width: 292px;
+      margin-left: auto;
+      margin-right: auto;
+      display: block;
+    }
+  }
 }
 .modal-header {
   height: 66px;
