@@ -29,7 +29,7 @@
     line-height: 32px;
     font-size: 22px;
     top: 14px;
-    right: 30px;
+    right: 16px;
     span {
       position: relative;
       bottom: -2px;
@@ -39,12 +39,12 @@
 }
 .modal-body {
   padding: 30px;
+  font-family: 'Montserrat', sans-serif;
   label,
   .label-like {
     font-weight: 500;
     font-size: 16px;
     color: #b9bed1;
-    font-family: 'Montserrat', sans-serif;
   }
   label {
     & + input {
