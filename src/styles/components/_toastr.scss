@@ -25,6 +25,9 @@
 }
 #toastr-wrapper {
   position: relative;
+  display: block;
+  height: auto;
+  overflow: visible
   #toast-container{
     position: static;
   }
