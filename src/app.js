@@ -32,7 +32,7 @@
       preventDuplicates: false,
       preventOpenDuplicates: false,
       closeButton: true,
-      closeHtml: '<button>&times;</button>',
+      closeHtml: '<button>&times;</button>'
     });
   }
 

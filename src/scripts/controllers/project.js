@@ -5,10 +5,6 @@
 
   function ProjectCtrl($scope, $http, $stateParams, $modal, projectService, tagsService, CacheFactory, toastr, toastrConfig, ENV) {
 
-    angular.extend(toastrConfig, {
-      target: '#toastr-wrapper'
-    });
-
     var projectCache,
         projectCacheKey = ENV.api + 'projects/' + $stateParams.id + '?project[slug]=' + $stateParams.slug;
 
@@ -97,7 +93,8 @@
         $scope.modal.close();
         projectCache.remove(projectCacheKey);
         init();
-      }, function() {
+      }, function(data) {
+        $scope.modal.close();
         // console.log('Server did not send project data!');
       });
     }
