@@ -218,7 +218,7 @@
                 <div class="code-wrapper" ng-if="dashboardVm.selectedArtBoard.selectedLayer.css.length">
                   <button class="copy" ng-click="dashboardVm.copy()">Copy</button>
                   <div class="select-wrapper">
-                    <select name="" id="">
+                    <select>
                       <option value="">CSS</option>
                       <option value="">Objective C</option>
                       <option value="">Swift</option>
@@ -237,6 +237,14 @@
                 </div>
               </div>
               <ul class="items-spaced color-wrapper" ng-show="rightActivetab === 'colors'">
+                <li>
+                  <div class="select-wrapper">
+                    <select ng-model="colorFormat">
+                      <option value="hex">HEX</option>
+                      <option value="rgba">RGBA</option>
+                    </select>
+                  </div>
+                </li>
                 <li ng-repeat="color in dashboardVm.project.colors">
                   <div class="color-selector">
                     <input name="styleguideColors[]" ng-checked="styleguideActiveColors.indexOf(color.name) !== -1" ng-click="dashboardVm.project.updateStyleguide()" value="{{color.name}}" type="checkbox" id="color-{{$index}}">
@@ -244,7 +252,7 @@
                   </div>
                   <span class="color-sample" style="background-color: {{color.color['cssRgba']}}"></span>
                   <span class="color-name">{{color.name}}</span><br>
-                  <span class="color-code">{{color.color['colorHex']}}</span>
+                  <span class="color-code"><span ng-if="colorFormat === 'hex'">{{color.color.colorHex}}</span> <span ng-if="colorFormat === 'rgba'">{{color.color.cssRgba}}</span></span>
                 </li>
                 <li class="add-style-guide">
                   <a ng-click="dashboardVm.project.updateStyleguide(true)">+ Add Style Guide</a>
