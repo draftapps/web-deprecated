@@ -854,7 +854,7 @@ main {
 
 .inspector input,
 .inspector textarea {
-  padding: 3px 4px;
+  padding: 10px;
   width: 100%;
   background: rgba(255, 255, 255, 0.05);
   border-radius: 2px;
@@ -2571,4 +2571,7 @@ main {
 }
 .ng-hide + .sidebar__fixed-container .sidebar__menu {
   display: none;
+}
+.pull-right {
+  float: right;
 }

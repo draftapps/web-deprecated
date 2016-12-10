@@ -216,7 +216,7 @@
             <div class="scroller">
               <div class="code-outer-wrapper" ng-show="rightActivetab === 'code'">
                 <div class="code-wrapper" ng-if="dashboardVm.selectedArtBoard.selectedLayer.css.length">
-                  <button class="copy" ng-click="dashboardVm.copy()">Copy</button>
+                  <button class="copy" ng-click="dashboardVm.copy('style')">Copy</button>
                   <div class="select-wrapper">
                     <select>
                       <option value="">CSS</option>
@@ -428,6 +428,7 @@
                       </div>
                       <div class="row">
                         <div class="columns small-12">
+                          <button class="copy pull-right" ng-click="dashboardVm.copy('content')">Copy</button>
                           Content:
                           <textarea id="content" rows="2" readonly="readonly">{{dashboardVm.selectedArtBoard.selectedLayer.content}}</textarea>
                         </div>
@@ -510,7 +511,7 @@
                   </section>
 
                   <section ng-if="dashboardVm.selectedArtBoard.selectedLayer.css.length">
-                    <h3>CSS Style <button class="copy" ng-click="dashboardVm.copy()">Copy</button></h3>
+                    <h3>CSS Style <button class="copy" ng-click="dashboardVm.copy('style')">Copy</button></h3>
                     <div class="context">
                       <div class="item">
                         <label>
