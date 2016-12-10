@@ -1411,6 +1411,13 @@ main {
         width: 18px;
         height: 20px;
       }
+      &.icon-bitmap {
+        width: 30px;
+        height: 30px;
+        position: relative;
+        top: 2px;
+        left: 4px;
+      }
     }
   }
   .sidebar__menu {
