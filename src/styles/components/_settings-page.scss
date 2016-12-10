@@ -430,3 +430,14 @@
 .email-preferences .form-group .switch {
   margin-right: 10px;
 }
+.management-form {
+  fieldset {
+    clear: both;
+  }
+  .pull-right {
+    margin-bottom: -30px;
+    select {
+      width: 215px;
+    }
+  }
+}

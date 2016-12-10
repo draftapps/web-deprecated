@@ -39,36 +39,33 @@
       </div>
     </fieldset>
   </form>
-  <form class="management-form" ng-submit="settingsVM.submit()">
-    <fieldset ng-disabled="settingsVM.loading">
+  <form class="management-form">
+    <div class="pull-right">
+      <div class="select-wrapper">
+        <select id="project-management" ng-change="setSelectedProject()" ng-model="projectToManage">
+          <option value="">Select Project</option>
+          <option ng-repeat="project in projectsAdmin" value="{{project.slug}}" data-id="{{project.id}}">{{project.name}}</option>
+        </select>
+      </div>
+    </div>
+    <fieldset>
       <legend>Manage Team Members</legend>
-      <div class="form-group team-member">
+      <div class="form-group team-member" ng-repeat="member in selectedProject.team.users">
         <div class="team-member__identity">
-          <div class="team-member__img-wrapper"><img class="avatar" src="images/avatar-archer.png"/></div><span class="team-member__name">Emiya Shirou</span>
-        </div><span class="team-member__email">emiya.archer@typemoon.com</span>
-        <div class="team-member__actions"><span class="team-member__role team-member__role--admin">
-            <div class="icon ion-checkmark-circled"></div>Admin</span>
+          <div class="team-member__img-wrapper">
+            <img class="avatar" ng-if="member.image!==null" alt="{{member.name}}" ng-src="{{::(member.image)}}" />
+            <img class="avatar" ng-if="member.image===null" alt="{{member.name}}" gravatar-src="member.email" ng-fallback="images/user-avatar.png" />
+          </div><span class="team-member__name">{{member.name}}</span>
+        </div><span class="team-member__email">{{member.email}}</span>
+        <div ng-if="member.role === 1" class="team-member__actions"><span class="team-member__role team-member__role--admin">
+          <div class="icon ion-checkmark-circled"></div>Admin</span>
           <button class="team-member__delete">
             <div class="icon ion-close-circled"></div>
           </button>
         </div>
-      </div>
-      <div class="form-group team-member">
-        <div class="team-member__identity">
-          <div class="team-member__img-wrapper"><img class="avatar" src="images/avatar-gilgamesh.png"/></div><span class="team-member__name">FS/N Gilgamesh </span>
-        </div><span class="team-member__email">gilgamesh.king@typemoon.com</span>
-        <div class="team-member__actions"><span class="team-member__role">Member</span>
-          <button class="team-member__delete">
-            <div class="icon ion-close-circled"></div>
-          </button>
-        </div>
-      </div>
-      <div class="form-group team-member">
-        <div class="team-member__identity">
-          <div class="team-member__img-wrapper"><img class="avatar" src="images/avatar-gilgamesh.png"/></div><span class="team-member__name">FS/N Saber</span>
-        </div><span class="team-member__email">saber.knight@typemoon.com</span>
-        <div class="team-member__actions"><span class="team-member__role">Member</span>
-          <button class="team-member__delete">
+        <div ng-if="member.role === 0" class="team-member__actions"><span class="team-member__role">
+          Member</span>
+          <button class="team-member__delete" ng-click="openModal('app/partials/remove-member.html', {email: member.email, name: member.name})">
             <div class="icon ion-close-circled"></div>
           </button>
         </div>
