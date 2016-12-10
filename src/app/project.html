@@ -7,7 +7,7 @@
     <div class="row">
       <div class="columns small-12 canvas-screen-viewer" id="toastr-wrapper"></div>
     </div>
-    <div class="row artboards-list" ng-show="project.id !== undefined">
+    <div class="row artboards-list" ng-show="project.name !== undefined">
       <div class="column medium-3">
         <aside class="project-summary">
           <h1 class="project-summary__title">{{project.name}}</h1>
@@ -93,7 +93,7 @@
         </div>
       </div>
     </div>
-    <div class="row artboards-list" ng-show="project.id === undefined">
+    <div class="row artboards-list" ng-show="project.name === undefined">
       <ng-include src="'app/partials/app-loader.html'"></ng-include>
     </div>
   </div>
