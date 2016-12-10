@@ -2548,3 +2548,6 @@ main {
 .assignee img {
   box-shadow: 0 0 0 2px #42d79e;
 }
+.ng-hide + .sidebar__fixed-container .sidebar__menu {
+  display: none;
+}
