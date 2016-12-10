@@ -215,8 +215,8 @@
 
     $scope.addTag = function(tag, color) {
       var toggler = $('dropdown-toggle.tags-dropdown')
-      toggler.addClass('disabled');
-      var dropdown = this;
+      // toggler.addClass('disabled');
+      this.$close();
       var tagDetails = {
         "taggable_id" : parseInt($stateParams.id),
         "taggable_type": "Project",
@@ -227,7 +227,6 @@
       };
       tagsService.createTag(tagDetails)
       .then(function(data) {
-        dropdown.$close();
         toastr.success('Well Done! Project tags updated');
         projectCache.remove(projectCacheKey);
         tagsService.getTags($stateParams.id, "Project")
