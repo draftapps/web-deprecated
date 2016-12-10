@@ -5,9 +5,9 @@
   </div>
   <div class="container">
     <div class="row">
-      <div class="columns small-12" id="toastr-wrapper"></div>
+      <div class="columns small-12 canvas-screen-viewer" id="toastr-wrapper"></div>
     </div>
-    <div class="row artboards-list" ng-show="project.id !== undefined">
+    <div class="row artboards-list" ng-show="project.name !== undefined">
       <div class="column medium-3">
         <aside class="project-summary">
           <h1 class="project-summary__title">{{project.name}}</h1>
@@ -31,7 +31,7 @@
             <ul>
               <li ng-repeat="user in project.team.users" ng-click="openModal('app/partials/remove-member.html', {email: user.email, name: user.name})" tooltip-placement="bottom" tooltip="Remove {{user.name}}">
                 <img ng-if="user.image!==null" alt="{{user.name}}" ng-src="{{::(user.image)}}" />
-                <img ng-if="user.image===null" alt="{{user.name}}" gravatar-src="user.email" ng-fallback="images/user-avatar.png" />
+                <img ng-if="user.image===null" alt="{{user.name}}" gravatar-src="user.email" ng-fallback="/images/original/missing.png" />
               </li>
               <li><a ng-click="openModal('app/partials/invite-member.html')" class="add-more"><span>Add more</span></a></li>
             </ul>
@@ -39,7 +39,7 @@
           <div class="project-summary__tags">
             <h2>Tags</h2>
             <ul>
-              <li ng-repeat="tag in project.tags"><a class="tag" style="color: {{tag.color}}">{{tag.name}} <span ng-click="deleteTag(tag.id, $event)">&times;</span></a></li>
+              <li ng-repeat="tag in project.tags"><a class="tag" style="background: {{tag.color}}">{{tag.name}} <span ng-click="deleteTag(tag.id, $event)">&times;</span></a></li>
               <li>
                 <dropdown-toggle pane-align="left" close-on-click="true" class="tags-dropdown">
                   <toggle><a href="#" class="add-more"><span>Add more</span></a></toggle>
@@ -74,7 +74,6 @@
                     </toggle>
                     <pane>
                       <ul class="dd-menu">
-                        <li><a href="#"><svg><use xlink:href="#shape-duplicate" /></svg> Duplicate</a></li>
                         <li><a ng-click="openModal('app/partials/delete-artboard.html', {id: artboard.id})"><svg><use xlink:href="#shape-trash" /></svg> Delete</a></li>
                         <li class="text-right"><span><i class="ion-more"></i></span></li>
                       </ul>
@@ -94,7 +93,7 @@
         </div>
       </div>
     </div>
-    <div class="row artboards-list" ng-show="project.id === undefined">
+    <div class="row artboards-list" ng-show="project.name === undefined">
       <ng-include src="'app/partials/app-loader.html'"></ng-include>
     </div>
   </div>

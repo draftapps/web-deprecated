@@ -5,7 +5,7 @@
   </div>
   <div class="container" ng-show="projectsVm.projects.length > 0">
     <div class="row">
-      <div class="columns small-12" id="toastr-wrapper"></div>
+      <div class="columns small-12 canvas-screen-viewer" id="toastr-wrapper"></div>
     </div>
     <div class="row head-filters">
       <div class="column medium-9">
@@ -39,18 +39,6 @@
         </dropdown-toggle>
         <dropdown-toggle pane-align="left" close-on-click="true">
           <toggle>
-            <button class="select">By Assignee</button>
-          </toggle>
-          <pane>
-            <ul class="menu vertical">
-              <li class="title">By Assignee</li>
-              <li><a href="#">John Doe</a></li>
-              <li><a href="#">Megan Steve</a></li>
-            </ul>
-          </pane>
-        </dropdown-toggle>
-        <dropdown-toggle pane-align="left" close-on-click="true">
-          <toggle>
             <button class="select">{{tagFilter || 'By tag'}}</button>
           </toggle>
           <pane>
@@ -79,7 +67,6 @@
                 <pane>
                   <ul class="dd-menu">
                     <li><a href="#"><svg><use xlink:href="#shape-versions" /></svg> Archive</a></li>
-                    <li><a href="#"><svg><use xlink:href="#shape-duplicate" /></svg>Duplicate</a></li>
                     <li><a ng-click="openModal('app/partials/delete-project.html', {id: project.id, name: project.name, slug: project.slug})"><svg><use xlink:href="#shape-trash" /></svg> Delete</a></li>
                     <li class="text-right"><span><i class="ion-more"></i></span></li>
                   </ul>
@@ -93,8 +80,8 @@
             <p class="card__alert">Due</p>
             <ul class="card__users">
               <li ng-repeat="user in project.team.users">
-                <img ng-if="user.image!==null" tooltip-placement="bottom" tooltip="{{user.name}}" alt="{{user.name}}" ng-src="{{::(user.image)}}" />
-                <img ng-if="user.image===null" tooltip-placement="bottom" tooltip="{{user.name}}" alt="{{user.name}}" gravatar-src="user.email" ng-fallback="images/user-avatar.png" />
+                <img ng-if="user.image!==null" alt="{{user.name}}" ng-src="{{::(user.image)}}" />
+                <img ng-if="user.image===null" alt="{{user.name}}" gravatar-src="user.email" ng-fallback="/images/original/missing.png" />
               </li>
             </ul>
             <div class="card__images"><svg><use xlink:href="#shape-images" /></svg> {{project.artboards_count}}</div>

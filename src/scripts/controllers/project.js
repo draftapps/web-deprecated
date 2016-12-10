@@ -5,10 +5,6 @@
 
   function ProjectCtrl($scope, $http, $stateParams, $modal, projectService, tagsService, CacheFactory, toastr, toastrConfig, ENV) {
 
-    angular.extend(toastrConfig, {
-      target: '#toastr-wrapper'
-    });
-
     var projectCache,
         projectCacheKey = ENV.api + 'projects/' + $stateParams.id + '?project[slug]=' + $stateParams.slug;
 
@@ -97,7 +93,8 @@
         $scope.modal.close();
         projectCache.remove(projectCacheKey);
         init();
-      }, function() {
+      }, function(data) {
+        $scope.modal.close();
         // console.log('Server did not send project data!');
       });
     }
@@ -218,8 +215,8 @@
 
     $scope.addTag = function(tag, color) {
       var toggler = $('dropdown-toggle.tags-dropdown')
-      toggler.addClass('disabled');
-      var dropdown = this;
+      // toggler.addClass('disabled');
+      this.$close();
       var tagDetails = {
         "taggable_id" : parseInt($stateParams.id),
         "taggable_type": "Project",
@@ -230,7 +227,6 @@
       };
       tagsService.createTag(tagDetails)
       .then(function(data) {
-        dropdown.$close();
         toastr.success('Well Done! Project tags updated');
         projectCache.remove(projectCacheKey);
         tagsService.getTags($stateParams.id, "Project")

@@ -6,7 +6,7 @@
         <li ng-class="page === 'dashboard' ? 'active' : ''"><a href="/projects/{{project.id}}/{{project.slug}}/{{project.artboardId}}/inspect"><svg tooltip-placement="bottom" tooltip="Inspect"><use xlink:href="#shape-dashboard" /></svg></a></li>
         <li ng-class="page === 'notes' ? 'active' : ''"><a href="/projects/{{project.id}}/{{project.slug}}/{{project.artboardId}}/notes"><svg tooltip-placement="bottom" tooltip="Notes"><use xlink:href="#shape-notes" /></svg></a></li>
         <li ng-class="page === 'styleguide' ? 'active style-guide-link' : ' style-guide-link'"><a href="/projects/{{project.id}}/{{project.slug}}/{{project.artboardId}}/styleguide"><svg tooltip-placement="bottom" tooltip="Style Guide"><use xlink:href="#shape-styleguide" /></svg></a></li>
-        <li ng-class="page === 'flow' ? 'active' : ''"><a><svg tooltip-placement="bottom" tooltip="Map"><use xlink:href="#shape-flow" /></svg></a></li>
+        <!-- <li ng-class="page === 'flow' ? 'active' : ''"><a><svg tooltip-placement="bottom" tooltip="Map"><use xlink:href="#shape-flow" /></svg></a></li> -->
         <li ng-class="page === 'versions' ? 'active' : ''"><a href="/projects/{{project.id}}/{{project.slug}}/{{project.artboardId}}/versions"><svg tooltip-placement="bottom" tooltip="Version Control"><use xlink:href="#shape-versions" /></a></li>
         <li ng-class="page === 'comparison' ? 'active' : ''"><a href="/projects/{{project.id}}/{{project.slug}}/{{project.artboardId}}/comparison"><svg tooltip-placement="bottom" tooltip="Comparison Mode"><use xlink:href="#shape-comparison" /></svg></a></li>
       </ul>
@@ -31,7 +31,7 @@
         <li>
           <dropdown-toggle pane-align="center" close-on-click="true" class="calendar-menu">
             <toggle>
-              <button class="actions__button" tooltip-placement="bottom" tooltip="Set due date"><svg><use href="#shape-calendar" /></svg></button>
+              <button class="actions__button" tooltip-placement="bottom" tooltip="Set due date"><svg ng-if="!currentArtboard.dueDate"><use href="#shape-calendar" /></svg><span ng-if="currentArtboard.dueDate" class="assigned-date">{{getDate(currentArtboard.dueDate)}}</span></button>
             </toggle>
             <pane>
               <ul class="dd-menu">
@@ -118,7 +118,6 @@
             </toggle>
             <pane>
               <ul class="dd-menu">
-                <li><a href="#"><svg><use xlink:href="#shape-duplicate" /></svg> Duplicate</a></li>
                 <li><a href="#"><svg><use xlink:href="#shape-trash" /></svg> Delete</a></li>
               </ul>
             </pane>

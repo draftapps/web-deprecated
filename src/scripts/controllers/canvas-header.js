@@ -33,17 +33,19 @@
       slug: $stateParams.slug
     }
 
-    projectService.getProject(info.id, info.slug)
+    if(info.slug !==undefined) {
+      projectService.getProject(info.id, info.slug)
       .then(function(p) {
         $scope.currentArtboard = _.findWhere(p.artboards, {id: parseInt($stateParams.artboardId)});
         $scope.team = p.team.users;
       }, function() {
         // console.log("Server did not send project data!");
       });
+    }
 
     $scope.setArtBoardStatus = function(status, $event) {
       var toggler = $($event.currentTarget).closest('dropdown-toggle')
-      toggler.addClass('disabled');
+      // toggler.addClass('disabled');
       this.$close();
       var artboard = {
         "artboard_id" : $stateParams.artboardId,
@@ -64,7 +66,7 @@
 
     $scope.setArtBoardDueDate = function(date) {
       var toggler = $('dropdown-toggle.calendar-menu')
-      toggler.addClass('disabled');
+      // toggler.addClass('disabled');
       this.$close();
       var artboard = {
         "artboard_id" : $stateParams.artboardId,
@@ -86,7 +88,7 @@
 
     $scope.addTag = function(tag, color) {
       var toggler = $('dropdown-toggle.tags-dropdown')
-      toggler.addClass('disabled');
+      // toggler.addClass('disabled');
       //this.$close();
       var tagDetails = {
         "taggable_id" : parseInt($stateParams.artboardId),
@@ -134,15 +136,14 @@
 
     $scope.assignArtboard = function(userId, $event) {
       var toggler = $($event.currentTarget).closest('dropdown-toggle')
-      toggler.addClass('disabled');
-      var dropdownMenu = this;
+      // toggler.addClass('disabled');
+      this.$close();
       var member = {
         "artboard_id" : $stateParams.artboardId,
         "user_id": userId
       };
       projectService.assignArtboard($stateParams.id, $stateParams.artboardId, member)
       .then(function(p) {
-        dropdownMenu.$close();
         toggler.removeClass('disabled');
         toastr.success('Well Done! Member was assignd to this artboard successfully');
         projectCache.remove(projectCacheKey);
@@ -195,12 +196,19 @@
       });
     };
 
+    $scope.getDate = function(date) {
+      var date = new Date(date);
+      return date.getDate();
+    }
+
     // TODO: Change this to the real endpoint
-    projectService.getProjectActivities($stateParams.id)
-    .then(function(activities) {
-      $scope.notifications = activities[0].activities;
-    }, function() {
-      // console.log('Server did not send project data!');
-    });
+    if($stateParams.slug !== undefined) {
+      projectService.getProjectActivities($stateParams.id)
+      .then(function(activities) {
+        $scope.notifications = activities[0].activities;
+      }, function() {
+        // console.log('Server did not send project data!');
+      });
+    }
   }
 })();

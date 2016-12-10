@@ -1,6 +1,7 @@
 #toast-container {
   position: absolute;
   top: 15px;
+  z-index: 1005;
 }
 #toast-container.toast-top-center .toast, #toast-container.toast-bottom-center .toast {
   width: 80%;
@@ -24,6 +25,9 @@
 }
 #toastr-wrapper {
   position: relative;
+  display: block;
+  height: auto;
+  overflow: visible;
   #toast-container{
     position: static;
   }

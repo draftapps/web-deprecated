@@ -5,17 +5,15 @@
 
   function ProjectsCtrl($scope, projects, $http, $modal, $location, toastr, toastrConfig, ENV) {
 
-    angular.extend(toastrConfig, {
-      target: '#toastr-wrapper'
-    });
-
     var vm = this;
     vm.projects = projects.data;
     $scope.menu = "projects-activities";
     $scope.page = "projects";
     $scope.projectData = {};
     $scope.tags = [];
-    $scope.projectData.platform = "ios";     // Setting iOS as the default platform to display its resolution
+    // Initial values
+    $scope.projectData.platform = "ios";
+    $scope.projectData.scale = "@1x";
 
     // Reducing projects into tags
     _.each(projects.data, function(project) {

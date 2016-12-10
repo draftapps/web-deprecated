@@ -24,6 +24,7 @@
     $scope.page = "dashboard";
     $scope.styleguideColors = [];
     $scope.styleguideActiveColors = [];
+    $scope.colorFormat = "hex";
 
     $scope.project = {
       id: $stateParams.id,
@@ -46,6 +47,7 @@
     function initialize(project, info) {
       vm.project = project;
 
+      vm.copy = copy;
       vm.project.selectArtBoard = selectArtBoard;
       vm.project.selectSlice = selectSlice;
       vm.project.sliceMouseEnter = sliceMouseEnter;
@@ -201,7 +203,7 @@
       activate();
       selectArtBoard(info.currentArtboard);
       $scope.artboardIndex = _.findIndex(project.artboards, { id: info.currentArtboard.id});
-      if (project.styleguide.colors.length > 0) {
+      if ((project.styleguide !== undefined) && (project.styleguide.colors.length > 0)) {
         $scope.styleguideActiveColors = project.styleguide.colors.map(function(obj){
           return obj.name;
         });
@@ -707,6 +709,31 @@
         .error(function(data) {
           // console.log("Error: " + data);
         });
+    }
+
+    function copy(target) {
+      var textArea = document.createElement("textarea");
+      switch(target) {
+        case "style":
+          textArea.value = vm.selectedArtBoard.selectedLayer.styleList;
+          break;
+        case "content":
+          textArea.value = vm.selectedArtBoard.selectedLayer.content;
+          break;
+      }
+      document.body.appendChild(textArea);
+      textArea.select();
+      try {
+        var successful = document.execCommand('copy');
+        if (successful) {
+          toastr.success('Code added successfully to your clipboard');
+        } else {
+          toastr.error('Error, cannot add code to your clipboard');
+        }
+      } catch (err) {
+        toastr.error('Error, cannot add code to your clipboard');
+      }
+      document.body.removeChild(textArea);
     }
   }
 })();

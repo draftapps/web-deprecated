@@ -202,7 +202,7 @@
               </li>
               <li ng-class="{'active': rightActivetab === 'slices'}">
                 <a ng-click="rightActivetab = 'slices'">
-                  <svg tooltip-placement="bottom" tooltip="Bitmaps"><use xlink:href="#shape-image" /></svg>
+                  <svg tooltip-placement="bottom" tooltip="Bitmaps" class="icon-bitmap"><use xlink:href="#shape-image" /></svg>
                 </a>
               </li>
             </ul>
@@ -216,8 +216,10 @@
             <div class="scroller">
               <div class="code-outer-wrapper" ng-show="rightActivetab === 'code'">
                 <div class="code-wrapper" ng-if="dashboardVm.selectedArtBoard.selectedLayer.css.length">
+                  <button class="copy" ng-click="dashboardVm.copy('style')">Copy</button>
                   <div class="select-wrapper">
-                    <select name="" id="">
+                    <select>
+                      <option value="">CSS</option>
                       <option value="">Objective C</option>
                       <option value="">Swift</option>
                     </select>
@@ -235,6 +237,14 @@
                 </div>
               </div>
               <ul class="items-spaced color-wrapper" ng-show="rightActivetab === 'colors'">
+                <li>
+                  <div class="select-wrapper">
+                    <select ng-model="colorFormat">
+                      <option value="hex">HEX</option>
+                      <option value="rgba">RGBA</option>
+                    </select>
+                  </div>
+                </li>
                 <li ng-repeat="color in dashboardVm.project.colors">
                   <div class="color-selector">
                     <input name="styleguideColors[]" ng-checked="styleguideActiveColors.indexOf(color.name) !== -1" ng-click="dashboardVm.project.updateStyleguide()" value="{{color.name}}" type="checkbox" id="color-{{$index}}">
@@ -242,25 +252,27 @@
                   </div>
                   <span class="color-sample" style="background-color: {{color.color['cssRgba']}}"></span>
                   <span class="color-name">{{color.name}}</span><br>
-                  <span class="color-code">{{color.color['colorHex']}}</span>
+                  <span class="color-code"><span ng-if="colorFormat === 'hex'">{{color.color.colorHex}}</span> <span ng-if="colorFormat === 'rgba'">{{color.color.cssRgba}}</span></span>
                 </li>
                 <li class="add-style-guide">
                   <a ng-click="dashboardVm.project.updateStyleguide(true)">+ Add Style Guide</a>
                 </li>
               </ul>
-              <aside class="inspector" ng-show="rightActivetab === 'slices'">
-                <ul class="items-spaced images-layers">
-                  <li ng-repeat="sliceLayer in dashboardVm.project.slices"
-                    class="slice-layer" data-objectId="{{sliceLayer.objectID}}"
-                    ng-mouseenter="dashboardVm.project.sliceMouseEnter(sliceLayer)"
-                    ng-mouseleave="dashboardVm.project.sliceMouseLeave(sliceLayer)">
-                    <a ng-click="dashboardVm.project.selectSlice(sliceLayer)" class="text-center">
-                      <img class="thumbnail" src="assets/{{sliceLayer.exportable[0].path}}" alt="{{sliceLayer.exportable[0].path}}">
-                      <div class="u-text-small" ng-bind="::sliceLayer.name"></div>
-                      <div>{{dashboardVm.selectedArtBoard.unitSize(sliceLayer.rect.width)}} × {{dashboardVm.selectedArtBoard.unitSize(sliceLayer.rect.height)}}</div>
-                    </a>
-                  </li>
-                </ul>
+              <aside class="inspector inspector-slices" ng-show="rightActivetab === 'slices'">
+                <div class="scroller">
+                  <ul class="items-spaced images-layers">
+                    <li ng-repeat="sliceLayer in dashboardVm.project.slices"
+                      class="slice-layer" data-objectId="{{sliceLayer.objectID}}"
+                      ng-mouseenter="dashboardVm.project.sliceMouseEnter(sliceLayer)"
+                      ng-mouseleave="dashboardVm.project.sliceMouseLeave(sliceLayer)">
+                      <a ng-click="dashboardVm.project.selectSlice(sliceLayer)" class="text-center">
+                        <img class="thumbnail" src="assets/{{sliceLayer.exportable[0].path}}" alt="{{sliceLayer.exportable[0].path}}">
+                        <div class="u-text-small" ng-bind="::sliceLayer.name"></div>
+                        <div>{{dashboardVm.selectedArtBoard.unitSize(sliceLayer.rect.width)}} × {{dashboardVm.selectedArtBoard.unitSize(sliceLayer.rect.height)}}</div>
+                      </a>
+                    </li>
+                  </ul>
+                </div>
                 <section>
                   <h3>Export</h3>
                   <div class="context export-options">
@@ -418,6 +430,7 @@
                       </div>
                       <div class="row">
                         <div class="columns small-12">
+                          <button class="copy pull-right" ng-click="dashboardVm.copy('content')">Copy</button>
                           Content:
                           <textarea id="content" rows="2" readonly="readonly">{{dashboardVm.selectedArtBoard.selectedLayer.content}}</textarea>
                         </div>
@@ -500,7 +513,7 @@
                   </section>
 
                   <section ng-if="dashboardVm.selectedArtBoard.selectedLayer.css.length">
-                    <h3>CSS Style</h3>
+                    <h3>CSS Style <button class="copy" ng-click="dashboardVm.copy('style')">Copy</button></h3>
                     <div class="context">
                       <div class="item">
                         <label>

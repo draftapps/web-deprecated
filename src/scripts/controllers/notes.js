@@ -122,6 +122,7 @@
         createNote: createNote,
         closeNote: closeNote,
         resolveNote: resolveNote,
+        deleteNote: deleteNote,
         addNewReply: addNewReply,
         screenStyle: getBoardScreenStyle,
         screenParentStyle: getBoardParentScreenStyle,
@@ -190,6 +191,17 @@
       .then(function(p) {
         $scope.modal.close();
         toastr.success('Well Done! Note resolved successfully');
+        getNotes();
+      }, function() {
+        // console.log("Server did not send project data!");
+      });
+    }
+
+    function deleteNote(id, projectId, artboardId) {
+      notesService.deleteNote(id, projectId, artboardId)
+      .then(function(p) {
+        $scope.modal.close();
+        toastr.success('Well Done! Note deleted successfully');
         getNotes();
       }, function() {
         // console.log("Server did not send project data!");

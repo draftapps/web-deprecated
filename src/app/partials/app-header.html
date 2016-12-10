@@ -52,7 +52,7 @@
         <toggle>
           <div ng-controller="UserInfoCtrl">
             <img class="avatar" ng-if="user.image!==null" alt="{{user.name}}" ng-src="{{::(user.image)}}" />
-            <img class="avatar" ng-if="user.image===null" alt="{{user.name}}" gravatar-src="user.email" ng-fallback="images/user-avatar.png" />
+            <img class="avatar" ng-if="user.image===null" alt="{{user.name}}" gravatar-src="user.email" ng-fallback="/images/original/missing.png" />
           </div>
         </toggle>
         <pane>

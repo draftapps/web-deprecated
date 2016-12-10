@@ -10,6 +10,9 @@
     &--success {
       position: relative;
       background: #42d79e;
+      &:hover {
+        background-color: #2cbe79;
+      }
       &::before,
       &::after {
         position: absolute;
