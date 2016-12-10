@@ -20,6 +20,16 @@
     projectCache = CacheFactory.get('projectCache');
 
     return {
+      getProjects: function() {
+        return $q(function(resolve, reject) {
+          $http.get(ENV.api + "projects")
+          .success(function(data) {
+            resolve(data);
+          }).error(function(data) {
+            reject("Server didn't send the correct data");
+          });
+        });
+      },
       getProject: function(id, slug) {
         return $q(function(resolve, reject) {
           $http.get(ENV.api + "projects/" + id + "?project[slug]=" + slug, { cache: projectCache })

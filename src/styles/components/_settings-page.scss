@@ -94,6 +94,34 @@
   .form-input {
     color: #3a405b;
   }
+
+  .select-wrapper {
+    position: relative;
+    &::before {
+      content: "";
+      position: absolute;
+      top: 20px;
+      right: 10px;
+      background: url(../images/arrow-down.png) 0 0 no-repeat;
+      background-size: 10px 6px;
+      width: 10px;
+      height: 6px;
+    }
+    select {
+      margin: 0;
+      border-radius: 5px;
+      height: 51px;
+      outline: none;
+      font-size: 14px;
+      background: transparent;
+      &:focus {
+        option[value=""] {
+          display: none;
+        }
+      }
+    }
+  }
+
 }
 
 
@@ -184,6 +212,8 @@
   }
   .add-member {
     color: #42d79e;
+    display: block;
+    line-height: 50px;
   }
   .add-member:hover {
     text-decoration: underline;
@@ -195,7 +225,6 @@
   }
   .button.success {
     padding: 0 38px;
-    margin-top: 25px;
     font-size: 14px;
     line-height: 48px;
   }
