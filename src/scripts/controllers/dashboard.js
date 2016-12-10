@@ -24,6 +24,7 @@
     $scope.page = "dashboard";
     $scope.styleguideColors = [];
     $scope.styleguideActiveColors = [];
+    $scope.colorFormat = "hex";
 
     $scope.project = {
       id: $stateParams.id,
@@ -202,7 +203,7 @@
       activate();
       selectArtBoard(info.currentArtboard);
       $scope.artboardIndex = _.findIndex(project.artboards, { id: info.currentArtboard.id});
-      if (project.styleguide.colors.length > 0) {
+      if ((project.styleguide !== undefined) && (project.styleguide.colors.length > 0)) {
         $scope.styleguideActiveColors = project.styleguide.colors.map(function(obj){
           return obj.name;
         });
