@@ -274,6 +274,12 @@ main {
   right: 0;
 }
 
+.inspector-slices {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
 .navbar {
   left: -240px;
   width: 240px;

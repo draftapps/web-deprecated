@@ -258,19 +258,21 @@
                   <a ng-click="dashboardVm.project.updateStyleguide(true)">+ Add Style Guide</a>
                 </li>
               </ul>
-              <aside class="inspector" ng-show="rightActivetab === 'slices'">
-                <ul class="items-spaced images-layers">
-                  <li ng-repeat="sliceLayer in dashboardVm.project.slices"
-                    class="slice-layer" data-objectId="{{sliceLayer.objectID}}"
-                    ng-mouseenter="dashboardVm.project.sliceMouseEnter(sliceLayer)"
-                    ng-mouseleave="dashboardVm.project.sliceMouseLeave(sliceLayer)">
-                    <a ng-click="dashboardVm.project.selectSlice(sliceLayer)" class="text-center">
-                      <img class="thumbnail" src="assets/{{sliceLayer.exportable[0].path}}" alt="{{sliceLayer.exportable[0].path}}">
-                      <div class="u-text-small" ng-bind="::sliceLayer.name"></div>
-                      <div>{{dashboardVm.selectedArtBoard.unitSize(sliceLayer.rect.width)}} × {{dashboardVm.selectedArtBoard.unitSize(sliceLayer.rect.height)}}</div>
-                    </a>
-                  </li>
-                </ul>
+              <aside class="inspector inspector-slices" ng-show="rightActivetab === 'slices'">
+                <div class="scroller">
+                  <ul class="items-spaced images-layers">
+                    <li ng-repeat="sliceLayer in dashboardVm.project.slices"
+                      class="slice-layer" data-objectId="{{sliceLayer.objectID}}"
+                      ng-mouseenter="dashboardVm.project.sliceMouseEnter(sliceLayer)"
+                      ng-mouseleave="dashboardVm.project.sliceMouseLeave(sliceLayer)">
+                      <a ng-click="dashboardVm.project.selectSlice(sliceLayer)" class="text-center">
+                        <img class="thumbnail" src="assets/{{sliceLayer.exportable[0].path}}" alt="{{sliceLayer.exportable[0].path}}">
+                        <div class="u-text-small" ng-bind="::sliceLayer.name"></div>
+                        <div>{{dashboardVm.selectedArtBoard.unitSize(sliceLayer.rect.width)}} × {{dashboardVm.selectedArtBoard.unitSize(sliceLayer.rect.height)}}</div>
+                      </a>
+                    </li>
+                  </ul>
+                </div>
                 <section>
                   <h3>Export</h3>
                   <div class="context export-options">
