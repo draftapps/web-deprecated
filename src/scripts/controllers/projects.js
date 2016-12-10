@@ -5,10 +5,6 @@
 
   function ProjectsCtrl($scope, projects, $http, $modal, $location, toastr, toastrConfig, ENV) {
 
-    angular.extend(toastrConfig, {
-      target: '#toastr-wrapper'
-    });
-
     var vm = this;
     vm.projects = projects.data;
     $scope.menu = "projects-activities";
