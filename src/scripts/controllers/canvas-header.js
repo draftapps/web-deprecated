@@ -196,6 +196,11 @@
       });
     };
 
+    $scope.getDate = function(date) {
+      var date = new Date(date);
+      return date.getDate();
+    }
+
     // TODO: Change this to the real endpoint
     if($stateParams.slug !== undefined) {
       projectService.getProjectActivities($stateParams.id)

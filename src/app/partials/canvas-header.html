@@ -31,7 +31,7 @@
         <li>
           <dropdown-toggle pane-align="center" close-on-click="true" class="calendar-menu">
             <toggle>
-              <button class="actions__button" tooltip-placement="bottom" tooltip="Set due date"><svg><use href="#shape-calendar" /></svg></button>
+              <button class="actions__button" tooltip-placement="bottom" tooltip="Set due date"><svg ng-if="!currentArtboard.dueDate"><use href="#shape-calendar" /></svg><span ng-if="currentArtboard.dueDate" class="assigned-date">{{getDate(currentArtboard.dueDate)}}</span></button>
             </toggle>
             <pane>
               <ul class="dd-menu">

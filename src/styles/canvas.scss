@@ -1351,6 +1351,7 @@ main {
       .actions__button {
         margin-left: 5px;
         margin-right: 5px;
+        position: relative;
         i {
           vertical-align: text-bottom;
           font-size: 20px;
@@ -2584,4 +2585,13 @@ main {
 .canvas .sidebar__body .items-spaced > li.selected::before,
 .canvas .sidebar__body .items-spaced > li.selected::after {
   content: none;
+}
+.assigned-date {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  text-align: center;
+  border-radius: 50%;
 }
