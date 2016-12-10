@@ -2109,6 +2109,7 @@ main {
       background: #3a405b;
       height: calc(100% - 53px);
       padding-bottom: 80px;
+      clear: both;
     }
     .code-block {
       margin: 0;
@@ -2121,8 +2122,18 @@ main {
     pre {
       white-space: pre-wrap;
     }
+    .copy {
+      float: right;
+      width: 20%;
+      display: block;
+      line-height: 42px;
+      text-align: right;
+      padding-right: 5px;
+    }
     .select-wrapper {
       position: relative;
+      float: left;
+      width: 80%;
       select {
         border: 1px solid #e4e7ef;
         border-radius: 5px;

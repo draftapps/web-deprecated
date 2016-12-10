@@ -46,6 +46,7 @@
     function initialize(project, info) {
       vm.project = project;
 
+      vm.copy = copy;
       vm.project.selectArtBoard = selectArtBoard;
       vm.project.selectSlice = selectSlice;
       vm.project.sliceMouseEnter = sliceMouseEnter;
@@ -707,6 +708,24 @@
         .error(function(data) {
           // console.log("Error: " + data);
         });
+    }
+
+    function copy() {
+      var textArea = document.createElement("textarea");
+      textArea.value = vm.selectedArtBoard.selectedLayer.formattedStyle;
+      document.body.appendChild(textArea);
+      textArea.select();
+      try {
+        var successful = document.execCommand('copy');
+        if (successful) {
+          toastr.success('Code added successfully to your clipboard');
+        } else {
+          toastr.error('Error, cannot add code to your clipboard');
+        }
+      } catch (err) {
+        toastr.error('Error, cannot add code to your clipboard');
+      }
+      document.body.removeChild(textArea);
     }
   }
 })();
