@@ -711,9 +711,16 @@
         });
     }
 
-    function copy() {
+    function copy(target) {
       var textArea = document.createElement("textarea");
-      textArea.value = vm.selectedArtBoard.selectedLayer.formattedStyle;
+      switch(target) {
+        case "style":
+          textArea.value = vm.selectedArtBoard.selectedLayer.styleList;
+          break;
+        case "content":
+          textArea.value = vm.selectedArtBoard.selectedLayer.content;
+          break;
+      }
       document.body.appendChild(textArea);
       textArea.select();
       try {
