@@ -13,6 +13,7 @@
       vm.role = role;
     }
     $scope.tab = $stateParams.param;
+    $scope.user = $scope.$parent.user;
     settingsService.getNotificationsSettings($scope.$parent.user.id)
     .then(function(settings) {
       console.log(settings);

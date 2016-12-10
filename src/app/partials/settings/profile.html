@@ -5,7 +5,7 @@
       <fieldset ng-disabled="settingsVM.loading">
         <div class="form-group text-center">
           <div class="avatar-card">
-            <div class="avatar-card__img-wrapper"><img class="avatar" src="images/avatar-archer.png"/>
+            <div class="avatar-card__img-wrapper"><img class="avatar" ng-src="{{user.image}}"/>
               <input type="file" name="avatar"/>
             </div>
             <div class="avatar-card__actions clearfix">
