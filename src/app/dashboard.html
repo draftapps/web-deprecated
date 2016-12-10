@@ -216,8 +216,10 @@
             <div class="scroller">
               <div class="code-outer-wrapper" ng-show="rightActivetab === 'code'">
                 <div class="code-wrapper" ng-if="dashboardVm.selectedArtBoard.selectedLayer.css.length">
+                  <button class="copy" ng-click="dashboardVm.copy()">Copy</button>
                   <div class="select-wrapper">
                     <select name="" id="">
+                      <option value="">CSS</option>
                       <option value="">Objective C</option>
                       <option value="">Swift</option>
                     </select>
