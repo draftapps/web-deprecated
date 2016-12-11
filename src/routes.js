@@ -155,11 +155,6 @@ function routesConfig($stateProvider, $urlRouterProvider, $locationProvider, ENV
       templateUrl: "app/comparison.html",
       controller: "ComparisonCtrl",
       controllerAs: "comparisonVm",
-      resolve: {
-        comparisonData: $http => {
-          return $http.get("comparison.json");
-        }
-      },
       parent: "authed"
     })
     .state("notes", {
