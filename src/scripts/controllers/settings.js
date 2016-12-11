@@ -66,13 +66,6 @@
       projectService.getProjects()
       .then(function(projects) {
         $scope.projects = projects;
-        $scope.projectsAdmin = [];
-        _.each(projects, function(project){
-          var member = _.findWhere(project.team.users, {email: $scope.$parent.user.email, role: 1});
-          if(member) {
-            $scope.projectsAdmin.push(project);
-          }
-        });
       }, function() {
         // console.log('Server did not send project data!');
       });
@@ -80,8 +73,8 @@
 
     $scope.inviteMembers = function() {
       // TODO: Should find a cleaner way to do this
-      var $project = $('#project')
-      if($project.value === "") {
+      var $project = $('#project');
+      if($project.val() === "") {
         toastr.error('Please select project');
         return;
       }
@@ -105,6 +98,7 @@
         ];
         toastr.success('Members invited successfully');
       }, function() {
+        end();
         // console.log('Server did not send project data!');
       });
     }
@@ -112,7 +106,7 @@
     $scope.projectToManage = "";
     $scope.setSelectedProject = function() {
       // TODO: Should find a cleaner way to do this
-      var $project = $('#project-management')
+      var $project = $('#project')
       $scope.selectedProject = _.findWhere($scope.projects, {slug: $project.val()})
     }
 
@@ -163,6 +157,16 @@
         $scope.modal.close();
         // console.log('Server did not send project data!');
       });
+    }
+
+    $scope.checkIfAdmin = function() {
+      var $project = $('#project');
+      var activeProject = _.findWhere($scope.projects, {slug: $project.val()});
+      var admin = _.findWhere(activeProject.team.users, {email: $scope.$parent.user.email, role: 1});
+      if(admin) {
+        return true;
+      }
+      return false;
     }
 
     function start() {
