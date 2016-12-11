@@ -5,7 +5,8 @@
         <a href="projects" ng-class="page == 'projects' ? 'active u-text-small' : 'u-text-small'">Projects</a>
         <a href="projects/{{project.id}}/activities" ng-show="page !== 'projects'" ng-class="page == 'activity' ? 'active u-text-small' : 'u-text-small'">Activity</a>
       </nav>
-      <a href="/projects/{{project.id}}/{{project.slug}}" ng-show="menu !== 'projects-activities'" class="u-text-small u-items-middle"><svg class="icon-back"><use xlink:href="#shape-arrow" /></svg> Back</a>
+      <a href="/projects/{{project.id}}/{{project.slug}}" ng-show="menu !== 'projects-activities' && menu !== 'settings'" class="u-text-small u-items-middle"><svg class="icon-back"><use xlink:href="#shape-arrow" /></svg> Back</a>
+      <a href="javascript:history.go(-1)" ng-show="menu === 'settings'" class="u-text-small u-items-middle"><svg class="icon-back"><use xlink:href="#shape-arrow" /></svg> Back</a>
     </div>
     <div class="column large-8">
       <div class="row align-center">

@@ -1,7 +1,7 @@
 (function () {
   angular
-      .module("app")
-      .controller("SettingsCtrl", SettingsCtrl);
+    .module("app")
+    .controller("SettingsCtrl", SettingsCtrl);
 
   function SettingsCtrl($scope, $stateParams, $modal, toastrConfig, toastr, projectService, settingsService) {
 
@@ -11,6 +11,7 @@
 
     var vm = this;
 
+    $scope.menu = "settings";
     $scope.tab = $stateParams.param;
     $scope.user = $scope.$parent.user;
 
