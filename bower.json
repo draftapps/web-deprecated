@@ -22,7 +22,8 @@
     "twentytwenty": "https://github.com/zurb/twentytwenty.git",
     "angular-cache": "^4.6.0",
     "angular-capitalize": "^2.0.4",
-    "angular-toastr": "^2.1.1"
+    "angular-toastr": "^2.1.1",
+    "moment": "^2.17.1"
   },
   "overrides": {
     "foundation-sites": {
