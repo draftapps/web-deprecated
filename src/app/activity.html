@@ -6,8 +6,8 @@
   <div class="container">
     <div class="row">
       <div class="column medium-10 small-centered">
-        <form class="update-status">
-          <textarea placeholder="Write Something to post here for your team.."></textarea>
+        <form class="update-status" ng-submit="postActivity()">
+          <textarea placeholder="Write Something to post here for your team.." ng-model="message"></textarea>
           <p class="text-right">
             <button class="button button--info">Post</button>
           </p>
@@ -39,6 +39,13 @@
                   </div>
                   <div class="activity resolve-activity" ng-if="activity.type === 4">
                     <p><svg class="icon"><use xlink:href="#shape-resolve" /></use><span>{{activity.user}}</span> resolved note <span>{{activity.what}}</span></p>
+                    <p class="time-ago"><svg><use xlink:href="#shape-clock" /></svg><time-ago from-time='{{ activity.created_at }}'></time-ago></p>
+                  </div>
+                  <div class="activity add-activity" ng-if="activity.type === 5">
+                    <p><svg class="icon"><use xlink:href="#shape-comment" /></use><span>{{activity.user}}</span> added a message</p>
+                    <blockquote>
+                      <p>{{activity.message}}</p>
+                    </blockquote>
                     <p class="time-ago"><svg><use xlink:href="#shape-clock" /></svg><time-ago from-time='{{ activity.created_at }}'></time-ago></p>
                   </div>
                 </li>
