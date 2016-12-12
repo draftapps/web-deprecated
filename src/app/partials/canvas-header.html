@@ -43,12 +43,12 @@
         <li>
           <dropdown-toggle pane-align="center" close-on-click="true" class="assign-menu">
             <toggle>
-            <button class="actions__button" tooltip-placement="bottom" tooltip="Add assignee"><i class="ion-person"></i></button>
+            <button class="actions__button" tooltip-placement="bottom" tooltip="Add assignee"><i ng-if="!currentArtboard.assignee" class="ion-person"></i><span ng-if="currentArtboard.assignee" class="assigned-user"><img class="avatar" ng-if="currentArtboard.assignee.image!==null" alt="{{currentArtboard.assignee.name}}" ng-src="{{::(currentArtboard.assignee.image)}}" width="32" /><img class="avatar" ng-if="currentArtboard.assignee.image===null" alt="{{currentArtboard.assignee.name}}" gravatar-src="currentArtboard.assignee.email" ng-fallback="images/user-avatar.png" width="32" /></span></button>
             </toggle>
             <pane>
               <ul class="dd-menu assign-dd">
                 <li class="title">Assign to</span></li>
-                <li ng-repeat="member in team" ng-class="{'assignee': memberInAssignees(member.id)}">
+                <li ng-repeat="member in team">
                   <a ng-click="assignArtboard(member.id, $event)"><img class="avatar" ng-if="member.image!==null" alt="{{member.name}}" ng-src="{{::(member.image)}}" width="32" /><img class="avatar" ng-if="member.image===null" alt="{{member.name}}" gravatar-src="member.email" ng-fallback="images/user-avatar.png" width="32" />{{member.name || 'Unnamed member'}}</a>
               </ul>
             </pane>

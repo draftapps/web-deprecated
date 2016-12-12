@@ -36,8 +36,10 @@
     if(info.slug !==undefined) {
       projectService.getProject(info.id, info.slug)
       .then(function(p) {
-        $scope.currentArtboard = _.findWhere(p.artboards, {id: parseInt($stateParams.artboardId)});
         $scope.team = p.team.users;
+        if($stateParams.artboardId !==undefined) {
+          $scope.currentArtboard = _.findWhere(p.artboards, {id: parseInt($stateParams.artboardId)});
+        }
       }, function() {
         // console.log("Server did not send project data!");
       });
@@ -147,14 +149,11 @@
         toggler.removeClass('disabled');
         toastr.success('Well Done! Member was assignd to this artboard successfully');
         projectCache.remove(projectCacheKey);
+        $scope.currentArtboard.assignee = p.assignee;
       }, function() {
         toggler.removeClass('disabled');
         // console.log("Server did not send project data!");
       });
-    }
-
-    $scope.memberInAssignees = function(id) {
-      return _.find($scope.currentArtboard.assignees, {id: id}) !== undefined;
     }
 
     $scope.openModal = function(template, parameters) {
