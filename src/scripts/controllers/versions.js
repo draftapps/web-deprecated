@@ -3,11 +3,22 @@
     .module("app")
     .controller("VersionsCtrl", VersionsCtrl);
 
-  function VersionsCtrl($scope, $stateParams, project) {
+  function VersionsCtrl($scope, $stateParams, projectService, CacheFactory, ENV) {
     var vm = this;
 
     $scope.page = "versions";
     $scope.drawnNumbers = false;
+
+    var projectCache,
+        projectCacheKey = ENV.api + 'projects/' + $stateParams.id + '?project[slug]=' + $stateParams.slug;
+
+    if (!CacheFactory.get('projectCache')) {
+      CacheFactory.createCache('projectCache', {
+        deleteOnExpire: 'aggressive',
+        recycleFreq: 60000
+      });
+    }
+    projectCache = CacheFactory.get('projectCache');
 
     $scope.project = {
       id: $stateParams.id,
@@ -22,20 +33,25 @@
       }
     }
 
-    vm.project = project.data;
-    vm.project.selectVersion = selectVersion;
-    vm.selectedVersion = {
-      obj: null,
-      screenStyle: getBoardScreenStyle,
-      screenParentStyle: getBoardParentScreenStyle,
-      zoomIn: zoomIn,
-      zoomOut: zoomOut,
-      zoomSize: zoomSize
-    };
-    activate();
+    projectService.getProject($stateParams.id, $stateParams.slug)
+    .then(function(project) {
+      vm.project = project;
+      vm.project.selectVersion = selectVersion;
+      vm.selectedVersion = {
+        obj: null,
+        screenStyle: getBoardScreenStyle,
+        screenParentStyle: getBoardParentScreenStyle,
+        zoomIn: zoomIn,
+        zoomOut: zoomOut,
+        zoomSize: zoomSize
+      };
+      activate();
+    }, function() {
+      // console.log("Server did not send project data!");
+    });
 
     function activate() {
-      vm.selectedVersion.obj = vm.project.versions[0];
+      vm.selectedVersion.obj = vm.project.artboards[0];
       vm.project.configs = getConfigs(
         vm.project.scale, vm.project.unit, vm.project.colorFormat, vm.selectedVersion.obj.height
       );
@@ -71,7 +87,7 @@
         "width": zoomSize(vm.selectedVersion.obj.width),
         "height": zoomSize(vm.selectedVersion.obj.height),
         "background": "#FFF url(" +
-        (vm.selectedVersion.obj.imageBase64 || vm.selectedVersion.obj.imagePath) +
+        (vm.selectedVersion.obj.imageBase64 || vm.selectedVersion.obj.fullImage) +
         ") no-repeat",
         "backgroundSize": zoomSize(vm.selectedVersion.obj.width) + "px " + zoomSize(vm.selectedVersion.obj.height) + "px"
       };
