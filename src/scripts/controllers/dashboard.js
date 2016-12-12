@@ -661,7 +661,7 @@
     }
 
     function selectSlice(layer) {
-      var slice = _.findWhere(vm.selectedArtBoard.obj.layers, {objectID: layer.objectID});
+      var slice = _.findWhere(vm.selectedArtBoard.obj.layers, {objectId: layer.objectId});
       if (slice) {
         vm.selectedArtBoard.selectLayer(slice);
       }
@@ -671,12 +671,12 @@
     }
 
     function sliceMouseEnter(layer) {
-      var slice = _.findWhere(vm.selectedArtBoard.obj.layers, {objectID: layer.objectID});
+      var slice = _.findWhere(vm.selectedArtBoard.obj.layers, {objectId: layer.objectId});
       if (slice) slice.hasSlice = true;
     }
 
     function sliceMouseLeave(layer) {
-      var slice = _.findWhere(vm.selectedArtBoard.obj.layers, {objectID: layer.objectID});
+      var slice = _.findWhere(vm.selectedArtBoard.obj.layers, {objectId: layer.objectId});
       if (slice) slice.hasSlice = false;
     }
 

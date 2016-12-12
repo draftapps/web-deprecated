@@ -1,5 +1,17 @@
-
 <div class="team-members-settings partial__content">
+  <form class="invite-form">
+    <legend>Select project</legend>
+    <div class="row">
+      <div class="column large-4 head-filters">
+        <div class="select-wrapper">
+          <select id="project" ng-model="activeProjet" ng-change="setSelectedProject()">
+            <option value="">Select Project</option>
+            <option ng-repeat="project in projects" value="{{project.slug}}" data-id="{{project.id}}">{{project.name}}</option>
+          </select>
+        </div>
+      </div>
+    </div>
+  </form>
   <form class="invite-form" ng-submit="inviteMembers()">
     <fieldset ng-disabled="settingsVM.loading">
       <legend>Invite Team Members</legend>
@@ -25,32 +37,16 @@
       </div>
       <div class="row form-group">
         <div class="column large-4"><a class="add-member" ng-click="addNewMember()"><i class="icon ion-plus"></i>Add Another Team Member</a></div>
-        <div class="column large-4 head-filters">
-          <div class="select-wrapper">
-            <select id="project">
-              <option value="">Select Project</option>
-              <option ng-repeat="project in projects" value="{{project.slug}}" data-id="{{project.id}}">{{project.name}}</option>
-            </select>
-          </div>
-        </div>
-        <div class="column large-4">
+        <div class="column large-4 large-offset-4">
           <button class="button expanded success" type="submit" ng-disabled="settingsVM.loading">Invite Team Members</button>
         </div>
       </div>
     </fieldset>
   </form>
   <form class="management-form">
-    <div class="pull-right">
-      <div class="select-wrapper">
-        <select id="project-management" ng-change="setSelectedProject()" ng-model="projectToManage">
-          <option value="">Select Project</option>
-          <option ng-repeat="project in projectsAdmin" value="{{project.slug}}" data-id="{{project.id}}">{{project.name}}</option>
-        </select>
-      </div>
-    </div>
     <fieldset>
       <legend>Manage Team Members</legend>
-      <div class="form-group team-member" ng-repeat="member in selectedProject.team.users">
+      <div class="form-group team-member" ng-repeat="member in selectedProject.team.users" ng-if="checkIfAdmin()">
         <div class="team-member__identity">
           <div class="team-member__img-wrapper">
             <img class="avatar" ng-if="member.image!==null" alt="{{member.name}}" ng-src="{{::(member.image)}}" />
@@ -69,6 +65,9 @@
             <div class="icon ion-close-circled"></div>
           </button>
         </div>
+      </div>
+      <div ng-if="!checkIfAdmin()">
+        <p>Sorry, you're not an admin for this project.</p>
       </div>
     </fieldset>
   </form>

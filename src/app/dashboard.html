@@ -266,7 +266,7 @@
                       ng-mouseenter="dashboardVm.project.sliceMouseEnter(sliceLayer)"
                       ng-mouseleave="dashboardVm.project.sliceMouseLeave(sliceLayer)">
                       <a ng-click="dashboardVm.project.selectSlice(sliceLayer)" class="text-center">
-                        <img class="thumbnail" src="assets/{{sliceLayer.exportable[0].path}}" alt="{{sliceLayer.exportable[0].path}}">
+                        <img class="thumbnail" ng-src="{{sliceLayer.exportables[0].path}}" alt="{{sliceLayer.exportables[0].path}}">
                         <div class="u-text-small" ng-bind="::sliceLayer.name"></div>
                         <div>{{dashboardVm.selectedArtBoard.unitSize(sliceLayer.rect.width)}} × {{dashboardVm.selectedArtBoard.unitSize(sliceLayer.rect.height)}}</div>
                       </a>
@@ -523,13 +523,13 @@
                     </div>
                   </section>
 
-                  <section ng-if="dashboardVm.selectedArtBoard.selectedLayer.exportable.length">
+                  <section ng-if="dashboardVm.selectedArtBoard.selectedLayer.exportablesAttributes.length">
                     <h3>Exportables</h3>
                     <div class="context">
                       <ul class="exportable">
-                        <li ng-repeat="exportable in dashboardVm.selectedArtBoard.selectedLayer.exportable">
-                          <a href="assets/{{exportable.path}}" data-format="exportable.format">
-                            <img src="assets/{{exportable.path}}" alt="assets/{{exportable.path}}">assets/{{exportable.path}}</a>
+                        <li ng-repeat="exportable in dashboardVm.selectedArtBoard.selectedLayer.exportablesAttributes">
+                          <a href="{{exportable.path}}" data-format="exportable.format">
+                            <img src="{{exportable.path}}" alt="{{exportable.path}}">{{exportable.path}}</a>
                           </li>
                         </ul>
                     </div>
