@@ -3,10 +3,30 @@
     .module("app")
     .controller("ProjectsCtrl", ProjectsCtrl);
 
-  function ProjectsCtrl($scope, projects, $http, $modal, $location, projectService, toastr, toastrConfig, ENV) {
+  function ProjectsCtrl($scope, $http, $modal, $location, projectService, toastr, toastrConfig, ENV) {
 
     var vm = this;
-    vm.projects = projects.data;
+    projectService.getProjects(false)
+    .then(function(projects) {
+      vm.projects = projects;
+      // Reducing projects into tags
+      _.each(projects.data, function(project) {
+        if(project.tags.length > 0) {
+          $scope.tags.push(project.tags);
+        }
+      });
+      // Flattening the array http://stackoverflow.com/a/10865042/497828
+      $scope.tags = [].concat.apply([], $scope.tags);
+      $scope.tags = $scope.tags.map(function(tag){ return tag.name; });
+      $scope.tags = _.uniq($scope.tags);
+
+      $scope.statuses = ["New", "In Progress", "Approved"];
+
+    }, function() {
+      $scope.modal.close();
+      // console.log('Server did not send project data!');
+    });
+
     $scope.menu = "projects-activities";
     $scope.page = "projects";
     $scope.projectData = {};
@@ -15,18 +35,6 @@
     $scope.projectData.platform = "ios";
     $scope.projectData.scale = "@1x";
 
-    // Reducing projects into tags
-    _.each(projects.data, function(project) {
-      if(project.tags.length > 0) {
-        $scope.tags.push(project.tags);
-      }
-    });
-    // Flattening the array http://stackoverflow.com/a/10865042/497828
-    $scope.tags = [].concat.apply([], $scope.tags);
-    $scope.tags = $scope.tags.map(function(tag){ return tag.name; });
-    $scope.tags = _.uniq($scope.tags);
-
-    $scope.statuses = ["New", "In Progress", "Approved"];
     /**
      * [$scope.setFilter - Filter the list of the projects]
      * @param  {string} filter [The string used for filtering]

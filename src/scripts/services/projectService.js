@@ -20,9 +20,17 @@
     projectCache = CacheFactory.get('projectCache');
 
     return {
-      getProjects: function() {
+      getProjects: function(archive) {
+        var params = {
+          "archived": archive || false
+        }
+        console.log(params);
         return $q(function(resolve, reject) {
-          $http.get(ENV.api + "projects")
+          $http({
+            url: ENV.api + "projects",
+            method: "GET",
+            params: params
+          })
           .success(function(data) {
             resolve(data);
           }).error(function(data) {

@@ -97,6 +97,13 @@ function routesConfig($stateProvider, $urlRouterProvider, $locationProvider, ENV
       templateUrl: "app/projects.html",
       controller: "ProjectsCtrl",
       controllerAs: "projectsVm",
+      parent: "authed"
+    })
+    .state("archive", {
+      url: "/archive",
+      templateUrl: "app/projects.html",
+      controller: "ProjectsCtrl",
+      controllerAs: "projectsVm",
       resolve: {
         projects: $http => $http.get(ENV.api + "projects")
       },
