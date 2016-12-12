@@ -201,14 +201,14 @@
       return date.getDate();
     }
 
-    // TODO: Change this to the real endpoint
-    if($stateParams.slug !== undefined) {
+    // TODO: Change this to the real endpoint when notifications are implemented in API
+    // if($stateParams.slug !== undefined) {
       projectService.getProjectActivities($stateParams.id)
       .then(function(activities) {
         $scope.notifications = activities[0].activities;
       }, function() {
         // console.log('Server did not send project data!');
       });
-    }
+    // }
   }
 })();
