@@ -92,6 +92,16 @@
             reject("Server didn't send the correct data");
           });
         });
+      },
+      archiveProject: function(projectId, project) {
+        return $q(function(resolve, reject) {
+          $http.post(ENV.api + "projects/" + projectId + "/archive", project)
+          .success(function(data) {
+            resolve(data);
+          }).error(function(data) {
+            reject("Server didn't send the correct data");
+          });
+        });
       }
     };
   }

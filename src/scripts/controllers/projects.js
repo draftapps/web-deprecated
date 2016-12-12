@@ -3,7 +3,7 @@
     .module("app")
     .controller("ProjectsCtrl", ProjectsCtrl);
 
-  function ProjectsCtrl($scope, projects, $http, $modal, $location, toastr, toastrConfig, ENV) {
+  function ProjectsCtrl($scope, projects, $http, $modal, $location, projectService, toastr, toastrConfig, ENV) {
 
     var vm = this;
     vm.projects = projects.data;
@@ -152,6 +152,27 @@
 
     $scope.tagInProject = function(tag, projectTags) {
       return _.find(projectTags, {name: tag}) !== undefined;
+    }
+
+    $scope.archiveProject = function(projectId, projectSlug) {
+      var project = {
+        "project": {
+          "slug": projectSlug,
+        },
+        "email" : $scope.$parent.user.email
+      }
+      projectService.archiveProject(projectId, project)
+      .then(function(project) {
+        toastr.success('Project archived successfully');
+        $scope.projectData = {};
+        var projects = $scope.projectsVm.projects;
+        var index = _.findIndex(projects, function(project) { return project.id === projectId; });
+        projects.splice(index, 1);
+        $scope.modal.close();
+      }, function() {
+        $scope.modal.close();
+        // console.log('Server did not send project data!');
+      });
     }
   }
 })();
