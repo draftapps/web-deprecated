@@ -6,7 +6,7 @@
   function ProjectsCtrl($scope, $http, $modal, $location, projectService, toastr, toastrConfig, ENV) {
 
     var vm = this;
-    projectService.getProjects(false)
+    projectService.getProjects(true)
     .then(function(projects) {
       vm.projects = projects;
       // Reducing projects into tags
