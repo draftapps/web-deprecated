@@ -3,19 +3,23 @@
     .module("app")
     .controller("ActivityCtrl", ActivityCtrl);
 
-  function ActivityCtrl($scope, $stateParams, projectService) {
+  function ActivityCtrl($scope, $stateParams, projectService, toastr, toastrConfig) {
 
     var vm = this;
     $scope.menu = "projects-activities";
     $scope.page = "activity";
     $scope.message = "";
 
-    projectService.getProjectActivities($stateParams.id)
-    .then(function(activities) {
-      vm.activity = activities;
-    }, function() {
-      // console.log('Server did not send project data!');
-    });
+    var init = function() {
+      projectService.getProjectActivities($stateParams.id)
+      .then(function(activities) {
+        vm.activity = activities;
+      }, function() {
+        // console.log('Server did not send project data!');
+      });
+    }
+
+    init();
 
     $scope.postActivity = function () {
       var params = {
@@ -25,7 +29,9 @@
       }
       projectService.postProjectActivity($stateParams.id, params)
       .then(function(activities) {
-        vm.activity = activities;
+        init();
+        toastr.success("Message submitted successfully");
+        $scope.message = "";
       }, function() {
         // console.log('Server did not send project data!');
       });
