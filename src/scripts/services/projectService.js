@@ -22,9 +22,8 @@
     return {
       getProjects: function(archive) {
         var params = {
-          "archived": archive || false
+          "archived": archive || 0
         }
-        console.log(params);
         return $q(function(resolve, reject) {
           $http({
             url: ENV.api + "projects",

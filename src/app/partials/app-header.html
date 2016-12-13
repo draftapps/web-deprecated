@@ -1,15 +1,14 @@
 <header class="c-header" ng-controller="CanvasHeaderCtrl">
   <div class="row expanded align-middle">
-    <div class="column large-2">
-      <nav ng-show="menu === 'projects-activities'">
-        <a href="projects" ng-class="page == 'projects' ? 'active u-text-small' : 'u-text-small'">Projects</a>
-        <a href="archive" ng-class="page == 'archive' ? 'active u-text-small' : 'u-text-small'">Archive</a>
-        <a href="projects/{{project.id}}/activities" ng-show="page !== 'projects'" ng-class="page == 'activity' ? 'active u-text-small' : 'u-text-small'">Activity</a>
+    <div class="column large-3">
+      <nav ng-show="menu === 'projects-activities' || menu === 'settings'">
+        <a href="/projects" ng-class="page == 'projects' ? 'active u-text-small' : 'u-text-small'">Projects</a>
+        <a href="/projects?archive" ng-class="page == 'archive' ? 'active u-text-small' : 'u-text-small'">Archive</a>
+        <a href="/projects/{{project.id}}/activities" ng-show="page !== 'projects' && page !== 'archive' && menu !== 'settings'" ng-class="page == 'activity' ? 'active u-text-small' : 'u-text-small'">Activity</a>
       </nav>
       <a href="/projects/{{project.id}}/{{project.slug}}" ng-show="menu !== 'projects-activities' && menu !== 'settings'" class="u-text-small u-items-middle"><svg class="icon-back"><use xlink:href="#shape-arrow" /></svg> Back</a>
-      <a href="javascript:history.go(-1)" ng-show="menu === 'settings'" class="u-text-small u-items-middle"><svg class="icon-back"><use xlink:href="#shape-arrow" /></svg> Back</a>
     </div>
-    <div class="column large-8">
+    <div class="column large-7">
       <div class="row align-center">
         <a ui-sref="projects">
           <img class="c-header__element" src="images/mini-logo.svg">
