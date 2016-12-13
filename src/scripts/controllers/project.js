@@ -121,7 +121,7 @@
       };
       $http.post(ENV.api + "projects/" + $stateParams.id + "/set_status", project)
         .success(function(data) {
-          toastr.success("Well done! Status updated successfully");
+          toastr.success('Well done! Status updated successfully');
           $scope.statusUpdating = false;
           $scope.project = data;
           projectCache.remove(projectCacheKey);
@@ -214,7 +214,7 @@
     };
 
     $scope.addTag = function(tag, color) {
-      var toggler = $("dropdown-toggle.tags-dropdown");
+      var toggler = $('dropdown-toggle.tags-dropdown')
       // toggler.addClass('disabled');
       this.$close();
       var tagDetails = {
@@ -227,27 +227,27 @@
       };
       tagsService.createTag(tagDetails)
       .then(function(data) {
-        toastr.success("Well Done! Project tags updated");
+        toastr.success('Well Done! Project tags updated');
         projectCache.remove(projectCacheKey);
         tagsService.getTags($stateParams.id, "Project")
         .then(function(data) {
-          toggler.removeClass("disabled");
+          toggler.removeClass('disabled');
           $scope.project.tags = data;
         }, function() {
-          toggler.removeClass("disabled");
+          toggler.removeClass('disabled');
           // console.log('Server did not send project data!');
         });
       }, function() {
-        toggler.removeClass("disabled");
+        toggler.removeClass('disabled');
         // console.log('Server did not send project data!');
       });
     }
 
     $scope.deleteTag = function(id, $event) {
-      $($event.currentTarget).closest("a").css("opacity", 0.5);
+      $($event.currentTarget).closest('a').css('opacity', 0.5);
       tagsService.deleteTag(id)
       .then(function(data) {
-        toastr.success("Well Done! Tag removed");
+        toastr.success('Well Done! Tag removed');
         projectCache.remove(projectCacheKey);
         tagsService.getTags($stateParams.id, "Project")
         .then(function(data) {
@@ -256,7 +256,7 @@
           // console.log('Server did not send project data!');
         });
       }, function() {
-        toggler.removeClass("disabled");
+        toggler.removeClass('disabled');
         // console.log('Server did not send project data!');
       });
     }
