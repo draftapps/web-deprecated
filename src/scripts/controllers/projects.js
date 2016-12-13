@@ -181,6 +181,18 @@
         $scope.modal.close();
         // console.log('Server did not send project data!');
       });
+
+    $scope.dueDate = function(date) {
+      if (date === null) {
+        return false;
+      } else {
+        // due date is in the past
+        if(moment(date).diff(moment(), 'days') < 1) {
+          return true;
+        }
+        // due date is less than 7 days from today
+        return moment(date).isBefore(moment().add(7, 'days').startOf('day'));
+      }
     }
   }
 })();

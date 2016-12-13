@@ -70,6 +70,16 @@
           });
         });
       },
+      postProjectActivity: function(id, params) {
+        return $q(function(resolve, reject) {
+          $http.post(ENV.api + "projects/" + id + "/activities", params)
+          .success(function(data) {
+            resolve(data);
+          }).error(function(data) {
+            reject("Server didn't send the correct data");
+          });
+        });
+      },
       addTeamMember: function(id, members) {
         return $q(function(resolve, reject) {
           $http.post(ENV.api + "projects/" + id + "/add_team_member", members)
