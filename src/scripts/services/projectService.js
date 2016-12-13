@@ -20,9 +20,17 @@
     projectCache = CacheFactory.get('projectCache');
 
     return {
-      getProjects: function() {
+      getProjects: function(archive) {
+        var params = {
+          "archived": archive || false
+        }
+        console.log(params);
         return $q(function(resolve, reject) {
-          $http.get(ENV.api + "projects")
+          $http({
+            url: ENV.api + "projects",
+            method: "GET",
+            params: params
+          })
           .success(function(data) {
             resolve(data);
           }).error(function(data) {
@@ -96,6 +104,16 @@
         // POST /projects/:project_id/artboards/:id/add_assignees
         return $q(function(resolve, reject) {
           $http.post(ENV.api + "projects/" + projectId + "/artboards/" + artboardId + "/add_assignee", member)
+          .success(function(data) {
+            resolve(data);
+          }).error(function(data) {
+            reject("Server didn't send the correct data");
+          });
+        });
+      },
+      archiveProject: function(projectId, project) {
+        return $q(function(resolve, reject) {
+          $http.post(ENV.api + "projects/" + projectId + "/archive", project)
           .success(function(data) {
             resolve(data);
           }).error(function(data) {

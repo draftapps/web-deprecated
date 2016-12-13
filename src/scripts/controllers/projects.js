@@ -3,10 +3,30 @@
     .module("app")
     .controller("ProjectsCtrl", ProjectsCtrl);
 
-  function ProjectsCtrl($scope, projects, $http, $modal, $location, toastr, toastrConfig, ENV) {
+  function ProjectsCtrl($scope, $http, $modal, $location, projectService, toastr, toastrConfig, ENV) {
 
     var vm = this;
-    vm.projects = projects.data;
+    projectService.getProjects(true)
+    .then(function(projects) {
+      vm.projects = projects;
+      // Reducing projects into tags
+      _.each(projects.data, function(project) {
+        if(project.tags.length > 0) {
+          $scope.tags.push(project.tags);
+        }
+      });
+      // Flattening the array http://stackoverflow.com/a/10865042/497828
+      $scope.tags = [].concat.apply([], $scope.tags);
+      $scope.tags = $scope.tags.map(function(tag){ return tag.name; });
+      $scope.tags = _.uniq($scope.tags);
+
+      $scope.statuses = ["New", "In Progress", "Approved"];
+
+    }, function() {
+      $scope.modal.close();
+      // console.log('Server did not send project data!');
+    });
+
     $scope.menu = "projects-activities";
     $scope.page = "projects";
     $scope.projectData = {};
@@ -15,18 +35,6 @@
     $scope.projectData.platform = "ios";
     $scope.projectData.scale = "@1x";
 
-    // Reducing projects into tags
-    _.each(projects.data, function(project) {
-      if(project.tags.length > 0) {
-        $scope.tags.push(project.tags);
-      }
-    });
-    // Flattening the array http://stackoverflow.com/a/10865042/497828
-    $scope.tags = [].concat.apply([], $scope.tags);
-    $scope.tags = $scope.tags.map(function(tag){ return tag.name; });
-    $scope.tags = _.uniq($scope.tags);
-
-    $scope.statuses = ["New", "In Progress", "Approved"];
     /**
      * [$scope.setFilter - Filter the list of the projects]
      * @param  {string} filter [The string used for filtering]
@@ -153,6 +161,26 @@
     $scope.tagInProject = function(tag, projectTags) {
       return _.find(projectTags, {name: tag}) !== undefined;
     }
+
+    $scope.archiveProject = function(projectId, projectSlug) {
+      var project = {
+        "project": {
+          "slug": projectSlug,
+        },
+        "email" : $scope.$parent.user.email
+      }
+      projectService.archiveProject(projectId, project)
+      .then(function(project) {
+        toastr.success('Project archived successfully');
+        $scope.projectData = {};
+        var projects = $scope.projectsVm.projects;
+        var index = _.findIndex(projects, function(project) { return project.id === projectId; });
+        projects.splice(index, 1);
+        $scope.modal.close();
+      }, function() {
+        $scope.modal.close();
+        // console.log('Server did not send project data!');
+      });
 
     $scope.dueDate = function(date) {
       if (date === null) {
