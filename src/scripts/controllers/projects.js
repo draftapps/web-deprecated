@@ -181,6 +181,7 @@
         $scope.modal.close();
         // console.log('Server did not send project data!');
       });
+    }
 
     $scope.dueDate = function(date) {
       if (date === null) {
