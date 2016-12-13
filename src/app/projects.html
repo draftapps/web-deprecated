@@ -3,7 +3,7 @@
   <div class="screen__row">
     <ng-include src="'app/partials/app-header.html'"></ng-include>
   </div>
-  <div class="container" ng-show="projectsVm.projects.length > 0">
+  <div class="container" ng-hide="projectsVm.loading" ng-show="projectsVm.projects.length > 0">
     <div class="row">
       <div class="columns small-12 canvas-screen-viewer" id="toastr-wrapper"></div>
     </div>
@@ -97,5 +97,8 @@
         <button class="button button--success" ng-click="openModal('app/partials/new-project.html')">Create New Project</button>
       </div>
     </div>
+  </div>
+  <div>
+    <ng-include src="'app/partials/app-loader.html'" ng-show="projectsVm.loading"></ng-include>
   </div>
 </div>
