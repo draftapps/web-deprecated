@@ -25,20 +25,17 @@
         $scope.tags = _.uniq($scope.tags);
 
         $scope.statuses = ["New", "In Progress", "Approved"];
-
       }, function() {
         $scope.modal.close();
         // console.log('Server did not send project data!');
       });
     }
-
     $scope.menu = "projects-activities";
     $scope.projectData = {};
     $scope.tags = [];
     // Initial values
     $scope.projectData.platform = "ios";
     $scope.projectData.scale = "@1x";
-
     /**
      * [$scope.setFilter - Filter the list of the projects]
      * @param  {string} filter [The string used for filtering]
@@ -97,7 +94,6 @@
           // console.log("Error: " + data);
         });
     };
-
     /**
      * [$scope.deleteProject - Delete project]
      * @param  {integer} id [ID of the project that will be deleted]
@@ -126,7 +122,6 @@
           // console.log("Error: " + data);
         });
     };
-
     /**
      * [openModal - Open modal window]
      * @param  {string} template [URL of the template partial that will be rendered]
@@ -161,11 +156,9 @@
         $scope.projectData = {};
       });
     };
-
     $scope.tagInProject = function(tag, projectTags) {
       return _.find(projectTags, {name: tag}) !== undefined;
     }
-
     $scope.archiveProject = function(projectId, projectSlug) {
       var project = {
         "project": {
@@ -186,7 +179,6 @@
         // console.log('Server did not send project data!');
       });
     }
-
     $scope.dueDate = function(date) {
       if (date === null) {
         return false;
