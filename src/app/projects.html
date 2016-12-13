@@ -77,7 +77,7 @@
               <p class="card__title status--{{project.status}}">{{project.name}}</p>
               <p class="card__date"><time-ago from-time='{{ project.created_at }}'></time-ago></p>
             </div>
-            <p class="card__alert">Due</p>
+            <p ng-if="::(dueDate(project.due_date))" class="card__alert">Due</p>
             <ul class="card__users">
               <li ng-repeat="user in project.team.users">
                 <img ng-if="user.image!==null" alt="{{user.name}}" ng-src="{{::(user.image)}}" />
