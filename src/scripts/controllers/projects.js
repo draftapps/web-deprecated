@@ -6,29 +6,33 @@
   function ProjectsCtrl($scope, $http, $modal, $location, projectService, toastr, toastrConfig, ENV) {
 
     var vm = this;
-    projectService.getProjects(true)
-    .then(function(projects) {
-      vm.projects = projects;
-      // Reducing projects into tags
-      _.each(projects.data, function(project) {
-        if(project.tags.length > 0) {
-          $scope.tags.push(project.tags);
-        }
+    var archive;
+    var init = function() {
+      vm.loading = true;
+      projectService.getProjects(archive)
+      .then(function(projects) {
+        vm.loading = false;
+        vm.projects = projects;
+        // Reducing projects into tags
+        _.each(projects, function(project) {
+          if(project.tags.length > 0) {
+            $scope.tags.push(project.tags);
+          }
+        });
+        // Flattening the array http://stackoverflow.com/a/10865042/497828
+        $scope.tags = [].concat.apply([], $scope.tags);
+        $scope.tags = $scope.tags.map(function(tag){ return tag.name; });
+        $scope.tags = _.uniq($scope.tags);
+
+        $scope.statuses = ["New", "In Progress", "Approved"];
+
+      }, function() {
+        $scope.modal.close();
+        // console.log('Server did not send project data!');
       });
-      // Flattening the array http://stackoverflow.com/a/10865042/497828
-      $scope.tags = [].concat.apply([], $scope.tags);
-      $scope.tags = $scope.tags.map(function(tag){ return tag.name; });
-      $scope.tags = _.uniq($scope.tags);
-
-      $scope.statuses = ["New", "In Progress", "Approved"];
-
-    }, function() {
-      $scope.modal.close();
-      // console.log('Server did not send project data!');
-    });
+    }
 
     $scope.menu = "projects-activities";
-    $scope.page = "projects";
     $scope.projectData = {};
     $scope.tags = [];
     // Initial values
@@ -195,5 +199,19 @@
         return moment(date).isBefore(moment().add(7, 'days').startOf('day'));
       }
     }
+    $scope.$watch(function(){ return $location.search() }, function(){
+      if($location.$$path === '/projects') {
+        if($location.search().archive) {
+          archive = 1;
+          $scope.archive = true;
+          $scope.page = "archive";
+        } else {
+          archive = 0;
+          $scope.archive = false;
+          $scope.page = "projects";
+        }
+        init();
+      }
+    });
   }
 })();
