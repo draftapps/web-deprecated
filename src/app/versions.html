@@ -23,12 +23,12 @@
               <div class="sidebar__body">
                 <div class="scroller">
                   <ul class="items-spaced">
-                    <li ng-repeat="version in versionsVm.project.versions">
+                    <li ng-repeat="version in versionsVm.project.artboards">
                       <a ng-click="versionsVm.project.selectVersion(version)">
                         <img
                           class="thumbnail"
-                          ng-class="{'is-active': version.objectID === versionsVm.selectedVersion.obj.objectID}"
-                          ng-src="{{::(version.imageBase64 || version.imagePath)}}">
+                          ng-class="{'is-active': version.id === versionsVm.selectedVersion.obj.id}"
+                          ng-src="{{::(version.imageBase64 || version.thumbImage)}}">
                         <span class="u-text-small" ng-bind="::version.name"></span>
                       </a>
                     </li>
@@ -186,12 +186,12 @@
               <div class="sidebar__body">
                 <div class="scroller">
                   <ul class="items-spaced">
-                    <li ng-repeat="version in versionsVm.project.versions">
+                    <li ng-repeat="version in versionsVm.project.artboards">
                       <a ng-click="versionsVm.project.selectVersion(version)">
                         <img
                           class="thumbnail"
-                          ng-class="{'is-active': version.objectID === versionsVm.selectedVersion.obj.objectID}"
-                          ng-src="{{::(version.imageBase64 || version.imagePath)}}">
+                          ng-class="{'is-active': version.id === versionsVm.selectedVersion.obj.id}"
+                          ng-src="{{::(version.imageBase64 || version.thumbImage)}}">
                         <span class="u-text-small" ng-bind="::version.name"></span>
                       </a>
                     </li>

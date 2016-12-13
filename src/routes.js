@@ -141,11 +141,7 @@ function routesConfig($stateProvider, $urlRouterProvider, $locationProvider, ENV
       templateUrl: "app/versions.html",
       controller: "VersionsCtrl",
       controllerAs: "versionsVm",
-      resolve: {
-        project: $http => {
-          return $http.get("versions.json");
-        }
-      }
+      parent: "authed"
     })
     .state("comparison", {
       url: "/projects/:id/:slug/:artboardId/comparison",
