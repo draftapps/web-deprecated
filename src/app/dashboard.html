@@ -523,11 +523,11 @@
                     </div>
                   </section>
 
-                  <section ng-if="dashboardVm.selectedArtBoard.selectedLayer.exportablesAttributes.length">
+                  <section ng-if="dashboardVm.selectedArtBoard.selectedLayer.exportables.length">
                     <h3>Exportables</h3>
                     <div class="context">
                       <ul class="exportable">
-                        <li ng-repeat="exportable in dashboardVm.selectedArtBoard.selectedLayer.exportablesAttributes">
+                        <li ng-repeat="exportable in dashboardVm.selectedArtBoard.selectedLayer.exportables">
                           <a href="{{exportable.path}}" data-format="exportable.format">
                             <img src="{{exportable.path}}" alt="{{exportable.path}}">{{exportable.path}}</a>
                           </li>
