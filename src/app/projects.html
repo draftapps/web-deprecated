@@ -7,7 +7,7 @@
     <div class="row">
       <div class="columns small-12 canvas-screen-viewer" id="toastr-wrapper"></div>
     </div>
-    <div class="row head-filters">
+    <div class="row head-filters" ng-show="projectsVm.projects.length > 0">
       <div class="column medium-9">
         <dropdown-toggle pane-align="left" close-on-click="true">
           <toggle>
@@ -92,9 +92,12 @@
   </div>
   <div class="container" ng-show="projectsVm.projects.length === 0">
     <div class="row">
-      <div class="columns medium-12 no-projects">
+      <div class="columns medium-12 no-projects" ng-show="archive === false">
         <p>You haven’t created any projects yet!</p>
         <button class="button button--success" ng-click="openModal('app/partials/new-project.html')">Create New Project</button>
+      </div>
+      <div class="columns medium-12 no-projects" ng-show="archive === true">
+        <p>You haven’t archived any projects yet!</p>
       </div>
     </div>
   </div>
