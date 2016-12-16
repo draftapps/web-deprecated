@@ -8,14 +8,14 @@
       </nav>
       <a href="/projects/{{project.id}}/{{project.slug}}" ng-show="menu !== 'projects-activities' && menu !== 'settings'" class="u-text-small u-items-middle"><svg class="icon-back"><use xlink:href="#shape-arrow" /></svg> Back</a>
     </div>
-    <div class="column large-7">
+    <div class="column large-6">
       <div class="row align-center">
         <a ui-sref="projects">
           <img class="c-header__element" src="images/mini-logo.svg">
         </a>
       </div>
     </div>
-    <div class="columns large-2 text-right">
+    <div class="columns large-3 text-right">
       <a ng-show="page !== 'projects'" ng-click="openModal('app/partials/new-project.html')" class="add-new"><span>Add</span></a>
       <dropdown-toggle class="c-header__element notifications-dropdown-list" pane-align="right" close-on-click="true">
         <toggle>
