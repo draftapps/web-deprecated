@@ -604,8 +604,10 @@
       });
       layer.selected = true;
       layer.hover = false;
-      layer.formattedStyle = layer.css.join("\n  ");
-      layer.styleList = layer.css.join("\n");
+      if(layer.css !== undefined) {
+        layer.formattedStyle = layer.css.join("\n  ");
+        layer.styleList = layer.css.join("\n");
+      }
       vm.selectedArtBoard.ruler.isHidden = true;
       vm.selectedArtBoard.selectedLayer = layer;
       // Sadly hljsLineNumber have no destroy method. This has to be done using jQuery
