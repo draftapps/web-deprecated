@@ -50,6 +50,8 @@
       vm.copy = copy;
       vm.project.selectArtBoard = selectArtBoard;
       vm.project.selectSlice = selectSlice;
+      vm.project.setExportableDensity = setExportableDensity;
+      vm.project.setDownloadableLink = setDownloadableLink;
       vm.project.sliceMouseEnter = sliceMouseEnter;
       vm.project.sliceMouseLeave = sliceMouseLeave;
       vm.project.updateStyleguide = updateStyleguide;
@@ -665,11 +667,25 @@
     function selectSlice(layer) {
       var slice = _.findWhere(vm.selectedArtBoard.obj.layers, {objectId: layer.objectId});
       if (slice) {
-        vm.selectedArtBoard.selectLayer(slice);
+        vm.selectedExportable = slice;
+        vm.selectedFormats = "";
       }
       else {
         alert("The slice not in current artboard.");
       }
+    }
+
+    function setExportableDensity(density) {
+      vm.exportableDensity = density;
+      // Reset formats and assets
+      vm.exportableFormat = "";
+      vm.selectedAsset = "";
+      vm.selectedFormats = _.find(vm.selectedExportable.exportables, {density: density});
+    }
+
+    function setDownloadableLink(format) {
+      vm.exportableFormat = format;
+      vm.selectedAsset = _.findWhere(vm.selectedExportable.exportables, {format: format, density: vm.exportableDensity});
     }
 
     function sliceMouseEnter(layer) {

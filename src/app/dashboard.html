@@ -262,7 +262,8 @@
                 <div class="scroller">
                   <ul class="items-spaced images-layers">
                     <li ng-repeat="sliceLayer in dashboardVm.project.slices"
-                      class="slice-layer" data-objectId="{{sliceLayer.objectID}}"
+                      data-objectId="{{sliceLayer.objectId}}"
+                      ng-class="dashboardVm.selectedExportable.objectId === sliceLayer.objectId ? 'active slice-layer' : 'slice-layer'"
                       ng-mouseenter="dashboardVm.project.sliceMouseEnter(sliceLayer)"
                       ng-mouseleave="dashboardVm.project.sliceMouseLeave(sliceLayer)">
                       <a ng-click="dashboardVm.project.selectSlice(sliceLayer)" class="text-center">
@@ -273,45 +274,39 @@
                     </li>
                   </ul>
                 </div>
-                <section>
+                <section ng-if="dashboardVm.selectedExportable">
                   <h3>Export</h3>
                   <div class="context export-options">
                     <div class="row">
                       <div class="columns small-6">
                         <dropdown-toggle pane-align="left" close-on-click="true">
                           <toggle>
-                            <button class="select">1x</button>
+                            <button class="select">{{ dashboardVm.exportableDensity || 'Density'}}</button>
                           </toggle>
                           <pane>
                             <ul class="menu vertical">
-                              <li><a href="#">1x</a></li>
-                              <li><a href="#">2x</a></li>
-                              <li><a href="#">3x</a></li>
-                              <li><a href="#">0.5x</a></li>
-                              <li><a href="#">512W</a></li>
-                              <li><a href="#">512H</a></li>
+                              <li ng-repeat="exportable in dashboardVm.selectedExportable.exportables"><a ng-click="$close();dashboardVm.project.setExportableDensity(exportable.density, $event)">{{exportable.density}}</a></li>
                             </ul>
                           </pane>
                         </dropdown-toggle>
                       </div>
-                      <div class="columns small-6">
+                      <div class="columns small-6" ng-if="dashboardVm.exportableDensity">
                         <dropdown-toggle pane-align="left" close-on-click="true">
                           <toggle>
-                            <button class="select">PNG</button>
+                            <button class="select">{{ dashboardVm.exportableFormat.toUpperCase() || 'Format'}}</button>
                           </toggle>
                           <pane>
                             <ul class="menu vertical">
-                              <li><a href="#">PNG</a></li>
-                              <li><a href="#">SVG</a></li>
-                              <li><a href="#">JPG</a></li>
+                              <li ng-if="dashboardVm.selectedFormats.format.constructor === Array" ng-repeat="format in dashboardVm.selectedFormats.format"><a ng-click="$close();dashboardVm.project.setDownloadableLink(format)">{{format.toUpperCase()}}</a></li>
+                              <li ng-if="dashboardVm.selectedFormats.format.constructor !== Array"><a ng-click="$close();dashboardVm.project.setDownloadableLink(dashboardVm.selectedFormats.format)">{{dashboardVm.selectedFormats.format.toUpperCase()}}</a></li>
                             </ul>
                           </pane>
                         </dropdown-toggle>
                       </div>
                     </div>
-                    <div class="row">
+                    <div class="row" ng-if="dashboardVm.selectedAsset">
                       <div class="columns small-12">
-                        <a class="export-button" href="#">Export</a>
+                        <a class="export-button" ng-href="{{dashboardVm.selectedAsset.path}}" download>Export</a>
                       </div>
                     </div>
                   </div>
