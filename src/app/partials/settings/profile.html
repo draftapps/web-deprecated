@@ -24,7 +24,7 @@
         </div>
         <div class="form-group u-space-v-large">
           <label for="new-password">Change Password</label>
-          <input class="form-control" id="new-password" type="password" placeholder="Enter New Password" ng-model="settingsVM.form.password" required="" ng-class="{'is-invalid-input': settingsVM.errors.password[0]}"/><span class="form-error" ng-class="{'is-visible': settingsVM.errors.password[0]}">Password {{settingsVM.errors.password[0]}}</span>
+          <input class="form-control" id="new-password" type="password" placeholder="Enter New Password" ng-model="settingsVM.form.password" ng-class="{'is-invalid-input': settingsVM.errors.password[0]}"/><span class="form-error" ng-class="{'is-visible': settingsVM.errors.password[0]}">Password {{settingsVM.errors.password[0]}}</span>
         </div>
         <button class="button expanded success" type="submit" ng-disabled="settingsVM.loading">Save</button>
       </fieldset>
