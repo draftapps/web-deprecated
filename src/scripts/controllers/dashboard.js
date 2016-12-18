@@ -50,6 +50,8 @@
       vm.copy = copy;
       vm.project.selectArtBoard = selectArtBoard;
       vm.project.selectSlice = selectSlice;
+      vm.project.setExportableDensity = setExportableDensity;
+      vm.project.setDownloadableLink = setDownloadableLink;
       vm.project.sliceMouseEnter = sliceMouseEnter;
       vm.project.sliceMouseLeave = sliceMouseLeave;
       vm.project.updateStyleguide = updateStyleguide;
@@ -203,7 +205,7 @@
       activate();
       selectArtBoard(info.currentArtboard);
       $scope.artboardIndex = _.findIndex(project.artboards, { id: info.currentArtboard.id});
-      if ((project.styleguide !== undefined) && (project.styleguide.colors.length > 0)) {
+      if ((project.styleguide !== undefined) && (project.styleguide.colors !== null) && (project.styleguide.colors.length > 0)) {
         $scope.styleguideActiveColors = project.styleguide.colors.map(function(obj){
           return obj.name;
         });
@@ -604,8 +606,10 @@
       });
       layer.selected = true;
       layer.hover = false;
-      layer.formattedStyle = layer.css.join("\n  ");
-      layer.styleList = layer.css.join("\n");
+      if(layer.css !== undefined) {
+        layer.formattedStyle = layer.css.join("\n  ");
+        layer.styleList = layer.css.join("\n");
+      }
       vm.selectedArtBoard.ruler.isHidden = true;
       vm.selectedArtBoard.selectedLayer = layer;
       // Sadly hljsLineNumber have no destroy method. This has to be done using jQuery
@@ -663,11 +667,25 @@
     function selectSlice(layer) {
       var slice = _.findWhere(vm.selectedArtBoard.obj.layers, {objectId: layer.objectId});
       if (slice) {
-        vm.selectedArtBoard.selectLayer(slice);
+        vm.selectedExportable = slice;
+        vm.selectedFormats = "";
       }
       else {
         alert("The slice not in current artboard.");
       }
+    }
+
+    function setExportableDensity(density) {
+      vm.exportableDensity = density;
+      // Reset formats and assets
+      vm.exportableFormat = "";
+      vm.selectedAsset = "";
+      vm.selectedFormats = _.find(vm.selectedExportable.exportables, {density: density});
+    }
+
+    function setDownloadableLink(format) {
+      vm.exportableFormat = format;
+      vm.selectedAsset = _.findWhere(vm.selectedExportable.exportables, {format: format, density: vm.exportableDensity});
     }
 
     function sliceMouseEnter(layer) {

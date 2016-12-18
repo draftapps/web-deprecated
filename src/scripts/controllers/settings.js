@@ -3,7 +3,7 @@
     .module("app")
     .controller("SettingsCtrl", SettingsCtrl);
 
-  function SettingsCtrl($scope, $stateParams, $modal, toastrConfig, toastr, projectService, settingsService) {
+  function SettingsCtrl($scope, $auth, $stateParams, $modal, toastrConfig, toastr, projectService, settingsService) {
 
     angular.extend(toastrConfig, {
       target: '.canvas-screen-viewer'
@@ -14,6 +14,10 @@
     $scope.menu = "settings";
     $scope.tab = $stateParams.param;
     $scope.user = $scope.$parent.user;
+    $scope.updateAccountForm = {
+      name: $scope.$parent.user.name,
+      email: $scope.$parent.user.email
+    }
 
     settingsService.getNotificationsSettings($scope.$parent.user.id)
     .then(function(settings) {
@@ -21,6 +25,17 @@
     }, function() {
       // console.log('Server did not send project data!');
     });
+
+    $scope.updateAccount = function() {
+      $auth.updateAccount($scope.updateAccountForm)
+        .then(function(resp) {
+          console.log(resp);
+          // handle success response
+        })
+        .catch(function(resp) {
+          // handle error response
+        });
+    };
 
     vm.updateNotificationsSettings = function() {
       var params = {

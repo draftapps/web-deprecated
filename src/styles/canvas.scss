@@ -1300,7 +1300,7 @@ main {
   .sidebar a {
     color: #8493a8;
   }
-  .wide-sidebar,
+  .left-sidebar,
   .right-sidebar {
     flex: 0 0 290px;
     max-width: 290px;
@@ -2210,12 +2210,36 @@ main {
       width: 50%;
       float: left;
       padding: 5px;
+      position: relative;
+      &.active {
+        &::before {
+          content: "";
+          position: absolute;
+          top: 9px;
+          right: 9px;
+          border: 2px solid #e4e7ef;
+          border-radius: 50%;
+          background: #fff;
+          width: 18px;
+          height: 18px;
+        }
+        &::after {
+          content: "\2713";
+          position: absolute;
+          top: 10px;
+          right: 14px;
+          font-size: 12px;
+          color: #4f8ff7;
+          font-weight: bold;
+        }
+      }
       img {
         box-shadow: 0 0 1px rgba(0, 0, 0, 0.3);
         border: 0;
         width: 100%;
         height: 120px;
-        object-fit: cover;
+        object-fit: contain;
+        object-position: 50% 50%;
       }
       div {
         display: none;
@@ -2223,6 +2247,7 @@ main {
     }
   }
   .export-options {
+    min-height: 164px;
     span {
       display: block;
       color: #7f8fa4;
