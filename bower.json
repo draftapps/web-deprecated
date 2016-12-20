@@ -2,7 +2,7 @@
   "name": "fountain-inject",
   "version": "0.0.1",
   "dependencies": {
-    "angular": "1.5.10",
+    "angular": "~1.5.10",
     "angular-ui-router": "^0.3.1",
     "Ionicons": "ionicons#~2.0.1",
     "foundation-sites": "~6.2.3",
@@ -24,6 +24,9 @@
     "angular-capitalize": "^2.0.4",
     "angular-toastr": "^2.1.1",
     "moment": "^2.17.1"
+  },
+  "resolutions": {
+    "angular": "~1.5.10"
   },
   "overrides": {
     "foundation-sites": {
