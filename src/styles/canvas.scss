@@ -2631,3 +2631,22 @@ main {
     content: none !important
   }
 }
+.screen__row--tabs.tabbable {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  & > .tabs-content {
+    display: flex;
+    flex-direction: column;
+    flex: 1 1 0;
+    .tabs-panel.is-active {
+      height: 100%;
+    }
+    [tab-content-transclude] {
+      height: 100%;
+      .screen__row.-rest {
+        height: 100%;
+      }
+    }
+  }
+}
