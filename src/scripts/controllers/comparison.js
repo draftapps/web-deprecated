@@ -3,7 +3,7 @@
       .module("app")
       .controller("ComparisonCtrl", ComparisonCtrl);
 
-  function ComparisonCtrl($scope, $stateParams, $window, projectService, CacheFactory, ENV) {
+  function ComparisonCtrl($scope, $stateParams, $window, Upload, projectService, comparisonService, CacheFactory, ENV) {
     var vm = this;
     $scope.page = "comparison";
 
@@ -45,6 +45,7 @@
       vm.comparisonData.pages = p.artboards;
       vm.comparisonData.setOriginalScreen = setOriginalScreen;
       vm.comparisonData.setImplementedScreen = setImplementedScreen;
+      vm.uploadScreen = uploadScreen;
     }
 
     function setOriginalScreen(index) {
@@ -62,6 +63,24 @@
         $scope.img1 = vm.comparisonData.pages[index].fullImage;
       }
       $(window).trigger("resize");
+    }
+    function uploadScreen(file) {
+      Upload.upload({
+        method: 'POST',
+        url: ENV.api + "projects/" + $stateParams.id + "/implemented_screens",
+        data: { file: file },
+        fileName: 'UTF-8\'\'' + file.name,
+        headers : {
+          'Content-Type': file.type
+        }
+      }).then(function (resp) {
+        console.log(resp);
+      }, function (resp) {
+        console.log(resp);
+      }, function (evt) {
+        var progressPercentage = parseInt(100.0 * evt.loaded / evt.total);
+        console.log(progressPercentage);
+      });
     }
   }
 })();
