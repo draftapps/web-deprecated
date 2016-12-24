@@ -215,6 +215,14 @@
           <div class="sidebar__body">
             <div class="scroller">
               <div class="code-outer-wrapper" ng-show="rightActivetab === 'code'">
+                <div class="code-wrapper" ng-if="!dashboardVm.selectedArtBoard.selectedLayer.css.length">
+                <button class="copy" ng-click="dashboardVm.copy('all-style')">Copy</button>
+                  <div class="scroller">
+                    <div hljs class="code-block" hljs-interpolate="true" hljs-language="css">
+{{dashboardVm.selectedArtBoard.obj.style}}
+                    </div>
+                  </div>
+                </div>
                 <div class="code-wrapper" ng-if="dashboardVm.selectedArtBoard.selectedLayer.css.length">
                   <button class="copy" ng-click="dashboardVm.copy('style')">Copy</button>
                   <div class="select-wrapper">
