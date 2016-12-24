@@ -28,24 +28,30 @@
 
     vm.comparisonData = {};
     vm.project = {};
+    vm.uploading = false;
 
     var info = {
       id: $stateParams.id,
       slug: $stateParams.slug
     }
-    projectService.getProject(info.id, info.slug)
-    .then(function(p) {
-      info.currentArtboard = _.findWhere(p.artboards, {id: parseInt($stateParams.artboardId)})
-      initialize(p);
-    }, function() {
-      // console.log("Server did not send project data!");
-    });
 
-    function initialize(p) {
-      vm.comparisonData.pages = p.artboards;
-      vm.comparisonData.setOriginalScreen = setOriginalScreen;
-      vm.comparisonData.setImplementedScreen = setImplementedScreen;
-      vm.uploadScreen = uploadScreen;
+    function initialize() {
+      projectService.getProject(info.id, info.slug)
+      .then(function(p) {
+        info.currentArtboard = _.findWhere(p.artboards, {id: parseInt($stateParams.artboardId)})
+        comparisonService.getScreens(info.id)
+        .then(function(s) {
+          vm.comparisonData.pages = p.artboards;
+          vm.comparisonData.implementedPages = s;
+          vm.comparisonData.setOriginalScreen = setOriginalScreen;
+          vm.comparisonData.setImplementedScreen = setImplementedScreen;
+          vm.uploadScreen = uploadScreen;
+        }, function() {
+          // console.log("Server did not send project data!");
+        })
+      }, function() {
+        // console.log("Server did not send project data!");
+      });
     }
 
     function setOriginalScreen(index) {
@@ -57,10 +63,10 @@
       $(window).trigger("resize");
     }
     function setImplementedScreen(index) {
-      $scope.img2 = vm.comparisonData.pages[index].fullImage;
-      vm.selectedCompare = vm.comparisonData.pages[index].id;
+      $scope.img2 = vm.comparisonData.implementedPages[index].url;
+      // vm.selectedCompare = vm.comparisonData.implementedPages[index].id;
       if($scope.img1 === undefined) {
-        $scope.img1 = vm.comparisonData.pages[index].fullImage;
+        $scope.img1 = vm.comparisonData.implementedPages[index].url;
       }
       $(window).trigger("resize");
     }
@@ -74,13 +80,16 @@
           'Content-Type': file.type
         }
       }).then(function (resp) {
-        console.log(resp);
+        initialize();
+        vm.uploading = false;
       }, function (resp) {
-        console.log(resp);
+        vm.uploading = false;
+        // console.log("Something wrong happened");
       }, function (evt) {
-        var progressPercentage = parseInt(100.0 * evt.loaded / evt.total);
-        console.log(progressPercentage);
+        vm.uploading = true;
       });
     }
+
+    initialize();
   }
 })();

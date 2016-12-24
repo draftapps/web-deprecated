@@ -6,9 +6,9 @@
   function comparisonService($q, $http, CacheFactory, ENV) {
 
     return {
-      addScreen: function(id, params) {
+      getScreens: function(id) {
         return $q(function(resolve, reject) {
-          $http.post(ENV.api + "projects/" + id + "/implemented_screens", params)
+          $http.get(ENV.api + "projects/" + id + "/implemented_screens")
           .success(function(data) {
             resolve(data);
           }).error(function(data) {
