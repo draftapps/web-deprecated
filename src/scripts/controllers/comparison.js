@@ -68,7 +68,7 @@
       Upload.upload({
         method: 'POST',
         url: ENV.api + "projects/" + $stateParams.id + "/implemented_screens",
-        data: { file: file },
+        data: { payload: file },
         fileName: 'UTF-8\'\'' + file.name,
         headers : {
           'Content-Type': file.type
