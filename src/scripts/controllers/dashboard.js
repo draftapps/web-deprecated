@@ -592,12 +592,15 @@
         layer.hover = true;
         setRuler(layer);
         vm.selectedArtBoard.ruler.isHidden = false;
+      } else {
+        vm.selectedArtBoard.ruler.isHidden = true;
       }
     }
 
     function layerMouseLeave(layer) {
       layer.hover = false;
-      vm.selectedArtBoard.ruler.isHidden = true;
+      // vm.selectedArtBoard.ruler.isHidden = true;
+      vm.selectedArtBoard.ruler.isHidden = false;
     }
 
     function selectLayer(layer) {

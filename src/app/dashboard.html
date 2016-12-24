@@ -133,7 +133,8 @@
                     'wide': dashboardVm.selectedArtBoard.zoomSize(layer.width)>= 32,
                     'hover': layer.hover,
                     'selected': layer.selected,
-                    'has-slice': layer.hasSlice
+                    'has-slice': layer.hasSlice,
+                    'hidden-boxes': !dashboardVm.selectedArtBoard.ruler.isHidden
                   }"
                   data-width="{{dashboardVm.selectedArtBoard.unitSize(layer.rect.width)}}"
                   data-height="{{dashboardVm.selectedArtBoard.unitSize(layer.rect.height)}}"

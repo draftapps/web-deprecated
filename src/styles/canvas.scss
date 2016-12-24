@@ -2625,3 +2625,9 @@ main {
     vertical-align: top;
   }
 }
+.hidden-boxes.selected {
+  &::before,
+  &::after {
+    content: none !important
+  }
+}
