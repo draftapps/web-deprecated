@@ -55,11 +55,13 @@
           <div class="sidebar__body">
             <div class="scroller">
               <ul class="items-spaced fixed-button-bottom">
-                <li ng-repeat="page in comparisonVm.comparisonData.pages"><a ng-click="comparisonVm.comparisonData.setImplementedScreen($index)"><img class="thumbnail" ng-class="{'is-active': page.id === comparisonVm.selectedCompare}" ng-src="{{page.thumbImage}}"/><span class="u-text-small" ng-bind="page.name"></span></a></li>
+                <li ng-repeat="page in comparisonVm.comparisonData.implementedPages"><a ng-click="comparisonVm.comparisonData.setImplementedScreen($index)"><img class="thumbnail" ng-class="{'is-active': page.id === comparisonVm.selectedCompare}" ng-src="{{page.thumb}}"/><span class="u-text-small" ng-bind="page.name"></span></a></li>
               </ul>
             </div>
             <div class="fixed-button">
-              <a href="#">Upload Implemented Screens</a>
+              <form name="form">
+                <a ng-class="{'is-uploading': comparisonVm.uploading}" ngf-select="comparisonVm.uploadScreen($file)">Upload Implemented Screens</a>
+              </form>
             </div>
           </div>
         </aside>
