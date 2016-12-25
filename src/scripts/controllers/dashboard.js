@@ -665,6 +665,10 @@
       unselectLayer();
       vm.selectedArtBoard.obj = artBoard;
       $location.path("/projects/" + $stateParams.id + "/" + $stateParams.slug + "/"+ artBoard.id + "/inspect");
+      $timeout(function(){
+        $('.hljs-line-numbers').remove();
+        hljs.initLineNumbersOnLoad();
+      }, 50);
     }
 
     function selectSlice(layer) {
@@ -737,6 +741,9 @@
       switch(target) {
         case "style":
           textArea.value = vm.selectedArtBoard.selectedLayer.styleList;
+          break;
+        case "all-style":
+          textArea.value = vm.selectedArtBoard.obj.style;
           break;
         case "content":
           textArea.value = vm.selectedArtBoard.selectedLayer.content;

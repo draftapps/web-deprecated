@@ -216,6 +216,14 @@
           <div class="sidebar__body">
             <div class="scroller">
               <div class="code-outer-wrapper" ng-show="rightActivetab === 'code'">
+                <div class="code-wrapper" ng-if="!dashboardVm.selectedArtBoard.selectedLayer.css.length">
+                <button class="copy" ng-click="dashboardVm.copy('all-style')">Copy</button>
+                  <div class="scroller">
+                    <div hljs class="code-block" hljs-interpolate="true" hljs-language="css">
+{{dashboardVm.selectedArtBoard.obj.style}}
+                    </div>
+                  </div>
+                </div>
                 <div class="code-wrapper" ng-if="dashboardVm.selectedArtBoard.selectedLayer.css.length">
                   <button class="copy" ng-click="dashboardVm.copy('style')">Copy</button>
                   <div class="select-wrapper">
@@ -516,18 +524,6 @@
                           <textarea id="css" rows="{{dashboardVm.selectedArtBoard.selectedLayer.css.length + 1}}" readonly="readonly">{{dashboardVm.selectedArtBoard.selectedLayer.styleList}}</textarea>
                         </label>
                       </div>
-                    </div>
-                  </section>
-
-                  <section ng-if="dashboardVm.selectedArtBoard.selectedLayer.exportables.length">
-                    <h3>Exportables</h3>
-                    <div class="context">
-                      <ul class="exportable">
-                        <li ng-repeat="exportable in dashboardVm.selectedArtBoard.selectedLayer.exportables">
-                          <a href="{{exportable.path}}" data-format="exportable.format">
-                            <img src="{{exportable.path}}" alt="{{exportable.path}}">{{exportable.path}}</a>
-                          </li>
-                        </ul>
                     </div>
                   </section>
                 </aside>
