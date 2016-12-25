@@ -462,7 +462,7 @@
 
 
         if (distance.bottom > 0) { //bottom
-          vm.selectedArtBoard.distance.right = {
+          vm.selectedArtBoard.distance.bottom = {
             x: x,
             y: zoomSize(selectedRect.maxY),
             h: zoomSize(positive(distance.bottom)),
@@ -470,7 +470,7 @@
             isHidden: false
           };
         } else if (distance.bottom < 0) {
-          vm.selectedArtBoard.distance.right = {
+          vm.selectedArtBoard.distance.bottom = {
             x: x,
             y: zoomSize(targetRect.maxY),
             h: zoomSize(positive(distance.bottom)),
