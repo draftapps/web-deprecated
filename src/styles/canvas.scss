@@ -2674,3 +2674,10 @@ main {
     }
   }
 }
+.grow {
+  display: flex;
+  flex-direction: column;
+  .fix-to-bottom {
+    margin-top: auto;
+  }
+}
