@@ -180,7 +180,7 @@
       });
     }
     $scope.dueDate = function(date) {
-      if (date === null) {
+      if (date === null || date === undefined) {
         return false;
       } else {
         // due date is in the past
