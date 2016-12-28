@@ -3,7 +3,7 @@
       .module("app")
       .controller("ComparisonCtrl", ComparisonCtrl);
 
-  function ComparisonCtrl($scope, $stateParams, $window, Upload, projectService, comparisonService, CacheFactory, ENV) {
+  function ComparisonCtrl($scope, $http, $stateParams, $window, Upload, projectService, comparisonService, toastr, toastrConfig, CacheFactory, ENV) {
     var vm = this;
     $scope.page = "comparison";
 
@@ -45,6 +45,7 @@
           vm.comparisonData.implementedPages = s;
           vm.comparisonData.setOriginalScreen = setOriginalScreen;
           vm.comparisonData.setImplementedScreen = setImplementedScreen;
+          vm.comparisonData.deleteScreen = deleteScreen;
           vm.uploadScreen = uploadScreen;
         }, function() {
           // console.log("Server did not send project data!");
@@ -87,6 +88,20 @@
         // console.log("Something wrong happened");
       }, function (evt) {
         vm.uploading = true;
+      });
+    }
+
+    function deleteScreen(id) {
+      $http({
+        method: "DELETE",
+        url: ENV.api + "projects/" + $stateParams.id + "/implemented_screens/" + id,
+        headers: {"Content-Type": "application/json;charset=utf-8"}
+      })
+      .success(function(data) {
+        toastr.success("Screen removed successfully");
+      })
+      .error(function(data) {
+        // console.log("Error: " + data);
       });
     }
 
