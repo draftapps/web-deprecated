@@ -99,6 +99,8 @@
       })
       .success(function(data) {
         toastr.success("Screen removed successfully");
+        var index = _.findIndex(vm.comparisonData.implementedPages, { id: id});
+        vm.comparisonData.implementedPages.splice(index, 1);
       })
       .error(function(data) {
         // console.log("Error: " + data);
