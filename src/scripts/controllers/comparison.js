@@ -66,7 +66,7 @@
     }
     function setImplementedScreen(index) {
       $scope.img2 = vm.comparisonData.implementedPages[index].url;
-      // vm.selectedCompare = vm.comparisonData.implementedPages[index].id;
+      vm.selectedCompare = vm.comparisonData.implementedPages[index].id;
       if($scope.img1 === undefined) {
         $scope.img1 = vm.comparisonData.implementedPages[index].url;
       }
