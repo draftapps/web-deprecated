@@ -2682,7 +2682,7 @@ main {
   }
 }
 .screens-list {
-  padding-bottom: 80px;
+  padding-bottom: 80px !important;
   li {
     position: relative;
     &:hover {

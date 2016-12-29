@@ -89,7 +89,9 @@
         // console.log("Something wrong happened");
       }, function (evt) {
         $scope.uploading = true;
-        console.log(parseInt(100.0 * evt.loaded / evt.total));
+        setTimeout(function() {
+          $('.screens-list').closest('.scroller').scrollTop(99999).perfectScrollbar('update');
+        }, 50);
         $scope.progressPercentage = parseInt(100.0 * evt.loaded / evt.total);
       });
     }
