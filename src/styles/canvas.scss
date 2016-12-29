@@ -2703,4 +2703,20 @@ main {
       right: 20px;
     }
   }
+  .uploading {
+    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.3);
+    background: #f7f8fa;
+    &.done {
+      img {
+        opacity: 0;
+      }
+    }
+    .progress {
+      background: #42d79e;
+      height: 5px;
+      margin-top: -5px;
+      position: relative;
+      z-index: 1;
+    }
+  }
 }

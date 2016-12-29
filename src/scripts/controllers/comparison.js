@@ -25,10 +25,11 @@
     };
 
     $scope.loading = false;
+    $scope.uploading = false;
+    $scope.progressPercentage = 0;
 
     vm.comparisonData = {};
     vm.project = {};
-    vm.uploading = false;
 
     var info = {
       id: $stateParams.id,
@@ -82,12 +83,14 @@
         }
       }).then(function (resp) {
         initialize();
-        vm.uploading = false;
+        $scope.uploading = false;
       }, function (resp) {
-        vm.uploading = false;
+        $scope.uploading = false;
         // console.log("Something wrong happened");
       }, function (evt) {
-        vm.uploading = true;
+        $scope.uploading = true;
+        console.log(parseInt(100.0 * evt.loaded / evt.total));
+        $scope.progressPercentage = parseInt(100.0 * evt.loaded / evt.total);
       });
     }
 
