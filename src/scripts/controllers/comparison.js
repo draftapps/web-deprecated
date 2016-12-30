@@ -3,7 +3,7 @@
       .module("app")
       .controller("ComparisonCtrl", ComparisonCtrl);
 
-  function ComparisonCtrl($scope, $stateParams, $window, Upload, projectService, comparisonService, CacheFactory, ENV) {
+  function ComparisonCtrl($scope, $http, $stateParams, $window, Upload, projectService, comparisonService, toastr, toastrConfig, CacheFactory, ENV) {
     var vm = this;
     $scope.page = "comparison";
 
@@ -25,10 +25,11 @@
     };
 
     $scope.loading = false;
+    $scope.uploading = false;
+    $scope.progressPercentage = 0;
 
     vm.comparisonData = {};
     vm.project = {};
-    vm.uploading = false;
 
     var info = {
       id: $stateParams.id,
@@ -45,6 +46,7 @@
           vm.comparisonData.implementedPages = s;
           vm.comparisonData.setOriginalScreen = setOriginalScreen;
           vm.comparisonData.setImplementedScreen = setImplementedScreen;
+          vm.comparisonData.deleteScreen = deleteScreen;
           vm.uploadScreen = uploadScreen;
         }, function() {
           // console.log("Server did not send project data!");
@@ -64,7 +66,7 @@
     }
     function setImplementedScreen(index) {
       $scope.img2 = vm.comparisonData.implementedPages[index].url;
-      // vm.selectedCompare = vm.comparisonData.implementedPages[index].id;
+      vm.selectedCompare = vm.comparisonData.implementedPages[index].id;
       if($scope.img1 === undefined) {
         $scope.img1 = vm.comparisonData.implementedPages[index].url;
       }
@@ -81,12 +83,32 @@
         }
       }).then(function (resp) {
         initialize();
-        vm.uploading = false;
+        $scope.uploading = false;
       }, function (resp) {
-        vm.uploading = false;
+        $scope.uploading = false;
         // console.log("Something wrong happened");
       }, function (evt) {
-        vm.uploading = true;
+        $scope.uploading = true;
+        setTimeout(function() {
+          $('.screens-list').closest('.scroller').scrollTop(99999).perfectScrollbar('update');
+        }, 50);
+        $scope.progressPercentage = parseInt(100.0 * evt.loaded / evt.total);
+      });
+    }
+
+    function deleteScreen(id) {
+      $http({
+        method: "DELETE",
+        url: ENV.api + "projects/" + $stateParams.id + "/implemented_screens/" + id,
+        headers: {"Content-Type": "application/json;charset=utf-8"}
+      })
+      .success(function(data) {
+        toastr.success("Screen removed successfully");
+        var index = _.findIndex(vm.comparisonData.implementedPages, { id: id});
+        vm.comparisonData.implementedPages.splice(index, 1);
+      })
+      .error(function(data) {
+        // console.log("Error: " + data);
       });
     }
 
