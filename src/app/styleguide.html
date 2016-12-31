@@ -38,62 +38,24 @@
           <div ng-hide="styleguideVm.project === undefined" class="style-guide-wrapper">
             <h1>Fonts</h1>
             <div class="row">
-              <div class="columns small-4">
-                <h2>Headline 1</h2>
-                <h3>About Us</h3>
-                <p>Proxima Nova Semibold</p>
+              <div class="columns small-4" ng-repeat="font in styleguideVm.project.fonts">
+                <!-- <h2>Headline 1</h2>
+                <h3>About Us</h3> -->
+                <p>{{font.fontFace}}</p>
                 <dl class="font-details">
                   <dt>font size</dt>
-                  <dd>32Px</dd>
+                  <dd>{{font.fontSize}}PX</dd>
                   <dt>Line-height</dt>
-                  <dd>44PX</dd>
+                  <dd>{{font.lineHeight}}PX</dd>
                 </dl>
-                <div class="row">
+                <!-- <div class="row">
                   <div class="columns small-6">
                     <div class="color-preview"><span></span>#393c3e</div>
                   </div>
                   <div class="columns small-6">
                     <div class="color-preview"><span></span>#393c3e</div>
                   </div>
-                </div>
-              </div>
-              <div class="columns small-4">
-                <h2>Headline 1</h2>
-                <h3>About Us</h3>
-                <p>Proxima Nova Semibold</p>
-                <dl class="font-details">
-                  <dt>font size</dt>
-                  <dd>32Px</dd>
-                  <dt>Line-height</dt>
-                  <dd>44PX</dd>
-                </dl>
-                <div class="row">
-                  <div class="columns small-6">
-                    <div class="color-preview"><span></span>#393c3e</div>
-                  </div>
-                  <div class="columns small-6">
-                    <div class="color-preview"><span></span>#393c3e</div>
-                  </div>
-                </div>
-              </div>
-              <div class="columns small-4">
-                <h2>Headline 1</h2>
-                <h3>About Us</h3>
-                <p>Proxima Nova Semibold</p>
-                <dl class="font-details">
-                  <dt>font size</dt>
-                  <dd>32Px</dd>
-                  <dt>Line-height</dt>
-                  <dd>44PX</dd>
-                </dl>
-                <div class="row">
-                  <div class="columns small-6">
-                    <div class="color-preview"><span></span>#393c3e</div>
-                  </div>
-                  <div class="columns small-6">
-                    <div class="color-preview"><span></span>#393c3e</div>
-                  </div>
-                </div>
+                </div> -->
               </div>
             </div>
           </div>
