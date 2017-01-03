@@ -51,4 +51,8 @@
       color: rgb(58, 64, 91);
     }
   }
+  &--outline {
+    background: transparent;
+    border: 1px solid #fff;
+  }
 }
