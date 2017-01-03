@@ -2732,3 +2732,28 @@ main {
   max-width: 215px;
   display: block;
 }
+.overlay-notification {
+  text-align: center;
+}
+.overlay-notification p {
+  margin: 0;
+  line-height: 46px;
+  font-size: 14px;
+}
+.overlay-notification--red {
+  background: #fe5339;
+  color: #fff;
+}
+.button--outline {
+  background: transparent;
+  border: 1px solid #fff;
+}
+.overlay-notification .button {
+  font-size: 14px;
+  padding: 7px 10px;
+  margin: 0 15px;
+  position: relative;
+  top: -1px;
+  font-weight: normal;
+  font-size: 12px;
+}
