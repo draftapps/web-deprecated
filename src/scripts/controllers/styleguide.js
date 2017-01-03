@@ -3,7 +3,7 @@
     .module("app")
     .controller("StyleguideCtrl", StyleguideCtrl);
 
-  function StyleguideCtrl($scope, $stateParams, projectService, CacheFactory, ENV) {
+  function StyleguideCtrl($scope, $stateParams, $timeout, projectService, CacheFactory, ENV) {
 
     var projectCache,
         projectCacheKey = ENV.api + 'projects/' + $stateParams.id + '?project[slug]=' + $stateParams.slug;
@@ -35,7 +35,11 @@
     .then(function(p) {
       vm.project = p;
       $scope.currentArtboard = _.findWhere(p.artboards, {id: parseInt($stateParams.artboardId)})
-      hljs.initLineNumbersOnLoad();
+      $timeout(function(){
+        $('.hljs-line-numbers').remove();
+        hljs.initLineNumbersOnLoad();
+        hljs.highlightBlock($('code.hljs.css')[0]);
+      }, 50);
     }, function() {
       // console.log("Server did not send project data!");
     });

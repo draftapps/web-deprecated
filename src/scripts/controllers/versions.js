@@ -29,6 +29,7 @@
     $scope.drawLineNumbers = function() {
       if (!$scope.drawnNumbers) {
         hljs.initLineNumbersOnLoad();
+        hljs.highlightBlock($('.code-block .hljs + .hljs')[0]);
         $scope.drawnNumbers = true;
       }
     }

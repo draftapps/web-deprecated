@@ -1739,13 +1739,16 @@ main {
         width: 100%;
         text-align: left;
         color: #3a405b;
-        border: 2px solid #e4e7ef;
+        border: 1px solid #e4e7ef;
         border-radius: 5px;
         padding: 0 10px;
         background: #fff url(../images/arrow-down.png) 90% 50% no-repeat;
         background-size: 10px 6px;
         cursor: pointer;
         margin-bottom: 20px;
+        &::before, &::after {
+          content: none;
+        }
       }
       .add-more {
         width: 39px;
@@ -2600,8 +2603,14 @@ main {
     margin: 10px 10px 10px -30px;
   }
 }
-.privacy-dropdown .dropdown-pane{
+.versions-dropdown .dropdown-pane {
   width: 256px;
+  border-width: 1px;
+  margin-top: -41px;
+  &::before,
+  &::after {
+    content: none;
+  }
 }
 .columns.main-content.large-8 {
   overflow: hidden;

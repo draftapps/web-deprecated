@@ -217,6 +217,10 @@
       vm.project.configs = getConfigs(
         vm.project.scale, vm.project.unit, vm.project.colorFormat, vm.selectedArtBoard.obj.height
       );
+      $timeout(function(){
+        $('.hljs-line-numbers').remove();
+        hljs.initLineNumbersOnLoad();
+      }, 50);
     }
 
     function getConfigs(scale, unit, colorFormat, height) {
@@ -619,6 +623,7 @@
       $timeout(function(){
         $('.hljs-line-numbers').remove();
         hljs.initLineNumbersOnLoad();
+        hljs.highlightBlock($('.code-block .hljs.css')[0]);
       }, 50);
     }
 
@@ -668,7 +673,8 @@
       $timeout(function(){
         $('.hljs-line-numbers').remove();
         hljs.initLineNumbersOnLoad();
-      }, 50);
+        hljs.highlightBlock($('.code-block .hljs.css')[0]);
+      }, 500);
     }
 
     function selectSlice(layer) {
