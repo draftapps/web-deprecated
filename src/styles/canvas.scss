@@ -2702,7 +2702,7 @@ main {
       border: 1px solid #e4e7ef;
       text-align: center;
       top: 10px;
-      right: 20px;
+      right: 47px;
     }
   }
   .uploading {
@@ -2721,4 +2721,14 @@ main {
       z-index: 1;
     }
   }
+}
+.screens-list li:first-child,
+.left-sidebar .items-spaced li:first-child {
+  margin-top: 30px;
+}
+.screens-list a,
+.left-sidebar .items-spaced li a {
+  margin: 0 auto;
+  max-width: 215px;
+  display: block;
 }
