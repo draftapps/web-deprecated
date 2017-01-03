@@ -1,7 +1,7 @@
 (function () {
   angular
     .module("app", [
-      "app.config", "ui.router", "ui.gravatar", "mm.foundation", "ngFileUpload", "slickCarousel", "ng-token-auth", "pickadate", "yaru22.angular-timeago", "hljs", "angular-cache", "ehFilters", "toastr"
+      "app.config", "ui.router", "ui.gravatar", "mm.foundation", "ngFileUpload", "ngCookies", "ngAnimate", "slickCarousel", "ng-token-auth", "pickadate", "yaru22.angular-timeago", "hljs", "angular-cache", "ehFilters", "toastr"
     ])
     .run(scrollTop)
     .config(authProviderConfig)

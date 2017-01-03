@@ -2735,6 +2735,10 @@ main {
 .overlay-notification {
   position: relative;
   text-align: center;
+  transition: all linear 0.5s;
+  &.ng-hide {
+    opacity: 0;
+  }
   .close {
     position: absolute;
     right: 20px;
