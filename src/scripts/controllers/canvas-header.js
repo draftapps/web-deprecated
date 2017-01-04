@@ -3,7 +3,7 @@
     .module("app")
     .controller("CanvasHeaderCtrl", CanvasHeaderCtrl);
 
-  function CanvasHeaderCtrl($scope, $modal, $http, $stateParams, ENV, CacheFactory, projectService, tagsService, toastr, toastrConfig) {
+  function CanvasHeaderCtrl($scope, $modal, $http, $stateParams, $location, ENV, CacheFactory, projectService, tagsService, toastr, toastrConfig) {
 
     angular.extend(toastrConfig, {
       target: '.canvas-screen-viewer'
@@ -157,6 +157,9 @@
     }
 
     $scope.openModal = function(template, parameters) {
+      if(parameters !== undefined) {
+        $scope.projectData = parameters;
+      }
       var params = {
         templateUrl: template,
         controller: ["$scope", "$modalInstance", function($scope, $modalInstance) {
@@ -199,6 +202,24 @@
       var date = new Date(date);
       return date.getDate();
     }
+
+    $scope.deleteArtboard = function(artboardId) {
+      console.log(artboardId);
+      $http({
+        method: "DELETE",
+        url: ENV.api + "projects/" + $stateParams.id + "/artboards/" + artboardId,
+        headers: {"Content-Type": "application/json;charset=utf-8"}
+      })
+      .success(function(data) {
+        projectCache.remove(projectCacheKey);
+        $scope.modal.close();
+        toastr.success('Artboard removed successfully');
+        $location.path("/projects/" + $stateParams.id + "/" + $stateParams.slug);
+      })
+      .error(function(data) {
+        // console.log("Error: " + data);
+      });
+    };
 
     // TODO: Change this to the real endpoint when notifications are implemented in API
     // if($stateParams.slug !== undefined) {

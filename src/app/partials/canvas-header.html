@@ -118,7 +118,7 @@
             </toggle>
             <pane>
               <ul class="dd-menu">
-                <li><a href="#"><svg><use xlink:href="#shape-trash" /></svg> Delete</a></li>
+                <li><a ng-click="openModal('app/partials/delete-artboard.html', {id: currentArtboard.id})"><svg><use xlink:href="#shape-trash" /></svg> Delete</a></li>
               </ul>
             </pane>
           </dropdown-toggle>
