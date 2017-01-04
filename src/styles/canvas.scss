@@ -1739,13 +1739,16 @@ main {
         width: 100%;
         text-align: left;
         color: #3a405b;
-        border: 2px solid #e4e7ef;
+        border: 1px solid #e4e7ef;
         border-radius: 5px;
         padding: 0 10px;
         background: #fff url(../images/arrow-down.png) 90% 50% no-repeat;
         background-size: 10px 6px;
         cursor: pointer;
         margin-bottom: 20px;
+        &::before, &::after {
+          content: none;
+        }
       }
       .add-more {
         width: 39px;
@@ -2600,8 +2603,14 @@ main {
     margin: 10px 10px 10px -30px;
   }
 }
-.privacy-dropdown .dropdown-pane{
+.versions-dropdown .dropdown-pane {
   width: 256px;
+  border-width: 1px;
+  margin-top: -41px;
+  &::before,
+  &::after {
+    content: none;
+  }
 }
 .columns.main-content.large-8 {
   overflow: hidden;
@@ -2702,7 +2711,7 @@ main {
       border: 1px solid #e4e7ef;
       text-align: center;
       top: 10px;
-      right: 20px;
+      right: 47px;
     }
   }
   .uploading {
@@ -2720,5 +2729,49 @@ main {
       position: relative;
       z-index: 1;
     }
+  }
+}
+.screens-list li:first-child,
+.left-sidebar .items-spaced li:first-child {
+  margin-top: 30px;
+}
+.screens-list a,
+.left-sidebar .items-spaced li a {
+  margin: 0 auto;
+  max-width: 215px;
+  display: block;
+}
+.overlay-notification {
+  position: relative;
+  text-align: center;
+  transition: all linear 0.5s;
+  &.ng-hide {
+    opacity: 0;
+  }
+  .close {
+    position: absolute;
+    right: 20px;
+    top: 12px;
+    line-height: 1;
+    font-size: 16px;
+    font-size: 24px;
+  }
+  p {
+    margin: 0;
+    line-height: 46px;
+    font-size: 14px;
+  }
+  &--red {
+    background: #fe5339;
+    color: #fff;
+  }
+  .button {
+    font-size: 14px;
+    padding: 7px 10px;
+    margin: 0 15px;
+    position: relative;
+    top: -1px;
+    font-weight: normal;
+    font-size: 12px;
   }
 }
