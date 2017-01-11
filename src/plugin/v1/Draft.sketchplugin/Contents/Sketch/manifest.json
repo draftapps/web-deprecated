@@ -1,0 +1,84 @@
+{
+  "author": "DraftApp, Inc.",
+  "commands" : [
+    {
+      "name": "ToolBar",
+      "identifier": "commandToolBar",
+      "shortcut": "ctrl shift b",
+      "handler" : "commandToolBar",
+      "script": "mark.sketchscript"
+    },
+    {
+      "name": "Export to Draft",
+      "identifier": "commandExport",
+      "shortcut": "ctrl shift e",
+      "handler" : "commandExport",
+      "script": "mark.sketchscript"
+    },
+    {
+      "name": "Add Note",
+      "identifier": "commandNote",
+      "shortcut": "ctrl shift 1",
+      "handler" : "commandNote",
+      "script": "mark.sketchscript"
+    },
+    {
+      "name": "Settings",
+      "identifier": "commandSettings",
+      "shortcut": "",
+      "handler": "commandSettings",
+      "script": "mark.sketchscript"
+    },
+    {
+      "name": "Login/Logout of Draft",
+      "identifier": "commandLoginLogout",
+      "shortcut": "ctrl shift l",
+      "handler": "commandLoginLogout",
+      "script": "mark.sketchscript"
+    },
+    {
+      "name": "Visit Draft",
+      "identifier": "commandVisit",
+      "shortcut": "ctrl shift v",
+      "handler": "commandVisit",
+      "script": "mark.sketchscript"
+    },
+    {
+      "name": "Color names",
+      "identifier": "commandColor",
+      "shortcut": "ctrl shift c",
+      "handler": "commandColor",
+      "script": "mark.sketchscript"
+    },
+    {
+      "name": "Make exportable",
+      "identifier": "commandExportable",
+      "shortcut": "ctrl shift s",
+      "handler": "commandExportable",
+      "script": "mark.sketchscript"
+    }
+  ],
+  "menu" : {
+    "title" : "Draft",
+    "isRoot" : false,
+    "shortcut" : "",
+    "items" : [
+      "commandToolBar",
+      "commandExport",
+      "commandVisit",
+      "-",
+      "commandColor",
+      "commandExportable",
+      "-",
+      "commandNote",
+      "-",
+      "commandSettings",
+      "commandLoginLogout"
+    ]
+  },
+  "identifier": "com.draft.draftappio",
+  "version": "1.0.0",
+  "description" : "The easiest collaporative tool for designers and developers",
+  "authorEmail" : "support@draftapp.io",
+  "name" : "Draft"
+}

@@ -1,0 +1,70 @@
+@import "library/main.js"
+@import "library/MochaJSDelegate.js"
+
+function commandOverlays(context) {
+  DraftApp.init(context, "mark-overlays");
+}
+
+function commandSizes(context) {
+  if(NSEvent.modifierFlags() == 917504){
+    DraftApp.init(context, "mark-sizes");
+  }
+  else{
+    DraftApp.init(context, "lite-sizes");
+  }
+}
+
+function commandSpacings(context) {
+  if(NSEvent.modifierFlags() == 917504){
+    DraftApp.init(context, "mark-spacings");
+  }
+  else{
+    DraftApp.init(context, "lite-spacings");
+  }
+}
+
+function commandProperties(context) {
+
+  if(NSEvent.modifierFlags() == 917504){
+    DraftApp.init(context, "mark-properties");
+  }
+  else{
+    DraftApp.init(context, "lite-properties");
+  }
+}
+
+function commandNote(context) {
+  DraftApp.init(context, "mark-note");
+}
+
+function commandClear(context) {
+  DraftApp.init(context, "clear");
+}
+
+function commandColor(context) {
+  DraftApp.init(context, "color");
+}
+
+function commandExportable(context) {
+  DraftApp.init(context, "exportable");
+}
+
+function commandSettings(context) {
+  DraftApp.init(context, "settings");
+}
+
+function commandExport(context) {
+  DraftApp.init(context, "export");
+}
+
+function commandToolBar(context) {
+  DraftApp.init(context, "toolbar");
+}
+
+function commandLoginLogout(context) {
+  DraftApp.init(context, "login-logout");
+}
+
+function commandVisit(context) {
+  NSWorkspace.sharedWorkspace().openURL(NSURL.URLWithString("https://draftapp.io"));
+}

@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Login | Draft App</title>
+
+    <link href="assets/css/normalize.css" rel="stylesheet">
+    <link href="assets/css/app.css" rel="stylesheet">
+
+    <script type="text/javascript" src="assets/js/jquery-2.2.4.min.js"></script>
+    <script type="text/javascript" src="assets/js/jquery.validate.min.js"></script>
+    <script type="text/javascript" src="assets/js/common.js"></script>
+    <script type="text/javascript">
+      $.fn.serializeObject = function()
+      {
+        var o = {};
+        var a = this.serializeArray();
+        $.each(a, function() {
+          if (o[this.name] !== undefined) {
+            if (!o[this.name].push) {
+              o[this.name] = [o[this.name]];
+            }
+            o[this.name].push(this.value || '');
+          } else {
+            o[this.name] = this.value || '';
+          }
+        });
+        return o;
+      };
+
+      $(function() {
+        // $("#errorbox").hide();
+
+        $("form input").keypress(function (e) {
+          if ((e.which && e.which == 13) || (e.keyCode && e.keyCode == 13)) {
+            $('button[type=submit]').click();
+            return false;
+          } else {
+            return true;
+          }
+        });
+
+        $("form[name='login']").validate({
+          rules: {
+            email: {
+              required: true,
+              email: true
+            },
+            password: {
+              required: true,
+              minlength: 6
+            }
+          },
+          // Specify validation error messages
+          messages: {
+            password: {
+              required: "Please provide a password",
+              minlength: "Your password must be at least 5 characters long"
+            },
+            email: "Please enter a valid email address"
+          },
+          errorPlacement: function(error, element) {
+            element.attr("placeholder", error[0].outerText);
+            element.css("border-color", "#ff0000");
+          },
+          // Make sure the form is submitted to the destination defined
+          // in the "action" attribute of the form when valid
+          submitHandler: function(form) {
+            var signinForm = JSON.stringify($('#signin-form').serializeObject());
+
+            $.ajax({
+              url: "https://api.draftapp.io/auth/sign_in",
+              type: 'POST',
+              data: signinForm,
+              mimeType: "multipart/form-data",
+              contentType: "application/json",
+              cache: false,
+              processData: false,
+              beforeSend: function() {
+                $("#signin-btn").html('Connecting...');
+                $('#msgbox').hide();
+              },
+              success: function (data, textStatus, request) {
+                $("#signin-btn").html('Done!');
+
+                // Read and save the auth headers
+                var options = {};
+                options.accessToken = request.getResponseHeader("access-token");
+                options.client = request.getResponseHeader("client");
+                options.expiry = request.getResponseHeader("expiry");
+                options.uid = request.getResponseHeader("uid");
+
+                SMAction(options);
+              },
+              error: function(httpObj, textStatus) {
+                $("#signin-btn").html('Sign In');
+
+                for (var i = 1; i <= 3; i++) {
+                  $("#signin-form").animate({left: 10}, "fast");
+                  $("#signin-form").animate({left: 0}, "fast");
+                }
+
+                var error = ""
+                if (httpObj.responseText) {
+                  error = JSON.parse(httpObj.responseText)['errors'].join(', ');
+                }
+                else {
+                  error = httpObj.statusText;
+                }
+
+                $('#msgbox').html("We got an error: " + error);
+                $('#msgbox').addClass("success").css("color", "red").fadeIn();
+                $('#msgbox').addClass("success").css("font-size", "10px");
+              }
+            });
+          }
+        });
+      });
+    </script>
+  </head>
+  <body style="text-align: center;">
+    <div id="logo"></div>
+    <h4 id="signin-header"> Sign In to Draft</h3>
+
+    <span id="msgbox"></span>
+    <form id="signin-form" name="login">
+      <input autofocus type="email" name="email" placeholder="Email" >
+
+      <input type="password" name="password" placeholder="Password" >
+
+      <p></p>
+
+      <button type="submit" id="signin-btn">Sign In</button>
+
+      <br>
+
+      <p>
+        <a href="https://draftapp.io/forgot-password" >Forgot Password?</a>
+      </p>
+    </form>
+  </body>
+</html>

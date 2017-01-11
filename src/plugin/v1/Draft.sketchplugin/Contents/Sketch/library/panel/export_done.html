@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Export Done | Draft App</title>
+
+    <link href="assets/css/normalize.css" rel="stylesheet">
+    <link href="assets/css/app.css" rel="stylesheet">
+
+    <script type="text/javascript" src="assets/js/jquery-2.2.4.min.js"></script>
+    <script type="text/javascript" src="assets/js/common.js"></script>
+    <script type="text/javascript">
+      var init = function(data) {
+        $('body').html([
+            '<div class="container">',
+              '<div id="logo">',
+                '<img src="assets/img/export_done.png"></img>',
+              '</div>',
+              '<br><br><br>',
+              '<p align="center" id="text">The artboards were exported.</p>',
+              '<div class="footer">',
+                '<button id="submit" class="submit">' + _('Open Project') + '</button>',
+              '</div>',
+            '</div>',
+        ].join(''));
+        // setTimeout(function() {
+        //   SMAction([]);
+        // }, 3000);
+      };
+    </script>
+  </head>
+  <body>
+  </body>
+</html>
