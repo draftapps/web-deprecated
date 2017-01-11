@@ -50,7 +50,7 @@ function commandExportable(context) {
 }
 
 function commandSettings(context) {
-  DraftApp.init(context, "settings");
+  DraftApp.init(context, "select project");
 }
 
 function commandExport(context) {
