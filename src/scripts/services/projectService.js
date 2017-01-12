@@ -39,7 +39,7 @@
       },
       getProject: function(id, slug) {
         return $q(function(resolve, reject) {
-          $http.get(ENV.api + "projects/" + id + "?project[slug]=" + slug, { cache: projectCache })
+          $http.get(ENV.api + "projects/" + id + "?project[slug]=" + slug)
           .success(function(data) {
             resolve(data);
           }).error(function(data) {
