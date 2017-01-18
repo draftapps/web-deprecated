@@ -39,10 +39,18 @@
       },
       getProject: function(id, slug) {
         return $q(function(resolve, reject) {
-          $http.get(ENV.api + "projects/" + id + "?project[slug]=" + slug)
-          .success(function(data) {
+          $http.get(ENV.api + "projects/" + id + "?project[slug]=" + slug, { etagCache: 'persistentCache'})
+          .success(function(data, status, headers, config, itemCache) {
             resolve(data);
-          }).error(function(data) {
+            itemCache.set(data);
+            console.log('promise')
+          })
+          .cached(function (data, status, headers, config, itemCache) {
+            console.log('cache')
+            resolve(itemCache.get(data));
+          })
+          .error(function(data, status) {
+            if (status != 304) alert('Request error')
             reject("Server didn't send the correct data");
           });
         });

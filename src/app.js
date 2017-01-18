@@ -1,12 +1,13 @@
 (function () {
   angular
     .module("app", [
-      "app.config", "ui.router", "ui.gravatar", "mm.foundation", "ngFileUpload", "ngCookies", "ngAnimate", "slickCarousel", "ng-token-auth", "pickadate", "yaru22.angular-timeago", "hljs", "angular-cache", "ehFilters", "toastr"
+      "app.config", "ui.router", "ui.gravatar", "mm.foundation", "ngFileUpload", "ngCookies", "ngAnimate", "slickCarousel", "ng-token-auth", "pickadate", "yaru22.angular-timeago", "hljs", "angular-cache", "ehFilters", "toastr", "http-etag"
     ])
     .run(scrollTop)
     .config(authProviderConfig)
     .config(cashFactorySettings)
-    .config(toastrConfig);
+    .config(toastrConfig)
+    .config(etagConfig);
 
   function scrollTop($rootScope, $anchorScroll){
     $rootScope.$on("$locationChangeSuccess", function(){
@@ -42,5 +43,12 @@
       deleteOnExpire: 'aggressive',
       storageMode: 'localStorage'
     });
+  }
+
+  function etagConfig(httpEtagProvider) {
+    httpEtagProvider
+      .defineCache('persistentCache', {
+        cacheService: 'localStorage'
+      })
   }
 })();
