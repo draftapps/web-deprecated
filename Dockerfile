@@ -1,9 +1,11 @@
-FROM ubuntu:16.04
+FROM ubuntu:xenial
 MAINTAINER Islam Wazery <wazery@ubuntu.com>
 
 # Update the repository
 RUN apt-get update && \
-    apt-get install -y wget sudo dialog net-tools git build-essential nodejs npm ruby nginx && \
+    apt-get install -y wget sudo dialog net-tools git build-essential ruby-dev gcc nginx curl && \
+    curl -sL https://deb.nodesource.com/setup_6.x | sudo -E bash - && \
+    apt-get install -y nodejs && \
     apt-get clean &&  rm -rf /var/lib/apt/lists/*
 
 RUN gem install sass && mkdir -p /home/webapp
@@ -13,24 +15,22 @@ COPY bower.json /home/webapp
 
 WORKDIR /home/webapp
 
-RUN ln -s /usr/bin/nodejs /usr/bin/node && \
-    npm install fs-extra && \
+RUN npm install fs-extra && \
     mv /home/webapp/node_modules/fs-extra /home/webapp/node_modules/.fs-extra-DELETE
 
 # Install Prerequisites
-RUN npm install
-RUN sudo npm install -g bower gulp-cli
 
-RUN bower install --allow-root --force-latest
+RUN npm i yarn gulp-cli -g
+RUN yarn
 
 ADD . /home/webapp
 
-RUN gulp build
+# RUN gulp serve
 
-COPY nginx.conf /etc/nginx/nginx.conf
+# COPY nginx.conf /etc/nginx/nginx.conf
 
 RUN cp -r /home/webapp/dist/* /var/www/html/
 
-EXPOSE 80
+EXPOSE 3000
 
-CMD service nginx start
+CMD gulp serve

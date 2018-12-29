@@ -1,0 +1,27 @@
+version: '3'
+services:
+  app:
+    image: wazery/draft-webapp:latest
+    restart: always
+    ports:
+      - "80:3000"
+    tty: true
+  nginx:    
+    image: nginx:1.15-alpine
+    depends_on:      
+      - app    
+    restart: always
+    volumes:
+      - ./docker/nginx:/etc/nginx/conf.d
+      - ./docker/nginx/certbot/conf:/etc/letsencrypt
+      - ./docker/nginx/certbot/www:/var/www/certbot
+    ports:
+      - "80:80"
+      - "443:443"
+    command: "/bin/sh -c 'while :; do sleep 6h & wait $${!}; nginx -s reload; done & nginx -g \"daemon off;\"'"
+  certbot:
+    image: certbot/certbot
+    volumes:
+      - ./docker/nginx/certbot/conf:/etc/letsencrypt
+      - ./docker/nginx/certbot/www:/var/www/certbot
+    entrypoint: "/bin/sh -c 'trap exit TERM; while :; do certbot renew; sleep 12h & wait $${!}; done;'"
